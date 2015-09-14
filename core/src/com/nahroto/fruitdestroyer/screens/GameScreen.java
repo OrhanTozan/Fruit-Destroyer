@@ -7,15 +7,20 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.Constants;
+import com.nahroto.fruitdestroyer.Player;
 
 public class GameScreen implements Screen
 {
     private final Application APP;
-    private Sprite bg;
-    private Sprite player;
+
+    private TextureAtlas objectsAtlas;
+
+    private Texture bg;
+    private Player player;
 
     public GameScreen(final Application APP)
     {
@@ -27,8 +32,12 @@ public class GameScreen implements Screen
     {
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
         APP.camera.update();
-        bg = new Sprite(new Texture("backgrounds/yellow.png"));
-        player = new 
+
+        objectsAtlas = APP.assets.get("atlases/objects.pack", TextureAtlas.class);
+
+        bg = APP.assets.get("images/backgrounds/yellow.png", Texture.class);
+
+        player = new Player(objectsAtlas.createSprite("player"));
     }
 
     @Override
@@ -38,11 +47,13 @@ public class GameScreen implements Screen
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         // UPDATE
+        player.update(APP);
 
         // RENDER
         APP.batch.setProjectionMatrix(APP.camera.combined);
         APP.batch.begin();
         APP.batch.draw(bg, 0, 0);
+        player.render(APP.batch);
         APP.batch.end();
     }
 
