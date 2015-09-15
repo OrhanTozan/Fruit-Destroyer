@@ -46,14 +46,21 @@ public class GameScreen implements Screen
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+        // System.out.println(Gdx.graphics.getFramesPerSecond());
+
         // UPDATE
         player.update(APP);
 
         // RENDER
         APP.batch.setProjectionMatrix(APP.camera.combined);
         APP.batch.begin();
-        APP.batch.draw(bg, 0, 0);
+
+        // RENDER BACKGROUND
+        APP.batch.draw(bg, 0, 0, Constants.V_WIDTH, Constants.V_HEIGHT);
+
+        //RENDER PLAYER
         player.render(APP.batch);
+
         APP.batch.end();
     }
 
