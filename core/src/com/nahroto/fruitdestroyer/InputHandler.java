@@ -1,11 +1,13 @@
 package com.nahroto.fruitdestroyer;
 
+import com.nahroto.fruitdestroyer.entities.Bullet;
 import com.nahroto.fruitdestroyer.entities.Player;
 
 public class InputHandler
 {
     private final Application APP;
     private Player player;
+    private long lastShotTime;
 
     public InputHandler(final Application APP, Player player)
     {
@@ -17,9 +19,12 @@ public class InputHandler
     {
         if (Input.touchDown)
         {
-            Input.touchDown = false;
             player.followFinger();
-            player.shoot();
+            if (System.currentTimeMillis() - lastShotTime > Bullet.RATE_OF_FIRE)
+            {
+                lastShotTime = System.currentTimeMillis();
+                player.shoot();
+            }
         }
     }
 }

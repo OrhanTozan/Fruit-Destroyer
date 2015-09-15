@@ -10,16 +10,17 @@ import com.nahroto.fruitdestroyer.Constants;
 public class Bullet
 {
     public static final int COUNT = 30;
+    public static final int RATE_OF_FIRE = 500;
+    public static Array<Bullet> totalBullets = new Array<Bullet>();
+    public static Array<Bullet> currentBullets = new Array<Bullet>();
 
     private Vector2 position;
     private Vector2 velocity;
     private Sprite sprite;
     private Rectangle bounds;
 
-    public static Array<Bullet> totalBullets = new Array<Bullet>();
-    public static Array<Bullet> currentBullets = new Array<Bullet>();
-
     public boolean isOutOfScreen;
+    public boolean reserve;
 
     public Bullet(Sprite sprite)
     {
@@ -28,6 +29,7 @@ public class Bullet
         velocity = new Vector2();
         bounds = new Rectangle(position.x, position.y, sprite.getWidth(), sprite.getHeight());
         isOutOfScreen = false;
+        reserve = true;
     }
 
 

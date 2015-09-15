@@ -65,6 +65,7 @@ public class GameScreen implements Screen
             Bullet.currentBullets.get(i).update(delta);
             if (Bullet.currentBullets.get(i).isOutOfScreen)
             {
+                Bullet.currentBullets.get(i).reserve = true;
                 Bullet.currentBullets.removeIndex(i);
             }
         }

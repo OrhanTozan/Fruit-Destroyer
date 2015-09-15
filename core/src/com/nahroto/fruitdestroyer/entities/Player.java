@@ -1,7 +1,6 @@
 package com.nahroto.fruitdestroyer.entities;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -52,6 +51,7 @@ public class Player
     public void shoot()
     {
         shotSFX.play();
+
         Bullet.totalBullets.get(0).isOutOfScreen = false;
         Bullet.totalBullets.get(0).setPosition(Constants.V_WIDTH / 2 - 10, Constants.V_HEIGHT / 2 - 10);
         Bullet.totalBullets.get(0).setVelocity(deltaX, deltaY * -1);
