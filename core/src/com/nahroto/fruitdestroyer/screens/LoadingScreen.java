@@ -32,7 +32,7 @@ public class LoadingScreen implements Screen
     public void render(float delta)
     {
         if (APP.assets.update())
-            APP.setScreen(new GameScreen(APP));
+            APP.setScreen(new LoadingScreen2(APP));
     }
 
     @Override

@@ -10,3 +10,10 @@ player
   orig: 121, 57
   offset: 0, 0
   index: -1
+bullet
+  rotate: false
+  xy: 124, 38
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
