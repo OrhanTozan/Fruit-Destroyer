@@ -38,6 +38,7 @@ public class Bullet
         updateBounds();
         applyVelocityToPosition(delta);
         isOutOfScreen();
+        System.out.println(position);
     }
 
     private void applyVelocityToPosition(float delta)

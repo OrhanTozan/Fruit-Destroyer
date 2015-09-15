@@ -57,8 +57,6 @@ public class GameScreen implements Screen
         // UPDATE PLAYER
         player.update();
 
-        APP.camera.update();
-
         // UPDATE BULLETS
         for (int i = 0; i < Bullet.currentBullets.size; i++)
         {
@@ -67,8 +65,11 @@ public class GameScreen implements Screen
             {
                 Bullet.currentBullets.get(i).reserve = true;
                 Bullet.currentBullets.removeIndex(i);
+                System.out.println("bullet removed");
             }
         }
+        System.out.println(" wololo");
+        APP.camera.update();
 
         // RENDER
         APP.batch.setProjectionMatrix(APP.camera.combined);
@@ -81,9 +82,9 @@ public class GameScreen implements Screen
         player.render(APP.batch);
 
         // RENDER BULLETS
-        for (Bullet bullet : Bullet.currentBullets)
+        for (int i = 0; i < Bullet.currentBullets.size; i++)
         {
-            bullet.render(APP.batch);
+            Bullet.currentBullets.get(i).render(APP.batch);
         }
 
         APP.batch.end();

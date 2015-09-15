@@ -19,6 +19,7 @@ public class Player
     private float deltaY;
 
     private Sound shotSFX;
+    private double len;
 
     public Player(Sprite sprite, final Application APP)
     {
@@ -57,10 +58,17 @@ public class Player
             {
                 Bullet.totalBullets.get(i).isOutOfScreen = false;
                 Bullet.totalBullets.get(i).reserve = false;
+
+                len = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+                deltaX /= len;
+                deltaY /= len;
+
                 Bullet.totalBullets.get(i).setPosition(Constants.V_WIDTH / 2 - 10, Constants.V_HEIGHT / 2 - 10);
-                Bullet.totalBullets.get(i).setVelocity(deltaX, deltaY * -1);
+                Bullet.totalBullets.get(i).setVelocity(deltaX * 200, deltaY * -1 * 200);
+
                 Bullet.currentBullets.add(Bullet.totalBullets.get(i));
                 System.out.println("bullet added");
+                System.out.println(Bullet.currentBullets.size);
                 break;
             }
         }
