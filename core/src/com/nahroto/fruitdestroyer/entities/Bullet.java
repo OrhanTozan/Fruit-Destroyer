@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
+import com.nahroto.fruitdestroyer.Constants;
 
 public class Bullet
 {
@@ -18,12 +19,15 @@ public class Bullet
     public static Array<Bullet> totalBullets = new Array<Bullet>();
     public static Array<Bullet> currentBullets = new Array<Bullet>();
 
+    public boolean isOutOfScreen;
+
     public Bullet(Sprite sprite)
     {
         this.sprite = sprite;
         position = new Vector2();
         velocity = new Vector2();
         bounds = new Rectangle(position.x, position.y, sprite.getWidth(), sprite.getHeight());
+        isOutOfScreen = false;
     }
 
 
@@ -31,6 +35,9 @@ public class Bullet
     {
         updateBounds();
         applyVelocityToPosition(delta);
+        isOutOfScreen();
+
+        System.out.println(velocity);
     }
 
     private void applyVelocityToPosition(float delta)
@@ -38,6 +45,13 @@ public class Bullet
         velocity.scl(delta);
         position.add(velocity);
         velocity.scl(1 / delta);
+    }
+
+    private void isOutOfScreen()
+    {
+        if (position.x > Constants.V_WIDTH || position.x < 0 + sprite.getWidth() || position.y > Constants.V_HEIGHT || position.y < 0 + sprite.getHeight())
+            isOutOfScreen = true;
+        else isOutOfScreen = false;
     }
 
     private void updateBounds()

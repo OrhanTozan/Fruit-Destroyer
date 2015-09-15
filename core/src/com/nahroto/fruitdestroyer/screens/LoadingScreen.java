@@ -1,6 +1,8 @@
 package com.nahroto.fruitdestroyer.screens;
 
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.nahroto.fruitdestroyer.Application;
@@ -26,6 +28,9 @@ public class LoadingScreen implements Screen
         APP.assets.load("images/backgrounds/yellow.png", Texture.class);
         APP.assets.load("images/backgrounds/blue.png", Texture.class);
         APP.assets.load("images/backgrounds/green.png", Texture.class);
+
+        // LOAD SOUNDS
+        APP.assets.load("sounds/shot.wav", Sound.class);
     }
 
     @Override

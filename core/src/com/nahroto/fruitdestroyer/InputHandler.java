@@ -17,6 +17,7 @@ public class InputHandler
     {
         if (Input.touchDown)
         {
+            Input.touchDown = false;
             player.followFinger();
             player.shoot();
         }

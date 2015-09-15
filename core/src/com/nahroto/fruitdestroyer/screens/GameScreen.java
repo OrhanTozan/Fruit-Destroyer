@@ -60,9 +60,13 @@ public class GameScreen implements Screen
         APP.camera.update();
 
         // UPDATE BULLETS
-        for (Bullet bullet : Bullet.totalBullets)
+        for (int i = 0; i < Bullet.currentBullets.size; i++)
         {
-            bullet.update(delta);
+            Bullet.currentBullets.get(i).update(delta);
+            if (Bullet.currentBullets.get(i).isOutOfScreen)
+            {
+                Bullet.currentBullets.removeIndex(i);
+            }
         }
 
         // RENDER
@@ -76,7 +80,7 @@ public class GameScreen implements Screen
         player.render(APP.batch);
 
         // RENDER BULLETS
-        for (Bullet bullet : Bullet.totalBullets)
+        for (Bullet bullet : Bullet.currentBullets)
         {
             bullet.render(APP.batch);
         }

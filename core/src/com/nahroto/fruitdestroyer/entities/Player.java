@@ -1,6 +1,8 @@
 package com.nahroto.fruitdestroyer.entities;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
@@ -17,6 +19,8 @@ public class Player
     private float deltaX;
     private float deltaY;
 
+    private Sound shotSFX;
+
     public Player(Sprite sprite, final Application APP)
     {
         this.APP = APP;
@@ -25,6 +29,8 @@ public class Player
         this.sprite.setPosition(Constants.V_WIDTH / 2 - 32, Constants.V_HEIGHT / 2 - 28);
         this.sprite.setOrigin(32, 28);
 
+
+        shotSFX = APP.assets.get("sounds/shot.wav", Sound.class);
         unprojectedCoordinates = new Vector2();
     }
 
@@ -45,10 +51,11 @@ public class Player
 
     public void shoot()
     {
+        shotSFX.play();
+        Bullet.totalBullets.get(0).isOutOfScreen = false;
         Bullet.totalBullets.get(0).setPosition(Constants.V_WIDTH / 2 - 10, Constants.V_HEIGHT / 2 - 10);
-        Bullet.totalBullets.get(0).setVelocity(deltaX, deltaY);
+        Bullet.totalBullets.get(0).setVelocity(deltaX, deltaY * -1);
         Bullet.currentBullets.add(Bullet.totalBullets.get(0));
-        System.out.println(deltaY);
     }
 
     public void render(SpriteBatch batch)
