@@ -51,11 +51,19 @@ public class Player
     public void shoot()
     {
         shotSFX.play();
-
-        Bullet.totalBullets.get(0).isOutOfScreen = false;
-        Bullet.totalBullets.get(0).setPosition(Constants.V_WIDTH / 2 - 10, Constants.V_HEIGHT / 2 - 10);
-        Bullet.totalBullets.get(0).setVelocity(deltaX, deltaY * -1);
-        Bullet.currentBullets.add(Bullet.totalBullets.get(0));
+        for (int i = 0; i < Bullet.totalBullets.size; i++)
+        {
+            if (Bullet.totalBullets.get(i).reserve = true)
+            {
+                Bullet.totalBullets.get(i).isOutOfScreen = false;
+                Bullet.totalBullets.get(i).reserve = false;
+                Bullet.totalBullets.get(i).setPosition(Constants.V_WIDTH / 2 - 10, Constants.V_HEIGHT / 2 - 10);
+                Bullet.totalBullets.get(i).setVelocity(deltaX, deltaY * -1);
+                Bullet.currentBullets.add(Bullet.totalBullets.get(i));
+                System.out.println("bullet added");
+                break;
+            }
+        }
     }
 
     public void render(SpriteBatch batch)
