@@ -22,7 +22,7 @@ public class Player
     private float directionY;
 
     private Sound shotSFX;
-    private double len;
+    private float len;
 
     public Player(Sprite sprite, final Application APP)
     {
@@ -58,21 +58,21 @@ public class Player
         System.out.println(Bullet.totalBullets.get(0).isUsed);
         for (int i = 0; i < Bullet.totalBullets.size; i++)
         {
-            System.out.println("for: " + i);
-            System.out.println(Bullet.totalBullets.get(i).isUsed);
             if (Bullet.totalBullets.get(i).isUsed == false)
             {
-                System.out.println("accessed");
                 Bullet.totalBullets.get(i).isOutOfScreen = false;
                 Bullet.totalBullets.get(i).isUsed = true;
 
-                len = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+                len = (float)Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
-                directionX = deltaX /= len;
-                directionY = deltaY /= len;
+                deltaY *= -1;
 
-                Bullet.totalBullets.get(i).setPosition(Constants.V_WIDTH / 2 - 10, Constants.V_HEIGHT / 2 - 10);
-                Bullet.totalBullets.get(i).setVelocity(directionX * 80, directionY * -1 * 80);
+                directionX = deltaX / len;
+                directionY = deltaY / len;
+
+                System.out.println("deltaX: " + (int) deltaX + " deltaY: " + (int) deltaY);
+                Bullet.totalBullets.get(i).setPosition(Constants.V_WIDTH / 2 + (deltaX / 5) - 10, Constants.V_HEIGHT / 2 + (deltaY / 5) - 10);
+                Bullet.totalBullets.get(i).setVelocity(directionX * Bullet.VELOCITY, directionY * Bullet.VELOCITY);
 
                 Bullet.currentBullets.add(Bullet.totalBullets.get(i));
                 break;

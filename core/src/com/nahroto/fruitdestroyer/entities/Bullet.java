@@ -10,7 +10,8 @@ import com.nahroto.fruitdestroyer.Constants;
 public class Bullet
 {
     public static final int COUNT = 30;
-    public static final int RATE_OF_FIRE = 700;
+    public static final int RATE_OF_FIRE = 200;
+    public static final int VELOCITY = 200;
     public static Array<Bullet> totalBullets = new Array<Bullet>();
     public static Array<Bullet> currentBullets = new Array<Bullet>();
 
@@ -49,7 +50,7 @@ public class Bullet
 
     private void isOutOfScreen()
     {
-        if (position.x > Constants.V_WIDTH || position.x < 0 + sprite.getWidth() || position.y > Constants.V_HEIGHT || position.y < 0 + sprite.getHeight())
+        if (position.x > Constants.V_WIDTH || position.x  + sprite.getWidth() < 0 || position.y > Constants.V_HEIGHT || position.y  + sprite.getHeight()< 0)
             isOutOfScreen = true;
         else isOutOfScreen = false;
     }
