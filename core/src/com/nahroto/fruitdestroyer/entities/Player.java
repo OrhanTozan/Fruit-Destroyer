@@ -18,6 +18,9 @@ public class Player
     private float deltaX;
     private float deltaY;
 
+    private float directionX;
+    private float directionY;
+
     private Sound shotSFX;
     private double len;
 
@@ -52,23 +55,26 @@ public class Player
     public void shoot()
     {
         shotSFX.play();
+        System.out.println(Bullet.totalBullets.get(0).isUsed);
         for (int i = 0; i < Bullet.totalBullets.size; i++)
         {
-            if (Bullet.totalBullets.get(i).reserve = true)
+            System.out.println("for: " + i);
+            System.out.println(Bullet.totalBullets.get(i).isUsed);
+            if (Bullet.totalBullets.get(i).isUsed == false)
             {
+                System.out.println("accessed");
                 Bullet.totalBullets.get(i).isOutOfScreen = false;
-                Bullet.totalBullets.get(i).reserve = false;
+                Bullet.totalBullets.get(i).isUsed = true;
 
                 len = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-                deltaX /= len;
-                deltaY /= len;
+
+                directionX = deltaX /= len;
+                directionY = deltaY /= len;
 
                 Bullet.totalBullets.get(i).setPosition(Constants.V_WIDTH / 2 - 10, Constants.V_HEIGHT / 2 - 10);
-                Bullet.totalBullets.get(i).setVelocity(deltaX * 200, deltaY * -1 * 200);
+                Bullet.totalBullets.get(i).setVelocity(directionX * 80, directionY * -1 * 80);
 
                 Bullet.currentBullets.add(Bullet.totalBullets.get(i));
-                System.out.println("bullet added");
-                System.out.println(Bullet.currentBullets.size);
                 break;
             }
         }

@@ -5,6 +5,7 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.Constants;
@@ -21,6 +22,7 @@ public class GameScreen implements Screen
     private Player player;
     private InputMultiplexer inputMultiplexer;
     private InputHandler inputHandler;
+    BitmapFont font;
 
     public GameScreen(final Application APP, Texture bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler)
     {
@@ -38,6 +40,7 @@ public class GameScreen implements Screen
         Gdx.input.setInputProcessor(inputMultiplexer);
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
         APP.camera.update();
+        font = new BitmapFont();
     }
 
     @Override
@@ -63,12 +66,13 @@ public class GameScreen implements Screen
             Bullet.currentBullets.get(i).update(delta);
             if (Bullet.currentBullets.get(i).isOutOfScreen)
             {
-                Bullet.currentBullets.get(i).reserve = true;
+                Bullet.currentBullets.get(i).isUsed = false;
+                Bullet.currentBullets.get(i).isOutOfScreen = false;
                 Bullet.currentBullets.removeIndex(i);
                 System.out.println("bullet removed");
             }
         }
-        System.out.println(" wololo");
+
         APP.camera.update();
 
         // RENDER
@@ -86,7 +90,6 @@ public class GameScreen implements Screen
         {
             Bullet.currentBullets.get(i).render(APP.batch);
         }
-
         APP.batch.end();
     }
 

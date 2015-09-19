@@ -10,7 +10,7 @@ import com.nahroto.fruitdestroyer.Constants;
 public class Bullet
 {
     public static final int COUNT = 30;
-    public static final int RATE_OF_FIRE = 500;
+    public static final int RATE_OF_FIRE = 700;
     public static Array<Bullet> totalBullets = new Array<Bullet>();
     public static Array<Bullet> currentBullets = new Array<Bullet>();
 
@@ -20,7 +20,7 @@ public class Bullet
     private Rectangle bounds;
 
     public boolean isOutOfScreen;
-    public boolean reserve;
+    public boolean isUsed;
 
     public Bullet(Sprite sprite)
     {
@@ -29,7 +29,7 @@ public class Bullet
         velocity = new Vector2();
         bounds = new Rectangle(position.x, position.y, sprite.getWidth(), sprite.getHeight());
         isOutOfScreen = false;
-        reserve = true;
+        isUsed = false;
     }
 
 
@@ -38,7 +38,6 @@ public class Bullet
         updateBounds();
         applyVelocityToPosition(delta);
         isOutOfScreen();
-        System.out.println(position);
     }
 
     private void applyVelocityToPosition(float delta)
