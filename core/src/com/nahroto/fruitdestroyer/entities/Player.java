@@ -69,9 +69,7 @@ public class Player
 
                 directionX = deltaX / len;
                 directionY = deltaY / len;
-
-                System.out.println("deltaX: " + (int) deltaX + " deltaY: " + (int) deltaY);
-                Bullet.totalBullets.get(i).setPosition(Constants.V_WIDTH / 2 + (deltaX / 5) - 10, Constants.V_HEIGHT / 2 + (deltaY / 5) - 10);
+                Bullet.totalBullets.get(i).setPosition(Constants.V_WIDTH / 2 - 10, Constants.V_HEIGHT / 2 - 10);
                 Bullet.totalBullets.get(i).setVelocity(directionX * Bullet.VELOCITY, directionY * Bullet.VELOCITY);
 
                 Bullet.currentBullets.add(Bullet.totalBullets.get(i));
