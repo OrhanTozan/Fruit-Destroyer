@@ -11,7 +11,8 @@ public class Bullet
 {
     public static final int COUNT = 30;
     public static final int RATE_OF_FIRE = 200;
-    public static final int VELOCITY = 200;
+    public static final int VELOCITY = 700;
+
     public static Array<Bullet> totalBullets = new Array<Bullet>();
     public static Array<Bullet> currentBullets = new Array<Bullet>();
 
