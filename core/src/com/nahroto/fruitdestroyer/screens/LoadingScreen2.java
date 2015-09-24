@@ -44,7 +44,7 @@ public class LoadingScreen2 implements Screen
         APP.camera.update();
 
         objectsAtlas = APP.assets.get("atlases/objects.pack", TextureAtlas.class);
-        bg = APP.assets.get("images/backgrounds/yellow.png", Texture.class);
+        bg = APP.assets.get("backgrounds/gray.png", Texture.class);
         player = new Player(objectsAtlas.createSprite("player"), APP);
         for (int i = 0; i < Bullet.COUNT; i++)
         {

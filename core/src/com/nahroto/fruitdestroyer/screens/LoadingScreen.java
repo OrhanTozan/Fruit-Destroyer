@@ -24,10 +24,10 @@ public class LoadingScreen implements Screen
         APP.assets.load("atlases/objects.pack", TextureAtlas.class);
 
         // LOAD BACKGROUND TEXTURES
-        APP.assets.load("images/backgrounds/red.png", Texture.class);
-        APP.assets.load("images/backgrounds/yellow.png", Texture.class);
-        APP.assets.load("images/backgrounds/blue.png", Texture.class);
-        APP.assets.load("images/backgrounds/green.png", Texture.class);
+        APP.assets.load("backgrounds/red.png", Texture.class);
+        APP.assets.load("backgrounds/yellow.png", Texture.class);
+        APP.assets.load("backgrounds/blue.png", Texture.class);
+        APP.assets.load("backgrounds/green.png", Texture.class);
 
         // LOAD SOUNDS
         APP.assets.load("sounds/shot.wav", Sound.class);
