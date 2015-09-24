@@ -28,6 +28,7 @@ public class LoadingScreen2 implements Screen
     private InputMultiplexer inputMultiplexer;
 
     private InputHandler inputHandler;
+    private final byte WAIT_TIME = 3;
 
     public LoadingScreen2(final Application APP)
     {
@@ -66,7 +67,7 @@ public class LoadingScreen2 implements Screen
 
         // UPDATE
         APP.camera.update();
-        if (System.currentTimeMillis() - currentTime > 4 * 1000)
+        if (System.currentTimeMillis() - currentTime > WAIT_TIME * 1000)
             APP.setScreen(new GameScreen(APP, bg, player, inputMultiplexer, inputHandler));
 
         // RENDER
