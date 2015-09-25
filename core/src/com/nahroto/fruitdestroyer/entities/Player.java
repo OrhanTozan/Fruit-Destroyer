@@ -50,8 +50,8 @@ public class Player
         unprojectedCoordinates.set(Gdx.input.getX(), Gdx.graphics.getHeight() - Gdx.input.getY());
         APP.viewport.unproject(unprojectedCoordinates);
 
-        deltaX = unprojectedCoordinates.x - sprite.getX() + 32;
-        deltaY = unprojectedCoordinates.y - sprite.getY() + 28;
+        deltaX = unprojectedCoordinates.x - Constants.V_WIDTH / 2;
+        deltaY = unprojectedCoordinates.y - Constants.V_HEIGHT / 2;
 
         angle = (MathUtils.atan2(deltaX, deltaY) * MathUtils.radiansToDegrees) - 90;
 
@@ -82,7 +82,7 @@ public class Player
                 // OFFSET PLAYER TO GIVE KICK
                 // offsetBack();
 
-                Bullet.totalBullets.get(i).setPosition((sprite.getX() + 32 + positionX) - 10, (sprite.getY() + 28 + positionY) - 10);
+                Bullet.totalBullets.get(i).setPosition((Constants.V_WIDTH / 2 + positionX) - 10, (Constants.V_HEIGHT / 2 + positionY) - 10);
                 Bullet.totalBullets.get(i).setVelocity(directionX * Bullet.VELOCITY, directionY * Bullet.VELOCITY);
 
                 Bullet.currentBullets.add(Bullet.totalBullets.get(i));
