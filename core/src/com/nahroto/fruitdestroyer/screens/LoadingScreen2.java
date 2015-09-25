@@ -18,7 +18,7 @@ public class LoadingScreen2 implements Screen
 {
     private final Application APP;
 
-    private TextureAtlas objectsAtlas;
+    private TextureAtlas gameScreenAtlas;
 
     private Texture bg;
     private Player player;
@@ -45,18 +45,18 @@ public class LoadingScreen2 implements Screen
         APP.camera.update();
 
         // INIT ATLAS
-        objectsAtlas = APP.assets.get("atlases/objects.pack", TextureAtlas.class);
+        gameScreenAtlas = APP.assets.get("atlases/gamescreen.pack", TextureAtlas.class);
 
         // INIT BG
         bg = APP.assets.get("backgrounds/gray.png", Texture.class);
 
         // INIT PLAYER
-        player = new Player(objectsAtlas.createSprite("player"), objectsAtlas.createSprite("flash"), APP);
+        player = new Player(gameScreenAtlas.createSprite("player"), gameScreenAtlas.createSprite("flash"), APP);
 
         // INIT BULLETS
         for (int i = 0; i < Bullet.COUNT; i++)
         {
-            Bullet.totalBullets.add(new Bullet(objectsAtlas.createSprite("bullet")));
+            Bullet.totalBullets.add(new Bullet(gameScreenAtlas.createSprite("bullet")));
         }
 
         // INIT INPUT-HANDLER
