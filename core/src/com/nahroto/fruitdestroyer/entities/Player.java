@@ -122,7 +122,7 @@ public class Player
                 flashPositionY = (MathUtils.sin(angle * MathUtils.degreesToRadians) * 80);
 
                 flashSprite.setRotation(angle);
-                flashSprite.setPosition(Constants.V_WIDTH / 2 + flashPositionX, Constants.V_HEIGHT / 2 + flashPositionY - (35 / 2));
+                flashSprite.setPosition(Constants.V_WIDTH / 2 + flashPositionX - 3, Constants.V_HEIGHT / 2 + flashPositionY - (35 / 2));
 
                 // OFFSET PLAYER TO GIVE KICK
                 offsetBack();
