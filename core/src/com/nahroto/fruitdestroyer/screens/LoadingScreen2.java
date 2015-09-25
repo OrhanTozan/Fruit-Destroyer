@@ -44,16 +44,25 @@ public class LoadingScreen2 implements Screen
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
         APP.camera.update();
 
+        // INIT ATLAS
         objectsAtlas = APP.assets.get("atlases/objects.pack", TextureAtlas.class);
+
+        // INIT BG
         bg = APP.assets.get("backgrounds/gray.png", Texture.class);
-        player = new Player(objectsAtlas.createSprite("player"), APP);
+
+        // INIT PLAYER
+        player = new Player(objectsAtlas.createSprite("player"), objectsAtlas.createSprite("flash"), APP);
+
+        // INIT BULLETS
         for (int i = 0; i < Bullet.COUNT; i++)
         {
             Bullet.totalBullets.add(new Bullet(objectsAtlas.createSprite("bullet")));
         }
 
+        // INIT INPUT-HANDLER
         inputHandler = new InputHandler(APP, player);
 
+        // INIT LOADING FONT
         font = new Font("fonts/trompus.otf", 90, Color.WHITE, true);
 
 

@@ -13,9 +13,11 @@ public class Player
 {
     private final Application APP;
 
-    private final int KICK = 10;
+    private final int KICK = 15;
 
     private Sprite sprite;
+    private Sprite flashSprite;
+
     private Vector2 unprojectedCoordinates;
 
     private float deltaX;
@@ -26,9 +28,14 @@ public class Player
 
     private float angle;
 
+    private long timeSinceShot;
+
+    private boolean offsetNeeded;
+
+
     private Sound shotSFX;
 
-    public Player(Sprite sprite, final Application APP)
+    public Player(Sprite sprite, Sprite flashSprite, final Application APP)
     {
         this.APP = APP;
 
@@ -36,13 +43,20 @@ public class Player
         this.sprite.setPosition(Constants.V_WIDTH / 2 - 32, Constants.V_HEIGHT / 2 - 28);
         this.sprite.setOrigin(32, 28);
 
-
+        this.flashSprite = flashSprite;
         shotSFX = APP.assets.get("sounds/shot.wav", Sound.class);
         unprojectedCoordinates = new Vector2();
+
+        offsetNeeded = false;
     }
 
     public void update()
     {
+        if (offsetNeeded && System.currentTimeMillis() - timeSinceShot > 50)
+        {
+            this.sprite.setPosition(Constants.V_WIDTH / 2 - 32, Constants.V_HEIGHT / 2 - 28);
+            offsetNeeded = false;
+        }
     }
 
     public void followFinger()
@@ -62,6 +76,11 @@ public class Player
     public void shoot()
     {
         shotSFX.play();
+        if (offsetNeeded == false)
+            timeSinceShot = System.currentTimeMillis();
+        offsetNeeded = true;
+
+
         System.out.println(Bullet.totalBullets.get(0).isUsed);
         for (int i = 0; i < Bullet.totalBullets.size; i++)
         {
@@ -80,7 +99,7 @@ public class Player
                 float positionY = (MathUtils.sin(angle * MathUtils.degreesToRadians) * 85);
 
                 // OFFSET PLAYER TO GIVE KICK
-                // offsetBack();
+                offsetBack();
 
                 Bullet.totalBullets.get(i).setPosition((Constants.V_WIDTH / 2 + positionX) - 10, (Constants.V_HEIGHT / 2 + positionY) - 10);
                 Bullet.totalBullets.get(i).setVelocity(directionX * Bullet.VELOCITY, directionY * Bullet.VELOCITY);

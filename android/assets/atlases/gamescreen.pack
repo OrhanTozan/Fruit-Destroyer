@@ -1,5 +1,5 @@
 
-objects.png
+gamescreen.png
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
@@ -10,9 +10,16 @@ player
   orig: 121, 57
   offset: 0, 0
   index: -1
+flash
+  rotate: false
+  xy: 124, 23
+  size: 47, 35
+  orig: 47, 35
+  offset: 0, 0
+  index: -1
 bullet
   rotate: false
-  xy: 124, 38
+  xy: 124, 1
   size: 20, 20
   orig: 20, 20
   offset: 0, 0
