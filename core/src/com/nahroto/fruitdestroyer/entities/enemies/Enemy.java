@@ -7,28 +7,33 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Enemy
 {
-    private static final int BOUNDING_X = 17;
-    private static final int BOUNDING_Y = 10;
-    private static final int BOUNDING_WIDTH = 63;
-    private static final int BOUNDING_HEIGHT = 60;
+    protected int BOUNDING_X;
+    protected int BOUNDING_Y;
+    protected int BOUNDING_WIDTH;
+    protected int BOUNDING_HEIGHT;
 
-    private float angle;
+    protected float angle;
 
-    private Vector2 velocity;
-    private Vector2 position;
+    protected Vector2 velocity;
+    protected Vector2 position;
 
-    private Sprite sprite;
-    private Rectangle bounds;
+    protected Sprite sprite;
+    protected Rectangle bounds;
 
-    public Enemy(Sprite sprite)
+    public Enemy(Sprite sprite, int BOUNDING_X, int BOUNDING_Y, int BOUNDING_WIDTH, int BOUNDING_HEIGHT)
     {
         this.sprite = sprite;
         velocity = new Vector2();
         position = new Vector2();
         bounds = new Rectangle();
 
-        bounds.set(sprite.getX() + BOUNDING_X, sprite.getY() + BOUNDING_Y, BOUNDING_WIDTH, BOUNDING_HEIGHT);
-        position.set(sprite.getX(), sprite.getY());
+        this.BOUNDING_X = BOUNDING_X;
+        this.BOUNDING_Y = BOUNDING_Y;
+        this.BOUNDING_WIDTH = BOUNDING_WIDTH;
+        this.BOUNDING_HEIGHT = BOUNDING_HEIGHT;
+
+        bounds.set(this.sprite.getX() + this.BOUNDING_X, this.sprite.getY() + this.BOUNDING_Y, this.BOUNDING_WIDTH, this.BOUNDING_HEIGHT);
+        position.set(this.sprite.getX(), this.sprite.getY());
     }
 
     public void update(float delta)
