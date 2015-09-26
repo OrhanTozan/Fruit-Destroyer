@@ -5,21 +5,28 @@ filter: Linear,Linear
 repeat: none
 player
   rotate: false
-  xy: 1, 1
+  xy: 1, 38
   size: 121, 57
   orig: 121, 57
   offset: 0, 0
   index: -1
+orange
+  rotate: false
+  xy: 124, 16
+  size: 90, 79
+  orig: 90, 79
+  offset: 0, 0
+  index: -1
 flash
   rotate: false
-  xy: 124, 23
+  xy: 1, 1
   size: 47, 35
   orig: 47, 35
   offset: 0, 0
   index: -1
 bullet
   rotate: false
-  xy: 124, 1
+  xy: 216, 75
   size: 20, 20
   orig: 20, 20
   offset: 0, 0

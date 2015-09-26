@@ -67,9 +67,7 @@ public class Player
         }
 
         if (flashNeeded && System.currentTimeMillis() - timeSinceShot > 50)
-        {
             flashNeeded = false;
-        }
 
         if (flashNeeded)
             flashSprite.setPosition(Constants.V_WIDTH / 2 + flashPositionX, Constants.V_HEIGHT / 2 + flashPositionY - (35 / 2));
