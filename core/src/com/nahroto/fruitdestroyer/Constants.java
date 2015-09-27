@@ -8,7 +8,7 @@ public class Constants
     public static final int V_HEIGHT = 1280;
 
 
-    private static Vector2[] randomPositions = new Vector2[8];
+    private static Vector2[] randomPositions = { new Vector2(), new Vector2(), new Vector2(), new Vector2(), new Vector2(), new Vector2(), new Vector2(), new Vector2() };
 
     public static Vector2 getRandomPosition(int index, float width, float height)
     {

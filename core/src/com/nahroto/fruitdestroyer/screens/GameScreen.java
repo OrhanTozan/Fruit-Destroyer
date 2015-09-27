@@ -7,12 +7,15 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.math.MathUtils;
 import com.nahroto.fruitdestroyer.Application;
+import com.nahroto.fruitdestroyer.CollisionHandler;
 import com.nahroto.fruitdestroyer.Constants;
 import com.nahroto.fruitdestroyer.Input;
 import com.nahroto.fruitdestroyer.InputHandler;
 import com.nahroto.fruitdestroyer.entities.Bullet;
 import com.nahroto.fruitdestroyer.entities.Player;
+import com.nahroto.fruitdestroyer.entities.enemies.Enemy;
 
 public class GameScreen implements Screen
 {
@@ -22,25 +25,34 @@ public class GameScreen implements Screen
     private Player player;
     private InputMultiplexer inputMultiplexer;
     private InputHandler inputHandler;
-    BitmapFont font;
+    private Input input;
+    private CollisionHandler collisionHandler;
 
-    public GameScreen(final Application APP, Texture bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler)
+    public GameScreen(final Application APP, Texture bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler)
     {
         this.APP = APP;
         this.bg = bg;
         this.player = player;
         this.inputMultiplexer = inputMultiplexer;
         this.inputHandler = inputHandler;
+        this.input = input;
+        this.collisionHandler = collisionHandler;
     }
 
     @Override
     public void show()
     {
-        inputMultiplexer.addProcessor(new Input());
+        inputMultiplexer.addProcessor(input);
         Gdx.input.setInputProcessor(inputMultiplexer);
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
         APP.camera.update();
-        font = new BitmapFont();
+
+        for (int i = 0; i < 8; i++)
+        {
+            Enemy.currentEnemies.add(Enemy.totalEnemies.get(i));
+            Enemy.currentEnemies.get(i).setPosition(Constants.getRandomPosition(i, Enemy.currentEnemies.get(i).getSprite().getWidth(), Enemy.currentEnemies.get(i).getSprite().getHeight()));
+            Enemy.currentEnemies.get(i).calculateVelocity();
+        }
     }
 
     @Override
@@ -54,11 +66,14 @@ public class GameScreen implements Screen
         // HANDLE INPUT
         inputHandler.update();
 
-
-        // UPDATE
+        // -- UPDATE --
 
         // UPDATE PLAYER
         player.update();
+
+        // UPDATE ENEMIES
+        for (Enemy enemy : Enemy.currentEnemies)
+            enemy.update(delta);
 
         // UPDATE BULLETS
         for (int i = 0; i < Bullet.currentBullets.size; i++)
@@ -73,10 +88,14 @@ public class GameScreen implements Screen
             }
         }
 
+        collisionHandler.update();
+
         APP.camera.update();
 
-        // RENDER
         APP.batch.setProjectionMatrix(APP.camera.combined);
+
+        // -- RENDER --
+
         APP.batch.begin();
 
         // RENDER BACKGROUND
@@ -85,11 +104,14 @@ public class GameScreen implements Screen
         //RENDER PLAYER
         player.render(APP.batch);
 
+        // RENDER ENEMIES
+        for (Enemy enemy: Enemy.currentEnemies)
+            enemy.render(APP.batch);
+
         // RENDER BULLETS
-        for (int i = 0; i < Bullet.currentBullets.size; i++)
-        {
-            Bullet.currentBullets.get(i).render(APP.batch);
-        }
+        for (Bullet bullet: Bullet.currentBullets)
+            bullet.render(APP.batch);
+
         APP.batch.end();
     }
 

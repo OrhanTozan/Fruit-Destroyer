@@ -23,8 +23,7 @@ public class Player
     private float deltaX;
     private float deltaY;
 
-    private float directionX;
-    private float directionY;
+
 
     private float flashPositionX;
     private float flashPositionY;
@@ -90,10 +89,10 @@ public class Player
     public void shoot()
     {
         shotSFX.play();
+
         if (offsetNeeded == false)
-        {
             timeSinceShot = System.currentTimeMillis();
-        }
+
         offsetNeeded = true;
         flashNeeded = true;
 
@@ -107,12 +106,13 @@ public class Player
                 Bullet.totalBullets.get(i).isOutOfScreen = false;
                 Bullet.totalBullets.get(i).isUsed = true;
 
-                float len = (float)Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+                float length = (float)Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
                 deltaY *= -1;
 
-                directionX = deltaX / len;
-                directionY = deltaY / len;
+                float directionX = deltaX / length;
+                float directionY = deltaY / length;
+
                 float bulletPositionX = (MathUtils.cos(angle * MathUtils.degreesToRadians) * 85);
                 float bulletPositionY = (MathUtils.sin(angle * MathUtils.degreesToRadians) * 85);
 

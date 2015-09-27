@@ -8,14 +8,20 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.nahroto.fruitdestroyer.Application;
+import com.nahroto.fruitdestroyer.CollisionHandler;
 import com.nahroto.fruitdestroyer.Constants;
 import com.nahroto.fruitdestroyer.Font;
+import com.nahroto.fruitdestroyer.Input;
 import com.nahroto.fruitdestroyer.InputHandler;
 import com.nahroto.fruitdestroyer.entities.Bullet;
 import com.nahroto.fruitdestroyer.entities.Player;
+import com.nahroto.fruitdestroyer.entities.enemies.Enemy;
+import com.nahroto.fruitdestroyer.entities.enemies.Orange;
 
 public class LoadingScreen2 implements Screen
 {
+    private final byte WAIT_TIME = 3;
+
     private final Application APP;
 
     private TextureAtlas gameScreenAtlas;
@@ -28,7 +34,7 @@ public class LoadingScreen2 implements Screen
     private InputMultiplexer inputMultiplexer;
 
     private InputHandler inputHandler;
-    private final byte WAIT_TIME = 3;
+
 
     public LoadingScreen2(final Application APP)
     {
@@ -59,8 +65,16 @@ public class LoadingScreen2 implements Screen
             Bullet.totalBullets.add(new Bullet(gameScreenAtlas.createSprite("bullet")));
         }
 
+        // INIT ORANGES
+        for (int i = 0; i < Orange.COUNT; i++)
+        {
+            Enemy.totalEnemies.add(new Orange(gameScreenAtlas.createSprite("orange"), 17, 10, 63, 60));
+        }
+
         // INIT INPUT-HANDLER
         inputHandler = new InputHandler(APP, player);
+
+        // INIT COLLISION HANDLER
 
         // INIT LOADING FONT
         font = new Font("fonts/trompus.otf", 90, Color.WHITE, true);
@@ -77,7 +91,7 @@ public class LoadingScreen2 implements Screen
         // UPDATE
         APP.camera.update();
         if (System.currentTimeMillis() - currentTime > WAIT_TIME * 1000)
-            APP.setScreen(new GameScreen(APP, bg, player, inputMultiplexer, inputHandler));
+            APP.setScreen(new GameScreen(APP, bg, player, inputMultiplexer, inputHandler, new Input(), new CollisionHandler()));
 
         // RENDER
         APP.batch.setProjectionMatrix(APP.camera.combined);

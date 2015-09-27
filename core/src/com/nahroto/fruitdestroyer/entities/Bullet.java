@@ -13,6 +13,8 @@ public class Bullet
     public static final int RATE_OF_FIRE = 100;
     public static final int VELOCITY = 700;
 
+
+
     public static Array<Bullet> totalBullets = new Array<Bullet>();
     public static Array<Bullet> currentBullets = new Array<Bullet>();
 
@@ -53,7 +55,8 @@ public class Bullet
     {
         if (position.x > Constants.V_WIDTH || position.x  + sprite.getWidth() < 0 || position.y > Constants.V_HEIGHT || position.y  + sprite.getHeight()< 0)
             isOutOfScreen = true;
-        else isOutOfScreen = false;
+        else
+            isOutOfScreen = false;
     }
 
     private void updateBounds()
@@ -80,5 +83,10 @@ public class Bullet
     public void setVelocity(float x, float y)
     {
         velocity.set(x, y);
+    }
+
+    public Rectangle getBounds()
+    {
+        return bounds;
     }
 }

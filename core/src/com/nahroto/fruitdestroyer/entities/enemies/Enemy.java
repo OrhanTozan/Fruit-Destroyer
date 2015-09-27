@@ -4,9 +4,16 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
+import com.nahroto.fruitdestroyer.Constants;
 
 public class Enemy
 {
+    public static Array<Enemy> totalEnemies = new Array<Enemy>();
+    public static Array<Enemy> currentEnemies = new Array<Enemy>();
+
+    public static final int VELOCITY = 50;
+
     protected int BOUNDING_X;
     protected int BOUNDING_Y;
     protected int BOUNDING_WIDTH;
@@ -36,6 +43,20 @@ public class Enemy
         position.set(this.sprite.getX(), this.sprite.getY());
     }
 
+    public void calculateVelocity()
+    {
+        float deltaX = Constants.V_WIDTH / 2 - bounds.x - (BOUNDING_WIDTH / 2);
+        float deltaY = Constants.V_HEIGHT / 2 - bounds.y - (BOUNDING_HEIGHT / 2);
+
+        float length = (float)Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+
+        float directionX = deltaX / length;
+        float directionY = deltaY / length;
+
+        velocity.set(VELOCITY * directionX, VELOCITY * directionY);
+    }
+
     public void update(float delta)
     {
         applyVelocityToPosition(delta);
@@ -62,6 +83,13 @@ public class Enemy
     public void setPosition(float x, float y)
     {
         sprite.setPosition(x, y);
+        bounds.setPosition(x + BOUNDING_X, y + BOUNDING_Y);
+    }
+
+    public void setPosition(Vector2 position)
+    {
+        sprite.setPosition(position.x, position.y);
+        bounds.setPosition(position.x + BOUNDING_X, position.y + BOUNDING_Y);
     }
 
     public void setVelocity(float x, float y)
@@ -88,5 +116,15 @@ public class Enemy
     public float getAngle()
     {
         return angle;
+    }
+
+    public Sprite getSprite()
+    {
+        return sprite;
+    }
+
+    public Rectangle getBounds()
+    {
+        return bounds;
     }
 }
