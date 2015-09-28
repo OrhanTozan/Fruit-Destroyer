@@ -3,6 +3,7 @@ package com.nahroto.fruitdestroyer.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -27,6 +28,7 @@ public class GameScreen implements Screen
     private InputHandler inputHandler;
     private Input input;
     private CollisionHandler collisionHandler;
+    private BitmapFont font;
 
     public GameScreen(final Application APP, Texture bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler)
     {
@@ -53,6 +55,9 @@ public class GameScreen implements Screen
             Enemy.currentEnemies.get(i).setPosition(Constants.getRandomPosition(i, Enemy.currentEnemies.get(i).getSprite().getWidth(), Enemy.currentEnemies.get(i).getSprite().getHeight()));
             Enemy.currentEnemies.get(i).calculateVelocity();
         }
+
+        font = new BitmapFont();
+        font.setColor(Color.WHITE);
     }
 
     @Override
@@ -111,6 +116,8 @@ public class GameScreen implements Screen
         // RENDER BULLETS
         for (Bullet bullet: Bullet.currentBullets)
             bullet.render(APP.batch);
+
+        font.draw(APP.batch, Gdx.graphics.getFramesPerSecond() + " ", 50, 1250);
 
         APP.batch.end();
     }
