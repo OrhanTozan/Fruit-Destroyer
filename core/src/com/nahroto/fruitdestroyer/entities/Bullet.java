@@ -13,8 +13,6 @@ public class Bullet
     public static final int RATE_OF_FIRE = 100;
     public static final int VELOCITY = 700;
 
-
-
     public static Array<Bullet> totalBullets = new Array<Bullet>();
     public static Array<Bullet> currentBullets = new Array<Bullet>();
 
@@ -62,6 +60,7 @@ public class Bullet
     private void updateBounds()
     {
         bounds.setPosition(this.position);
+        // System.out.println(bounds.width + " " + bounds.height);
     }
 
     public void render(SpriteBatch batch)

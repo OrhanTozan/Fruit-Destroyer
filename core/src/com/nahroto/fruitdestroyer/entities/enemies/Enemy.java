@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.nahroto.fruitdestroyer.Constants;
+import com.nahroto.fruitdestroyer.HealthBar;
 
 public class Enemy
 {
@@ -13,6 +14,10 @@ public class Enemy
     public static Array<Enemy> currentEnemies = new Array<Enemy>();
 
     public static final int VELOCITY = 50;
+
+    protected int health;
+
+    protected HealthBar healthBar;
 
     protected int BOUNDING_X;
     protected int BOUNDING_Y;
@@ -27,7 +32,7 @@ public class Enemy
     protected Sprite sprite;
     protected Rectangle bounds;
 
-    public Enemy(Sprite sprite, int BOUNDING_X, int BOUNDING_Y, int BOUNDING_WIDTH, int BOUNDING_HEIGHT)
+    public Enemy(Sprite sprite, Sprite redBar, Sprite greenBar, int BOUNDING_X, int BOUNDING_Y, int BOUNDING_WIDTH, int BOUNDING_HEIGHT)
     {
         this.sprite = sprite;
         velocity = new Vector2();
@@ -41,6 +46,10 @@ public class Enemy
 
         bounds.set(this.sprite.getX() + this.BOUNDING_X, this.sprite.getY() + this.BOUNDING_Y, this.BOUNDING_WIDTH, this.BOUNDING_HEIGHT);
         position.set(this.sprite.getX(), this.sprite.getY());
+
+        health = 100;
+
+        healthBar = new HealthBar(redBar, greenBar);
     }
 
     public void calculateVelocity()
@@ -61,6 +70,7 @@ public class Enemy
     {
         applyVelocityToPosition(delta);
         updateBounds();
+        healthBar.update(health);
     }
 
     public void render(SpriteBatch batch)
@@ -126,5 +136,10 @@ public class Enemy
     public Rectangle getBounds()
     {
         return bounds;
+    }
+
+    public HealthBar getHealthBar()
+    {
+        return healthBar;
     }
 }

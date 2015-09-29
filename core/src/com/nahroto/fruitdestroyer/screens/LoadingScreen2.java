@@ -68,7 +68,7 @@ public class LoadingScreen2 implements Screen
         // INIT ORANGES
         for (int i = 0; i < Orange.COUNT; i++)
         {
-            Enemy.totalEnemies.add(new Orange(gameScreenAtlas.createSprite("orange"), 17, 10, 63, 60));
+            Enemy.totalEnemies.add(new Orange(gameScreenAtlas.createSprite("orange"), gameScreenAtlas.createSprite("red-bar"), gameScreenAtlas.createSprite("green-bar"), 17, 10, 63, 60));
         }
 
         // INIT INPUT-HANDLER

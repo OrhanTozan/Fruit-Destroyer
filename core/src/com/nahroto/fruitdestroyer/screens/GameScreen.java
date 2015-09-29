@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
 import com.nahroto.fruitdestroyer.Application;
@@ -89,7 +90,7 @@ public class GameScreen implements Screen
                 Bullet.currentBullets.get(i).isUsed = false;
                 Bullet.currentBullets.get(i).isOutOfScreen = false;
                 Bullet.currentBullets.removeIndex(i);
-                System.out.println("bullet removed");
+                // System.out.println("bullet removed");
             }
         }
 
