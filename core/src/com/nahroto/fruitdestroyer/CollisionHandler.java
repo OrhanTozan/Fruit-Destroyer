@@ -14,9 +14,8 @@ public class CollisionHandler
             {
                 if (Enemy.currentEnemies.get(i).getBounds().overlaps(Bullet.currentBullets.get(j).getBounds()))
                 {
-                    System.out.println(Enemy.currentEnemies.size);
-                    System.out.println(Enemy.currentEnemies.size);
-                    Enemy.currentEnemies.get(i).setPosition(Constants.getRandomPosition(i, Enemy.currentEnemies.get(i).getSprite().getWidth(), Enemy.currentEnemies.get(i).getSprite().getHeight()));
+                    // System.out.println(Enemy.currentEnemies.size);
+                    Enemy.currentEnemies.get(i).reduceHealth(Bullet.currentBullets.get(j).getDamage());
 
                     Bullet.currentBullets.get(j).isUsed = false;
                     Bullet.currentBullets.get(j).isOutOfScreen = false;

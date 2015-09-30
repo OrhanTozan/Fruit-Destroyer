@@ -32,4 +32,9 @@ public class HealthBar
         red.draw(batch);
         green.draw(batch);
     }
+
+    public Sprite getRed()
+    {
+        return red;
+    }
 }

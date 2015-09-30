@@ -15,7 +15,7 @@ public class Enemy
 
     public static final int VELOCITY = 50;
 
-    protected int health;
+    protected int health = 50;
 
     protected HealthBar healthBar;
 
@@ -39,6 +39,8 @@ public class Enemy
         position = new Vector2();
         bounds = new Rectangle();
 
+        healthBar = new HealthBar(redBar, greenBar);
+
         this.BOUNDING_X = BOUNDING_X;
         this.BOUNDING_Y = BOUNDING_Y;
         this.BOUNDING_WIDTH = BOUNDING_WIDTH;
@@ -46,10 +48,6 @@ public class Enemy
 
         bounds.set(this.sprite.getX() + this.BOUNDING_X, this.sprite.getY() + this.BOUNDING_Y, this.BOUNDING_WIDTH, this.BOUNDING_HEIGHT);
         position.set(this.sprite.getX(), this.sprite.getY());
-
-        health = 100;
-
-        healthBar = new HealthBar(redBar, greenBar);
     }
 
     public void calculateVelocity()
@@ -70,6 +68,7 @@ public class Enemy
     {
         applyVelocityToPosition(delta);
         updateBounds();
+        healthBar.getRed().setPosition((this.sprite.getX() + this.sprite.getWidth() / 2) - (healthBar.getRed().getWidth() / 2), this.sprite.getY() - 30);
         healthBar.update(health);
     }
 
@@ -141,5 +140,15 @@ public class Enemy
     public HealthBar getHealthBar()
     {
         return healthBar;
+    }
+
+    public int getHealth()
+    {
+        return health;
+    }
+
+    public void reduceHealth(int damage)
+    {
+        health -= damage;
     }
 }

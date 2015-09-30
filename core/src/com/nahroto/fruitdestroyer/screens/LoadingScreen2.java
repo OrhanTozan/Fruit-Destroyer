@@ -68,13 +68,12 @@ public class LoadingScreen2 implements Screen
         // INIT ORANGES
         for (int i = 0; i < Orange.COUNT; i++)
         {
+            System.out.println("hi");
             Enemy.totalEnemies.add(new Orange(gameScreenAtlas.createSprite("orange"), gameScreenAtlas.createSprite("red-bar"), gameScreenAtlas.createSprite("green-bar"), 17, 10, 63, 60));
         }
 
         // INIT INPUT-HANDLER
         inputHandler = new InputHandler(APP, player);
-
-        // INIT COLLISION HANDLER
 
         // INIT LOADING FONT
         font = new Font("fonts/trompus.otf", 90, Color.WHITE, true);

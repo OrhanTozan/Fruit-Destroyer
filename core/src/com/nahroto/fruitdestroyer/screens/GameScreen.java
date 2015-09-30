@@ -78,8 +78,12 @@ public class GameScreen implements Screen
         player.update();
 
         // UPDATE ENEMIES
-        for (Enemy enemy : Enemy.currentEnemies)
-            enemy.update(delta);
+        for (int i = 0; i < Enemy.currentEnemies.size; i++)
+        {
+            Enemy.currentEnemies.get(i).update(delta);
+            if (Enemy.currentEnemies.get(i).getHealth() <= 0)
+                Enemy.currentEnemies.removeIndex(i);
+        }
 
         // UPDATE BULLETS
         for (int i = 0; i < Bullet.currentBullets.size; i++)
@@ -93,6 +97,7 @@ public class GameScreen implements Screen
                 // System.out.println("bullet removed");
             }
         }
+
 
         collisionHandler.update();
 
@@ -111,12 +116,15 @@ public class GameScreen implements Screen
         player.render(APP.batch);
 
         // RENDER ENEMIES
-        for (Enemy enemy: Enemy.currentEnemies)
+        for (Enemy enemy : Enemy.currentEnemies)
             enemy.render(APP.batch);
 
         // RENDER BULLETS
-        for (Bullet bullet: Bullet.currentBullets)
+        for (Bullet bullet : Bullet.currentBullets)
             bullet.render(APP.batch);
+
+        for (Enemy enemy : Enemy.currentEnemies)
+            enemy.getHealthBar().render(APP.batch);
 
         font.draw(APP.batch, Gdx.graphics.getFramesPerSecond() + " ", 50, 1250);
 

@@ -24,9 +24,23 @@ flash
   orig: 47, 35
   offset: 0, 0
   index: -1
+red-bar
+  rotate: false
+  xy: 50, 21
+  size: 50, 15
+  orig: 50, 15
+  offset: 0, 0
+  index: -1
+green-bar
+  rotate: false
+  xy: 50, 6
+  size: 48, 13
+  orig: 48, 13
+  offset: 0, 0
+  index: -1
 bullet
   rotate: false
-  xy: 216, 75
+  xy: 102, 16
   size: 20, 20
   orig: 20, 20
   offset: 0, 0
