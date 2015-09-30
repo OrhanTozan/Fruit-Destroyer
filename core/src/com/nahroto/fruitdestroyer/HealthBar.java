@@ -5,6 +5,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class HealthBar
 {
+    public static final int Y_OFFSET = 20;
+
     private Sprite red;
     private Sprite green;
 

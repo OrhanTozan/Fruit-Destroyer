@@ -2,6 +2,7 @@ package com.nahroto.fruitdestroyer.entities.enemies;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
@@ -15,14 +16,14 @@ public class Enemy
 
     public static final int VELOCITY = 50;
 
-    protected int health = 50;
+    protected int health = 48;
 
     protected HealthBar healthBar;
 
-    protected int BOUNDING_X;
-    protected int BOUNDING_Y;
-    protected int BOUNDING_WIDTH;
-    protected int BOUNDING_HEIGHT;
+    public int BOUNDING_X;
+    public int BOUNDING_Y;
+    public int BOUNDING_WIDTH;
+    public int BOUNDING_HEIGHT;
 
     protected float angle;
 
@@ -64,12 +65,21 @@ public class Enemy
         velocity.set(VELOCITY * directionX, VELOCITY * directionY);
     }
 
+    public void calculateRotation()
+    {
+        float deltaX = Constants.V_WIDTH / 2 - bounds.x - (BOUNDING_WIDTH / 2);
+        float deltaY = Constants.V_HEIGHT / 2 - bounds.y - (BOUNDING_HEIGHT / 2);
+
+        angle = (MathUtils.atan2(-deltaX, deltaY) * MathUtils.radiansToDegrees) - 180;
+
+        sprite.setRotation(angle);
+    }
+
     public void update(float delta)
     {
         applyVelocityToPosition(delta);
         updateBounds();
-        healthBar.getRed().setPosition((this.sprite.getX() + this.sprite.getWidth() / 2) - (healthBar.getRed().getWidth() / 2), this.sprite.getY() - 30);
-        healthBar.update(health);
+
     }
 
     public void render(SpriteBatch batch)

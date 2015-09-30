@@ -13,6 +13,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.CollisionHandler;
 import com.nahroto.fruitdestroyer.Constants;
+import com.nahroto.fruitdestroyer.HealthBar;
 import com.nahroto.fruitdestroyer.Input;
 import com.nahroto.fruitdestroyer.InputHandler;
 import com.nahroto.fruitdestroyer.entities.Bullet;
@@ -54,6 +55,7 @@ public class GameScreen implements Screen
         {
             Enemy.currentEnemies.add(Enemy.totalEnemies.get(i));
             Enemy.currentEnemies.get(i).setPosition(Constants.getRandomPosition(i, Enemy.currentEnemies.get(i).getSprite().getWidth(), Enemy.currentEnemies.get(i).getSprite().getHeight()));
+            Enemy.currentEnemies.get(i).calculateRotation();
             Enemy.currentEnemies.get(i).calculateVelocity();
         }
 
@@ -72,18 +74,14 @@ public class GameScreen implements Screen
         // HANDLE INPUT
         inputHandler.update();
 
-        // -- UPDATE --
+        // --- UPDATE ---
 
         // UPDATE PLAYER
         player.update();
 
         // UPDATE ENEMIES
         for (int i = 0; i < Enemy.currentEnemies.size; i++)
-        {
             Enemy.currentEnemies.get(i).update(delta);
-            if (Enemy.currentEnemies.get(i).getHealth() <= 0)
-                Enemy.currentEnemies.removeIndex(i);
-        }
 
         // UPDATE BULLETS
         for (int i = 0; i < Bullet.currentBullets.size; i++)
@@ -98,21 +96,33 @@ public class GameScreen implements Screen
             }
         }
 
-
+        // UPDATE COLLISION
         collisionHandler.update();
 
+        // UPDATE HEALTHBAR
+        for (int i = 0; i < Enemy.currentEnemies.size; i++)
+        {
+            Enemy.currentEnemies.get(i).getHealthBar().getRed().setPosition((Enemy.currentEnemies.get(i).getBounds().getX() + (Enemy.currentEnemies.get(i).getBounds().getWidth() / 2)) - (Enemy.currentEnemies.get(i).getHealthBar().getRed().getWidth() / 2), Enemy.currentEnemies.get(i).getSprite().getY() - HealthBar.Y_OFFSET);
+            Enemy.currentEnemies.get(i).getHealthBar().update(Enemy.currentEnemies.get(i).getHealth());
+
+            if (Enemy.currentEnemies.get(i).getHealth() <= 0)
+                Enemy.currentEnemies.removeIndex(i);
+        }
+
+        // UPDATE CAMERA
         APP.camera.update();
 
+        // UPDATE
         APP.batch.setProjectionMatrix(APP.camera.combined);
 
-        // -- RENDER --
+        // --- RENDER ---
 
         APP.batch.begin();
 
         // RENDER BACKGROUND
         APP.batch.draw(bg, 0, 0, Constants.V_WIDTH, Constants.V_HEIGHT);
 
-        //RENDER PLAYER
+        // RENDER PLAYER
         player.render(APP.batch);
 
         // RENDER ENEMIES
@@ -123,9 +133,11 @@ public class GameScreen implements Screen
         for (Bullet bullet : Bullet.currentBullets)
             bullet.render(APP.batch);
 
+        // RENDER HEALTHBAR
         for (Enemy enemy : Enemy.currentEnemies)
             enemy.getHealthBar().render(APP.batch);
 
+        // SHOW FPS
         font.draw(APP.batch, Gdx.graphics.getFramesPerSecond() + " ", 50, 1250);
 
         APP.batch.end();
