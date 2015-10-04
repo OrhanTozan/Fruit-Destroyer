@@ -97,8 +97,7 @@ public class Player
         flashNeeded = true;
 
 
-
-        System.out.println(Bullet.totalBullets.get(0).isUsed);
+        // System.out.println(Bullet.totalBullets.get(0).isUsed);
         for (int i = 0; i < Bullet.totalBullets.size; i++)
         {
             if (Bullet.totalBullets.get(i).isUsed == false)

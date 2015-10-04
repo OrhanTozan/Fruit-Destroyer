@@ -61,16 +61,11 @@ public class LoadingScreen2 implements Screen
 
         // INIT BULLETS
         for (int i = 0; i < Bullet.COUNT; i++)
-        {
             Bullet.totalBullets.add(new Bullet(gameScreenAtlas.createSprite("bullet")));
-        }
 
         // INIT ORANGES
         for (int i = 0; i < Orange.COUNT; i++)
-        {
-            System.out.println("hi");
-            Enemy.totalEnemies.add(new Orange(gameScreenAtlas.createSprite("orange"), gameScreenAtlas.createSprite("red-bar"), gameScreenAtlas.createSprite("green-bar"), 17, 10, 63, 60));
-        }
+            Enemy.totalEnemies.add(new Orange(gameScreenAtlas.findRegion("orange"), gameScreenAtlas.findRegion("orange-hit"), gameScreenAtlas.createSprite("red-bar"), gameScreenAtlas.createSprite("green-bar"), 17, 10, 63, 60));
 
         // INIT INPUT-HANDLER
         inputHandler = new InputHandler(APP, player);

@@ -1,7 +1,10 @@
 package com.nahroto.fruitdestroyer.entities.enemies;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
@@ -15,6 +18,10 @@ public class Enemy
     public static Array<Enemy> currentEnemies = new Array<Enemy>();
 
     public static final int VELOCITY = 50;
+
+    public boolean renderHit = false;
+
+    protected long currentTime;
 
     protected int health = 48;
 
@@ -31,11 +38,19 @@ public class Enemy
     protected Vector2 position;
 
     protected Sprite sprite;
+
+    protected TextureAtlas.AtlasRegion normalTexture;
+    protected TextureAtlas.AtlasRegion hitTexture;
+
     protected Rectangle bounds;
 
-    public Enemy(Sprite sprite, Sprite redBar, Sprite greenBar, int BOUNDING_X, int BOUNDING_Y, int BOUNDING_WIDTH, int BOUNDING_HEIGHT)
+    public Enemy(TextureAtlas.AtlasRegion normalTexture, TextureAtlas.AtlasRegion hitTexture, Sprite redBar, Sprite greenBar, int BOUNDING_X, int BOUNDING_Y, int BOUNDING_WIDTH, int BOUNDING_HEIGHT)
     {
-        this.sprite = sprite;
+        this.normalTexture = normalTexture;
+        this.hitTexture = hitTexture;
+
+        this.sprite = new Sprite(normalTexture);
+
         velocity = new Vector2();
         position = new Vector2();
         bounds = new Rectangle();
@@ -56,8 +71,7 @@ public class Enemy
         float deltaX = Constants.V_WIDTH / 2 - bounds.x - (BOUNDING_WIDTH / 2);
         float deltaY = Constants.V_HEIGHT / 2 - bounds.y - (BOUNDING_HEIGHT / 2);
 
-        float length = (float)Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-
+        float length = (float) Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
         float directionX = deltaX / length;
         float directionY = deltaY / length;
@@ -79,7 +93,11 @@ public class Enemy
     {
         applyVelocityToPosition(delta);
         updateBounds();
-
+        if (renderHit && (System.currentTimeMillis() - currentTime > 100))
+        {
+            renderHit = false;
+            setNormalTexture();
+        }
     }
 
     public void render(SpriteBatch batch)
@@ -119,6 +137,17 @@ public class Enemy
     public void setAngle(float degrees)
     {
         sprite.setRotation(degrees);
+    }
+
+    public void setNormalTexture()
+    {
+        sprite.setRegion(normalTexture);
+    }
+
+    public void setHitTexture()
+    {
+        sprite.setRegion(hitTexture);
+        currentTime = System.currentTimeMillis();
     }
 
     public Vector2 getPosition()

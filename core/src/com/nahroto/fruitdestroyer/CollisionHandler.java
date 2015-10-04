@@ -15,6 +15,9 @@ public class CollisionHandler
                 if (Enemy.currentEnemies.get(i).getBounds().overlaps(Bullet.currentBullets.get(j).getBounds()))
                 {
                     // System.out.println(Enemy.currentEnemies.size);
+
+                    Enemy.currentEnemies.get(i).renderHit = true;
+                    Enemy.currentEnemies.get(i).setHitTexture();
                     Enemy.currentEnemies.get(i).reduceHealth(Bullet.currentBullets.get(j).getDamage());
 
                     Bullet.currentBullets.get(j).isUsed = false;
