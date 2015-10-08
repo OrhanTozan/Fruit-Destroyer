@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.CollisionHandler;
 import com.nahroto.fruitdestroyer.Constants;
@@ -26,7 +27,7 @@ public class LoadingScreen2 implements Screen
 
     private TextureAtlas gameScreenAtlas;
 
-    private Texture bg;
+    private TextureRegion bg;
     private Player player;
 
     private Font font;
@@ -54,7 +55,7 @@ public class LoadingScreen2 implements Screen
         gameScreenAtlas = APP.assets.get("atlases/gamescreen.pack", TextureAtlas.class);
 
         // INIT BG
-        bg = APP.assets.get("backgrounds/gray.png", Texture.class);
+        bg = gameScreenAtlas.findRegion("map");
 
         // INIT PLAYER
         player = new Player(gameScreenAtlas.createSprite("player"), gameScreenAtlas.createSprite("flash"), APP);

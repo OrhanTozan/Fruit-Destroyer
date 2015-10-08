@@ -3,51 +3,58 @@ gamescreen.png
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
+map
+  rotate: false
+  xy: 1, 237
+  size: 432, 768
+  orig: 432, 768
+  offset: 0, 0
+  index: -1
 player
   rotate: false
-  xy: 1, 60
+  xy: 1, 178
   size: 121, 57
   orig: 121, 57
   offset: 0, 0
   index: -1
 orange-hit
   rotate: false
-  xy: 124, 38
+  xy: 1, 97
   size: 90, 79
   orig: 90, 79
   offset: 0, 0
   index: -1
 orange
   rotate: false
-  xy: 216, 38
+  xy: 1, 16
   size: 90, 79
   orig: 90, 79
   offset: 0, 0
   index: -1
 flash
   rotate: false
-  xy: 1, 23
+  xy: 435, 970
   size: 47, 35
   orig: 47, 35
   offset: 0, 0
   index: -1
 red-bar
   rotate: false
-  xy: 308, 102
+  xy: 124, 220
   size: 50, 15
   orig: 50, 15
   offset: 0, 0
   index: -1
 green-bar
   rotate: false
-  xy: 50, 45
+  xy: 1, 1
   size: 48, 13
   orig: 48, 13
   offset: 0, 0
   index: -1
 bullet
   rotate: false
-  xy: 1, 1
+  xy: 93, 156
   size: 20, 20
   orig: 20, 20
   offset: 0, 0

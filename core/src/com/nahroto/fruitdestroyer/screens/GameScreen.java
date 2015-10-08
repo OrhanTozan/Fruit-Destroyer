@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.CollisionHandler;
@@ -24,7 +25,7 @@ public class GameScreen implements Screen
 {
     private final Application APP;
 
-    private Texture bg;
+    private TextureRegion bg;
     private Player player;
     private InputMultiplexer inputMultiplexer;
     private InputHandler inputHandler;
@@ -32,7 +33,7 @@ public class GameScreen implements Screen
     private CollisionHandler collisionHandler;
     private BitmapFont font;
 
-    public GameScreen(final Application APP, Texture bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler)
+    public GameScreen(final Application APP, TextureRegion bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler)
     {
         this.APP = APP;
         this.bg = bg;
