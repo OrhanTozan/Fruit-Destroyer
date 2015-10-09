@@ -3,6 +3,7 @@ package com.nahroto.fruitdestroyer.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -36,6 +37,7 @@ public class LoadingScreen2 implements Screen
 
     private InputHandler inputHandler;
 
+    private Music epicTheme;
 
     public LoadingScreen2(final Application APP)
     {
@@ -73,7 +75,6 @@ public class LoadingScreen2 implements Screen
 
         // INIT LOADING FONT
         font = new Font("fonts/trompus.otf", 90, Color.WHITE, true);
-
 
     }
 

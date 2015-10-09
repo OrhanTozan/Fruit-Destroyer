@@ -32,6 +32,9 @@ public class LoadingScreen implements Screen
 
         // LOAD SOUNDS
         APP.assets.load("sounds/shot.wav", Sound.class);
+
+        // LOAD MUSIC
+        APP.assets.load("music/epictheme.wav", Music.class);
     }
 
     @Override
