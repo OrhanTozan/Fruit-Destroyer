@@ -6,6 +6,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.nahroto.fruitdestroyer.Application;
+import com.nahroto.fruitdestroyer.huds.MenuHud;
 
 public class LoadingScreen implements Screen
 {
@@ -41,7 +42,7 @@ public class LoadingScreen implements Screen
     public void render(float delta)
     {
         if (APP.assets.update())
-            APP.setScreen(new LoadingScreen2(APP));
+            APP.setScreen(new MenuScreen(APP, new MenuHud(APP.viewport, APP.batch)));
     }
 
     @Override

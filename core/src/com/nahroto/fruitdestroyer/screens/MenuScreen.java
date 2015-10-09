@@ -5,15 +5,19 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.Constants;
+import com.nahroto.fruitdestroyer.huds.MenuHud;
 
 public class MenuScreen implements Screen
 {
 
     private final Application APP;
 
-    public MenuScreen(final Application APP)
+    private MenuHud menuHud;
+
+    public MenuScreen(final Application APP, MenuHud menuHud)
     {
         this.APP = APP;
+        this.menuHud = menuHud;
     }
 
     @Override
