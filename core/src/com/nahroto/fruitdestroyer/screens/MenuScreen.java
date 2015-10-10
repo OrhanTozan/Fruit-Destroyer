@@ -26,8 +26,8 @@ public class MenuScreen implements Screen
     @Override
     public void show()
     {
+        epicTheme.setLooping(true);
         epicTheme.play();
-        System.out.println("menuscreen");
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
     }
 
@@ -46,6 +46,8 @@ public class MenuScreen implements Screen
         APP.camera.update();
 
         // --- RENDER ---
+
+        APP.batch.setProjectionMatrix(APP.camera.combined);
 
         // RENDER HUD
         menuHud.render();

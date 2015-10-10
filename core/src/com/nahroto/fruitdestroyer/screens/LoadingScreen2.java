@@ -20,7 +20,7 @@ import com.nahroto.fruitdestroyer.entities.Player;
 import com.nahroto.fruitdestroyer.entities.enemies.Enemy;
 import com.nahroto.fruitdestroyer.entities.enemies.Orange;
 
-public class LoadingScreen2 implements Screen
+public class LoadingScreen2 extends AbstractLoadingScreen implements Screen
 {
     private final byte WAIT_TIME = 3;
 
@@ -31,16 +31,14 @@ public class LoadingScreen2 implements Screen
     private TextureRegion bg;
     private Player player;
 
-    private Font font;
     private long currentTime;
     private InputMultiplexer inputMultiplexer;
 
     private InputHandler inputHandler;
 
-    private Music epicTheme;
-
     public LoadingScreen2(final Application APP)
     {
+        super();
         this.APP = APP;
     }
 
@@ -73,10 +71,6 @@ public class LoadingScreen2 implements Screen
 
         // INIT INPUT-HANDLER
         inputHandler = new InputHandler(APP, player);
-
-        // INIT LOADING FONT
-        font = new Font("fonts/trompus.otf", 90, Color.WHITE, true);
-
     }
 
     @Override
