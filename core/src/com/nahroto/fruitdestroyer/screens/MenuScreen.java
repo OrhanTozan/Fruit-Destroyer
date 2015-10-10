@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.Constants;
 import com.nahroto.fruitdestroyer.huds.MenuHud;
@@ -16,11 +17,14 @@ public class MenuScreen implements Screen
 
     private MenuHud menuHud;
 
-    public MenuScreen(final Application APP, MenuHud menuHud, Music epicTheme)
+    private Texture bg;
+
+    public MenuScreen(final Application APP, Texture bg, MenuHud menuHud, Music epicTheme)
     {
         this.APP = APP;
         this.menuHud = menuHud;
         this.epicTheme = epicTheme;
+        this.bg = bg;
     }
 
     @Override
@@ -50,6 +54,9 @@ public class MenuScreen implements Screen
         APP.batch.setProjectionMatrix(APP.camera.combined);
 
         // RENDER HUD
+        APP.batch.begin();
+        APP.batch.draw(bg, 0, 0, Constants.V_WIDTH, Constants.V_HEIGHT);
+        APP.batch.end();
         menuHud.render();
     }
 

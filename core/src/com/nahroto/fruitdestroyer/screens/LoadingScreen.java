@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.nahroto.fruitdestroyer.Application;
@@ -22,6 +23,7 @@ public class LoadingScreen extends AbstractLoadingScreen implements Screen
     private long currentTime;
 
     private TextureAtlas menuScreenAtlas;
+    private Texture bg;
 
     public LoadingScreen(final Application APP)
     {
@@ -34,6 +36,8 @@ public class LoadingScreen extends AbstractLoadingScreen implements Screen
     {
         currentTime = System.currentTimeMillis();
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
+
+        bg = new Texture("backgrounds/map.png");
 
         // LOAD SCREEN ATLASES
         APP.assets.load("atlases/menuscreen.pack", TextureAtlas.class);
@@ -61,7 +65,7 @@ public class LoadingScreen extends AbstractLoadingScreen implements Screen
         if (APP.assets.update() && System.currentTimeMillis() - currentTime > 3000)
         {
             menuScreenAtlas = APP.assets.get("atlases/menuscreen.pack", TextureAtlas.class);
-            APP.setScreen(new MenuScreen(APP, new MenuHud(APP, APP.viewport, APP.batch, menuScreenAtlas.findRegion("playbutton-up"), menuScreenAtlas.findRegion("playbutton-down")), APP.assets.get("music/epictheme.wav", Music.class)));
+            APP.setScreen(new MenuScreen(APP, bg, new MenuHud(APP, APP.viewport, APP.batch, menuScreenAtlas.findRegion("playbutton-up"), menuScreenAtlas.findRegion("playbutton-down")), APP.assets.get("music/epictheme.wav", Music.class)));
         }
 
         APP.batch.setProjectionMatrix(APP.camera.combined);
