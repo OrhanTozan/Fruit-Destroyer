@@ -1,0 +1,19 @@
+
+menuscreen.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+playbutton-down
+  rotate: false
+  xy: 1, 1
+  size: 256, 156
+  orig: 256, 156
+  offset: 0, 0
+  index: -1
+playbutton-up
+  rotate: false
+  xy: 259, 1
+  size: 256, 156
+  orig: 256, 156
+  offset: 0, 0
+  index: -1

@@ -2,6 +2,7 @@ package com.nahroto.fruitdestroyer.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.Constants;
@@ -11,18 +12,22 @@ public class MenuScreen implements Screen
 {
 
     private final Application APP;
+    private Music epicTheme;
 
     private MenuHud menuHud;
 
-    public MenuScreen(final Application APP, MenuHud menuHud)
+    public MenuScreen(final Application APP, MenuHud menuHud, Music epicTheme)
     {
         this.APP = APP;
         this.menuHud = menuHud;
+        this.epicTheme = epicTheme;
     }
 
     @Override
     public void show()
     {
+        epicTheme.play();
+        System.out.println("menuscreen");
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
     }
 
@@ -31,6 +36,19 @@ public class MenuScreen implements Screen
     {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        // --- UPDATE ---
+
+        // UPDATE HUD
+        menuHud.update(delta);
+
+
+        APP.camera.update();
+
+        // --- RENDER ---
+
+        // RENDER HUD
+        menuHud.render();
     }
 
     @Override
@@ -54,7 +72,7 @@ public class MenuScreen implements Screen
     @Override
     public void hide()
     {
-
+        epicTheme.stop();
     }
 
     @Override
