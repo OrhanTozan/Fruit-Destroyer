@@ -36,6 +36,7 @@ public class LoadingScreen2 extends AbstractLoadingScreen implements Screen
     private InputMultiplexer inputMultiplexer;
 
     private InputHandler inputHandler;
+    private Font ammoStatus;
 
     public LoadingScreen2(final Application APP)
     {
@@ -73,7 +74,7 @@ public class LoadingScreen2 extends AbstractLoadingScreen implements Screen
         // INIT INPUT-HANDLER
         inputHandler = new InputHandler(APP, player);
 
-
+        ammoStatus = new Font("fonts/trompus.otf", 100, Color.WHITE, Color.BLACK, 3, true);
     }
 
     @Override
@@ -85,7 +86,7 @@ public class LoadingScreen2 extends AbstractLoadingScreen implements Screen
         // UPDATE
         APP.camera.update();
         if (System.currentTimeMillis() - currentTime > WAIT_TIME * 1000)
-            APP.setScreen(new GameScreen(APP, new GameHud(APP.viewport, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon")), bg, player, inputMultiplexer, inputHandler, new Input(), new CollisionHandler()));
+            APP.setScreen(new GameScreen(APP, new GameHud(player, APP.viewport, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon")), bg, player, inputMultiplexer, inputHandler, new Input(), new CollisionHandler(), ammoStatus));
 
         // RENDER
         APP.batch.setProjectionMatrix(APP.camera.combined);

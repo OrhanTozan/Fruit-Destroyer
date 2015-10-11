@@ -14,6 +14,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.CollisionHandler;
 import com.nahroto.fruitdestroyer.Constants;
+import com.nahroto.fruitdestroyer.Font;
 import com.nahroto.fruitdestroyer.HealthBar;
 import com.nahroto.fruitdestroyer.Input;
 import com.nahroto.fruitdestroyer.InputHandler;
@@ -34,8 +35,9 @@ public class GameScreen implements Screen
     private CollisionHandler collisionHandler;
     private BitmapFont font;
     private GameHud gameHud;
+    private Font ammoStatus;
 
-    public GameScreen(final Application APP, GameHud gameHud, TextureRegion bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler)
+    public GameScreen(final Application APP, GameHud gameHud, TextureRegion bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus)
     {
         this.APP = APP;
         this.gameHud = gameHud;
@@ -45,6 +47,7 @@ public class GameScreen implements Screen
         this.inputHandler = inputHandler;
         this.input = input;
         this.collisionHandler = collisionHandler;
+        this.ammoStatus = ammoStatus;
     }
 
     @Override
@@ -143,6 +146,8 @@ public class GameScreen implements Screen
         // RENDER HEALTHBAR
         for (Enemy enemy : Enemy.currentEnemies)
             enemy.getHealthBar().render(APP.batch);
+
+        ammoStatus.render(APP.batch, player.ammo.toString(), 110, 20 + ammoStatus.getHeight(player.ammo.toString()), false);
 
         // SHOW FPS
         font.draw(APP.batch, Gdx.graphics.getFramesPerSecond() + " ", 50, 1250);

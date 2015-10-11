@@ -24,21 +24,23 @@ public class Player
     private float deltaY;
 
 
-
     private float flashPositionX;
     private float flashPositionY;
 
     private float angle;
 
     private long timeSinceShot;
+    private long timeSinceReload;
 
     private boolean offsetNeeded;
     private boolean flashNeeded;
+    private boolean reloading;
 
-    private int ammo;
-
+    public Integer ammo;
 
     private Sound shotSFX;
+    private Sound emptySFX;
+    private Sound reloadSFX;
 
     public Player(Sprite sprite, Sprite flashSprite, final Application APP)
     {
@@ -51,14 +53,17 @@ public class Player
         this.flashSprite = flashSprite;
         this.flashSprite.setOrigin(3, 18);
 
-
         shotSFX = APP.assets.get("sounds/shot.wav", Sound.class);
+        emptySFX = APP.assets.get("sounds/empty2.wav", Sound.class);
+        reloadSFX = APP.assets.get("sounds/reload.wav", Sound.class);
+
         unprojectedCoordinates = new Vector2();
 
         offsetNeeded = false;
         flashNeeded = false;
+        reloading = false;
 
-        ammo = 30;
+        ammo = new Integer(30);
     }
 
     public void update()
@@ -74,6 +79,12 @@ public class Player
 
         if (flashNeeded)
             flashSprite.setPosition(Constants.V_WIDTH / 2 + flashPositionX, Constants.V_HEIGHT / 2 + flashPositionY - (35 / 2));
+
+        if (reloading && System.currentTimeMillis() - timeSinceReload > 1850)
+        {
+            ammo = 30;
+            reloading = false;
+        }
     }
 
     public void followFinger()
@@ -86,7 +97,7 @@ public class Player
 
         angle = (MathUtils.atan2(deltaX, deltaY) * MathUtils.radiansToDegrees) - 90;
 
-        System.out.println(angle);
+        // System.out.println(angle);
         sprite.setRotation(angle);
     }
 
@@ -94,50 +105,66 @@ public class Player
     {
         if (ammo > 0) // IF THERE IS AMMO
         {
-            shotSFX.play();
-
-            ammo--; // REDUCE AMMO BY 1
-
-            if (offsetNeeded == false)
-                timeSinceShot = System.currentTimeMillis();
-
-            offsetNeeded = true;
-            flashNeeded = true;
-
-            // System.out.println(Bullet.totalBullets.get(0).isUsed);
-            for (int i = 0; i < Bullet.totalBullets.size; i++)
+            if (!reloading)
             {
-                if (Bullet.totalBullets.get(i).isUsed == false)
+                shotSFX.play();
+
+                ammo--; // REDUCE AMMO BY 1
+
+                if (offsetNeeded == false)
+                    timeSinceShot = System.currentTimeMillis();
+
+                offsetNeeded = true;
+                flashNeeded = true;
+
+                // System.out.println(Bullet.totalBullets.get(0).isUsed);
+                for (int i = 0; i < Bullet.totalBullets.size; i++)
                 {
-                    Bullet.totalBullets.get(i).isOutOfScreen = false;
-                    Bullet.totalBullets.get(i).isUsed = true;
+                    if (Bullet.totalBullets.get(i).isUsed == false)
+                    {
+                        Bullet.totalBullets.get(i).isOutOfScreen = false;
+                        Bullet.totalBullets.get(i).isUsed = true;
 
-                    float length = (float) Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+                        float length = (float) Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
-                    deltaY *= -1;
+                        deltaY *= -1;
 
-                    float directionX = deltaX / length;
-                    float directionY = deltaY / length;
+                        float directionX = deltaX / length;
+                        float directionY = deltaY / length;
 
-                    float bulletPositionX = (MathUtils.cos(angle * MathUtils.degreesToRadians) * 85);
-                    float bulletPositionY = (MathUtils.sin(angle * MathUtils.degreesToRadians) * 85);
+                        float bulletPositionX = (MathUtils.cos(angle * MathUtils.degreesToRadians) * 85);
+                        float bulletPositionY = (MathUtils.sin(angle * MathUtils.degreesToRadians) * 85);
 
-                    flashPositionX = (MathUtils.cos(angle * MathUtils.degreesToRadians) * 80);
-                    flashPositionY = (MathUtils.sin(angle * MathUtils.degreesToRadians) * 80);
+                        flashPositionX = (MathUtils.cos(angle * MathUtils.degreesToRadians) * 80);
+                        flashPositionY = (MathUtils.sin(angle * MathUtils.degreesToRadians) * 80);
 
-                    flashSprite.setRotation(angle);
-                    flashSprite.setPosition(Constants.V_WIDTH / 2 + flashPositionX - 3, Constants.V_HEIGHT / 2 + flashPositionY - (35 / 2));
+                        flashSprite.setRotation(angle);
+                        flashSprite.setPosition(Constants.V_WIDTH / 2 + flashPositionX - 3, Constants.V_HEIGHT / 2 + flashPositionY - (35 / 2));
 
-                    // OFFSET PLAYER TO GIVE KICK
-                    offsetBack();
+                        // OFFSET PLAYER TO GIVE KICK
+                        offsetBack();
 
-                    Bullet.totalBullets.get(i).setPosition((Constants.V_WIDTH / 2 + bulletPositionX) - 10, (Constants.V_HEIGHT / 2 + bulletPositionY) - 10);
-                    Bullet.totalBullets.get(i).setVelocity(directionX * Bullet.VELOCITY, directionY * Bullet.VELOCITY);
+                        Bullet.totalBullets.get(i).setPosition((Constants.V_WIDTH / 2 + bulletPositionX) - 10, (Constants.V_HEIGHT / 2 + bulletPositionY) - 10);
+                        Bullet.totalBullets.get(i).setVelocity(directionX * Bullet.VELOCITY, directionY * Bullet.VELOCITY);
 
-                    Bullet.currentBullets.add(Bullet.totalBullets.get(i));
-                    break;
+                        Bullet.currentBullets.add(Bullet.totalBullets.get(i));
+                        break;
+                    }
                 }
             }
+        }
+
+        else
+            emptySFX.play();
+    }
+
+    public void reload()
+    {
+        if (!reloading)
+        {
+            reloading = true;
+            reloadSFX.play();
+            timeSinceReload = System.currentTimeMillis();
         }
     }
 

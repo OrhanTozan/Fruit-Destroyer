@@ -41,6 +41,28 @@ public class Font
         generator.dispose();
     }
 
+    public Font(String filePath, int size, Color color, Color borderColor, float borderWidth, boolean filter)
+    {
+        // ASSIGN ATTRIBUTES
+        this.size = size;
+        this.color = color;
+
+        // GENERATE FONT
+        generator = new FreeTypeFontGenerator(Gdx.files.internal(filePath));
+        if (filter) // IF FILTER ENABLED
+        {
+            parameter.genMipMaps = true;
+            parameter.minFilter = Texture.TextureFilter.Linear;
+            parameter.magFilter = Texture.TextureFilter.Linear;
+        }
+        parameter.size = size;
+        parameter.color = color;
+        parameter.borderColor = borderColor;
+        parameter.borderWidth = borderWidth;
+        font = generator.generateFont(parameter);
+        generator.dispose();
+    }
+
     public void render(SpriteBatch batch, String text, float x, float y, boolean center)
     {
         if (center)
