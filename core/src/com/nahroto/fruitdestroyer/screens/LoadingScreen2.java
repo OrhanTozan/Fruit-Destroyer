@@ -19,6 +19,7 @@ import com.nahroto.fruitdestroyer.entities.Bullet;
 import com.nahroto.fruitdestroyer.entities.Player;
 import com.nahroto.fruitdestroyer.entities.enemies.Enemy;
 import com.nahroto.fruitdestroyer.entities.enemies.Orange;
+import com.nahroto.fruitdestroyer.huds.GameHud;
 
 public class LoadingScreen2 extends AbstractLoadingScreen implements Screen
 {
@@ -71,6 +72,8 @@ public class LoadingScreen2 extends AbstractLoadingScreen implements Screen
 
         // INIT INPUT-HANDLER
         inputHandler = new InputHandler(APP, player);
+
+
     }
 
     @Override
@@ -82,7 +85,7 @@ public class LoadingScreen2 extends AbstractLoadingScreen implements Screen
         // UPDATE
         APP.camera.update();
         if (System.currentTimeMillis() - currentTime > WAIT_TIME * 1000)
-            APP.setScreen(new GameScreen(APP, bg, player, inputMultiplexer, inputHandler, new Input(), new CollisionHandler()));
+            APP.setScreen(new GameScreen(APP, new GameHud(APP.viewport, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon")), bg, player, inputMultiplexer, inputHandler, new Input(), new CollisionHandler()));
 
         // RENDER
         APP.batch.setProjectionMatrix(APP.camera.combined);

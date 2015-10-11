@@ -113,6 +113,8 @@ public class GameScreen implements Screen
                 Enemy.currentEnemies.removeIndex(i);
         }
 
+        gameHud.update(delta);
+
         // UPDATE CAMERA
         APP.camera.update();
 
@@ -145,6 +147,8 @@ public class GameScreen implements Screen
         font.draw(APP.batch, Gdx.graphics.getFramesPerSecond() + " ", 50, 1250);
 
         APP.batch.end();
+
+        gameHud.render();
     }
 
 
