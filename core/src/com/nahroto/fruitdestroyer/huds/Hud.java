@@ -44,4 +44,9 @@ public class Hud
     {
         stage.draw();
     }
+
+    public Stage getStage()
+    {
+        return stage;
+    }
 }

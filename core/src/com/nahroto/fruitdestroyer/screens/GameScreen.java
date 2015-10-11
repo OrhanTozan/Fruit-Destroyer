@@ -50,6 +50,7 @@ public class GameScreen implements Screen
     @Override
     public void show()
     {
+        inputMultiplexer.addProcessor(gameHud.getStage());
         inputMultiplexer.addProcessor(input);
         Gdx.input.setInputProcessor(inputMultiplexer);
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
