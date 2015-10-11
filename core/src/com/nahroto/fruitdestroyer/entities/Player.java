@@ -35,6 +35,8 @@ public class Player
     private boolean offsetNeeded;
     private boolean flashNeeded;
 
+    private int ammo;
+
 
     private Sound shotSFX;
 
@@ -55,6 +57,8 @@ public class Player
 
         offsetNeeded = false;
         flashNeeded = false;
+
+        ammo = 30;
     }
 
     public void update()
@@ -89,6 +93,8 @@ public class Player
     public void shoot()
     {
         shotSFX.play();
+
+        ammo--;
 
         if (offsetNeeded == false)
             timeSinceShot = System.currentTimeMillis();
