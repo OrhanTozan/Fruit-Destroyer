@@ -52,7 +52,7 @@ public class Bullet
 
     private void isOutOfScreen()
     {
-        if (position.x > Constants.V_WIDTH || position.x  + sprite.getWidth() < 0 || position.y > Constants.V_HEIGHT || position.y  + sprite.getHeight()< 0)
+        if (position.x > Constants.V_WIDTH || position.x  + sprite.getWidth() < 0 || position.y > Constants.V_HEIGHT || position.y  + sprite.getHeight() < 0)
             isOutOfScreen = true;
         else
             isOutOfScreen = false;

@@ -20,6 +20,7 @@ import com.nahroto.fruitdestroyer.InputHandler;
 import com.nahroto.fruitdestroyer.entities.Bullet;
 import com.nahroto.fruitdestroyer.entities.Player;
 import com.nahroto.fruitdestroyer.entities.enemies.Enemy;
+import com.nahroto.fruitdestroyer.huds.GameHud;
 
 public class GameScreen implements Screen
 {
@@ -32,10 +33,12 @@ public class GameScreen implements Screen
     private Input input;
     private CollisionHandler collisionHandler;
     private BitmapFont font;
+    private GameHud gameHud;
 
-    public GameScreen(final Application APP, TextureRegion bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler)
+    public GameScreen(final Application APP, GameHud gameHud, TextureRegion bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler)
     {
         this.APP = APP;
+        this.gameHud = gameHud;
         this.bg = bg;
         this.player = player;
         this.inputMultiplexer = inputMultiplexer;

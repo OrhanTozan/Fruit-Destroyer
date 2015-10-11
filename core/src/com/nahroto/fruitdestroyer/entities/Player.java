@@ -92,49 +92,51 @@ public class Player
 
     public void shoot()
     {
-        shotSFX.play();
-
-        ammo--;
-
-        if (offsetNeeded == false)
-            timeSinceShot = System.currentTimeMillis();
-
-        offsetNeeded = true;
-        flashNeeded = true;
-
-
-        // System.out.println(Bullet.totalBullets.get(0).isUsed);
-        for (int i = 0; i < Bullet.totalBullets.size; i++)
+        if (ammo > 0) // IF THERE IS AMMO
         {
-            if (Bullet.totalBullets.get(i).isUsed == false)
+            shotSFX.play();
+
+            ammo--; // REDUCE AMMO BY 1
+
+            if (offsetNeeded == false)
+                timeSinceShot = System.currentTimeMillis();
+
+            offsetNeeded = true;
+            flashNeeded = true;
+
+            // System.out.println(Bullet.totalBullets.get(0).isUsed);
+            for (int i = 0; i < Bullet.totalBullets.size; i++)
             {
-                Bullet.totalBullets.get(i).isOutOfScreen = false;
-                Bullet.totalBullets.get(i).isUsed = true;
+                if (Bullet.totalBullets.get(i).isUsed == false)
+                {
+                    Bullet.totalBullets.get(i).isOutOfScreen = false;
+                    Bullet.totalBullets.get(i).isUsed = true;
 
-                float length = (float)Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+                    float length = (float) Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
-                deltaY *= -1;
+                    deltaY *= -1;
 
-                float directionX = deltaX / length;
-                float directionY = deltaY / length;
+                    float directionX = deltaX / length;
+                    float directionY = deltaY / length;
 
-                float bulletPositionX = (MathUtils.cos(angle * MathUtils.degreesToRadians) * 85);
-                float bulletPositionY = (MathUtils.sin(angle * MathUtils.degreesToRadians) * 85);
+                    float bulletPositionX = (MathUtils.cos(angle * MathUtils.degreesToRadians) * 85);
+                    float bulletPositionY = (MathUtils.sin(angle * MathUtils.degreesToRadians) * 85);
 
-                flashPositionX = (MathUtils.cos(angle * MathUtils.degreesToRadians) * 80);
-                flashPositionY = (MathUtils.sin(angle * MathUtils.degreesToRadians) * 80);
+                    flashPositionX = (MathUtils.cos(angle * MathUtils.degreesToRadians) * 80);
+                    flashPositionY = (MathUtils.sin(angle * MathUtils.degreesToRadians) * 80);
 
-                flashSprite.setRotation(angle);
-                flashSprite.setPosition(Constants.V_WIDTH / 2 + flashPositionX - 3, Constants.V_HEIGHT / 2 + flashPositionY - (35 / 2));
+                    flashSprite.setRotation(angle);
+                    flashSprite.setPosition(Constants.V_WIDTH / 2 + flashPositionX - 3, Constants.V_HEIGHT / 2 + flashPositionY - (35 / 2));
 
-                // OFFSET PLAYER TO GIVE KICK
-                offsetBack();
+                    // OFFSET PLAYER TO GIVE KICK
+                    offsetBack();
 
-                Bullet.totalBullets.get(i).setPosition((Constants.V_WIDTH / 2 + bulletPositionX) - 10, (Constants.V_HEIGHT / 2 + bulletPositionY) - 10);
-                Bullet.totalBullets.get(i).setVelocity(directionX * Bullet.VELOCITY, directionY * Bullet.VELOCITY);
+                    Bullet.totalBullets.get(i).setPosition((Constants.V_WIDTH / 2 + bulletPositionX) - 10, (Constants.V_HEIGHT / 2 + bulletPositionY) - 10);
+                    Bullet.totalBullets.get(i).setVelocity(directionX * Bullet.VELOCITY, directionY * Bullet.VELOCITY);
 
-                Bullet.currentBullets.add(Bullet.totalBullets.get(i));
-                break;
+                    Bullet.currentBullets.add(Bullet.totalBullets.get(i));
+                    break;
+                }
             }
         }
     }
