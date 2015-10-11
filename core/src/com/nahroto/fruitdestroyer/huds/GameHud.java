@@ -25,7 +25,7 @@ public class GameHud extends Hud
         this.bulletIcon = new Image(bulletIcon);
 
         reloadButton.setPosition(Constants.V_WIDTH - 20, 20, Align.bottomRight);
-        this.bulletIcon.setPosition(20, 20);
+        this.bulletIcon.setPosition(20, 17);
 
         reloadButton.addListener(new ClickListener()
         {
