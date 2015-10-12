@@ -3,6 +3,7 @@ package com.nahroto.fruitdestroyer.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -36,8 +37,9 @@ public class GameScreen implements Screen
     private BitmapFont font;
     private GameHud gameHud;
     private Font ammoStatus;
+    private Music actionMusic;
 
-    public GameScreen(final Application APP, GameHud gameHud, TextureRegion bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus)
+    public GameScreen(final Application APP, GameHud gameHud, TextureRegion bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic)
     {
         this.APP = APP;
         this.gameHud = gameHud;
@@ -48,6 +50,7 @@ public class GameScreen implements Screen
         this.input = input;
         this.collisionHandler = collisionHandler;
         this.ammoStatus = ammoStatus;
+        this.actionMusic = actionMusic;
     }
 
     @Override
@@ -56,6 +59,8 @@ public class GameScreen implements Screen
         inputMultiplexer.addProcessor(gameHud.getStage());
         inputMultiplexer.addProcessor(input);
         Gdx.input.setInputProcessor(inputMultiplexer);
+        actionMusic.setLooping(true);
+        actionMusic.play();
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
         APP.camera.update();
 

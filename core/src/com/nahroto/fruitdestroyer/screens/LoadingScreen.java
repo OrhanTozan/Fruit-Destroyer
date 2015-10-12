@@ -57,6 +57,7 @@ public class LoadingScreen extends AbstractLoadingScreen implements Screen
 
         // LOAD MUSIC
         APP.assets.load("music/epictheme.wav", Music.class);
+        APP.assets.load("music/action.mp3", Music.class);
     }
 
     @Override
