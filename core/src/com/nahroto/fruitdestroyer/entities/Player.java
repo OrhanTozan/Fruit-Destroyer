@@ -154,7 +154,7 @@ public class Player
             }
         }
 
-        else
+        else if (!reloading)
             emptySFX.play();
     }
 
@@ -180,5 +180,10 @@ public class Player
         sprite.draw(batch);
         if (flashNeeded)
             flashSprite.draw(batch);
+    }
+
+    public boolean isReloading()
+    {
+        return reloading;
     }
 }

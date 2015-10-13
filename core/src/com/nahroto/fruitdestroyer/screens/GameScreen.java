@@ -38,8 +38,9 @@ public class GameScreen implements Screen
     private GameHud gameHud;
     private Font ammoStatus;
     private Music actionMusic;
+    private Sprite reloadIcon;
 
-    public GameScreen(final Application APP, GameHud gameHud, TextureRegion bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic)
+    public GameScreen(final Application APP, GameHud gameHud, TextureRegion bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon)
     {
         this.APP = APP;
         this.gameHud = gameHud;
@@ -51,6 +52,7 @@ public class GameScreen implements Screen
         this.collisionHandler = collisionHandler;
         this.ammoStatus = ammoStatus;
         this.actionMusic = actionMusic;
+        this.reloadIcon = reloadIcon;
     }
 
     @Override
@@ -74,6 +76,8 @@ public class GameScreen implements Screen
 
         font = new BitmapFont();
         font.setColor(Color.WHITE);
+
+        reloadIcon.setPosition(110, 20);
     }
 
     @Override
@@ -122,7 +126,14 @@ public class GameScreen implements Screen
                 Enemy.currentEnemies.removeIndex(i);
         }
 
+        // UPDATE GAMEHUD
         gameHud.update(delta);
+
+        // IF RELOADING ROTATE RELOAD ICON
+        if (player.isReloading())
+            reloadIcon.rotate(-5);
+        else
+            reloadIcon.setRotation(0);
 
         // UPDATE CAMERA
         APP.camera.update();
@@ -152,10 +163,14 @@ public class GameScreen implements Screen
         for (Enemy enemy : Enemy.currentEnemies)
             enemy.getHealthBar().render(APP.batch);
 
-        ammoStatus.render(APP.batch, player.ammo.toString(), 110, 20 + ammoStatus.getHeight(player.ammo.toString()), false);
+        if (!player.isReloading())
+            ammoStatus.render(APP.batch, player.ammo.toString(), 110, 20 + ammoStatus.getHeight(player.ammo.toString()), false);
+        else
+            reloadIcon.draw(APP.batch);
 
         // SHOW FPS
         font.draw(APP.batch, Gdx.graphics.getFramesPerSecond() + " ", 50, 1250);
+
 
         APP.batch.end();
 
