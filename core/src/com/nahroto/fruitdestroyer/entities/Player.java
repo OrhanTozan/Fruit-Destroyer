@@ -160,7 +160,7 @@ public class Player
 
     public void reload()
     {
-        if (!reloading)
+        if (!reloading && ammo != 30)
         {
             reloading = true;
             reloadSFX.play();

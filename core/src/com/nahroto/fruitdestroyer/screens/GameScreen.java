@@ -126,6 +126,13 @@ public class GameScreen implements Screen
                 Enemy.currentEnemies.removeIndex(i);
         }
 
+        // DO NOT SHOW RELOAD BUTTON WHEN AMMO IS FULL OR ALREADY RELOADING
+        if (player.ammo == 30 || player.isReloading())
+            gameHud.getActors().get(0).remove();
+        else
+            gameHud.addAllActorsToStage();
+
+
         // UPDATE GAMEHUD
         gameHud.update(delta);
 

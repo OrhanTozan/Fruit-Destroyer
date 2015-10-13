@@ -49,4 +49,9 @@ public class Hud
     {
         return stage;
     }
+
+    public Array<Actor> getActors()
+    {
+        return actors;
+    }
 }
