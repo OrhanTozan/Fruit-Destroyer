@@ -65,12 +65,12 @@ public class LoadingScreen2 extends BasicLoadingScreen implements Screen
         player = new Player(gameScreenAtlas.createSprite("player"), gameScreenAtlas.createSprite("flash"), APP);
 
         // INIT BULLETS
-        for (int i = 0; i < Bullet.COUNT; i++)
+        for (int i = 0; i < Bullet.magSize; i++)
             Bullet.totalBullets.add(new Bullet(gameScreenAtlas.createSprite("bullet")));
 
         // INIT ORANGES
         for (int i = 0; i < Orange.COUNT; i++)
-            Enemy.totalEnemies.add(new Orange(gameScreenAtlas.findRegion("orange"), gameScreenAtlas.findRegion("orange-hit"), gameScreenAtlas.createSprite("red-bar"), gameScreenAtlas.createSprite("green-bar"), 17, 10, 63, 60));
+            Enemy.totalEnemies.add(new Orange(APP, gameScreenAtlas.findRegion("orange"), gameScreenAtlas.findRegion("orange-hit"), gameScreenAtlas.createSprite("red-bar"), gameScreenAtlas.createSprite("green-bar"), 17, 10, 63, 60));
 
         // INIT INPUT-HANDLER
         inputHandler = new InputHandler(APP, player);

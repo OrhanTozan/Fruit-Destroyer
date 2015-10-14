@@ -61,8 +61,11 @@ public class GameScreen implements Screen
         inputMultiplexer.addProcessor(gameHud.getStage());
         inputMultiplexer.addProcessor(input);
         Gdx.input.setInputProcessor(inputMultiplexer);
+
+        actionMusic.setLooping(true);
         actionMusic.setLooping(true);
         actionMusic.play();
+
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
         APP.camera.update();
 
@@ -123,7 +126,7 @@ public class GameScreen implements Screen
             Enemy.currentEnemies.get(i).getHealthBar().update(Enemy.currentEnemies.get(i).getHealth());
 
             if (Enemy.currentEnemies.get(i).getHealth() <= 0)
-                Enemy.currentEnemies.removeIndex(i);
+                Enemy.currentEnemies.get(i).revive(i);
         }
 
         // DO NOT SHOW RELOAD BUTTON WHEN AMMO IS FULL OR ALREADY RELOADING
@@ -155,12 +158,12 @@ public class GameScreen implements Screen
         // RENDER BACKGROUND
         APP.batch.draw(bg, 0, 0, Constants.V_WIDTH, Constants.V_HEIGHT);
 
-        // RENDER PLAYER
-        player.render(APP.batch);
-
         // RENDER ENEMIES
         for (Enemy enemy : Enemy.currentEnemies)
             enemy.render(APP.batch);
+
+        // RENDER PLAYER
+        player.render(APP.batch);
 
         // RENDER BULLETS
         for (Bullet bullet : Bullet.currentBullets)

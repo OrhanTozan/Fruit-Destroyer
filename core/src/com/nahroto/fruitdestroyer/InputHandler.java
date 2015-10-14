@@ -20,7 +20,7 @@ public class InputHandler
         if (Input.touchDown)
         {
             player.followFinger();
-            if (System.currentTimeMillis() - lastShotTime > Bullet.RATE_OF_FIRE)
+            if (System.currentTimeMillis() - lastShotTime > Bullet.rateOfFire)
             {
                 lastShotTime = System.currentTimeMillis();
                 player.shoot();

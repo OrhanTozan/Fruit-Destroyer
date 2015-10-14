@@ -17,6 +17,7 @@ public class CollisionHandler
                     // System.out.println(Enemy.currentEnemies.size);
 
                     Enemy.currentEnemies.get(i).renderHit = true;
+                    Enemy.currentEnemies.get(i).playSquishSound();
                     Enemy.currentEnemies.get(i).setHitTexture();
                     Enemy.currentEnemies.get(i).reduceHealth(Bullet.currentBullets.get(j).getDamage());
 

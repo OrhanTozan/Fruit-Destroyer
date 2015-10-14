@@ -1,5 +1,6 @@
 package com.nahroto.fruitdestroyer.entities.enemies;
 
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -9,6 +10,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
+import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.Constants;
 import com.nahroto.fruitdestroyer.HealthBar;
 
@@ -44,12 +46,16 @@ public class Enemy
 
     protected Rectangle bounds;
 
-    public Enemy(TextureAtlas.AtlasRegion normalTexture, TextureAtlas.AtlasRegion hitTexture, Sprite redBar, Sprite greenBar, int BOUNDING_X, int BOUNDING_Y, int BOUNDING_WIDTH, int BOUNDING_HEIGHT)
+    protected Sound squishSFX;
+
+    public Enemy(final Application APP,TextureAtlas.AtlasRegion normalTexture, TextureAtlas.AtlasRegion hitTexture, Sprite redBar, Sprite greenBar, int BOUNDING_X, int BOUNDING_Y, int BOUNDING_WIDTH, int BOUNDING_HEIGHT)
     {
         this.normalTexture = normalTexture;
         this.hitTexture = hitTexture;
 
         this.sprite = new Sprite(normalTexture);
+
+        squishSFX = APP.assets.get("sounds/squish.wav", Sound.class);
 
         velocity = new Vector2();
         position = new Vector2();
@@ -115,6 +121,17 @@ public class Enemy
     protected void updateBounds()
     {
         bounds.setPosition(sprite.getX() + BOUNDING_X, sprite.getY() + BOUNDING_Y);
+    }
+
+    public void revive(int index)
+    {
+        health = 48;
+        setPosition(Constants.getRandomPosition(index, Enemy.currentEnemies.get(index).getSprite().getWidth(), Enemy.currentEnemies.get(index).getSprite().getHeight()));
+    }
+
+    public void playSquishSound()
+    {
+        squishSFX.play();
     }
 
     public void setPosition(float x, float y)
