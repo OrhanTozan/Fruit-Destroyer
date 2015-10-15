@@ -1,11 +1,12 @@
 package com.nahroto.fruitdestroyer;
 
 import com.nahroto.fruitdestroyer.entities.Bullet;
+import com.nahroto.fruitdestroyer.entities.Player;
 import com.nahroto.fruitdestroyer.entities.enemies.Enemy;
 
 public class CollisionHandler
 {
-    public void update()
+    public void update(Player player)
     {
         for (int i = 0; i < Enemy.currentEnemies.size; i++)
         {
@@ -27,6 +28,9 @@ public class CollisionHandler
                     break bulletLoop;
                 }
             }
+
+            // if (Enemy.currentEnemies.get(i).getBounds().overlaps(player.getBounds()))
+
         }
     }
 }

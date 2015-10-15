@@ -77,7 +77,7 @@ public class LoadingScreen2 extends BasicLoadingScreen implements Screen
 
         ammoStatus = new Font("fonts/trompus.otf", 100, Color.WHITE, Color.BLACK, 3, true);
 
-        actionMusic = APP.assets.get("music/action.mp3", Music.class);
+        actionMusic = APP.assets.get("music/action.ogg", Music.class);
     }
 
     @Override

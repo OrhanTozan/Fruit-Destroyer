@@ -5,6 +5,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.Constants;
@@ -22,7 +23,6 @@ public class Player
 
     private float deltaX;
     private float deltaY;
-
 
     private float flashPositionX;
     private float flashPositionY;
@@ -42,6 +42,8 @@ public class Player
     private Sound emptySFX;
     private Sound reloadSFX;
 
+    private Rectangle bounds;
+
     public Player(Sprite sprite, Sprite flashSprite, final Application APP)
     {
         this.APP = APP;
@@ -52,6 +54,8 @@ public class Player
 
         this.flashSprite = flashSprite;
         this.flashSprite.setOrigin(3, 18);
+
+        bounds = new Rectangle(this.sprite.getX(), this.sprite.getY(), 43, 47);
 
         shotSFX = APP.assets.get("sounds/shot.wav", Sound.class);
         emptySFX = APP.assets.get("sounds/empty2.wav", Sound.class);
@@ -85,6 +89,8 @@ public class Player
             ammo = 30;
             reloading = false;
         }
+
+        bounds.setPosition(sprite.getX(), sprite.getY());
     }
 
     public void followFinger()
@@ -185,5 +191,10 @@ public class Player
     public boolean isReloading()
     {
         return reloading;
+    }
+
+    public Rectangle getBounds()
+    {
+        return bounds;
     }
 }

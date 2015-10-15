@@ -52,8 +52,8 @@ public class LoadingScreen extends BasicLoadingScreen implements Screen
         APP.assets.load("sounds/squish.wav", Sound.class);
 
         // LOAD MUSIC
-        APP.assets.load("music/epictheme.wav", Music.class);
-        APP.assets.load("music/action.mp3", Music.class);
+        APP.assets.load("music/epictheme.ogg", Music.class);
+        APP.assets.load("music/action.ogg", Music.class);
     }
 
     @Override
@@ -65,7 +65,7 @@ public class LoadingScreen extends BasicLoadingScreen implements Screen
         if (APP.assets.update() && System.currentTimeMillis() - currentTime > 3000)
         {
             menuScreenAtlas = APP.assets.get("atlases/menuscreen.pack", TextureAtlas.class);
-            APP.setScreen(new MenuScreen(APP, bg, new MenuHud(APP, APP.viewport, APP.batch, menuScreenAtlas.findRegion("title"), menuScreenAtlas.findRegion("playbutton-up"), menuScreenAtlas.findRegion("playbutton-down")), APP.assets.get("music/epictheme.wav", Music.class)));
+            APP.setScreen(new MenuScreen(APP, bg, new MenuHud(APP, APP.viewport, APP.batch, menuScreenAtlas.findRegion("title"), menuScreenAtlas.findRegion("playbutton-up"), menuScreenAtlas.findRegion("playbutton-down")), APP.assets.get("music/epictheme.ogg", Music.class)));
         }
 
         APP.batch.setProjectionMatrix(APP.camera.combined);
