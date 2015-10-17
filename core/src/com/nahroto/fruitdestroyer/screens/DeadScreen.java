@@ -8,14 +8,16 @@ import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.Constants;
 import com.nahroto.fruitdestroyer.Font;
 
-public class GameOverScreen implements Screen
+public class DeadScreen implements Screen
 {
     private final Application APP;
     private Font font;
+    private GameScreen gameScreen;
 
-    public GameOverScreen(final Application APP)
+    public DeadScreen(final Application APP, GameScreen gameScreen)
     {
         this.APP = APP;
+        this.gameScreen = gameScreen;
     }
 
     @Override
@@ -34,6 +36,7 @@ public class GameOverScreen implements Screen
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         // --- UPDATE ---
+
         APP.camera.update();
 
         // --- RENDER ---

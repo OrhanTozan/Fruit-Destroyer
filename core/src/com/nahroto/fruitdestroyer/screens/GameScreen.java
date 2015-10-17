@@ -118,7 +118,7 @@ public class GameScreen implements Screen
         }
 
         // UPDATE COLLISION
-        collisionHandler.update(APP, player);
+        collisionHandler.update(APP, player, this);
 
         // UPDATE HEALTHBAR
         for (int i = 0; i < Enemy.currentEnemies.size; i++)

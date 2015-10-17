@@ -3,11 +3,12 @@ package com.nahroto.fruitdestroyer;
 import com.nahroto.fruitdestroyer.entities.Bullet;
 import com.nahroto.fruitdestroyer.entities.Player;
 import com.nahroto.fruitdestroyer.entities.enemies.Enemy;
-import com.nahroto.fruitdestroyer.screens.GameOverScreen;
+import com.nahroto.fruitdestroyer.screens.DeadScreen;
+import com.nahroto.fruitdestroyer.screens.GameScreen;
 
 public class CollisionHandler
 {
-    public void update(Application APP, Player player)
+    public void update(Application APP, Player player, GameScreen gameScreen)
     {
         for (int i = 0; i < Enemy.currentEnemies.size; i++)
         {
@@ -31,7 +32,7 @@ public class CollisionHandler
             }
 
             if (Enemy.currentEnemies.get(i).getBounds().overlaps(player.getBounds()))
-                APP.setScreen(new GameOverScreen(APP));
+                APP.setScreen(new DeadScreen(APP, gameScreen));
         }
     }
 }
