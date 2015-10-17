@@ -118,7 +118,7 @@ public class GameScreen implements Screen
         }
 
         // UPDATE COLLISION
-        collisionHandler.update();
+        collisionHandler.update(APP, player);
 
         // UPDATE HEALTHBAR
         for (int i = 0; i < Enemy.currentEnemies.size; i++)
@@ -210,7 +210,7 @@ public class GameScreen implements Screen
     @Override
     public void hide()
     {
-
+        actionMusic.stop();
     }
 
     @Override

@@ -55,7 +55,7 @@ public class Player
         this.flashSprite = flashSprite;
         this.flashSprite.setOrigin(3, 18);
 
-        bounds = new Rectangle(this.sprite.getX(), this.sprite.getY(), 43, 47);
+        bounds = new Rectangle(this.sprite.getX() + 20, this.sprite.getY() + 10, 32, 32);
 
         shotSFX = APP.assets.get("sounds/shot.wav", Sound.class);
         emptySFX = APP.assets.get("sounds/empty2.wav", Sound.class);
@@ -90,7 +90,7 @@ public class Player
             reloading = false;
         }
 
-        bounds.setPosition(sprite.getX(), sprite.getY());
+        bounds.setPosition(sprite.getX() + 20, sprite.getY() + 10);
     }
 
     public void followFinger()
