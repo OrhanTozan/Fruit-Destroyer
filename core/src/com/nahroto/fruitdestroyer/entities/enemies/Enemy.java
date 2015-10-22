@@ -82,7 +82,9 @@ public class Enemy
         float directionX = deltaX / length;
         float directionY = deltaY / length;
 
-        velocity.set(VELOCITY * directionX, VELOCITY * directionY);
+        int extraVelocity = MathUtils.random(0, 5);
+
+        velocity.set((VELOCITY + (extraVelocity * 20)) * directionX, (VELOCITY + (extraVelocity * 20)) * directionY);
     }
 
     public void calculateRotation()
@@ -123,10 +125,13 @@ public class Enemy
         bounds.setPosition(sprite.getX() + BOUNDING_X, sprite.getY() + BOUNDING_Y);
     }
 
-    public void revive(int index)
+    public void revive()
     {
         health = 48;
-        setPosition(Constants.getRandomPosition(index, Enemy.currentEnemies.get(index).getSprite().getWidth(), Enemy.currentEnemies.get(index).getSprite().getHeight()));
+        setPosition(Constants.getRandomPosition(MathUtils.random(0, 15), sprite.getWidth(), sprite.getHeight()));
+
+        calculateRotation();
+        calculateVelocity();
     }
 
     public void playSquishSound()

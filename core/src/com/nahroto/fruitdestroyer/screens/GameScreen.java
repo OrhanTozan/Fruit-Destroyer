@@ -40,7 +40,9 @@ public class GameScreen implements Screen
     private Music actionMusic;
     private Sprite reloadIcon;
 
-    public GameScreen(final Application APP, GameHud gameHud, TextureRegion bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon)
+    private Integer wave;
+
+    public GameScreen(final Application APP, GameHud gameHud, TextureRegion bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Integer wave)
     {
         this.APP = APP;
         this.gameHud = gameHud;
@@ -53,6 +55,7 @@ public class GameScreen implements Screen
         this.ammoStatus = ammoStatus;
         this.actionMusic = actionMusic;
         this.reloadIcon = reloadIcon;
+        this.wave = wave;
     }
 
     @Override
@@ -70,7 +73,7 @@ public class GameScreen implements Screen
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
         APP.camera.update();
 
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < wave ; i++)
         {
             Enemy.currentEnemies.add(Enemy.totalEnemies.get(i));
             Enemy.currentEnemies.get(i).setPosition(Constants.getRandomPosition(i, Enemy.currentEnemies.get(i).getSprite().getWidth(), Enemy.currentEnemies.get(i).getSprite().getHeight()));
@@ -127,7 +130,7 @@ public class GameScreen implements Screen
             Enemy.currentEnemies.get(i).getHealthBar().update(Enemy.currentEnemies.get(i).getHealth());
 
             if (Enemy.currentEnemies.get(i).getHealth() <= 0)
-                Enemy.currentEnemies.get(i).revive(i);
+                Enemy.currentEnemies.get(i).revive();
         }
 
         // DO NOT SHOW RELOAD BUTTON WHEN AMMO IS FULL OR ALREADY RELOADING
@@ -174,14 +177,16 @@ public class GameScreen implements Screen
         for (Enemy enemy : Enemy.currentEnemies)
             enemy.getHealthBar().render(APP.batch);
 
+        // RENDER RELOAD ICON IF RELOADING
         if (!player.isReloading())
             ammoStatus.render(APP.batch, player.ammo.toString(), 110, 20 + ammoStatus.getHeight(player.ammo.toString()), false);
         else
             reloadIcon.draw(APP.batch);
 
+        ammoStatus.render(APP.batch, "wave " + wave.toString(), Constants.V_WIDTH / 2 - (ammoStatus.getWidth("wave " + wave.toString()) / 2), Constants.V_HEIGHT - 30, false);
+
         // SHOW FPS
         font.draw(APP.batch, Gdx.graphics.getFramesPerSecond() + " ", 50, 1250);
-
 
         APP.batch.end();
 
