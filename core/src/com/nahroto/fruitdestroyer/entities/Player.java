@@ -19,6 +19,9 @@ public class Player
     private Sprite sprite;
     private Sprite flashSprite;
 
+
+    public static float rotateSpeed;
+
     private Vector2 unprojectedCoordinates;
 
     private float deltaX;
@@ -40,9 +43,15 @@ public class Player
 
     private Sound shotSFX;
     private Sound emptySFX;
-    private Sound reloadSFX;
+    private Sound reload100SFX;
+    private Sound reload75SFX;
+    private Sound reload50SFX;
+    private Sound reload25SFX;
+    private Sound currentReloadSound;
 
     private Rectangle bounds;
+
+    private int reloadTime;
 
     public Player(Sprite sprite, Sprite flashSprite, final Application APP)
     {
@@ -59,7 +68,14 @@ public class Player
 
         shotSFX = APP.assets.get("sounds/shot.wav", Sound.class);
         emptySFX = APP.assets.get("sounds/empty2.wav", Sound.class);
-        reloadSFX = APP.assets.get("sounds/reload.wav", Sound.class);
+        reload100SFX = APP.assets.get("sounds/reload100.wav", Sound.class);
+        reload75SFX = APP.assets.get("sounds/reload75.wav", Sound.class);
+        reload50SFX = APP.assets.get("sounds/reload50.wav", Sound.class);
+        reload25SFX = APP.assets.get("sounds/reload25.wav", Sound.class);
+
+        currentReloadSound = reload100SFX;
+
+        reloadTime = 1850;
 
         unprojectedCoordinates = new Vector2();
 
@@ -84,7 +100,7 @@ public class Player
         if (flashNeeded)
             flashSprite.setPosition(Constants.V_WIDTH / 2 + flashPositionX, Constants.V_HEIGHT / 2 + flashPositionY - (35 / 2));
 
-        if (reloading && System.currentTimeMillis() - timeSinceReload > 1850)
+        if (reloading && System.currentTimeMillis() - timeSinceReload > reloadTime)
         {
             ammo = 30;
             reloading = false;
@@ -169,7 +185,7 @@ public class Player
         if (!reloading && ammo != 30)
         {
             reloading = true;
-            reloadSFX.play();
+            currentReloadSound.play();
             timeSinceReload = System.currentTimeMillis();
         }
     }
@@ -191,6 +207,33 @@ public class Player
     public boolean isReloading()
     {
         return reloading;
+    }
+
+    public void setReloadingConfig(int time)
+    {
+        switch (time)
+        {
+            case 25:
+                currentReloadSound = reload25SFX;
+                reloadTime = 460;
+                rotateSpeed = 4 * 4;
+                break;
+            case 50:
+                currentReloadSound = reload50SFX;
+                reloadTime = 930;
+                rotateSpeed = 4 * 2;
+                break;
+            case 75:
+                currentReloadSound = reload75SFX;
+                reloadTime = 1390;
+                rotateSpeed = 4 * 1.33f;
+                break;
+            case 100:
+                currentReloadSound = reload100SFX;
+                reloadTime = 1850;
+                rotateSpeed = 4;
+                break;
+        }
     }
 
     public Rectangle getBounds()

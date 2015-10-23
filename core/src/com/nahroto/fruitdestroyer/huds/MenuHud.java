@@ -29,7 +29,6 @@ public class MenuHud extends Hud
 
         playButton = new ImageButton(new TextureRegionDrawable(playButtonDrawableUp), new TextureRegionDrawable(playButtonDrawableDown));
         playButton.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 + 100, Align.center);
-        System.out.println(playButton.getWidth());
         playButton.addListener(new ClickListener()
         {
             public void clicked(InputEvent event, float x, float y)

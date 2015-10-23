@@ -19,7 +19,7 @@ public class Enemy
     public static Array<Enemy> totalEnemies = new Array<Enemy>();
     public static Array<Enemy> currentEnemies = new Array<Enemy>();
 
-    public static final int VELOCITY = 50;
+    public static final int VELOCITY = 30;
 
     public boolean renderHit = false;
 
@@ -82,7 +82,7 @@ public class Enemy
         float directionX = deltaX / length;
         float directionY = deltaY / length;
 
-        int extraVelocity = MathUtils.random(0, 5);
+        int extraVelocity = MathUtils.random(0, 3);
 
         velocity.set((VELOCITY + (extraVelocity * 20)) * directionX, (VELOCITY + (extraVelocity * 20)) * directionY);
     }
@@ -170,6 +170,11 @@ public class Enemy
     {
         sprite.setRegion(hitTexture);
         currentTime = System.currentTimeMillis();
+    }
+
+    public void setHealth(int newHealth)
+    {
+        this.health = newHealth;
     }
 
     public Vector2 getPosition()

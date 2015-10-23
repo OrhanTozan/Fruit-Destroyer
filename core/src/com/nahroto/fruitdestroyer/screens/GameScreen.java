@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -40,9 +41,11 @@ public class GameScreen implements Screen
     private Music actionMusic;
     private Sprite reloadIcon;
 
+    private Sound waveSFX;
+
     private Integer wave;
 
-    public GameScreen(final Application APP, GameHud gameHud, TextureRegion bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Integer wave)
+    public GameScreen(final Application APP, GameHud gameHud, TextureRegion bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Integer wave, Sound waveSFX)
     {
         this.APP = APP;
         this.gameHud = gameHud;
@@ -56,6 +59,7 @@ public class GameScreen implements Screen
         this.actionMusic = actionMusic;
         this.reloadIcon = reloadIcon;
         this.wave = wave;
+        this.waveSFX = waveSFX;
     }
 
     @Override
@@ -73,10 +77,11 @@ public class GameScreen implements Screen
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
         APP.camera.update();
 
-        for (int i = 0; i < wave ; i++)
+        for (int i = 0; i < wave; i++)
         {
             Enemy.currentEnemies.add(Enemy.totalEnemies.get(i));
-            Enemy.currentEnemies.get(i).setPosition(Constants.getRandomPosition(i, Enemy.currentEnemies.get(i).getSprite().getWidth(), Enemy.currentEnemies.get(i).getSprite().getHeight()));
+            Enemy.currentEnemies.get(i).setHealth(48);
+            Enemy.currentEnemies.get(i).setPosition(Constants.getRandomPosition(MathUtils.random(0, 15), Enemy.currentEnemies.get(i).getSprite().getWidth(), Enemy.currentEnemies.get(i).getSprite().getHeight()));
             Enemy.currentEnemies.get(i).calculateRotation();
             Enemy.currentEnemies.get(i).calculateVelocity();
         }
@@ -85,6 +90,8 @@ public class GameScreen implements Screen
         font.setColor(Color.WHITE);
 
         reloadIcon.setPosition(110, 20);
+
+        player.setReloadingConfig(50);
     }
 
     @Override
@@ -130,7 +137,14 @@ public class GameScreen implements Screen
             Enemy.currentEnemies.get(i).getHealthBar().update(Enemy.currentEnemies.get(i).getHealth());
 
             if (Enemy.currentEnemies.get(i).getHealth() <= 0)
-                Enemy.currentEnemies.get(i).revive();
+                Enemy.currentEnemies.removeIndex(i);
+
+            if (Enemy.currentEnemies.size == 0)
+            {
+                waveSFX.play();
+                wave += 1;
+                startNewWave();
+            }
         }
 
         // DO NOT SHOW RELOAD BUTTON WHEN AMMO IS FULL OR ALREADY RELOADING
@@ -145,12 +159,14 @@ public class GameScreen implements Screen
 
         // IF RELOADING ROTATE RELOAD ICON
         if (player.isReloading())
-            reloadIcon.rotate(-5);
+            reloadIcon.rotate(-Player.rotateSpeed);
         else
             reloadIcon.setRotation(0);
 
         // UPDATE CAMERA
         APP.camera.update();
+
+        System.out.println(Enemy.currentEnemies.size);
 
         // UPDATE
         APP.batch.setProjectionMatrix(APP.camera.combined);
@@ -191,6 +207,18 @@ public class GameScreen implements Screen
         APP.batch.end();
 
         gameHud.render();
+    }
+
+    private void startNewWave()
+    {
+        for (int i = 0; i < MathUtils.round(wave * 0.6f); i++)
+        {
+            Enemy.currentEnemies.add(Enemy.totalEnemies.get(i));
+            Enemy.currentEnemies.get(i).setHealth(48);
+            Enemy.currentEnemies.get(i).setPosition(Constants.getRandomPosition(MathUtils.random(0, 15), Enemy.currentEnemies.get(i).getSprite().getWidth(), Enemy.currentEnemies.get(i).getSprite().getHeight()));
+            Enemy.currentEnemies.get(i).calculateRotation();
+            Enemy.currentEnemies.get(i).calculateVelocity();
+        }
     }
 
 
