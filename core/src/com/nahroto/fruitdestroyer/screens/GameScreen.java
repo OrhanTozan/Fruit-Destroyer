@@ -91,7 +91,7 @@ public class GameScreen implements Screen
 
         reloadIcon.setPosition(110, 20);
 
-        player.setReloadingConfig(50);
+        player.setReloadingConfig(100);
     }
 
     @Override
