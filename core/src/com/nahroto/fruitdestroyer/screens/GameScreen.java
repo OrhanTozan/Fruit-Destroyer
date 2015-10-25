@@ -29,6 +29,8 @@ public class GameScreen implements Screen
 {
     private final Application APP;
 
+    private static final float WAVE_MULTIPLIER = 1.6f;
+
     private TextureRegion bg;
     private Player player;
     private InputMultiplexer inputMultiplexer;
@@ -139,6 +141,7 @@ public class GameScreen implements Screen
             if (Enemy.currentEnemies.get(i).getHealth() <= 0)
                 Enemy.currentEnemies.removeIndex(i);
 
+            // WHEN WAVE IS CLEARED
             if (Enemy.currentEnemies.size == 0)
             {
                 waveSFX.play();
@@ -211,7 +214,7 @@ public class GameScreen implements Screen
 
     private void startNewWave()
     {
-        for (int i = 0; i < MathUtils.round(wave * 0.6f); i++)
+        for (int i = 0; i < MathUtils.round(wave * WAVE_MULTIPLIER); i++)
         {
             Enemy.currentEnemies.add(Enemy.totalEnemies.get(i));
             Enemy.currentEnemies.get(i).setHealth(48);
