@@ -16,6 +16,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.CollisionHandler;
 import com.nahroto.fruitdestroyer.Constants;
+import com.nahroto.fruitdestroyer.Explosion;
 import com.nahroto.fruitdestroyer.Font;
 import com.nahroto.fruitdestroyer.HealthBar;
 import com.nahroto.fruitdestroyer.Input;
@@ -47,7 +48,9 @@ public class GameScreen implements Screen
 
     private Integer wave;
 
-    public GameScreen(final Application APP, GameHud gameHud, TextureRegion bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Integer wave, Sound waveSFX)
+    private Explosion[] explosions;
+
+    public GameScreen(final Application APP, Explosion[] explosions, GameHud gameHud, TextureRegion bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Integer wave, Sound waveSFX)
     {
         this.APP = APP;
         this.gameHud = gameHud;
@@ -62,6 +65,7 @@ public class GameScreen implements Screen
         this.reloadIcon = reloadIcon;
         this.wave = wave;
         this.waveSFX = waveSFX;
+        this.explosions = explosions;
     }
 
     @Override

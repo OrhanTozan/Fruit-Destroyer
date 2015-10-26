@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.CollisionHandler;
 import com.nahroto.fruitdestroyer.Constants;
+import com.nahroto.fruitdestroyer.Explosion;
 import com.nahroto.fruitdestroyer.Font;
 import com.nahroto.fruitdestroyer.Input;
 import com.nahroto.fruitdestroyer.InputHandler;
@@ -29,6 +30,7 @@ public class LoadingScreen2 extends BasicLoadingScreen implements Screen
     private final Application APP;
 
     private TextureAtlas gameScreenAtlas;
+    private TextureRegion explosionsTexture;
 
     private TextureRegion bg;
     private Player player;
@@ -39,6 +41,7 @@ public class LoadingScreen2 extends BasicLoadingScreen implements Screen
     private InputHandler inputHandler;
     private Font ammoStatus;
     private Music actionMusic;
+    private Explosion[] explosions;
 
     public LoadingScreen2(final Application APP)
     {
@@ -56,8 +59,16 @@ public class LoadingScreen2 extends BasicLoadingScreen implements Screen
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
         APP.camera.update();
 
-        // INIT ATLAS
+        // INIT GAMESCREEN ATLAS
         gameScreenAtlas = APP.assets.get("atlases/gamescreen.pack", TextureAtlas.class);
+
+        // INIT EXPLOSIONS
+        explosionsTexture = APP.assets.get("atlases/explosions.png", TextureRegion.class);
+        explosions = new Explosion[2];
+        for (int i = 0; i < explosions.length; i++)
+        {
+            explosions[i] = new Explosion(explosionsTexture);
+        }
 
         // INIT BG
         bg = gameScreenAtlas.findRegion("map");
@@ -90,7 +101,7 @@ public class LoadingScreen2 extends BasicLoadingScreen implements Screen
         // UPDATE
         APP.camera.update();
         if (System.currentTimeMillis() - currentTime > WAIT_TIME * 1000)
-            APP.setScreen(new GameScreen(APP, new GameHud(player, APP.viewport, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon")), bg, player, inputMultiplexer, inputHandler, new Input(), new CollisionHandler(), ammoStatus, actionMusic, gameScreenAtlas.createSprite("reload-icon"), new Integer(1), APP.assets.get("sounds/victory.ogg", Sound.class)));
+            APP.setScreen(new GameScreen(APP, explosions, new GameHud(player, APP.viewport, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon")), bg, player, inputMultiplexer, inputHandler, new Input(), new CollisionHandler(), ammoStatus, actionMusic, gameScreenAtlas.createSprite("reload-icon"), new Integer(1), APP.assets.get("sounds/victory.ogg", Sound.class)));
 
         // RENDER
         APP.batch.setProjectionMatrix(APP.camera.combined);
