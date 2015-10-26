@@ -7,7 +7,6 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.Constants;
 import com.nahroto.fruitdestroyer.huds.MenuHud;
@@ -37,7 +36,7 @@ public class LoadingScreen extends BasicLoadingScreen implements Screen
         bg = new Texture("backgrounds/map.png");
 
         // LOAD EXPLOSIONS ATLAS
-        APP.assets.load("atlases/explosions.png", TextureRegion.class);
+        APP.assets.load("atlases/explosions.pack", TextureAtlas.class);
 
         // LOAD SCREEN ATLASES
         APP.assets.load("atlases/menuscreen.pack", TextureAtlas.class);

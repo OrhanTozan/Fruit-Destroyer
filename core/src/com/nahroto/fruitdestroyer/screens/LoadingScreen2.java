@@ -30,7 +30,7 @@ public class LoadingScreen2 extends BasicLoadingScreen implements Screen
     private final Application APP;
 
     private TextureAtlas gameScreenAtlas;
-    private TextureRegion explosionsTexture;
+    private TextureAtlas explosionsAtlas;
 
     private TextureRegion bg;
     private Player player;
@@ -63,11 +63,11 @@ public class LoadingScreen2 extends BasicLoadingScreen implements Screen
         gameScreenAtlas = APP.assets.get("atlases/gamescreen.pack", TextureAtlas.class);
 
         // INIT EXPLOSIONS
-        explosionsTexture = APP.assets.get("atlases/explosions.png", TextureRegion.class);
+        explosionsAtlas = APP.assets.get("atlases/explosions.pack", TextureAtlas.class);
         explosions = new Explosion[2];
         for (int i = 0; i < explosions.length; i++)
         {
-            explosions[i] = new Explosion(explosionsTexture);
+            explosions[i] = new Explosion(explosionsAtlas);
         }
 
         // INIT BG
