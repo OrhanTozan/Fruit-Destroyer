@@ -13,6 +13,7 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.Constants;
+import com.nahroto.fruitdestroyer.Font;
 import com.nahroto.fruitdestroyer.screens.LoadingScreen2;
 
 public class MenuHud extends Hud
@@ -20,7 +21,7 @@ public class MenuHud extends Hud
     private ImageButton playButton;
     private Image title;
 
-    public MenuHud(final Application APP, Viewport viewport, SpriteBatch batch, TextureRegion title, TextureRegion playButtonDrawableUp, TextureRegion playButtonDrawableDown)
+    public MenuHud(final Application APP, final Font font, Viewport viewport, SpriteBatch batch, TextureRegion title, TextureRegion playButtonDrawableUp, TextureRegion playButtonDrawableDown)
     {
         super(viewport, batch);
 
@@ -33,7 +34,7 @@ public class MenuHud extends Hud
         {
             public void clicked(InputEvent event, float x, float y)
             {
-                APP.setScreen(new LoadingScreen2(APP));
+                APP.setScreen(new LoadingScreen2(APP, font));
             }
         });
 

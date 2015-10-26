@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.utils.Array;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.CollisionHandler;
 import com.nahroto.fruitdestroyer.Constants;
@@ -23,7 +24,7 @@ import com.nahroto.fruitdestroyer.entities.enemies.Enemy;
 import com.nahroto.fruitdestroyer.entities.enemies.Orange;
 import com.nahroto.fruitdestroyer.huds.GameHud;
 
-public class LoadingScreen2 extends BasicLoadingScreen implements Screen
+public class LoadingScreen2 implements Screen
 {
     private final byte WAIT_TIME = 3;
 
@@ -41,12 +42,15 @@ public class LoadingScreen2 extends BasicLoadingScreen implements Screen
     private InputHandler inputHandler;
     private Font ammoStatus;
     private Music actionMusic;
-    private Explosion[] explosions;
+    private Array<Explosion> totalExplosions;
+    private Array<Explosion> currentExplosions;
 
-    public LoadingScreen2(final Application APP)
+    private Font font;
+
+    public LoadingScreen2(final Application APP, final Font font)
     {
-        super();
         this.APP = APP;
+        this.font = font;
     }
 
     @Override
@@ -64,11 +68,12 @@ public class LoadingScreen2 extends BasicLoadingScreen implements Screen
 
         // INIT EXPLOSIONS
         explosionsAtlas = APP.assets.get("atlases/explosions.pack", TextureAtlas.class);
-        explosions = new Explosion[2];
-        for (int i = 0; i < explosions.length; i++)
-        {
-            explosions[i] = new Explosion(explosionsAtlas);
-        }
+
+        totalExplosions = new Array<Explosion>();
+        currentExplosions = new Array<Explosion>();
+
+        for (int i = 0; i < 2; i++)
+            totalExplosions.add(new Explosion(explosionsAtlas));
 
         // INIT BG
         bg = gameScreenAtlas.findRegion("map");
@@ -101,7 +106,7 @@ public class LoadingScreen2 extends BasicLoadingScreen implements Screen
         // UPDATE
         APP.camera.update();
         if (System.currentTimeMillis() - currentTime > WAIT_TIME * 1000)
-            APP.setScreen(new GameScreen(APP, explosions, new GameHud(player, APP.viewport, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon")), bg, player, inputMultiplexer, inputHandler, new Input(), new CollisionHandler(), ammoStatus, actionMusic, gameScreenAtlas.createSprite("reload-icon"), new Integer(1), APP.assets.get("sounds/victory.ogg", Sound.class)));
+            APP.setScreen(new GameScreen(APP, totalExplosions, currentExplosions, new GameHud(player, APP.viewport, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon")), bg, player, inputMultiplexer, inputHandler, new Input(), new CollisionHandler(), ammoStatus, actionMusic, gameScreenAtlas.createSprite("reload-icon"), new Integer(1), APP.assets.get("sounds/victory.ogg", Sound.class)));
 
         // RENDER
         APP.batch.setProjectionMatrix(APP.camera.combined);

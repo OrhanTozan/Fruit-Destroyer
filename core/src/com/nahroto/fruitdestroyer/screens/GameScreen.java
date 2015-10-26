@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.utils.Array;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.CollisionHandler;
 import com.nahroto.fruitdestroyer.Constants;
@@ -48,9 +49,10 @@ public class GameScreen implements Screen
 
     private Integer wave;
 
-    private Explosion[] explosions;
+    private Array<Explosion> totalExplosions;
+    private Array<Explosion> currentExplosions;
 
-    public GameScreen(final Application APP, Explosion[] explosions, GameHud gameHud, TextureRegion bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Integer wave, Sound waveSFX)
+    public GameScreen(final Application APP, Array<Explosion> totalExplosions, Array<Explosion> currentExplosions, GameHud gameHud, TextureRegion bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Integer wave, Sound waveSFX)
     {
         this.APP = APP;
         this.gameHud = gameHud;
@@ -65,7 +67,8 @@ public class GameScreen implements Screen
         this.reloadIcon = reloadIcon;
         this.wave = wave;
         this.waveSFX = waveSFX;
-        this.explosions = explosions;
+        this.totalExplosions = totalExplosions;
+        this.currentExplosions = currentExplosions;
     }
 
     @Override
@@ -143,7 +146,11 @@ public class GameScreen implements Screen
             Enemy.currentEnemies.get(i).getHealthBar().update(Enemy.currentEnemies.get(i).getHealth());
 
             if (Enemy.currentEnemies.get(i).getHealth() <= 0)
+            {
+                currentExplosions.add(totalExplosions.get(0));
+                currentExplosions.get(0).setPosition(Enemy.currentEnemies.get(i).getPosition());
                 Enemy.currentEnemies.removeIndex(i);
+            }
 
             // WHEN WAVE IS CLEARED
             if (Enemy.currentEnemies.size == 0)
@@ -153,6 +160,10 @@ public class GameScreen implements Screen
                 startNewWave();
             }
         }
+
+        // UPDATE EXPLOSIONS
+        for (Explosion explosion : currentExplosions)
+            explosion.update(delta);
 
         // DO NOT SHOW RELOAD BUTTON WHEN AMMO IS FULL OR ALREADY RELOADING
         if (player.ammo == 30 || player.isReloading())
@@ -196,6 +207,10 @@ public class GameScreen implements Screen
         for (Bullet bullet : Bullet.currentBullets)
             bullet.render(APP.batch);
 
+        // RENDER EXPLOSIONS
+        for (Explosion explosion : currentExplosions)
+            explosion.render(APP.batch);
+
         // RENDER HEALTHBAR
         for (Enemy enemy : Enemy.currentEnemies)
             enemy.getHealthBar().render(APP.batch);
@@ -206,6 +221,7 @@ public class GameScreen implements Screen
         else
             reloadIcon.draw(APP.batch);
 
+        // RENDER WAVE STATUS
         ammoStatus.render(APP.batch, "wave " + wave.toString(), Constants.V_WIDTH / 2 - (ammoStatus.getWidth("wave " + wave.toString()) / 2), Constants.V_HEIGHT - 30, false);
 
         // SHOW FPS

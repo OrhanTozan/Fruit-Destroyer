@@ -7,7 +7,8 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Explosion
 {
-    private static final float ANIMATION_FPS = 30f;
+    private static final float ANIMATION_FPS = 20f;
+    private static final boolean LOOPING = false;
 
     private Animation animation;
     private float elapsedTime;
@@ -27,6 +28,16 @@ public class Explosion
 
     public void render(SpriteBatch batch)
     {
-        batch.draw(animation.getKeyFrame(elapsedTime, false), position.x, position.y);
+        batch.draw(animation.getKeyFrame(elapsedTime, LOOPING), position.x, position.y);
+    }
+
+    public void setPosition(Vector2 position)
+    {
+        this.position = position;
+    }
+
+    public Vector2 getPosition()
+    {
+        return position;
     }
 }

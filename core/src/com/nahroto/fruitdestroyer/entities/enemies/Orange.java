@@ -2,7 +2,6 @@ package com.nahroto.fruitdestroyer.entities.enemies;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.nahroto.fruitdestroyer.Application;
 
 public class Orange extends Enemy

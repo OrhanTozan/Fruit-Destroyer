@@ -73,7 +73,7 @@ public class LoadingScreen extends BasicLoadingScreen implements Screen
         if (APP.assets.update() && System.currentTimeMillis() - currentTime > 3000)
         {
             menuScreenAtlas = APP.assets.get("atlases/menuscreen.pack", TextureAtlas.class);
-            APP.setScreen(new MenuScreen(APP, bg, new MenuHud(APP, APP.viewport, APP.batch, menuScreenAtlas.findRegion("title"), menuScreenAtlas.findRegion("playbutton-up"), menuScreenAtlas.findRegion("playbutton-down")), APP.assets.get("music/epictheme.ogg", Music.class)));
+            APP.setScreen(new MenuScreen(APP, font, bg, new MenuHud(APP, font, APP.viewport, APP.batch, menuScreenAtlas.findRegion("title"), menuScreenAtlas.findRegion("playbutton-up"), menuScreenAtlas.findRegion("playbutton-down")), APP.assets.get("music/epictheme.ogg", Music.class)));
         }
 
         APP.batch.setProjectionMatrix(APP.camera.combined);

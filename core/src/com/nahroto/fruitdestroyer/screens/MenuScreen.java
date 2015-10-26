@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.Constants;
+import com.nahroto.fruitdestroyer.Font;
 import com.nahroto.fruitdestroyer.huds.MenuHud;
 
 public class MenuScreen implements Screen
@@ -18,14 +19,15 @@ public class MenuScreen implements Screen
     private MenuHud menuHud;
 
     private Texture bg;
+    private Font loadingFont;
 
-
-    public MenuScreen(final Application APP, Texture bg, MenuHud menuHud, Music epicTheme)
+    public MenuScreen(final Application APP, Font loadingFont, Texture bg, MenuHud menuHud, Music epicTheme)
     {
         this.APP = APP;
         this.menuHud = menuHud;
         this.epicTheme = epicTheme;
         this.bg = bg;
+        this.loadingFont = loadingFont;
     }
 
     @Override
