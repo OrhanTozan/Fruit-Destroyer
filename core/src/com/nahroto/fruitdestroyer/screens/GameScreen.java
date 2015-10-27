@@ -51,8 +51,9 @@ public class GameScreen implements Screen
 
     private Array<Explosion> totalExplosions;
     private Array<Explosion> currentExplosions;
+    private Array<Sound> explosionSounds;
 
-    public GameScreen(final Application APP, Array<Explosion> totalExplosions, Array<Explosion> currentExplosions, GameHud gameHud, TextureRegion bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Integer wave, Sound waveSFX)
+    public GameScreen(final Application APP, Array<Explosion> totalExplosions, Array<Explosion> currentExplosions, Array<Sound> explosionSounds, GameHud gameHud, TextureRegion bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Integer wave, Sound waveSFX)
     {
         this.APP = APP;
         this.gameHud = gameHud;
@@ -69,6 +70,7 @@ public class GameScreen implements Screen
         this.waveSFX = waveSFX;
         this.totalExplosions = totalExplosions;
         this.currentExplosions = currentExplosions;
+        this.explosionSounds =explosionSounds;
     }
 
     @Override
@@ -147,6 +149,7 @@ public class GameScreen implements Screen
 
             if (Enemy.currentEnemies.get(i).getHealth() <= 0)
             {
+                explosionSounds.get(0).play();
                 currentExplosions.add(totalExplosions.get(0));
                 currentExplosions.get(0).setPosition(Enemy.currentEnemies.get(i).getPosition());
                 Enemy.currentEnemies.removeIndex(i);
@@ -162,8 +165,15 @@ public class GameScreen implements Screen
         }
 
         // UPDATE EXPLOSIONS
-        for (Explosion explosion : currentExplosions)
-            explosion.update(delta);
+        for (int i = 0; i < currentExplosions.size; i++)
+        {
+            currentExplosions.get(i).update(delta);
+            if (currentExplosions.get(i).isAnimationFinished())
+            {
+                currentExplosions.get(i).reset();
+                currentExplosions.removeIndex(i);
+            }
+        }
 
         // DO NOT SHOW RELOAD BUTTON WHEN AMMO IS FULL OR ALREADY RELOADING
         if (player.ammo == 30 || player.isReloading())

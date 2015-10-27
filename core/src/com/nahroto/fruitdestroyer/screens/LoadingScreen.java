@@ -58,6 +58,7 @@ public class LoadingScreen extends BasicLoadingScreen implements Screen
         APP.assets.load("sounds/reload25.wav", Sound.class);
         APP.assets.load("sounds/squish.wav", Sound.class);
         APP.assets.load("sounds/victory.ogg", Sound.class);
+        APP.assets.load("sounds/explosion.wav", Sound.class);
 
         // LOAD MUSIC
         APP.assets.load("music/epictheme.ogg", Music.class);

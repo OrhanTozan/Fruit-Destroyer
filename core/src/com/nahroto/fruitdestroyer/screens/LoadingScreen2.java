@@ -44,6 +44,8 @@ public class LoadingScreen2 implements Screen
     private Music actionMusic;
     private Array<Explosion> totalExplosions;
     private Array<Explosion> currentExplosions;
+    private Sound explosionSFX;
+    private Array<Sound> explosionSounds;
 
     private Font font;
 
@@ -71,9 +73,13 @@ public class LoadingScreen2 implements Screen
 
         totalExplosions = new Array<Explosion>();
         currentExplosions = new Array<Explosion>();
+        explosionSounds = new Array<Sound>();
 
         for (int i = 0; i < 2; i++)
+        {
             totalExplosions.add(new Explosion(explosionsAtlas));
+            explosionSounds.add(APP.assets.get("sounds/explosion.wav", Sound.class));
+        }
 
         // INIT BG
         bg = gameScreenAtlas.findRegion("map");
@@ -106,7 +112,7 @@ public class LoadingScreen2 implements Screen
         // UPDATE
         APP.camera.update();
         if (System.currentTimeMillis() - currentTime > WAIT_TIME * 1000)
-            APP.setScreen(new GameScreen(APP, totalExplosions, currentExplosions, new GameHud(player, APP.viewport, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon")), bg, player, inputMultiplexer, inputHandler, new Input(), new CollisionHandler(), ammoStatus, actionMusic, gameScreenAtlas.createSprite("reload-icon"), new Integer(1), APP.assets.get("sounds/victory.ogg", Sound.class)));
+            APP.setScreen(new GameScreen(APP, totalExplosions, currentExplosions, explosionSounds, new GameHud(player, APP.viewport, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon")), bg, player, inputMultiplexer, inputHandler, new Input(), new CollisionHandler(), ammoStatus, actionMusic, gameScreenAtlas.createSprite("reload-icon"), new Integer(1), APP.assets.get("sounds/victory.ogg", Sound.class)));
 
         // RENDER
         APP.batch.setProjectionMatrix(APP.camera.combined);
