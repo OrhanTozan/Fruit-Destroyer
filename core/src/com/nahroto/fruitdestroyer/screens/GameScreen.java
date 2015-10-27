@@ -151,7 +151,7 @@ public class GameScreen implements Screen
             {
                 explosionSounds.get(0).play();
                 currentExplosions.add(totalExplosions.get(0));
-                currentExplosions.get(0).setPosition(Enemy.currentEnemies.get(i).getPosition());
+                currentExplosions.get(0).setPosition((Enemy.currentEnemies.get(i).getBounds().getX() + (Enemy.currentEnemies.get(i).getBounds().getWidth() / 2)) - (Explosion.WIDTH / 2), Enemy.currentEnemies.get(i).getPosition().y);
                 Enemy.currentEnemies.removeIndex(i);
             }
 

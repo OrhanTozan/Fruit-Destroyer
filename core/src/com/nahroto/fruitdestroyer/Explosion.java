@@ -7,8 +7,8 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Explosion
 {
+    public static final int WIDTH = 144;
     private static final float ANIMATION_FPS = 20f;
-    private static final boolean LOOPING = false;
 
     private Animation animation;
     private float elapsedTime;
@@ -41,9 +41,9 @@ public class Explosion
         elapsedTime = 0;
     }
 
-    public void setPosition(Vector2 position)
+    public void setPosition(float x, float y)
     {
-        this.position = position;
+        position.set(x, y);
     }
 
     public Vector2 getPosition()
