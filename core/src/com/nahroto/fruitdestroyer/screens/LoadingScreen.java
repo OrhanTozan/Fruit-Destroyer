@@ -31,6 +31,7 @@ public class LoadingScreen extends BasicLoadingScreen implements Screen
     {
         currentTime = System.currentTimeMillis();
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
+        APP.camera.update();
 
         // INIT BACKGROUND
         bg = new Texture("backgrounds/map.png");

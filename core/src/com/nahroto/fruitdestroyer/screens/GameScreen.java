@@ -7,10 +7,8 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
@@ -147,11 +145,18 @@ public class GameScreen implements Screen
             Enemy.currentEnemies.get(i).getHealthBar().getRed().setPosition((Enemy.currentEnemies.get(i).getBounds().getX() + (Enemy.currentEnemies.get(i).getBounds().getWidth() / 2)) - (Enemy.currentEnemies.get(i).getHealthBar().getRed().getWidth() / 2), Enemy.currentEnemies.get(i).getSprite().getY() - HealthBar.Y_OFFSET);
             Enemy.currentEnemies.get(i).getHealthBar().update(Enemy.currentEnemies.get(i).getHealth());
 
+            // IF ENEMY DIES
             if (Enemy.currentEnemies.get(i).getHealth() <= 0)
             {
-                explosionSounds.get(0).play();
-                currentExplosions.add(totalExplosions.get(0));
-                currentExplosions.get(0).setPosition((Enemy.currentEnemies.get(i).getBounds().getX() + (Enemy.currentEnemies.get(i).getBounds().getWidth() / 2)) - (Explosion.WIDTH / 2), Enemy.currentEnemies.get(i).getPosition().y);
+                // IF ENEMY IS EXPLODABLE
+                if (Enemy.currentEnemies.get(i).isExplodable())
+                {
+                    explosionSounds.get(0).play();
+                    currentExplosions.add(totalExplosions.get(0));
+                    currentExplosions.get(0).setPosition((Enemy.currentEnemies.get(i).getBounds().getX() + (Enemy.currentEnemies.get(i).getBounds().getWidth() / 2)) - (Explosion.WIDTH / 2), Enemy.currentEnemies.get(i).getPosition().y);
+                }
+
+                // REMOVE ENEMY
                 Enemy.currentEnemies.removeIndex(i);
             }
 
@@ -194,8 +199,6 @@ public class GameScreen implements Screen
         // UPDATE CAMERA
         APP.camera.update();
 
-        System.out.println(Enemy.currentEnemies.size);
-
         // UPDATE
         APP.batch.setProjectionMatrix(APP.camera.combined);
 
@@ -217,11 +220,11 @@ public class GameScreen implements Screen
         for (Bullet bullet : Bullet.currentBullets)
             bullet.render(APP.batch);
 
-        // RENDER EXPLOSIONS
+        // RENDER EXPLOSION(S)
         for (Explosion explosion : currentExplosions)
             explosion.render(APP.batch);
 
-        // RENDER HEALTHBAR
+        // RENDER HEALTHBARS
         for (Enemy enemy : Enemy.currentEnemies)
             enemy.getHealthBar().render(APP.batch);
 

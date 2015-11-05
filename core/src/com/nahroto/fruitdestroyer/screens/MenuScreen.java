@@ -36,6 +36,7 @@ public class MenuScreen implements Screen
         epicTheme.setLooping(true);
         epicTheme.play();
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
+        APP.camera.update();
     }
 
     @Override

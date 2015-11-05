@@ -21,6 +21,7 @@ public class Enemy
     public static Array<Enemy> currentEnemies = new Array<Enemy>();
 
     public static final int VELOCITY = 30;
+    protected boolean explodable;
 
     public boolean renderHit = false;
 
@@ -217,5 +218,10 @@ public class Enemy
     public void reduceHealth(int damage)
     {
         health -= damage;
+    }
+
+    public boolean isExplodable()
+    {
+        return explodable;
     }
 }
