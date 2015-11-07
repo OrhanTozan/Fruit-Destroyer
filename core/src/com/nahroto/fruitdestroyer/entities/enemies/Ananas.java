@@ -6,9 +6,11 @@ import com.nahroto.fruitdestroyer.Application;
 
 public class Ananas extends Enemy
 {
+    public static final int COUNT = 30;
+
     public Ananas(final Application APP, TextureAtlas.AtlasRegion normalTexture, TextureAtlas.AtlasRegion hitTexture, Sprite redBar, Sprite greenBar)
     {
-        super(APP, normalTexture, hitTexture, redBar, greenBar, 25, 14, 95, 103);
+        super(APP, normalTexture, hitTexture, redBar, greenBar, 21, 14, 99, 103);
         explodable = true;
     }
 }

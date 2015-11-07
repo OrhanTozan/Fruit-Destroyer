@@ -5,84 +5,98 @@ filter: Linear,Linear
 repeat: none
 map
   rotate: false
-  xy: 1, 225
+  xy: 1, 235
   size: 432, 768
   orig: 432, 768
   offset: 0, 0
   index: -1
 reload-down
   rotate: false
-  xy: 1, 87
+  xy: 1, 97
   size: 226, 136
   orig: 226, 136
   offset: 0, 0
   index: -1
 reload-up
   rotate: false
-  xy: 229, 87
+  xy: 435, 867
   size: 226, 136
   orig: 226, 136
   offset: 0, 0
   index: -1
-bullet-icon
+ananas-hit
   rotate: false
-  xy: 435, 906
-  size: 76, 87
-  orig: 76, 87
+  xy: 435, 683
+  size: 144, 182
+  orig: 144, 182
+  offset: 0, 0
+  index: -1
+ananas
+  rotate: false
+  xy: 435, 499
+  size: 144, 182
+  orig: 144, 182
   offset: 0, 0
   index: -1
 player
   rotate: false
-  xy: 1, 28
+  xy: 1, 38
   size: 121, 57
   orig: 121, 57
   offset: 0, 0
   index: -1
 orange-hit
   rotate: false
-  xy: 124, 6
+  xy: 229, 154
   size: 90, 79
   orig: 90, 79
   offset: 0, 0
   index: -1
 orange
   rotate: false
-  xy: 216, 6
+  xy: 663, 924
   size: 90, 79
   orig: 90, 79
   offset: 0, 0
   index: -1
 reload-icon
   rotate: false
-  xy: 308, 1
+  xy: 435, 413
   size: 82, 84
   orig: 82, 84
   offset: 0, 0
   index: -1
+bullet-icon
+  rotate: false
+  xy: 581, 778
+  size: 76, 87
+  orig: 76, 87
+  offset: 0, 0
+  index: -1
 flash
   rotate: false
-  xy: 435, 869
+  xy: 1, 1
   size: 47, 35
   orig: 47, 35
   offset: 0, 0
   index: -1
 red-bar
   rotate: false
-  xy: 1, 11
+  xy: 124, 80
   size: 50, 15
   orig: 50, 15
   offset: 0, 0
   index: -1
 green-bar
   rotate: false
-  xy: 392, 72
+  xy: 229, 139
   size: 48, 13
   orig: 48, 13
   offset: 0, 0
   index: -1
 bullet
   rotate: false
-  xy: 435, 847
+  xy: 321, 213
   size: 20, 20
   orig: 20, 20
   offset: 0, 0

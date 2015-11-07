@@ -20,6 +20,7 @@ import com.nahroto.fruitdestroyer.Input;
 import com.nahroto.fruitdestroyer.InputHandler;
 import com.nahroto.fruitdestroyer.entities.Bullet;
 import com.nahroto.fruitdestroyer.entities.Player;
+import com.nahroto.fruitdestroyer.entities.enemies.Ananas;
 import com.nahroto.fruitdestroyer.entities.enemies.Enemy;
 import com.nahroto.fruitdestroyer.entities.enemies.Orange;
 import com.nahroto.fruitdestroyer.huds.GameHud;
@@ -74,6 +75,7 @@ public class LoadingScreen2 implements Screen
         currentExplosions = new Array<Explosion>();
         explosionSounds = new Array<Sound>();
 
+        // INIT EXPLOSION STUFF
         for (int i = 0; i < 2; i++)
         {
             totalExplosions.add(new Explosion(explosionsAtlas));
@@ -93,6 +95,10 @@ public class LoadingScreen2 implements Screen
         // INIT ORANGES
         for (int i = 0; i < Orange.COUNT; i++)
             Enemy.totalEnemies.add(new Orange(APP, gameScreenAtlas.findRegion("orange"), gameScreenAtlas.findRegion("orange-hit"), gameScreenAtlas.createSprite("red-bar"), gameScreenAtlas.createSprite("green-bar")));
+
+        // INIT ANANASES
+        for (int i = 0; i < Ananas.COUNT; i++)
+            Enemy.totalEnemies.add(new Ananas(APP, gameScreenAtlas.findRegion("ananas"), gameScreenAtlas.findRegion("ananas-hit"), gameScreenAtlas.createSprite("red-bar"), gameScreenAtlas.createSprite("green-bar")));
 
         // INIT INPUT-HANDLER
         inputHandler = new InputHandler(APP, player);
