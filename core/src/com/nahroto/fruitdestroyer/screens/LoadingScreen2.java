@@ -44,7 +44,6 @@ public class LoadingScreen2 implements Screen
     private Music actionMusic;
     private Array<Explosion> totalExplosions;
     private Array<Explosion> currentExplosions;
-    private Sound explosionSFX;
     private Array<Sound> explosionSounds;
 
     private Font font;
@@ -93,7 +92,7 @@ public class LoadingScreen2 implements Screen
 
         // INIT ORANGES
         for (int i = 0; i < Orange.COUNT; i++)
-            Enemy.totalEnemies.add(new Orange(APP, gameScreenAtlas.findRegion("orange"), gameScreenAtlas.findRegion("orange-hit"), gameScreenAtlas.createSprite("red-bar"), gameScreenAtlas.createSprite("green-bar"), 17, 10, 63, 60));
+            Enemy.totalEnemies.add(new Orange(APP, gameScreenAtlas.findRegion("orange"), gameScreenAtlas.findRegion("orange-hit"), gameScreenAtlas.createSprite("red-bar"), gameScreenAtlas.createSprite("green-bar")));
 
         // INIT INPUT-HANDLER
         inputHandler = new InputHandler(APP, player);
