@@ -20,7 +20,8 @@ public class Enemy
     public static Array<Enemy> totalEnemies = new Array<Enemy>();
     public static Array<Enemy> currentEnemies = new Array<Enemy>();
 
-    public static final int VELOCITY = 30;
+    protected static final int BASEVELOCITY = 20;
+    protected float velocityMultiplier;
     protected boolean explodable;
 
     public boolean renderHit = false;
@@ -86,7 +87,8 @@ public class Enemy
 
         int extraVelocity = MathUtils.random(0, 3);
 
-        velocity.set((VELOCITY + (extraVelocity * 20)) * directionX, (VELOCITY + (extraVelocity * 20)) * directionY);
+        velocity.set((BASEVELOCITY + (extraVelocity * 20)) * directionX, (BASEVELOCITY + (extraVelocity * 20)) * directionY);
+        velocity.scl(velocityMultiplier);
     }
 
     public void calculateRotation()

@@ -12,5 +12,6 @@ public class Ananas extends Enemy
     {
         super(APP, normalTexture, hitTexture, redBar, greenBar, 21, 14, 99, 103);
         explodable = true;
+        velocityMultiplier = 0.75f;
     }
 }
