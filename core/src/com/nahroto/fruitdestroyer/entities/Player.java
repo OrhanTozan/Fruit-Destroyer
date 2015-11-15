@@ -51,6 +51,7 @@ public class Player
     private Sound currentReloadSound;
 
     private Polygon bounds;
+    private float[] vertices;
 
     private int reloadTime;
 
@@ -65,11 +66,12 @@ public class Player
         this.flashSprite = flashSprite;
         this.flashSprite.setOrigin(3, 18);
 
-        bounds = new Polygon(new float[]{
+        vertices = new float[]{
                 this.sprite.getX(), this.sprite.getY(),
                 this.sprite.getX(), this.sprite.getY() + this.sprite.getHeight(),
-                this.sprite.getX() + this.sprite.getWidth(), this.sprite.getY() + this.sprite.getHeight()
-        });
+                this.sprite.getX() + this.sprite.getWidth(), this.sprite.getY() + this.sprite.getHeight(),
+                this.sprite.getX() + this.sprite.getWidth(), this.sprite.getY()};
+        bounds = new Polygon(vertices);
 
         shotSFX = APP.assets.get("sounds/shot.wav", Sound.class);
         emptySFX = APP.assets.get("sounds/empty2.wav", Sound.class);

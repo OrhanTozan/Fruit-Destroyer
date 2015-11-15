@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.nahroto.fruitdestroyer.Application;
@@ -50,6 +51,7 @@ public class GameScreen implements Screen
     private Array<Explosion> totalExplosions;
     private Array<Explosion> currentExplosions;
     private Array<Sound> explosionSounds;
+    private ShapeRenderer shapeRenderer;
 
     public GameScreen(final Application APP, Array<Explosion> totalExplosions, Array<Explosion> currentExplosions, Array<Sound> explosionSounds, GameHud gameHud, TextureRegion bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Integer wave, Sound waveSFX)
     {
@@ -101,6 +103,8 @@ public class GameScreen implements Screen
         reloadIcon.setPosition(110, 20);
 
         player.setReloadingConfig(100);
+
+        shapeRenderer = new ShapeRenderer();
     }
 
     @Override
@@ -244,6 +248,19 @@ public class GameScreen implements Screen
         font.draw(APP.batch, Gdx.graphics.getFramesPerSecond() + " ", 50, 1250);
 
         APP.batch.end();
+
+        shapeRenderer.setProjectionMatrix(APP.camera.combined);
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+
+        for (Enemy enemy : Enemy.currentEnemies)
+            shapeRenderer.polygon(enemy.getBounds().getTransformedVertices());
+        for (Bullet bullet : Bullet.currentBullets)
+            shapeRenderer.polygon(bullet.getBounds().getTransformedVertices());
+
+        shapeRenderer.end();
+
+        //for (Bullet bullet : Bullet.currentBullets)
+            //System.out.println((int)bullet.getSprite().getX() + " " + (int) bullet.getBounds().getX());
 
         gameHud.render();
     }

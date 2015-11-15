@@ -51,6 +51,7 @@ public class Enemy
     protected Polygon bounds;
 
     protected Sound squishSFX;
+    protected float[] vertices;
 
     public Enemy(final Application APP, TextureAtlas.AtlasRegion normalTexture, TextureAtlas.AtlasRegion hitTexture, Sprite redBar, Sprite greenBar, int BOUNDING_X, int BOUNDING_Y, int BOUNDING_WIDTH, int BOUNDING_HEIGHT)
     {
@@ -72,13 +73,12 @@ public class Enemy
         this.BOUNDING_WIDTH = BOUNDING_WIDTH;
         this.BOUNDING_HEIGHT = BOUNDING_HEIGHT;
 
-        bounds.setVertices(new float[]
-                {
-                        BOUNDING_X, BOUNDING_Y,
-                        BOUNDING_X, BOUNDING_Y + BOUNDING_HEIGHT,
-                        BOUNDING_X + BOUNDING_WIDTH, BOUNDING_Y + BOUNDING_HEIGHT,
-                        BOUNDING_X + BOUNDING_WIDTH, BOUNDING_Y
-                });
+        vertices = new float[]{
+                this.sprite.getX() + BOUNDING_X, this.sprite.getY() + BOUNDING_Y,
+                this.sprite.getX() + BOUNDING_X, this.sprite.getY() + BOUNDING_Y + BOUNDING_HEIGHT,
+                this.sprite.getX() + BOUNDING_X + BOUNDING_WIDTH, this.sprite.getY() + BOUNDING_Y + BOUNDING_HEIGHT,
+                this.sprite.getX() + BOUNDING_X + BOUNDING_WIDTH, this.sprite.getY() + BOUNDING_Y};
+        bounds.setVertices(vertices);
         position.set(this.sprite.getX(), this.sprite.getY());
     }
 
@@ -134,6 +134,7 @@ public class Enemy
 
     protected void updateBounds()
     {
+        bounds.setVertices(vertices);
         bounds.setPosition(sprite.getX() + BOUNDING_X, sprite.getY() + BOUNDING_Y);
     }
 

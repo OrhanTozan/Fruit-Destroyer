@@ -19,10 +19,10 @@ public class Bullet
     public static Array<Bullet> totalBullets = new Array<Bullet>();
     public static Array<Bullet> currentBullets = new Array<Bullet>();
 
-    private Vector2 position;
     private Vector2 velocity;
     private Sprite sprite;
     private Polygon bounds;
+    private float[] vertices;
 
     public boolean isOutOfScreen;
     public boolean isUsed;
@@ -30,15 +30,15 @@ public class Bullet
     public Bullet(Sprite sprite)
     {
         this.sprite = sprite;
-        position = new Vector2();
         velocity = new Vector2();
-        bounds = new Polygon(new float[]
-                {
-                5, 5,
-                5, 5 + 10,
-                5 + 10, 5 + 10,
-                5 + 10, 5
-                });
+
+        vertices = new float[]{
+                this.sprite.getX() + 5, this.sprite.getY() + 5,
+                this.sprite.getX() + 5, this.sprite.getY() + 5 + 10,
+                this.sprite.getX() + 5 + 10, this.sprite.getY() + 5 + 10,
+                this.sprite.getX() + 5 + 10, this.sprite.getY() + 5};
+
+        bounds = new Polygon(vertices);
         isOutOfScreen = false;
         isUsed = false;
     }
@@ -46,21 +46,21 @@ public class Bullet
 
     public void update(float delta)
     {
-        updateBounds();
         applyVelocityToPosition(delta);
+        updateBounds();
         isOutOfScreen();
     }
 
     private void applyVelocityToPosition(float delta)
     {
         velocity.scl(delta);
-        position.add(velocity);
+        sprite.translate(velocity.x, velocity.y);
         velocity.scl(1 / delta);
     }
 
     private void isOutOfScreen()
     {
-        if (position.x > Constants.V_WIDTH || position.x  + sprite.getWidth() < 0 || position.y > Constants.V_HEIGHT || position.y  + sprite.getHeight() < 0)
+        if (sprite.getX() > Constants.V_WIDTH || sprite.getX() + sprite.getWidth() < 0 || sprite.getY() > Constants.V_HEIGHT || sprite.getY()  + sprite.getHeight() < 0)
             isOutOfScreen = true;
         else
             isOutOfScreen = false;
@@ -68,24 +68,19 @@ public class Bullet
 
     private void updateBounds()
     {
-        bounds.setPosition(this.position.x, this.position.y);
-        // System.out.println(bounds.width + " " + bounds.height);
+        bounds.setVertices(vertices);
+        bounds.setPosition(sprite.getX(), sprite.getY());
+        System.out.println((int) sprite.getX() + " " + (int)bounds.getX());
     }
 
     public void render(SpriteBatch batch)
     {
-        batch.draw(sprite, position.x, position.y);
+        sprite.draw(batch);
     }
-
 
     public void setPosition(float x, float y)
     {
-        position.set(x, y);
-    }
-
-    public Vector2 getPosition()
-    {
-        return position;
+        sprite.setPosition(x, y);
     }
 
     public void setVelocity(float x, float y)
@@ -96,6 +91,11 @@ public class Bullet
     public Polygon getBounds()
     {
         return bounds;
+    }
+
+    public Sprite getSprite()
+    {
+        return sprite;
     }
 
     public int getDamage()
