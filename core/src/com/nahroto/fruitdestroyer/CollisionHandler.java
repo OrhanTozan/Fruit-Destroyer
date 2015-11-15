@@ -1,5 +1,6 @@
 package com.nahroto.fruitdestroyer;
 
+import com.badlogic.gdx.math.Intersector;
 import com.nahroto.fruitdestroyer.entities.Bullet;
 import com.nahroto.fruitdestroyer.entities.Player;
 import com.nahroto.fruitdestroyer.entities.enemies.Enemy;
@@ -15,7 +16,8 @@ public class CollisionHandler
             bulletLoop:
             for (int j = 0; j < Bullet.currentBullets.size; j++)
             {
-                if (Enemy.currentEnemies.get(i).getBounds().overlaps(Bullet.currentBullets.get(j).getBounds()))
+                // IF ENEMY COLLIDES WITH BULLET
+                if (Intersector.overlapConvexPolygons(Enemy.currentEnemies.get(i).getBounds(), Bullet.currentBullets.get(j).getBounds()))
                 {
                     // System.out.println(Enemy.currentEnemies.size);
 
@@ -31,7 +33,8 @@ public class CollisionHandler
                 }
             }
 
-            if (Enemy.currentEnemies.get(i).getBounds().overlaps(player.getBounds()))
+            // IF ENEMY COLLIDES WITH PLAYER
+            if (Intersector.overlapConvexPolygons(Enemy.currentEnemies.get(i).getBounds(), player.getBounds()))
                 APP.setScreen(new DeadScreen(APP, gameScreen));
         }
     }

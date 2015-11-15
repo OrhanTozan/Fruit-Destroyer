@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
@@ -47,7 +48,7 @@ public class Enemy
     protected TextureAtlas.AtlasRegion normalTexture;
     protected TextureAtlas.AtlasRegion hitTexture;
 
-    protected Rectangle bounds;
+    protected Polygon bounds;
 
     protected Sound squishSFX;
 
@@ -62,7 +63,7 @@ public class Enemy
 
         velocity = new Vector2();
         position = new Vector2();
-        bounds = new Rectangle();
+        bounds = new Polygon();
 
         healthBar = new HealthBar(redBar, greenBar);
 
@@ -71,14 +72,20 @@ public class Enemy
         this.BOUNDING_WIDTH = BOUNDING_WIDTH;
         this.BOUNDING_HEIGHT = BOUNDING_HEIGHT;
 
-        bounds.set(this.sprite.getX() + this.BOUNDING_X, this.sprite.getY() + this.BOUNDING_Y, this.BOUNDING_WIDTH, this.BOUNDING_HEIGHT);
+        bounds.setVertices(new float[]
+                {
+                        BOUNDING_X, BOUNDING_Y,
+                        BOUNDING_X, BOUNDING_Y + BOUNDING_HEIGHT,
+                        BOUNDING_X + BOUNDING_WIDTH, BOUNDING_Y + BOUNDING_HEIGHT,
+                        BOUNDING_X + BOUNDING_WIDTH, BOUNDING_Y
+                });
         position.set(this.sprite.getX(), this.sprite.getY());
     }
 
     public void calculateVelocity()
     {
-        float deltaX = Constants.V_WIDTH / 2 - bounds.x - (BOUNDING_WIDTH / 2);
-        float deltaY = Constants.V_HEIGHT / 2 - bounds.y - (BOUNDING_HEIGHT / 2);
+        float deltaX = Constants.V_WIDTH / 2 - bounds.getX() - (BOUNDING_WIDTH / 2);
+        float deltaY = Constants.V_HEIGHT / 2 - bounds.getY() - (BOUNDING_HEIGHT / 2);
 
         float length = (float) Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
@@ -93,12 +100,13 @@ public class Enemy
 
     public void calculateRotation()
     {
-        float deltaX = Constants.V_WIDTH / 2 - bounds.x - (BOUNDING_WIDTH / 2);
-        float deltaY = Constants.V_HEIGHT / 2 - bounds.y - (BOUNDING_HEIGHT / 2);
+        float deltaX = Constants.V_WIDTH / 2 - bounds.getX() - (BOUNDING_WIDTH / 2);
+        float deltaY = Constants.V_HEIGHT / 2 - bounds.getY() - (BOUNDING_HEIGHT / 2);
 
         angle = (MathUtils.atan2(-deltaX, deltaY) * MathUtils.radiansToDegrees) - 180;
 
         sprite.setRotation(angle);
+        bounds.setRotation(angle);
     }
 
     public void update(float delta)
@@ -202,7 +210,7 @@ public class Enemy
         return sprite;
     }
 
-    public Rectangle getBounds()
+    public Polygon getBounds()
     {
         return bounds;
     }

@@ -5,6 +5,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.nahroto.fruitdestroyer.Application;
@@ -49,7 +50,7 @@ public class Player
     private Sound reload25SFX;
     private Sound currentReloadSound;
 
-    private Rectangle bounds;
+    private Polygon bounds;
 
     private int reloadTime;
 
@@ -64,7 +65,11 @@ public class Player
         this.flashSprite = flashSprite;
         this.flashSprite.setOrigin(3, 18);
 
-        bounds = new Rectangle(this.sprite.getX() + 20, this.sprite.getY() + 10, 32, 32);
+        bounds = new Polygon(new float[]{
+                this.sprite.getX(), this.sprite.getY(),
+                this.sprite.getX(), this.sprite.getY() + this.sprite.getHeight(),
+                this.sprite.getX() + this.sprite.getWidth(), this.sprite.getY() + this.sprite.getHeight()
+        });
 
         shotSFX = APP.assets.get("sounds/shot.wav", Sound.class);
         emptySFX = APP.assets.get("sounds/empty2.wav", Sound.class);
@@ -236,7 +241,7 @@ public class Player
         }
     }
 
-    public Rectangle getBounds()
+    public Polygon getBounds()
     {
         return bounds;
     }

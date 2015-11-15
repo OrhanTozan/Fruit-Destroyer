@@ -10,7 +10,7 @@ public class Ananas extends Enemy
 
     public Ananas(final Application APP, TextureAtlas.AtlasRegion normalTexture, TextureAtlas.AtlasRegion hitTexture, Sprite redBar, Sprite greenBar)
     {
-        super(APP, normalTexture, hitTexture, redBar, greenBar, 21, 14, 99, 103);
+        super(APP, normalTexture, hitTexture, redBar, greenBar, 21, 15, 98, 155);
         explodable = true;
         velocityMultiplier = 0.75f;
     }

@@ -142,7 +142,7 @@ public class GameScreen implements Screen
         // UPDATE HEALTHBAR
         for (int i = 0; i < Enemy.currentEnemies.size; i++)
         {
-            Enemy.currentEnemies.get(i).getHealthBar().getRed().setPosition((Enemy.currentEnemies.get(i).getBounds().getX() + (Enemy.currentEnemies.get(i).getBounds().getWidth() / 2)) - (Enemy.currentEnemies.get(i).getHealthBar().getRed().getWidth() / 2), Enemy.currentEnemies.get(i).getSprite().getY() - HealthBar.Y_OFFSET);
+            Enemy.currentEnemies.get(i).getHealthBar().getRed().setPosition((Enemy.currentEnemies.get(i).getSprite().getX() + (Enemy.currentEnemies.get(i).getSprite().getWidth() / 2)) - (Enemy.currentEnemies.get(i).getHealthBar().getRed().getWidth() / 2), Enemy.currentEnemies.get(i).getSprite().getY() - HealthBar.Y_OFFSET);
             Enemy.currentEnemies.get(i).getHealthBar().update(Enemy.currentEnemies.get(i).getHealth());
 
             // IF ENEMY DIES
@@ -153,7 +153,7 @@ public class GameScreen implements Screen
                 {
                     explosionSounds.get(0).play();
                     currentExplosions.add(totalExplosions.get(0));
-                    currentExplosions.get(0).setPosition((Enemy.currentEnemies.get(i).getBounds().getX() + (Enemy.currentEnemies.get(i).getBounds().getWidth() / 2)) - (Explosion.WIDTH / 2), Enemy.currentEnemies.get(i).getPosition().y);
+                    currentExplosions.get(0).setPosition((Enemy.currentEnemies.get(i).getSprite().getX() + (Enemy.currentEnemies.get(i).getSprite().getWidth() / 2)) - (Explosion.WIDTH / 2), Enemy.currentEnemies.get(i).getPosition().y);
                 }
 
                 // REMOVE ENEMY
@@ -211,7 +211,10 @@ public class GameScreen implements Screen
 
         // RENDER ENEMIES
         for (Enemy enemy : Enemy.currentEnemies)
+        {
             enemy.render(APP.batch);
+            // System.out.println(enemy.getSprite().getHeight());
+        }
 
         // RENDER PLAYER
         player.render(APP.batch);

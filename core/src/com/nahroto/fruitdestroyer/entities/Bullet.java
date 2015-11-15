@@ -2,6 +2,7 @@ package com.nahroto.fruitdestroyer.entities;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
@@ -21,7 +22,7 @@ public class Bullet
     private Vector2 position;
     private Vector2 velocity;
     private Sprite sprite;
-    private Rectangle bounds;
+    private Polygon bounds;
 
     public boolean isOutOfScreen;
     public boolean isUsed;
@@ -31,7 +32,13 @@ public class Bullet
         this.sprite = sprite;
         position = new Vector2();
         velocity = new Vector2();
-        bounds = new Rectangle(position.x, position.y, sprite.getWidth(), sprite.getHeight());
+        bounds = new Polygon(new float[]
+                {
+                5, 5,
+                5, 5 + 10,
+                5 + 10, 5 + 10,
+                5 + 10, 5
+                });
         isOutOfScreen = false;
         isUsed = false;
     }
@@ -61,7 +68,7 @@ public class Bullet
 
     private void updateBounds()
     {
-        bounds.setPosition(this.position);
+        bounds.setPosition(this.position.x, this.position.y);
         // System.out.println(bounds.width + " " + bounds.height);
     }
 
@@ -86,7 +93,7 @@ public class Bullet
         velocity.set(x, y);
     }
 
-    public Rectangle getBounds()
+    public Polygon getBounds()
     {
         return bounds;
     }
