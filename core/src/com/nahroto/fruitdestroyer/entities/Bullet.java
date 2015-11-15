@@ -70,7 +70,6 @@ public class Bullet
     {
         bounds.setVertices(vertices);
         bounds.setPosition(sprite.getX(), sprite.getY());
-        System.out.println((int) sprite.getX() + " " + (int)bounds.getX());
     }
 
     public void render(SpriteBatch batch)
