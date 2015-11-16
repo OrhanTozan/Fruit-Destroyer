@@ -104,7 +104,7 @@ public class GameScreen implements Screen
 
         player.setReloadingConfig(100);
 
-        shapeRenderer = new ShapeRenderer();
+        // shapeRenderer = new ShapeRenderer();
     }
 
     @Override
