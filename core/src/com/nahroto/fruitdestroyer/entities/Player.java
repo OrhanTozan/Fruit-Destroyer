@@ -67,10 +67,10 @@ public class Player
         this.flashSprite.setOrigin(3, 18);
 
         vertices = new float[]{
-                this.sprite.getX(), this.sprite.getY(),
-                this.sprite.getX(), this.sprite.getY() + this.sprite.getHeight(),
-                this.sprite.getX() + this.sprite.getWidth(), this.sprite.getY() + this.sprite.getHeight(),
-                this.sprite.getX() + this.sprite.getWidth(), this.sprite.getY()};
+                0, 0,
+                0, this.sprite.getHeight(),
+                this.sprite.getWidth() / 2, this.sprite.getHeight(),
+                this.sprite.getWidth() / 2, 0};
         bounds = new Polygon(vertices);
 
         shotSFX = APP.assets.get("sounds/shot.wav", Sound.class);
@@ -113,7 +113,7 @@ public class Player
             reloading = false;
         }
 
-        bounds.setPosition(sprite.getX() + 20, sprite.getY() + 10);
+        bounds.setPosition(sprite.getX(), sprite.getY());
     }
 
     public void followFinger()
@@ -246,5 +246,10 @@ public class Player
     public Polygon getBounds()
     {
         return bounds;
+    }
+
+    public Sprite getSprite()
+    {
+        return sprite;
     }
 }

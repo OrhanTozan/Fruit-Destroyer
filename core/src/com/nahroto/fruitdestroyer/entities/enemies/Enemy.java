@@ -1,5 +1,6 @@
 package com.nahroto.fruitdestroyer.entities.enemies;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -74,12 +75,15 @@ public class Enemy
         this.BOUNDING_HEIGHT = BOUNDING_HEIGHT;
 
         vertices = new float[]{
-                this.sprite.getX() + BOUNDING_X, this.sprite.getY() + BOUNDING_Y,
-                this.sprite.getX() + BOUNDING_X, this.sprite.getY() + BOUNDING_Y + BOUNDING_HEIGHT,
-                this.sprite.getX() + BOUNDING_X + BOUNDING_WIDTH, this.sprite.getY() + BOUNDING_Y + BOUNDING_HEIGHT,
-                this.sprite.getX() + BOUNDING_X + BOUNDING_WIDTH, this.sprite.getY() + BOUNDING_Y};
+                0, 0,
+                0, BOUNDING_HEIGHT,
+                BOUNDING_WIDTH, BOUNDING_HEIGHT,
+                BOUNDING_WIDTH, 0};
         bounds.setVertices(vertices);
+        bounds.setPosition(sprite.getX(), sprite.getY());
         position.set(this.sprite.getX(), this.sprite.getY());
+
+        bounds.setOrigin(BOUNDING_WIDTH / 2, BOUNDING_HEIGHT / 2);
     }
 
     public void calculateVelocity()
@@ -134,7 +138,6 @@ public class Enemy
 
     protected void updateBounds()
     {
-        bounds.setVertices(vertices);
         bounds.setPosition(sprite.getX() + BOUNDING_X, sprite.getY() + BOUNDING_Y);
     }
 

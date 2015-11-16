@@ -15,6 +15,8 @@ public class Explosion
 
     private Vector2 position;
 
+    private float rotation;
+
     public Explosion(TextureAtlas atlas)
     {
         animation = new Animation(1 / ANIMATION_FPS, atlas.getRegions(), Animation.PlayMode.NORMAL);
@@ -28,7 +30,7 @@ public class Explosion
 
     public void render(SpriteBatch batch)
     {
-        batch.draw(animation.getKeyFrame(elapsedTime), position.x, position.y);
+        batch.draw(animation.getKeyFrame(elapsedTime), position.x, position.y, 72, 72, 144, 144, 1, 1, rotation + 90, true);
     }
 
     public boolean isAnimationFinished()
@@ -44,6 +46,11 @@ public class Explosion
     public void setPosition(float x, float y)
     {
         position.set(x, y);
+    }
+
+    public void setRotation(float rotation)
+    {
+        this.rotation = rotation;
     }
 
     public Vector2 getPosition()

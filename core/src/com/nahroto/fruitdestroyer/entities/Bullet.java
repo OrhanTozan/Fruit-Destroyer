@@ -33,10 +33,10 @@ public class Bullet
         velocity = new Vector2();
 
         vertices = new float[]{
-                this.sprite.getX() + 5, this.sprite.getY() + 5,
-                this.sprite.getX() + 5, this.sprite.getY() + 5 + 10,
-                this.sprite.getX() + 5 + 10, this.sprite.getY() + 5 + 10,
-                this.sprite.getX() + 5 + 10, this.sprite.getY() + 5};
+                0, 0,
+                0, 10,
+                10, 10,
+                10, 0 };
 
         bounds = new Polygon(vertices);
         isOutOfScreen = false;
@@ -68,8 +68,7 @@ public class Bullet
 
     private void updateBounds()
     {
-        bounds.setVertices(vertices);
-        bounds.setPosition(sprite.getX(), sprite.getY());
+        bounds.setPosition(sprite.getX() + 5, sprite.getY() + 5);
     }
 
     public void render(SpriteBatch batch)

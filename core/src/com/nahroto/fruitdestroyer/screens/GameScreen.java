@@ -152,12 +152,13 @@ public class GameScreen implements Screen
             // IF ENEMY DIES
             if (Enemy.currentEnemies.get(i).getHealth() <= 0)
             {
-                // IF ENEMY IS EXPLODABLE
+                // IF ENEMY IS EXPLODABLE, THEN EXPLODE
                 if (Enemy.currentEnemies.get(i).isExplodable())
                 {
                     explosionSounds.get(0).play();
                     currentExplosions.add(totalExplosions.get(0));
-                    currentExplosions.get(0).setPosition((Enemy.currentEnemies.get(i).getSprite().getX() + (Enemy.currentEnemies.get(i).getSprite().getWidth() / 2)) - (Explosion.WIDTH / 2), Enemy.currentEnemies.get(i).getPosition().y);
+                    currentExplosions.get(0).setPosition(((Enemy.currentEnemies.get(i).getSprite().getX() + (Enemy.currentEnemies.get(i).getSprite().getWidth() / 2)) - (Explosion.WIDTH / 2)), (Enemy.currentEnemies.get(i).getPosition().y) + 30);
+                    currentExplosions.get(0).setRotation(Enemy.currentEnemies.get(i).getAngle());
                 }
 
                 // REMOVE ENEMY
@@ -249,8 +250,12 @@ public class GameScreen implements Screen
 
         APP.batch.end();
 
-        shapeRenderer.setProjectionMatrix(APP.camera.combined);
+        /* shapeRenderer.setProjectionMatrix(APP.camera.combined);
+
+        System.out.println((int) player.getSprite().getX() + " " + (int) player.getBounds().getX());
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+
+        shapeRenderer.polygon(player.getBounds().getTransformedVertices());
 
         for (Enemy enemy : Enemy.currentEnemies)
             shapeRenderer.polygon(enemy.getBounds().getTransformedVertices());
@@ -260,7 +265,7 @@ public class GameScreen implements Screen
         shapeRenderer.end();
 
         //for (Bullet bullet : Bullet.currentBullets)
-            //System.out.println((int)bullet.getSprite().getX() + " " + (int) bullet.getBounds().getX());
+            //System.out.println((int)bullet.getSprite().getX() + " " + (int) bullet.getBounds().getX()); */
 
         gameHud.render();
     }
