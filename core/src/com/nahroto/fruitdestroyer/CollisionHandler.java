@@ -21,11 +21,13 @@ public class CollisionHandler
                 {
                     // System.out.println(Enemy.currentEnemies.size);
 
+                    // DAMAGE THE ENEMY
                     Enemy.currentEnemies.get(i).renderHit = true;
                     Enemy.currentEnemies.get(i).playSquishSound();
                     Enemy.currentEnemies.get(i).setHitTexture();
                     Enemy.currentEnemies.get(i).reduceHealth(Bullet.currentBullets.get(j).getDamage());
 
+                    // REMOVE THE HIT BULLET
                     Bullet.currentBullets.get(j).isUsed = false;
                     Bullet.currentBullets.get(j).isOutOfScreen = false;
                     Bullet.currentBullets.removeIndex(j);
