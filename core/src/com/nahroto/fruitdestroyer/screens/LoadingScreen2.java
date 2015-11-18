@@ -58,6 +58,8 @@ public class LoadingScreen2 implements Screen
     @Override
     public void show()
     {
+        Constants.STATUS = Constants.Status.LOADINGSCREEN2;
+
         //System.out.println("loadingscreen2");
         inputMultiplexer = new InputMultiplexer();
         currentTime = System.currentTimeMillis();

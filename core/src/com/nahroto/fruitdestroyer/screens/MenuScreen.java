@@ -33,6 +33,7 @@ public class MenuScreen implements Screen
     @Override
     public void show()
     {
+        Constants.STATUS = Constants.Status.MENUSCREEN;
         epicTheme.setLooping(true);
         epicTheme.play();
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);

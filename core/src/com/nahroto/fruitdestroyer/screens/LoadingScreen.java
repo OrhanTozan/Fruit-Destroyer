@@ -29,6 +29,8 @@ public class LoadingScreen extends BasicLoadingScreen implements Screen
     @Override
     public void show()
     {
+        Constants.STATUS = Constants.Status.LOADINGSCREEN;
+
         currentTime = System.currentTimeMillis();
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
         APP.camera.update();

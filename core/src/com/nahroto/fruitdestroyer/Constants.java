@@ -7,6 +7,16 @@ public class Constants
     public static final int V_WIDTH = 720;
     public static final int V_HEIGHT = 1280;
 
+    public enum Status
+    {
+        LOADINGSCREEN,
+        LOADINGSCREEN2,
+        MENUSCREEN,
+        PLAYING,
+        DEAD
+    }
+
+    public static Status STATUS;
 
     private static Vector2[] randomPositions = { new Vector2(), new Vector2(), new Vector2(), new Vector2(), new Vector2(),
             new Vector2(), new Vector2(), new Vector2(), new Vector2(), new Vector2(), new Vector2(), new Vector2(), new Vector2(),

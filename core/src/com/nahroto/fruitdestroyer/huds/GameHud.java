@@ -17,15 +17,15 @@ public class GameHud extends Hud
     private ImageButton reloadButton;
     private Image bulletIcon;
 
-    public GameHud(final Player player, Viewport viewport, SpriteBatch batch, TextureRegion reloadButtonUp, TextureRegion reloadButtonDown, TextureRegion bulletIcon)
+    public GameHud(final Player player, Viewport viewport, SpriteBatch batch, TextureRegion reloadButtonUp, TextureRegion reloadButtonDown, TextureRegion bulletIconTexture)
     {
         super(viewport, batch);
 
         reloadButton = new ImageButton(new TextureRegionDrawable(reloadButtonUp), new TextureRegionDrawable(reloadButtonDown));
-        this.bulletIcon = new Image(bulletIcon);
+        bulletIcon = new Image(bulletIconTexture);
 
         reloadButton.setPosition(Constants.V_WIDTH - 20, 20, Align.bottomRight);
-        this.bulletIcon.setPosition(20, 17);
+        bulletIcon.setPosition(20, 17);
 
         reloadButton.addListener(new ClickListener()
         {
@@ -36,7 +36,8 @@ public class GameHud extends Hud
         });
 
         actors.add(reloadButton);
-        actors.add(this.bulletIcon);
+        actors.add(bulletIcon);
+
         addAllActorsToStage();
     }
 }
