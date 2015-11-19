@@ -94,15 +94,6 @@ public class GameScreen implements Screen
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
         APP.camera.update();
 
-        for (int i = 0; i < wave; i++)
-        {
-            Enemy.currentEnemies.add(Enemy.totalEnemies.get(i));
-            Enemy.currentEnemies.get(i).setHealth(48);
-            Enemy.currentEnemies.get(i).setPosition(Constants.getRandomPosition(MathUtils.random(0, 15), Enemy.currentEnemies.get(i).getSprite().getWidth(), Enemy.currentEnemies.get(i).getSprite().getHeight()));
-            Enemy.currentEnemies.get(i).calculateRotation();
-            Enemy.currentEnemies.get(i).calculateVelocity();
-        }
-
         font = new BitmapFont();
         font.setColor(Color.WHITE);
 
@@ -111,6 +102,8 @@ public class GameScreen implements Screen
         player.setReloadingConfig(100);
 
         // shapeRenderer = new ShapeRenderer();
+
+        startNewWave();
     }
 
     @Override
@@ -165,7 +158,16 @@ public class GameScreen implements Screen
                         if (Enemy.currentEnemies.get(i).isExplodable())
                         {
                             explosionSounds.get(0).play();
-                            currentExplosions.add(totalExplosions.get(0));
+
+                            // GET AN EXPLOSION THAT ISNT BUSY
+                            for (Explosion explosion : totalExplosions)
+                            {
+                                if (explosion.isBusy)
+                                    continue;
+                                else
+                                    currentExplosions.add(explosion);
+                            }
+
                             currentExplosions.get(0).setPosition(((Enemy.currentEnemies.get(i).getSprite().getX() + (Enemy.currentEnemies.get(i).getSprite().getWidth() / 2)) - (Explosion.WIDTH / 2)), (Enemy.currentEnemies.get(i).getPosition().y) + 30);
                             currentExplosions.get(0).setRotation(Enemy.currentEnemies.get(i).getAngle());
                         }
@@ -212,7 +214,7 @@ public class GameScreen implements Screen
                 break;
 
             case DEAD:
-                // deadHud.update(delta);
+                deadHud.update(delta);
                 break;
         }
 
@@ -297,7 +299,7 @@ public class GameScreen implements Screen
         }
     }
 
-    private void startNewWave()
+    public static void startNewWave()
     {
         for (int i = 0; i < MathUtils.round(wave * WAVE_MULTIPLIER); i++)
         {

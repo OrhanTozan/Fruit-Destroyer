@@ -20,7 +20,6 @@ public class Player
     private Sprite sprite;
     private Sprite flashSprite;
 
-
     public static float rotateSpeed;
 
     private Vector2 unprojectedCoordinates;

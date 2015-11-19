@@ -17,6 +17,8 @@ public class Explosion
 
     private float rotation;
 
+    public static boolean isBusy;
+
     public Explosion(TextureAtlas atlas)
     {
         animation = new Animation(1 / ANIMATION_FPS, atlas.getRegions(), Animation.PlayMode.NORMAL);

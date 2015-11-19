@@ -26,5 +26,8 @@ public class GameResetter
 
         // RESTART MUSIC
         actionMusic.play();
+
+        // START NEW WAVE
+        GameScreen.startNewWave();
     }
 }
