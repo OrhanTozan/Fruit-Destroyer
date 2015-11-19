@@ -40,7 +40,7 @@ public class Player
     private boolean flashNeeded;
     private boolean reloading;
 
-    public Integer ammo;
+    public static Integer ammo;
 
     private Sound shotSFX;
     private Sound emptySFX;

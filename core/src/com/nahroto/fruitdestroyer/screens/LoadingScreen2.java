@@ -7,12 +7,11 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 import com.nahroto.fruitdestroyer.Application;
-import com.nahroto.fruitdestroyer.CollisionHandler;
+import com.nahroto.fruitdestroyer.helpers.CollisionHandler;
 import com.nahroto.fruitdestroyer.Constants;
 import com.nahroto.fruitdestroyer.Explosion;
 import com.nahroto.fruitdestroyer.Font;
@@ -23,6 +22,7 @@ import com.nahroto.fruitdestroyer.entities.Player;
 import com.nahroto.fruitdestroyer.entities.enemies.Ananas;
 import com.nahroto.fruitdestroyer.entities.enemies.Enemy;
 import com.nahroto.fruitdestroyer.entities.enemies.Orange;
+import com.nahroto.fruitdestroyer.huds.DeadHud;
 import com.nahroto.fruitdestroyer.huds.GameHud;
 
 public class LoadingScreen2 implements Screen
@@ -46,6 +46,8 @@ public class LoadingScreen2 implements Screen
     private Array<Explosion> totalExplosions;
     private Array<Explosion> currentExplosions;
     private Array<Sound> explosionSounds;
+
+    private GameScreen gameScreen;
 
     private Font font;
 
@@ -108,6 +110,9 @@ public class LoadingScreen2 implements Screen
         ammoStatus = new Font("fonts/trompus.otf", 100, Color.WHITE, Color.BLACK, 3, true);
 
         actionMusic = APP.assets.get("music/action.ogg", Music.class);
+
+        gameScreen = new GameScreen(APP, totalExplosions, currentExplosions, explosionSounds, new GameHud(player, APP.viewport, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon")), new DeadHud(APP.viewport, APP.batch, gameScreenAtlas.findRegion("retry-button-up"), gameScreenAtlas.findRegion("retry-button-down"), actionMusic), bg, player, inputMultiplexer, inputHandler, new Input(), new CollisionHandler(), ammoStatus, actionMusic, gameScreenAtlas.createSprite("reload-icon"), new Integer(1), APP.assets.get("sounds/victory.ogg", Sound.class));
+
     }
 
     @Override
@@ -119,7 +124,7 @@ public class LoadingScreen2 implements Screen
         // UPDATE
         APP.camera.update();
         if (System.currentTimeMillis() - currentTime > WAIT_TIME * 1000)
-            APP.setScreen(new GameScreen(APP, totalExplosions, currentExplosions, explosionSounds, new GameHud(player, APP.viewport, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon")), bg, player, inputMultiplexer, inputHandler, new Input(), new CollisionHandler(), ammoStatus, actionMusic, gameScreenAtlas.createSprite("reload-icon"), new Integer(1), APP.assets.get("sounds/victory.ogg", Sound.class)));
+            APP.setScreen(gameScreen);
 
         // RENDER
         APP.batch.setProjectionMatrix(APP.camera.combined);

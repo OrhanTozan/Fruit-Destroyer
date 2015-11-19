@@ -1,15 +1,17 @@
-package com.nahroto.fruitdestroyer;
+package com.nahroto.fruitdestroyer.helpers;
 
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.math.Intersector;
+import com.nahroto.fruitdestroyer.Constants;
 import com.nahroto.fruitdestroyer.entities.Bullet;
 import com.nahroto.fruitdestroyer.entities.Player;
 import com.nahroto.fruitdestroyer.entities.enemies.Enemy;
+import com.nahroto.fruitdestroyer.huds.DeadHud;
 import com.nahroto.fruitdestroyer.screens.GameScreen;
 
 public class CollisionHandler
 {
-    public void update(Player player, GameScreen gameScreen, Music gameMusic)
+    public void update(Player player, GameScreen gameScreen, Music gameMusic, DeadHud deadHud)
     {
         for (int i = 0; i < Enemy.currentEnemies.size; i++)
         {
@@ -38,6 +40,7 @@ public class CollisionHandler
             // IF ENEMY COLLIDES WITH PLAYER
             if (Intersector.overlapConvexPolygons(Enemy.currentEnemies.get(i).getBounds(), player.getBounds()))
             {
+                deadHud.addAllActorsToStage();
                 Constants.STATUS = Constants.Status.DEAD;
                 gameMusic.stop();
             }

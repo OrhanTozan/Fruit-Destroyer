@@ -14,7 +14,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.nahroto.fruitdestroyer.Application;
-import com.nahroto.fruitdestroyer.CollisionHandler;
+import com.nahroto.fruitdestroyer.helpers.CollisionHandler;
 import com.nahroto.fruitdestroyer.Constants;
 import com.nahroto.fruitdestroyer.Explosion;
 import com.nahroto.fruitdestroyer.Font;
@@ -24,6 +24,7 @@ import com.nahroto.fruitdestroyer.InputHandler;
 import com.nahroto.fruitdestroyer.entities.Bullet;
 import com.nahroto.fruitdestroyer.entities.Player;
 import com.nahroto.fruitdestroyer.entities.enemies.Enemy;
+import com.nahroto.fruitdestroyer.huds.DeadHud;
 import com.nahroto.fruitdestroyer.huds.GameHud;
 
 public class GameScreen implements Screen
@@ -40,23 +41,25 @@ public class GameScreen implements Screen
     private CollisionHandler collisionHandler;
     private BitmapFont font;
     private GameHud gameHud;
+    private DeadHud deadHud;
     private Font ammoStatus;
     private Music actionMusic;
     private Sprite reloadIcon;
 
     private Sound waveSFX;
 
-    private Integer wave;
+    public static Integer wave;
 
     private Array<Explosion> totalExplosions;
     private Array<Explosion> currentExplosions;
     private Array<Sound> explosionSounds;
     private ShapeRenderer shapeRenderer;
 
-    public GameScreen(final Application APP, Array<Explosion> totalExplosions, Array<Explosion> currentExplosions, Array<Sound> explosionSounds, GameHud gameHud, TextureRegion bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Integer wave, Sound waveSFX)
+    public GameScreen(final Application APP, Array<Explosion> totalExplosions, Array<Explosion> currentExplosions, Array<Sound> explosionSounds, GameHud gameHud, DeadHud deadHud, TextureRegion bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Integer wave, Sound waveSFX)
     {
         this.APP = APP;
         this.gameHud = gameHud;
+        this.deadHud = deadHud;
         this.bg = bg;
         this.player = player;
         this.inputMultiplexer = inputMultiplexer;
@@ -79,6 +82,7 @@ public class GameScreen implements Screen
         Constants.STATUS = Constants.Status.PLAYING;
 
         inputMultiplexer.addProcessor(gameHud.getStage());
+        inputMultiplexer.addProcessor(deadHud.getStage());
         inputMultiplexer.addProcessor(input);
         Gdx.input.setInputProcessor(inputMultiplexer);
 
@@ -115,94 +119,101 @@ public class GameScreen implements Screen
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        //System.out.println(Gdx.graphics.getFramesPerSecond());
-        if (Constants.STATUS == Constants.STATUS.PLAYING)
+        // WHILE ALIVE
+        switch (Constants.STATUS)
         {
-            // HANDLE INPUT
-            inputHandler.update();
+            case PLAYING:
 
-            // --- UPDATE ---
+                // HANDLE INPUT
+                inputHandler.update();
 
-            // UPDATE PLAYER
-            player.update();
+                // --- UPDATE ---
 
-            // UPDATE ENEMIES
-            for (int i = 0; i < Enemy.currentEnemies.size; i++)
-                Enemy.currentEnemies.get(i).update(delta);
+                // UPDATE PLAYER
+                player.update();
 
-            // UPDATE BULLETS
-            for (int i = 0; i < Bullet.currentBullets.size; i++)
-            {
-                Bullet.currentBullets.get(i).update(delta);
-                if (Bullet.currentBullets.get(i).isOutOfScreen)
+                // UPDATE ENEMIES
+                for (int i = 0; i < Enemy.currentEnemies.size; i++)
+                    Enemy.currentEnemies.get(i).update(delta);
+
+                // UPDATE BULLETS
+                for (int i = 0; i < Bullet.currentBullets.size; i++)
                 {
-                    Bullet.currentBullets.get(i).isUsed = false;
-                    Bullet.currentBullets.get(i).isOutOfScreen = false;
-                    Bullet.currentBullets.removeIndex(i);
-                    // System.out.println("bullet removed");
-                }
-            }
-
-            // UPDATE COLLISION
-            collisionHandler.update(player, this, actionMusic);
-
-            // UPDATE HEALTHBAR
-            for (int i = 0; i < Enemy.currentEnemies.size; i++)
-            {
-                Enemy.currentEnemies.get(i).getHealthBar().getRed().setPosition((Enemy.currentEnemies.get(i).getSprite().getX() + (Enemy.currentEnemies.get(i).getSprite().getWidth() / 2)) - (Enemy.currentEnemies.get(i).getHealthBar().getRed().getWidth() / 2), Enemy.currentEnemies.get(i).getSprite().getY() - HealthBar.Y_OFFSET);
-                Enemy.currentEnemies.get(i).getHealthBar().update(Enemy.currentEnemies.get(i).getHealth());
-
-                // IF ENEMY DIES
-                if (Enemy.currentEnemies.get(i).getHealth() <= 0)
-                {
-                    // IF ENEMY IS EXPLODABLE, THEN EXPLODE
-                    if (Enemy.currentEnemies.get(i).isExplodable())
+                    Bullet.currentBullets.get(i).update(delta);
+                    if (Bullet.currentBullets.get(i).isOutOfScreen)
                     {
-                        explosionSounds.get(0).play();
-                        currentExplosions.add(totalExplosions.get(0));
-                        currentExplosions.get(0).setPosition(((Enemy.currentEnemies.get(i).getSprite().getX() + (Enemy.currentEnemies.get(i).getSprite().getWidth() / 2)) - (Explosion.WIDTH / 2)), (Enemy.currentEnemies.get(i).getPosition().y) + 30);
-                        currentExplosions.get(0).setRotation(Enemy.currentEnemies.get(i).getAngle());
+                        Bullet.currentBullets.get(i).isUsed = false;
+                        Bullet.currentBullets.get(i).isOutOfScreen = false;
+                        Bullet.currentBullets.removeIndex(i);
+                        // System.out.println("bullet removed");
+                    }
+                }
+
+                // UPDATE COLLISION
+                collisionHandler.update(player, this, actionMusic, deadHud);
+
+                // UPDATE HEALTHBAR
+                for (int i = 0; i < Enemy.currentEnemies.size; i++)
+                {
+                    Enemy.currentEnemies.get(i).getHealthBar().getRed().setPosition((Enemy.currentEnemies.get(i).getSprite().getX() + (Enemy.currentEnemies.get(i).getSprite().getWidth() / 2)) - (Enemy.currentEnemies.get(i).getHealthBar().getRed().getWidth() / 2), Enemy.currentEnemies.get(i).getSprite().getY() - HealthBar.Y_OFFSET);
+                    Enemy.currentEnemies.get(i).getHealthBar().update(Enemy.currentEnemies.get(i).getHealth());
+
+                    // IF ENEMY DIES
+                    if (Enemy.currentEnemies.get(i).getHealth() <= 0)
+                    {
+                        // IF ENEMY IS EXPLODABLE, THEN EXPLODE
+                        if (Enemy.currentEnemies.get(i).isExplodable())
+                        {
+                            explosionSounds.get(0).play();
+                            currentExplosions.add(totalExplosions.get(0));
+                            currentExplosions.get(0).setPosition(((Enemy.currentEnemies.get(i).getSprite().getX() + (Enemy.currentEnemies.get(i).getSprite().getWidth() / 2)) - (Explosion.WIDTH / 2)), (Enemy.currentEnemies.get(i).getPosition().y) + 30);
+                            currentExplosions.get(0).setRotation(Enemy.currentEnemies.get(i).getAngle());
+                        }
+
+                        // REMOVE ENEMY
+                        Enemy.currentEnemies.removeIndex(i);
                     }
 
-                    // REMOVE ENEMY
-                    Enemy.currentEnemies.removeIndex(i);
+                    // WHEN WAVE IS CLEARED
+                    if (Enemy.currentEnemies.size == 0)
+                    {
+                        waveSFX.play();
+                        wave += 1;
+                        startNewWave();
+                    }
                 }
 
-                // WHEN WAVE IS CLEARED
-                if (Enemy.currentEnemies.size == 0)
+                // UPDATE EXPLOSIONS
+                for (int i = 0; i < currentExplosions.size; i++)
                 {
-                    waveSFX.play();
-                    wave += 1;
-                    startNewWave();
+                    currentExplosions.get(i).update(delta);
+                    if (currentExplosions.get(i).isAnimationFinished())
+                    {
+                        currentExplosions.get(i).reset();
+                        currentExplosions.removeIndex(i);
+                    }
                 }
-            }
 
-            // UPDATE EXPLOSIONS
-            for (int i = 0; i < currentExplosions.size; i++)
-            {
-                currentExplosions.get(i).update(delta);
-                if (currentExplosions.get(i).isAnimationFinished())
-                {
-                    currentExplosions.get(i).reset();
-                    currentExplosions.removeIndex(i);
-                }
-            }
-
-            // DO NOT SHOW RELOAD BUTTON WHEN AMMO IS FULL OR ALREADY RELOADING
-            if (player.ammo == 30 || player.isReloading())
-                gameHud.getActors().get(0).remove();
-            else
-                gameHud.addAllActorsToStage();
+                // DO NOT SHOW RELOAD BUTTON WHEN AMMO IS FULL OR ALREADY RELOADING
+                if (player.ammo == 30 || player.isReloading())
+                    gameHud.getActors().get(0).remove();
+                else
+                    gameHud.addAllActorsToStage();
 
 
-            // UPDATE GAMEHUD
-            gameHud.update(delta);
+                // UPDATE GAMEHUD
+                gameHud.update(delta);
 
-            // IF RELOADING ROTATE RELOAD ICON
-            if (player.isReloading())
-                reloadIcon.rotate(-Player.rotateSpeed);
-            else
-                reloadIcon.setRotation(0);
+                // IF RELOADING ROTATE RELOAD ICON
+                if (player.isReloading())
+                    reloadIcon.rotate(-Player.rotateSpeed);
+                else
+                    reloadIcon.setRotation(0);
+                break;
+
+            case DEAD:
+                // deadHud.update(delta);
+                break;
         }
 
         // UPDATE CAMERA
@@ -250,6 +261,9 @@ public class GameScreen implements Screen
 
             // RENDER WAVE STATUS
             ammoStatus.render(APP.batch, "wave " + wave.toString(), Constants.V_WIDTH / 2 - (ammoStatus.getWidth("wave " + wave.toString()) / 2), Constants.V_HEIGHT - 30, false);
+
+            // SHOW FPS
+            font.draw(APP.batch, Gdx.graphics.getFramesPerSecond() + " ", 50, 1250);
         }
 
         APP.batch.end();
@@ -271,11 +285,16 @@ public class GameScreen implements Screen
         //for (Bullet bullet : Bullet.currentBullets)
             //System.out.println((int)bullet.getSprite().getX() + " " + (int) bullet.getBounds().getX()); */
 
-        if (Constants.STATUS == Constants.Status.DEAD)
-            gameHud.render();
+        switch (Constants.STATUS)
+        {
+            case PLAYING:
+                gameHud.render();
+                break;
 
-        // SHOW FPS
-        font.draw(APP.batch, Gdx.graphics.getFramesPerSecond() + " ", 50, 1250);
+            case DEAD:
+                deadHud.render();
+                break;
+        }
     }
 
     private void startNewWave()
