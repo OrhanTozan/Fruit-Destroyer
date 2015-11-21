@@ -165,7 +165,10 @@ public class GameScreen implements Screen
                                 if (explosion.isBusy)
                                     continue;
                                 else
+                                {
+                                    explosion.isBusy = true;
                                     currentExplosions.add(explosion);
+                                }
                             }
 
                             currentExplosions.get(0).setPosition(((Enemy.currentEnemies.get(i).getSprite().getX() + (Enemy.currentEnemies.get(i).getSprite().getWidth() / 2)) - (Explosion.WIDTH / 2)), (Enemy.currentEnemies.get(i).getPosition().y) + 30);
