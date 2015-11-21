@@ -162,13 +162,13 @@ public class GameScreen implements Screen
                             {
                                 if (totalExplosion.isBusy)
                                     continue;
-
                                 else
                                 {
                                     totalExplosion.getSound().play();
                                     totalExplosion.setPosition(((Enemy.currentEnemies.get(i).getSprite().getX() + (Enemy.currentEnemies.get(i).getSprite().getWidth() / 2)) - (Explosion.WIDTH / 2)), (Enemy.currentEnemies.get(i).getPosition().y) + 30);
                                     totalExplosion.setRotation(Enemy.currentEnemies.get(i).getAngle());
                                     Explosion.currentExplosions.add(totalExplosion);
+                                    break;
                                 }
                             }
                         }

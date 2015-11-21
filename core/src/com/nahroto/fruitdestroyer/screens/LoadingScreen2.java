@@ -74,7 +74,7 @@ public class LoadingScreen2 implements Screen
 
 
         // INIT EXPLOSION STUFF
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 5; i++)
             Explosion.totalExplosions.add(new Explosion(explosionsAtlas, APP.assets.get("sounds/explosion.ogg", Sound.class)));
 
         // INIT BG
