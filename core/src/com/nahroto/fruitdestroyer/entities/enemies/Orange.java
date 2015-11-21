@@ -6,7 +6,7 @@ import com.nahroto.fruitdestroyer.Application;
 
 public class Orange extends Enemy
 {
-    public static final int COUNT = 2;
+    public static final int COUNT = 20;
 
     public Orange(final Application APP, TextureAtlas.AtlasRegion normalTexture, TextureAtlas.AtlasRegion hitTexture, Sprite redBar, Sprite greenBar)
     {

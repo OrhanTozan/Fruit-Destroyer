@@ -11,7 +11,7 @@ import com.nahroto.fruitdestroyer.screens.GameScreen;
 
 public class CollisionHandler
 {
-    public void update(Player player, GameScreen gameScreen, Music gameMusic, DeadHud deadHud)
+    public void update(Player player, Music gameMusic, DeadHud deadHud)
     {
         for (int i = 0; i < Enemy.currentEnemies.size; i++)
         {

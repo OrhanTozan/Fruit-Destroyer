@@ -50,12 +50,10 @@ public class GameScreen implements Screen
 
     public static Integer wave;
 
-    private Array<Explosion> totalExplosions;
-    private Array<Explosion> currentExplosions;
-    private Array<Sound> explosionSounds;
+
     private ShapeRenderer shapeRenderer;
 
-    public GameScreen(final Application APP, Array<Explosion> totalExplosions, Array<Explosion> currentExplosions, Array<Sound> explosionSounds, GameHud gameHud, DeadHud deadHud, TextureRegion bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Integer wave, Sound waveSFX)
+    public GameScreen(final Application APP, GameHud gameHud, DeadHud deadHud, TextureRegion bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Integer wave, Sound waveSFX)
     {
         this.APP = APP;
         this.gameHud = gameHud;
@@ -71,9 +69,6 @@ public class GameScreen implements Screen
         this.reloadIcon = reloadIcon;
         this.wave = wave;
         this.waveSFX = waveSFX;
-        this.totalExplosions = totalExplosions;
-        this.currentExplosions = currentExplosions;
-        this.explosionSounds = explosionSounds;
     }
 
     @Override
@@ -101,7 +96,8 @@ public class GameScreen implements Screen
 
         player.setReloadingConfig(100);
 
-        // shapeRenderer = new ShapeRenderer();
+        if (Constants.DEBUG)
+            shapeRenderer = new ShapeRenderer();
 
         startNewWave();
     }
@@ -143,7 +139,7 @@ public class GameScreen implements Screen
                 }
 
                 // UPDATE COLLISION
-                collisionHandler.update(player, this, actionMusic, deadHud);
+                collisionHandler.update(player, actionMusic, deadHud);
 
                 // UPDATE HEALTHBAR
                 for (int i = 0; i < Enemy.currentEnemies.size; i++)
@@ -157,29 +153,27 @@ public class GameScreen implements Screen
                         // IF ENEMY IS EXPLODABLE, THEN EXPLODE
                         if (Enemy.currentEnemies.get(i).isExplodable())
                         {
-                            explosionSounds.get(0).play();
-
                             // GET AN EXPLOSION THAT ISNT BUSY
-                            for (Explosion explosion : totalExplosions)
+                            for (Explosion totalExplosion : Explosion.totalExplosions)
                             {
-                                if (explosion.isBusy)
+                                if (totalExplosion.isBusy)
                                     continue;
+
                                 else
                                 {
-                                    explosion.isBusy = true;
-                                    currentExplosions.add(explosion);
+                                    totalExplosion.getSound().play();
+                                    totalExplosion.setPosition(((Enemy.currentEnemies.get(i).getSprite().getX() + (Enemy.currentEnemies.get(i).getSprite().getWidth() / 2)) - (Explosion.WIDTH / 2)), (Enemy.currentEnemies.get(i).getPosition().y) + 30);
+                                    totalExplosion.setRotation(Enemy.currentEnemies.get(i).getAngle());
+                                    Explosion.currentExplosions.add(totalExplosion);
                                 }
                             }
-
-                            currentExplosions.get(0).setPosition(((Enemy.currentEnemies.get(i).getSprite().getX() + (Enemy.currentEnemies.get(i).getSprite().getWidth() / 2)) - (Explosion.WIDTH / 2)), (Enemy.currentEnemies.get(i).getPosition().y) + 30);
-                            currentExplosions.get(0).setRotation(Enemy.currentEnemies.get(i).getAngle());
                         }
 
                         // REMOVE ENEMY
                         Enemy.currentEnemies.removeIndex(i);
                     }
 
-                    // WHEN WAVE IS CLEARED
+                    // WHEN WAVE IS CLEARED, START NEW WAVE
                     if (Enemy.currentEnemies.size == 0)
                     {
                         waveSFX.play();
@@ -189,13 +183,14 @@ public class GameScreen implements Screen
                 }
 
                 // UPDATE EXPLOSIONS
-                for (int i = 0; i < currentExplosions.size; i++)
+                for (int i = 0; i < Explosion.currentExplosions.size; i++)
                 {
-                    currentExplosions.get(i).update(delta);
-                    if (currentExplosions.get(i).isAnimationFinished())
+                    Explosion.currentExplosions.get(i).update(delta);
+                    if (Explosion.currentExplosions.get(i).isAnimationFinished())
                     {
-                        currentExplosions.get(i).reset();
-                        currentExplosions.removeIndex(i);
+                        Explosion.currentExplosions.get(i).isBusy = false;
+                        Explosion.currentExplosions.get(i).reset();
+                        Explosion.currentExplosions.removeIndex(i);
                     }
                 }
 
@@ -238,10 +233,7 @@ public class GameScreen implements Screen
         {
             // RENDER ENEMIES
             for (Enemy enemy : Enemy.currentEnemies)
-            {
                 enemy.render(APP.batch);
-                // System.out.println(enemy.getSprite().getHeight());
-            }
 
             // RENDER PLAYER
             player.render(APP.batch);
@@ -251,8 +243,8 @@ public class GameScreen implements Screen
                 bullet.render(APP.batch);
 
             // RENDER EXPLOSION(S)
-            for (Explosion explosion : currentExplosions)
-                explosion.render(APP.batch);
+            for (Explosion currentExplosion : Explosion.currentExplosions)
+                currentExplosion.render(APP.batch);
 
             // RENDER HEALTHBARS
             for (Enemy enemy : Enemy.currentEnemies)
@@ -273,22 +265,24 @@ public class GameScreen implements Screen
 
         APP.batch.end();
 
-        /* shapeRenderer.setProjectionMatrix(APP.camera.combined);
+        if (Constants.DEBUG)
+        {
+            shapeRenderer.setProjectionMatrix(APP.camera.combined);
 
-        System.out.println((int) player.getSprite().getX() + " " + (int) player.getBounds().getX());
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+            System.out.println((int) player.getSprite().getX() + " " + (int) player.getBounds().getX());
+            shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
 
-        shapeRenderer.polygon(player.getBounds().getTransformedVertices());
+            shapeRenderer.polygon(player.getBounds().getTransformedVertices());
 
-        for (Enemy enemy : Enemy.currentEnemies)
-            shapeRenderer.polygon(enemy.getBounds().getTransformedVertices());
-        for (Bullet bullet : Bullet.currentBullets)
-            shapeRenderer.polygon(bullet.getBounds().getTransformedVertices());
+            for (Enemy enemy : Enemy.currentEnemies)
+                shapeRenderer.polygon(enemy.getBounds().getTransformedVertices());
+            for (Bullet bullet : Bullet.currentBullets)
+                shapeRenderer.polygon(bullet.getBounds().getTransformedVertices());
 
-        shapeRenderer.end();
+            shapeRenderer.end();
+        }
 
-        //for (Bullet bullet : Bullet.currentBullets)
-            //System.out.println((int)bullet.getSprite().getX() + " " + (int) bullet.getBounds().getX()); */
+
 
         switch (Constants.STATUS)
         {
@@ -299,6 +293,13 @@ public class GameScreen implements Screen
             case DEAD:
                 deadHud.render();
                 break;
+        }
+
+        if (Constants.DEBUG)
+        {
+            System.out.println(Constants.STATUS);
+            System.out.println("Total enemies: " + Enemy.totalEnemies.size + ", " + "current enemies: " + Enemy.currentEnemies.size);
+            System.out.println("Total bullets: " + Bullet.totalBullets.size + ", " + "current bullets: " + Bullet.currentBullets.size);
         }
     }
 

@@ -4,6 +4,8 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Constants
 {
+    public static final boolean DEBUG = true;
+
     public static final int V_WIDTH = 720;
     public static final int V_HEIGHT = 1280;
 
