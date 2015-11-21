@@ -12,8 +12,8 @@ public class Explosion
     public static final int WIDTH = 144;
     private static final float ANIMATION_FPS = 20f;
 
-    public static Array<Explosion> totalExplosions;
-    public static Array<Explosion> currentExplosions;
+    public static Array<Explosion> totalExplosions = new Array<Explosion>();
+    public static Array<Explosion> currentExplosions = new Array<Explosion>();
 
     private Animation animation;
     private float elapsedTime;
@@ -30,8 +30,7 @@ public class Explosion
     {
         animation = new Animation(1 / ANIMATION_FPS, atlas.getRegions(), Animation.PlayMode.NORMAL);
         position = new Vector2();
-        totalExplosions = new Array<Explosion>();
-        currentExplosions = new Array<Explosion>();
+
         this.sound = sound;
 
     }

@@ -40,6 +40,8 @@ public class CollisionHandler
             // IF ENEMY COLLIDES WITH PLAYER
             if (Intersector.overlapConvexPolygons(Enemy.currentEnemies.get(i).getBounds(), player.getBounds()))
             {
+                System.out.println("cleared");
+                GameResetter.clearGame();
                 deadHud.addAllActorsToStage();
                 Constants.STATUS = Constants.Status.DEAD;
                 gameMusic.stop();

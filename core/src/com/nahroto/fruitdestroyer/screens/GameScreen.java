@@ -109,6 +109,8 @@ public class GameScreen implements Screen
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         // WHILE ALIVE
+        System.out.println(Constants.STATUS);
+
         switch (Constants.STATUS)
         {
             case PLAYING:
@@ -134,12 +136,14 @@ public class GameScreen implements Screen
                         Bullet.currentBullets.get(i).isUsed = false;
                         Bullet.currentBullets.get(i).isOutOfScreen = false;
                         Bullet.currentBullets.removeIndex(i);
-                        // System.out.println("bullet removed");
                     }
                 }
 
                 // UPDATE COLLISION
                 collisionHandler.update(player, actionMusic, deadHud);
+
+                if (Constants.STATUS == Constants.Status.DEAD)
+                    break;
 
                 // UPDATE HEALTHBAR
                 for (int i = 0; i < Enemy.currentEnemies.size; i++)
@@ -150,7 +154,7 @@ public class GameScreen implements Screen
                     // IF ENEMY DIES
                     if (Enemy.currentEnemies.get(i).getHealth() <= 0)
                     {
-                        // IF ENEMY IS EXPLODABLE, THEN EXPLODE
+                        // IF ENEMY IS EXPLODABLE
                         if (Enemy.currentEnemies.get(i).isExplodable())
                         {
                             // GET AN EXPLOSION THAT ISNT BUSY
@@ -176,6 +180,7 @@ public class GameScreen implements Screen
                     // WHEN WAVE IS CLEARED, START NEW WAVE
                     if (Enemy.currentEnemies.size == 0)
                     {
+                        System.out.println("NEW WAVE STARTED");
                         waveSFX.play();
                         wave += 1;
                         startNewWave();
@@ -297,7 +302,6 @@ public class GameScreen implements Screen
 
         if (Constants.DEBUG)
         {
-            System.out.println(Constants.STATUS);
             System.out.println("Total enemies: " + Enemy.totalEnemies.size + ", " + "current enemies: " + Enemy.currentEnemies.size);
             System.out.println("Total bullets: " + Bullet.totalBullets.size + ", " + "current bullets: " + Bullet.currentBullets.size);
         }

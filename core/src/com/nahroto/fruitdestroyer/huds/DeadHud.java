@@ -31,11 +31,8 @@ public class DeadHud extends Hud
                 // REMOVE THIS HUDS ACTORS
                 removeAllActorsFromStage();
 
-                // CHANGE STATUS TO PLAYING
-                Constants.STATUS = Constants.Status.PLAYING;
-
                 // RESET THE GAME
-                GameResetter.resetGame(actionMusic);
+                GameResetter.newGame(actionMusic);
             }
         });
 
