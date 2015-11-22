@@ -39,7 +39,7 @@ public class LoadingScreen extends BasicLoadingScreen implements Screen
         bg = new Texture("backgrounds/map.png");
 
         // LOAD EXPLOSIONS ATLAS
-        APP.assets.load("atlases/explosions.pack", TextureAtlas.class);
+        APP.assets.load("atlases/explosion.pack", TextureAtlas.class);
 
         // LOAD SCREEN ATLASES
         APP.assets.load("atlases/menuscreen.pack", TextureAtlas.class);

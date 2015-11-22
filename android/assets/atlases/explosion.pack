@@ -1,0 +1,346 @@
+
+explosion.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+sprite
+  rotate: false
+  xy: 1, 811
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 1
+sprite
+  rotate: false
+  xy: 1, 649
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 10
+sprite
+  rotate: false
+  xy: 163, 811
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 11
+sprite
+  rotate: false
+  xy: 1, 487
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 12
+sprite
+  rotate: false
+  xy: 163, 649
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 13
+sprite
+  rotate: false
+  xy: 325, 811
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 14
+sprite
+  rotate: false
+  xy: 1, 325
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 15
+sprite
+  rotate: false
+  xy: 163, 487
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 16
+sprite
+  rotate: false
+  xy: 325, 649
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 17
+sprite
+  rotate: false
+  xy: 487, 811
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 18
+sprite
+  rotate: false
+  xy: 1, 163
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 19
+sprite
+  rotate: false
+  xy: 163, 325
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 2
+sprite
+  rotate: false
+  xy: 325, 487
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 20
+sprite
+  rotate: false
+  xy: 487, 649
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 21
+sprite
+  rotate: false
+  xy: 649, 811
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 22
+sprite
+  rotate: false
+  xy: 1, 1
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 23
+sprite
+  rotate: false
+  xy: 163, 163
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 24
+sprite
+  rotate: false
+  xy: 325, 325
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 25
+sprite
+  rotate: false
+  xy: 487, 487
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 26
+sprite
+  rotate: false
+  xy: 649, 649
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 27
+sprite
+  rotate: false
+  xy: 811, 811
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 28
+sprite
+  rotate: false
+  xy: 163, 1
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 29
+sprite
+  rotate: false
+  xy: 325, 163
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 3
+sprite
+  rotate: false
+  xy: 487, 325
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 30
+sprite
+  rotate: false
+  xy: 649, 487
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 31
+sprite
+  rotate: false
+  xy: 811, 649
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 32
+sprite
+  rotate: false
+  xy: 325, 1
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 33
+sprite
+  rotate: false
+  xy: 487, 163
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 34
+sprite
+  rotate: false
+  xy: 649, 325
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 35
+sprite
+  rotate: false
+  xy: 811, 487
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 36
+sprite
+  rotate: false
+  xy: 487, 1
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 37
+sprite
+  rotate: false
+  xy: 649, 163
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 38
+sprite
+  rotate: false
+  xy: 811, 325
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 39
+sprite
+  rotate: false
+  xy: 649, 1
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 4
+sprite
+  rotate: false
+  xy: 811, 163
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 40
+sprite
+  rotate: false
+  xy: 811, 1
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 41
+
+explosion2.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+sprite
+  rotate: false
+  xy: 1, 325
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 42
+sprite
+  rotate: false
+  xy: 1, 163
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 43
+sprite
+  rotate: false
+  xy: 163, 325
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 44
+sprite
+  rotate: false
+  xy: 1, 1
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 45
+sprite
+  rotate: false
+  xy: 1, 1
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 46
+sprite
+  rotate: false
+  xy: 1, 1
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 47
+sprite
+  rotate: false
+  xy: 1, 1
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 48
+sprite
+  rotate: false
+  xy: 163, 163
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 5
+sprite
+  rotate: false
+  xy: 325, 325
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 6
+sprite
+  rotate: false
+  xy: 163, 1
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 7
+sprite
+  rotate: false
+  xy: 325, 163
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 8
+sprite
+  rotate: false
+  xy: 325, 1
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: 9

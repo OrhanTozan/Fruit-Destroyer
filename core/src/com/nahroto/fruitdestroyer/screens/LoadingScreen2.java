@@ -70,7 +70,7 @@ public class LoadingScreen2 implements Screen
         gameScreenAtlas = APP.assets.get("atlases/gamescreen.pack", TextureAtlas.class);
 
         // INIT EXPLOSIONS
-        explosionsAtlas = APP.assets.get("atlases/explosions.pack", TextureAtlas.class);
+        explosionsAtlas = APP.assets.get("atlases/explosion.pack", TextureAtlas.class);
 
 
         // INIT EXPLOSION STUFF

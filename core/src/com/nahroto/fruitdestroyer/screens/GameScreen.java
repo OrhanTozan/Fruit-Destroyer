@@ -109,8 +109,6 @@ public class GameScreen implements Screen
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         // WHILE ALIVE
-        System.out.println(Constants.STATUS);
-
         switch (Constants.STATUS)
         {
             case PLAYING:
@@ -158,16 +156,16 @@ public class GameScreen implements Screen
                         if (Enemy.currentEnemies.get(i).isExplodable())
                         {
                             // GET AN EXPLOSION THAT ISNT BUSY
-                            for (Explosion totalExplosion : Explosion.totalExplosions)
+                            for (int j = 0; j < Explosion.totalExplosions.size; j++)
                             {
-                                if (totalExplosion.isBusy)
-                                    continue;
-                                else
+                                System.out.println("index: " + j);
+                                if (!Explosion.totalExplosions.get(j).isBusy)
                                 {
-                                    totalExplosion.getSound().play();
-                                    totalExplosion.setPosition(((Enemy.currentEnemies.get(i).getSprite().getX() + (Enemy.currentEnemies.get(i).getSprite().getWidth() / 2)) - (Explosion.WIDTH / 2)), (Enemy.currentEnemies.get(i).getPosition().y) + 30);
-                                    totalExplosion.setRotation(Enemy.currentEnemies.get(i).getAngle());
-                                    Explosion.currentExplosions.add(totalExplosion);
+                                    Explosion.totalExplosions.get(j).getSound().play();
+                                    Explosion.totalExplosions.get(j).setPosition(((Enemy.currentEnemies.get(i).getSprite().getX() + (Enemy.currentEnemies.get(i).getSprite().getWidth() / 2)) - (Explosion.WIDTH / 2)), (Enemy.currentEnemies.get(i).getPosition().y));
+                                    Explosion.totalExplosions.get(j).setRotation(Enemy.currentEnemies.get(i).getAngle());
+                                    Explosion.totalExplosions.get(j).isBusy = true;
+                                    Explosion.currentExplosions.add(Explosion.totalExplosions.get(j));
                                     break;
                                 }
                             }
@@ -176,15 +174,15 @@ public class GameScreen implements Screen
                         // REMOVE ENEMY
                         Enemy.currentEnemies.removeIndex(i);
                     }
+                }
 
-                    // WHEN WAVE IS CLEARED, START NEW WAVE
-                    if (Enemy.currentEnemies.size == 0)
-                    {
-                        System.out.println("NEW WAVE STARTED");
-                        waveSFX.play();
-                        wave += 1;
-                        startNewWave();
-                    }
+                // WHEN WAVE IS CLEARED, START NEW WAVE
+                if (Enemy.currentEnemies.size == 0)
+                {
+                    System.out.println("NEW WAVE STARTED");
+                    waveSFX.play();
+                    wave += 1;
+                    startNewWave();
                 }
 
                 // UPDATE EXPLOSIONS
@@ -198,6 +196,9 @@ public class GameScreen implements Screen
                         Explosion.currentExplosions.removeIndex(i);
                     }
                 }
+
+                System.out.println("totalexplosionsize: " + Explosion.totalExplosions.size);
+                System.out.println("currentexplosionsize: " + Explosion.currentExplosions.size);
 
                 // DO NOT SHOW RELOAD BUTTON WHEN AMMO IS FULL OR ALREADY RELOADING
                 if (player.ammo == 30 || player.isReloading())

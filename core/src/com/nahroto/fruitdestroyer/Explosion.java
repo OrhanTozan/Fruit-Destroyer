@@ -10,7 +10,7 @@ import com.badlogic.gdx.utils.Array;
 public class Explosion
 {
     public static final int WIDTH = 144;
-    private static final float ANIMATION_FPS = 20f;
+    private static final float ANIMATION_FPS = 60f;
 
     public static Array<Explosion> totalExplosions = new Array<Explosion>();
     public static Array<Explosion> currentExplosions = new Array<Explosion>();
@@ -22,7 +22,7 @@ public class Explosion
 
     private float rotation;
 
-    public static boolean isBusy;
+    public boolean isBusy;
 
     private Sound sound;
 
@@ -32,6 +32,7 @@ public class Explosion
         position = new Vector2();
 
         this.sound = sound;
+        isBusy = false;
 
     }
 
@@ -42,7 +43,7 @@ public class Explosion
 
     public void render(SpriteBatch batch)
     {
-        batch.draw(animation.getKeyFrame(elapsedTime), position.x, position.y, 72, 72, 144, 144, 1, 1, rotation + 90, true);
+        batch.draw(animation.getKeyFrame(elapsedTime), position.x, position.y, 80, 80, 160, 160, 1, 1, rotation + 90, true);
     }
 
     public boolean isAnimationFinished()
