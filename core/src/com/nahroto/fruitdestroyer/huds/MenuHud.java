@@ -1,5 +1,6 @@
 package com.nahroto.fruitdestroyer.huds;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -21,7 +22,7 @@ public class MenuHud extends Hud
     private ImageButton playButton;
     private Image title;
 
-    public MenuHud(final Application APP, final Font font, Viewport viewport, SpriteBatch batch, TextureRegion title, TextureRegion playButtonDrawableUp, TextureRegion playButtonDrawableDown)
+    public MenuHud(final Application APP, final Font font, Viewport viewport, SpriteBatch batch, TextureRegion title, TextureRegion playButtonDrawableUp, TextureRegion playButtonDrawableDown, final Texture bg)
     {
         super(viewport, batch);
 
@@ -34,7 +35,7 @@ public class MenuHud extends Hud
         {
             public void clicked(InputEvent event, float x, float y)
             {
-                APP.setScreen(new LoadingScreen2(APP, font));
+                APP.setScreen(new LoadingScreen2(APP, font, bg));
             }
         });
 

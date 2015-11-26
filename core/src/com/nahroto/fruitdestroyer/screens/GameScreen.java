@@ -7,6 +7,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -33,7 +34,7 @@ public class GameScreen implements Screen
 
     private static final float WAVE_MULTIPLIER = 1.6f;
 
-    private TextureRegion bg;
+    private Texture bg;
     private Player player;
     private InputMultiplexer inputMultiplexer;
     private InputHandler inputHandler;
@@ -53,7 +54,7 @@ public class GameScreen implements Screen
 
     private ShapeRenderer shapeRenderer;
 
-    public GameScreen(final Application APP, GameHud gameHud, DeadHud deadHud, TextureRegion bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Integer wave, Sound waveSFX)
+    public GameScreen(final Application APP, GameHud gameHud, DeadHud deadHud, Texture bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Integer wave, Sound waveSFX)
     {
         this.APP = APP;
         this.gameHud = gameHud;
@@ -88,6 +89,7 @@ public class GameScreen implements Screen
 
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
         APP.camera.update();
+
 
         font = new BitmapFont();
         font.setColor(Color.WHITE);

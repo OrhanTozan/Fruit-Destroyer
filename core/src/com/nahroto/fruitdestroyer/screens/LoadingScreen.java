@@ -37,6 +37,7 @@ public class LoadingScreen extends BasicLoadingScreen implements Screen
 
         // INIT BACKGROUND
         bg = new Texture("backgrounds/map.png");
+        bg.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
         // LOAD EXPLOSIONS ATLAS
         APP.assets.load("atlases/explosion.pack", TextureAtlas.class);
@@ -70,7 +71,7 @@ public class LoadingScreen extends BasicLoadingScreen implements Screen
         if (APP.assets.update() && System.currentTimeMillis() - currentTime > 3000)
         {
             menuScreenAtlas = APP.assets.get("atlases/menuscreen.pack", TextureAtlas.class);
-            APP.setScreen(new MenuScreen(APP, font, bg, new MenuHud(APP, font, APP.viewport, APP.batch, menuScreenAtlas.findRegion("title"), menuScreenAtlas.findRegion("playbutton-up"), menuScreenAtlas.findRegion("playbutton-down")), APP.assets.get("music/epictheme.ogg", Music.class)));
+            APP.setScreen(new MenuScreen(APP, font, bg, new MenuHud(APP, font, APP.viewport, APP.batch, menuScreenAtlas.findRegion("title"), menuScreenAtlas.findRegion("playbutton-up"), menuScreenAtlas.findRegion("playbutton-down"), bg), APP.assets.get("music/epictheme.ogg", Music.class)));
         }
 
         APP.batch.setProjectionMatrix(APP.camera.combined);

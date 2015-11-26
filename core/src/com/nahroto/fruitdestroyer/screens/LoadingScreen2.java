@@ -7,6 +7,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
@@ -34,7 +35,7 @@ public class LoadingScreen2 implements Screen
     private TextureAtlas gameScreenAtlas;
     private TextureAtlas explosionsAtlas;
 
-    private TextureRegion bg;
+    private Texture bg;
     private Player player;
 
     private long currentTime;
@@ -48,10 +49,11 @@ public class LoadingScreen2 implements Screen
 
     private Font font;
 
-    public LoadingScreen2(final Application APP, final Font font)
+    public LoadingScreen2(final Application APP, final Font font, Texture bg)
     {
         this.APP = APP;
         this.font = font;
+        this.bg = bg;
     }
 
     @Override
@@ -72,13 +74,11 @@ public class LoadingScreen2 implements Screen
         // INIT EXPLOSIONS
         explosionsAtlas = APP.assets.get("atlases/explosion.pack", TextureAtlas.class);
 
-
         // INIT EXPLOSION STUFF
         for (int i = 0; i < 5; i++)
             Explosion.totalExplosions.add(new Explosion(explosionsAtlas, APP.assets.get("sounds/explosion.ogg", Sound.class)));
 
-        // INIT BG
-        bg = gameScreenAtlas.findRegion("map");
+
 
         // INIT PLAYER
         player = new Player(gameScreenAtlas.createSprite("player"), gameScreenAtlas.createSprite("flash"), APP);
@@ -88,11 +88,11 @@ public class LoadingScreen2 implements Screen
             Bullet.totalBullets.add(new Bullet(gameScreenAtlas.createSprite("bullet")));
 
         // INIT ORANGES
-        for (int i = 0; i < Orange.COUNT; i++)
+        for (int i = 0; i < 2; i++)
             Enemy.totalEnemies.add(new Orange(APP, gameScreenAtlas.findRegion("orange"), gameScreenAtlas.findRegion("orange-hit"), gameScreenAtlas.createSprite("red-bar"), gameScreenAtlas.createSprite("green-bar")));
 
         // INIT ANANASES
-        for (int i = 0; i < Ananas.COUNT; i++)
+        for (int i = 0; i < 20; i++)
             Enemy.totalEnemies.add(new Ananas(APP, gameScreenAtlas.findRegion("ananas"), gameScreenAtlas.findRegion("ananas-hit"), gameScreenAtlas.createSprite("red-bar"), gameScreenAtlas.createSprite("green-bar")));
 
         // INIT INPUT-HANDLER
