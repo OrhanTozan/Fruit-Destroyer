@@ -45,13 +45,6 @@ public class LoadingScreen extends BasicLoadingScreen implements Screen
         APP.assets.load("atlases/menuscreen.pack", TextureAtlas.class);
         APP.assets.load("atlases/gamescreen.pack", TextureAtlas.class);
 
-        // LOAD BACKGROUND TEXTURES
-        APP.assets.load("backgrounds/gray.png", Texture.class);
-        APP.assets.load("backgrounds/red.png", Texture.class);
-        APP.assets.load("backgrounds/yellow.png", Texture.class);
-        APP.assets.load("backgrounds/blue.png", Texture.class);
-        APP.assets.load("backgrounds/green.png", Texture.class);
-
         // LOAD SOUNDS
         APP.assets.load("sounds/shot.wav", Sound.class);
         APP.assets.load("sounds/empty2.wav", Sound.class);

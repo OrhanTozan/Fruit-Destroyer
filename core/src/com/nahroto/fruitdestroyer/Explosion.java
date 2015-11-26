@@ -9,8 +9,8 @@ import com.badlogic.gdx.utils.Array;
 
 public class Explosion
 {
-    public static final int WIDTH = 144;
-    private static final float ANIMATION_FPS = 60f;
+    public static final int WIDTH = 256;
+    private static final float ANIMATION_FPS = 20f;
 
     public static Array<Explosion> totalExplosions = new Array<Explosion>();
     public static Array<Explosion> currentExplosions = new Array<Explosion>();
@@ -43,7 +43,7 @@ public class Explosion
 
     public void render(SpriteBatch batch)
     {
-        batch.draw(animation.getKeyFrame(elapsedTime), position.x, position.y, 80, 80, 160, 160, 1, 1, rotation + 90, true);
+        batch.draw(animation.getKeyFrame(elapsedTime), position.x, position.y, WIDTH / 2, WIDTH / 2, WIDTH, WIDTH, 1, 1, rotation + 90, true);
     }
 
     public boolean isAnimationFinished()

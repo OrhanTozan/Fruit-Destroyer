@@ -18,21 +18,24 @@ public class HealthBar
         this.green.setPosition(this.red.getX() + 1, this.red.getY() + 1);
     }
 
-    public void update(int health)
+    public void update(int health, float maxHealth)
     {
-        updateGreen(health);
+        updateGreen((health * 48) / maxHealth);
     }
 
-    private void updateGreen(int health)
+    private void updateGreen(float health)
     {
         green.setSize(health, green.getHeight());
         green.setPosition(red.getX() + 1, red.getY() + 1);
     }
 
-    public void render(SpriteBatch batch)
+    public void render(SpriteBatch batch, int health)
     {
-        red.draw(batch);
-        green.draw(batch);
+        if (health > 0)
+        {
+            red.draw(batch);
+            green.draw(batch);
+        }
     }
 
     public Sprite getRed()

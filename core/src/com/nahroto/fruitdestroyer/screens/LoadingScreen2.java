@@ -96,7 +96,7 @@ public class LoadingScreen2 implements Screen
             Enemy.totalEnemies.add(new Ananas(APP, gameScreenAtlas.findRegion("ananas"), gameScreenAtlas.findRegion("ananas-hit"), gameScreenAtlas.createSprite("red-bar"), gameScreenAtlas.createSprite("green-bar")));
 
         // INIT INPUT-HANDLER
-        inputHandler = new InputHandler(APP, player);
+        inputHandler = new InputHandler(player);
 
         ammoStatus = new Font("fonts/trompus.otf", 100, Color.WHITE, Color.BLACK, 3, true);
 

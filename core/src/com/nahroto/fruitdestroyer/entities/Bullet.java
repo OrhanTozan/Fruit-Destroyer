@@ -10,11 +10,11 @@ import com.nahroto.fruitdestroyer.Constants;
 
 public class Bullet
 {
-    public static final int VELOCITY = 700;
+    public static final int VELOCITY = 1200;
 
     public static int magSize = 30;
     public static int rateOfFire = 200;
-    public static int damage = 16;
+    public static int damage = 10;
 
     public static Array<Bullet> totalBullets = new Array<Bullet>();
     public static Array<Bullet> currentBullets = new Array<Bullet>();

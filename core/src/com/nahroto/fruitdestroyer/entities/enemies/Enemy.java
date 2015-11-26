@@ -30,7 +30,8 @@ public class Enemy
 
     protected long currentTime;
 
-    protected int health = 48;
+    protected int maxHealth;
+    protected int health;
 
     protected HealthBar healthBar;
 
@@ -96,7 +97,7 @@ public class Enemy
         float directionX = deltaX / length;
         float directionY = deltaY / length;
 
-        int extraVelocity = MathUtils.random(0, 3);
+        int extraVelocity = MathUtils.random(0, 2);
 
         velocity.set((BASEVELOCITY + (extraVelocity * 20)) * directionX, (BASEVELOCITY + (extraVelocity * 20)) * directionY);
         velocity.scl(velocityMultiplier);
@@ -141,40 +142,16 @@ public class Enemy
         bounds.setPosition(sprite.getX() + BOUNDING_X, sprite.getY() + BOUNDING_Y);
     }
 
-    public void revive()
-    {
-        health = 48;
-        setPosition(Constants.getRandomPosition(MathUtils.random(0, 15), sprite.getWidth(), sprite.getHeight()));
-
-        calculateRotation();
-        calculateVelocity();
-    }
-
     public void playSquishSound()
     {
         squishSFX.play();
     }
 
-    public void setPosition(float x, float y)
-    {
-        sprite.setPosition(x, y);
-        bounds.setPosition(x + BOUNDING_X, y + BOUNDING_Y);
-    }
 
     public void setPosition(Vector2 position)
     {
         sprite.setPosition(position.x, position.y);
         bounds.setPosition(position.x + BOUNDING_X, position.y + BOUNDING_Y);
-    }
-
-    public void setVelocity(float x, float y)
-    {
-        velocity.set(x, y);
-    }
-
-    public void setAngle(float degrees)
-    {
-        sprite.setRotation(degrees);
     }
 
     public void setNormalTexture()
@@ -186,22 +163,6 @@ public class Enemy
     {
         sprite.setRegion(hitTexture);
         currentTime = System.currentTimeMillis();
-    }
-
-    public void setHealth(int newHealth)
-    {
-        this.health = newHealth;
-    }
-
-    public Vector2 getPosition()
-    {
-        position.set(sprite.getX(), sprite.getY());
-        return position;
-    }
-
-    public Vector2 getVelocity()
-    {
-        return velocity;
     }
 
     public float getAngle()
@@ -227,6 +188,16 @@ public class Enemy
     public int getHealth()
     {
         return health;
+    }
+
+    public int getMaxHealth()
+    {
+        return maxHealth;
+    }
+
+    public void restoreHealth()
+    {
+        health = maxHealth;
     }
 
     public void reduceHealth(int damage)

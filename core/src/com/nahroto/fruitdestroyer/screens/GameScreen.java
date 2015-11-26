@@ -147,7 +147,7 @@ public class GameScreen implements Screen
                 for (int i = 0; i < Enemy.currentEnemies.size; i++)
                 {
                     Enemy.currentEnemies.get(i).getHealthBar().getRed().setPosition((Enemy.currentEnemies.get(i).getSprite().getX() + (Enemy.currentEnemies.get(i).getSprite().getWidth() / 2)) - (Enemy.currentEnemies.get(i).getHealthBar().getRed().getWidth() / 2), Enemy.currentEnemies.get(i).getSprite().getY() - HealthBar.Y_OFFSET);
-                    Enemy.currentEnemies.get(i).getHealthBar().update(Enemy.currentEnemies.get(i).getHealth());
+                    Enemy.currentEnemies.get(i).getHealthBar().update(Enemy.currentEnemies.get(i).getHealth(), Enemy.currentEnemies.get(i).getMaxHealth());
 
                     // IF ENEMY DIES
                     if (Enemy.currentEnemies.get(i).getHealth() <= 0)
@@ -158,11 +158,10 @@ public class GameScreen implements Screen
                             // GET AN EXPLOSION THAT ISNT BUSY
                             for (int j = 0; j < Explosion.totalExplosions.size; j++)
                             {
-                                System.out.println("index: " + j);
                                 if (!Explosion.totalExplosions.get(j).isBusy)
                                 {
                                     Explosion.totalExplosions.get(j).getSound().play();
-                                    Explosion.totalExplosions.get(j).setPosition(((Enemy.currentEnemies.get(i).getSprite().getX() + (Enemy.currentEnemies.get(i).getSprite().getWidth() / 2)) - (Explosion.WIDTH / 2)), (Enemy.currentEnemies.get(i).getPosition().y));
+                                    Explosion.totalExplosions.get(j).setPosition(((Enemy.currentEnemies.get(i).getSprite().getX() + (Enemy.currentEnemies.get(i).getSprite().getWidth() / 2)) - (Explosion.WIDTH / 2)), ((Enemy.currentEnemies.get(i).getSprite().getY() + (Enemy.currentEnemies.get(i).getSprite().getHeight() / 2)) - (Explosion.WIDTH / 2)));
                                     Explosion.totalExplosions.get(j).setRotation(Enemy.currentEnemies.get(i).getAngle());
                                     Explosion.totalExplosions.get(j).isBusy = true;
                                     Explosion.currentExplosions.add(Explosion.totalExplosions.get(j));
@@ -181,7 +180,7 @@ public class GameScreen implements Screen
                 {
                     System.out.println("NEW WAVE STARTED");
                     waveSFX.play();
-                    wave += 1;
+                    wave++;
                     startNewWave();
                 }
 
@@ -196,9 +195,6 @@ public class GameScreen implements Screen
                         Explosion.currentExplosions.removeIndex(i);
                     }
                 }
-
-                System.out.println("totalexplosionsize: " + Explosion.totalExplosions.size);
-                System.out.println("currentexplosionsize: " + Explosion.currentExplosions.size);
 
                 // DO NOT SHOW RELOAD BUTTON WHEN AMMO IS FULL OR ALREADY RELOADING
                 if (player.ammo == 30 || player.isReloading())
@@ -254,7 +250,7 @@ public class GameScreen implements Screen
 
             // RENDER HEALTHBARS
             for (Enemy enemy : Enemy.currentEnemies)
-                enemy.getHealthBar().render(APP.batch);
+                enemy.getHealthBar().render(APP.batch, enemy.getHealth());
 
             // RENDER RELOAD ICON IF RELOADING
             if (!player.isReloading())
@@ -313,7 +309,7 @@ public class GameScreen implements Screen
         for (int i = 0; i < MathUtils.round(wave * WAVE_MULTIPLIER); i++)
         {
             Enemy.currentEnemies.add(Enemy.totalEnemies.get(i));
-            Enemy.currentEnemies.get(i).setHealth(48);
+            Enemy.currentEnemies.get(i).restoreHealth();
             Enemy.currentEnemies.get(i).setPosition(Constants.getRandomPosition(MathUtils.random(0, 15), Enemy.currentEnemies.get(i).getSprite().getWidth(), Enemy.currentEnemies.get(i).getSprite().getHeight()));
             Enemy.currentEnemies.get(i).calculateRotation();
             Enemy.currentEnemies.get(i).calculateVelocity();

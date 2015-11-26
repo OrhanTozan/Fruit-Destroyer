@@ -3,86 +3,79 @@ gamescreen.png
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-map
-  rotate: false
-  xy: 1, 244
-  size: 432, 768
-  orig: 432, 768
-  offset: 0, 0
-  index: -1
 retry-button-up
   rotate: false
-  xy: 1, 38
+  xy: 1, 297
   size: 378, 204
   orig: 378, 204
   offset: 0, 0
   index: -1
 retry-button-down
   rotate: false
-  xy: 435, 814
+  xy: 1, 97
   size: 378, 198
   orig: 378, 198
   offset: 0, 0
   index: -1
 reload-down
   rotate: false
-  xy: 435, 676
+  xy: 381, 365
   size: 226, 136
   orig: 226, 136
   offset: 0, 0
   index: -1
 reload-up
   rotate: false
-  xy: 435, 538
+  xy: 381, 227
   size: 226, 136
   orig: 226, 136
   offset: 0, 0
   index: -1
 ananas-hit
   rotate: false
-  xy: 815, 830
+  xy: 609, 319
   size: 144, 182
   orig: 144, 182
   offset: 0, 0
   index: -1
 ananas
   rotate: false
-  xy: 663, 630
+  xy: 755, 319
   size: 144, 182
   orig: 144, 182
   offset: 0, 0
   index: -1
 player
   rotate: false
-  xy: 435, 479
+  xy: 1, 38
   size: 121, 57
   orig: 121, 57
   offset: 0, 0
   index: -1
 orange-hit
   rotate: false
-  xy: 663, 549
+  xy: 381, 146
   size: 90, 79
   orig: 90, 79
   offset: 0, 0
   index: -1
 orange
   rotate: false
-  xy: 435, 398
+  xy: 609, 238
   size: 90, 79
   orig: 90, 79
   offset: 0, 0
   index: -1
 reload-icon
   rotate: false
-  xy: 435, 312
+  xy: 901, 417
   size: 82, 84
   orig: 82, 84
   offset: 0, 0
   index: -1
 bullet-icon
   rotate: false
-  xy: 435, 223
+  xy: 901, 328
   size: 76, 87
   orig: 76, 87
   offset: 0, 0
@@ -96,21 +89,21 @@ flash
   index: -1
 red-bar
   rotate: false
-  xy: 961, 997
+  xy: 124, 80
   size: 50, 15
   orig: 50, 15
   offset: 0, 0
   index: -1
 green-bar
   rotate: false
-  xy: 815, 815
+  xy: 381, 131
   size: 48, 13
   orig: 48, 13
   offset: 0, 0
   index: -1
 bullet
   rotate: false
-  xy: 558, 516
+  xy: 473, 205
   size: 20, 20
   orig: 20, 20
   offset: 0, 0

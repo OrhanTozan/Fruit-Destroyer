@@ -5,13 +5,11 @@ import com.nahroto.fruitdestroyer.entities.Player;
 
 public class InputHandler
 {
-    private final Application APP;
     private Player player;
     private long lastShotTime;
 
-    public InputHandler(final Application APP, Player player)
+    public InputHandler(Player player)
     {
-        this.APP = APP;
         this.player = player;
     }
 
