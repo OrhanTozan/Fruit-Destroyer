@@ -1,23 +1,41 @@
 package com.nahroto.fruitdestroyer;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.math.MathUtils;
 
 public class CameraShaker
 {
-    private static float oldPosX;
-    private static float oldPosY;
+    public static boolean busy;
 
-    public static void shakeCamera(float amount, float duration, OrthographicCamera camera)
+    private static final int RNG = 5;
+
+    private static long startTime;
+    private static float multiplier;
+    private static float duration;
+
+    public static void update(OrthographicCamera camera)
     {
-        oldPosX = camera.position.x;
-        oldPosY = camera.position.y;
-        camera.translate(amount, amount);
+        if (System.currentTimeMillis() - startTime <= duration)
+        {
+            busy = true;
+            camera.position.x = Constants.V_WIDTH / 2 + (MathUtils.random(-RNG, RNG) * multiplier);
+            camera.position.y = Constants.V_HEIGHT / 2 + (MathUtils.random(-RNG, RNG) * multiplier);
+        }
+
+        else
+        {
+            busy = false;
+            camera.position.x = Constants.V_WIDTH / 2;
+            camera.position.y = Constants.V_HEIGHT / 2;
+        }
+
         camera.update();
     }
 
-    public static void resetCamera(OrthographicCamera camera)
+    public static void startShaking(float multiplier, float duration)
     {
-        camera.position.x = oldPosX;
-        camera.position.y = oldPosY;
+        startTime = System.currentTimeMillis();
+        CameraShaker.multiplier = multiplier;
+        CameraShaker.duration = duration;
     }
 }

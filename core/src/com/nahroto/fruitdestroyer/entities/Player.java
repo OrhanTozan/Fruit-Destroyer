@@ -9,7 +9,10 @@ import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.nahroto.fruitdestroyer.Application;
+import com.nahroto.fruitdestroyer.CameraShaker;
 import com.nahroto.fruitdestroyer.Constants;
+
+import java.util.Calendar;
 
 public class Player
 {
@@ -135,6 +138,9 @@ public class Player
         {
             if (!reloading)
             {
+                if (!CameraShaker.busy)
+                    CameraShaker.startShaking(0.5f, 300);
+
                 shotSFX.play();
 
                 ammo--; // REDUCE AMMO BY 1

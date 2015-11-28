@@ -60,7 +60,7 @@ public class MenuScreen implements Screen
 
         // RENDER HUD
         APP.batch.begin();
-        APP.batch.draw(bg, 0, 0, Constants.V_WIDTH, Constants.V_HEIGHT);
+        APP.batch.draw(bg, -80, -80);
         APP.batch.end();
         menuHud.render();
     }

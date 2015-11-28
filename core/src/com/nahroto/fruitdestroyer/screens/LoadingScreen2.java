@@ -78,8 +78,6 @@ public class LoadingScreen2 implements Screen
         for (int i = 0; i < 5; i++)
             Explosion.totalExplosions.add(new Explosion(explosionsAtlas, APP.assets.get("sounds/explosion.ogg", Sound.class)));
 
-
-
         // INIT PLAYER
         player = new Player(gameScreenAtlas.createSprite("player"), gameScreenAtlas.createSprite("flash"), APP);
 

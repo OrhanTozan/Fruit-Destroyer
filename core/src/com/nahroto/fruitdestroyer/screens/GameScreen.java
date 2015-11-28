@@ -15,6 +15,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.nahroto.fruitdestroyer.Application;
+import com.nahroto.fruitdestroyer.CameraShaker;
 import com.nahroto.fruitdestroyer.helpers.CollisionHandler;
 import com.nahroto.fruitdestroyer.Constants;
 import com.nahroto.fruitdestroyer.Explosion;
@@ -170,6 +171,7 @@ public class GameScreen implements Screen
                                     break;
                                 }
                             }
+                            CameraShaker.startShaking(3f, 750);
                         }
 
                         // REMOVE ENEMY
@@ -213,6 +215,8 @@ public class GameScreen implements Screen
                     reloadIcon.rotate(-Player.rotateSpeed);
                 else
                     reloadIcon.setRotation(0);
+
+                CameraShaker.update(APP.camera);
                 break;
 
             case DEAD:
@@ -231,7 +235,7 @@ public class GameScreen implements Screen
         APP.batch.begin();
 
         // RENDER BACKGROUND
-        APP.batch.draw(bg, 0, 0, Constants.V_WIDTH, Constants.V_HEIGHT);
+        APP.batch.draw(bg, -80, -80);
 
         if (Constants.STATUS == Constants.Status.PLAYING)
         {
