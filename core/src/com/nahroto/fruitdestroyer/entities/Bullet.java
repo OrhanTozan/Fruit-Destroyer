@@ -43,7 +43,6 @@ public class Bullet
         isUsed = false;
     }
 
-
     public void update(float delta)
     {
         applyVelocityToPosition(delta);

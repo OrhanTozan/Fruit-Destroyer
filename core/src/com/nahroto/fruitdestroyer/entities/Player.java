@@ -8,9 +8,11 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.CameraShaker;
 import com.nahroto.fruitdestroyer.Constants;
+import com.nahroto.fruitdestroyer.weapons.Weapon;
 
 import java.util.Calendar;
 
@@ -19,6 +21,8 @@ public class Player
     private final Application APP;
 
     private final int KICK = 15;
+
+    private final float accuracy = 0.2f;
 
     private Sprite sprite;
     private Sprite flashSprite;
@@ -56,6 +60,7 @@ public class Player
     private float[] vertices;
 
     private int reloadTime;
+    private Array<Weapon> weapons;
 
     public Player(Sprite sprite, Sprite flashSprite, final Application APP)
     {
@@ -93,7 +98,10 @@ public class Player
         reloading = false;
 
         ammo = new Integer(30);
-    }
+
+        weapons = new Array<Weapon>();
+
+        }
 
     public void update()
     {
@@ -179,7 +187,7 @@ public class Player
                         offsetBack();
 
                         Bullet.totalBullets.get(i).setPosition((Constants.V_WIDTH / 2 + bulletPositionX) - 10, (Constants.V_HEIGHT / 2 + bulletPositionY) - 10);
-                        Bullet.totalBullets.get(i).setVelocity(directionX * Bullet.VELOCITY, directionY * Bullet.VELOCITY);
+                        Bullet.totalBullets.get(i).setVelocity((directionX + MathUtils.random(-accuracy, accuracy)) * Bullet.VELOCITY, (directionY + MathUtils.random(-accuracy, accuracy)) * Bullet.VELOCITY);
 
                         Bullet.currentBullets.add(Bullet.totalBullets.get(i));
                         break;
