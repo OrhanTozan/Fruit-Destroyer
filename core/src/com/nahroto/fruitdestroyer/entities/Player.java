@@ -22,8 +22,6 @@ public class Player
 
     private final int KICK = 15;
 
-    private final float accuracy = 0.2f;
-
     private Sprite sprite;
     private Sprite flashSprite;
 
@@ -60,8 +58,6 @@ public class Player
     private float[] vertices;
 
     private int reloadTime;
-    private Array<Weapon> weapons;
-
     public Player(Sprite sprite, Sprite flashSprite, final Application APP)
     {
         this.APP = APP;
@@ -97,10 +93,7 @@ public class Player
         flashNeeded = false;
         reloading = false;
 
-        ammo = new Integer(30);
-
-        weapons = new Array<Weapon>();
-
+        ammo = new Integer(Bullet.getWeapon().getMagSize());
         }
 
     public void update()
@@ -119,7 +112,7 @@ public class Player
 
         if (reloading && System.currentTimeMillis() - timeSinceReload > reloadTime)
         {
-            ammo = 30;
+            ammo = Bullet.getWeapon().getMagSize();
             reloading = false;
         }
 
@@ -187,7 +180,7 @@ public class Player
                         offsetBack();
 
                         Bullet.totalBullets.get(i).setPosition((Constants.V_WIDTH / 2 + bulletPositionX) - 10, (Constants.V_HEIGHT / 2 + bulletPositionY) - 10);
-                        Bullet.totalBullets.get(i).setVelocity((directionX + MathUtils.random(-accuracy, accuracy)) * Bullet.VELOCITY, (directionY + MathUtils.random(-accuracy, accuracy)) * Bullet.VELOCITY);
+                        Bullet.totalBullets.get(i).setVelocity((directionX + MathUtils.random(-Bullet.getWeapon().getSpread(), Bullet.getWeapon().getSpread())) * Bullet.VELOCITY, (directionY + MathUtils.random(-Bullet.getWeapon().getSpread(), Bullet.getWeapon().getSpread())) * Bullet.VELOCITY);
 
                         Bullet.currentBullets.add(Bullet.totalBullets.get(i));
                         break;
@@ -202,7 +195,7 @@ public class Player
 
     public void reload()
     {
-        if (!reloading && ammo != 30)
+        if (!reloading && ammo != Bullet.getWeapon().getMagSize())
         {
             reloading = true;
             currentReloadSound.play();

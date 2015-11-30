@@ -18,11 +18,15 @@ public class InputHandler
         if (Input.touchDown)
         {
             player.followFinger();
-            if (System.currentTimeMillis() - lastShotTime > Bullet.rateOfFire)
+            if (System.currentTimeMillis() - lastShotTime > Bullet.getWeapon().getRateOfFire())
             {
                 lastShotTime = System.currentTimeMillis();
                 player.shoot();
             }
+
+            // IF CURRENT WEAPON IS SEMI_AUTOMATIC, RESET INPUT TOUCHDOWN
+            if (!Bullet.getWeapon().isAutomatic())
+                Input.touchDown = false;
         }
     }
 }

@@ -28,7 +28,7 @@ public class GameResetter
         GameScreen.wave = 1;
 
         // RESET PLAYER AMMO
-        Player.ammo = 30;
+        Player.ammo = Bullet.getWeapon().getMagSize();
 
         // START MUSIC AGAIN
         actionMusic.play();

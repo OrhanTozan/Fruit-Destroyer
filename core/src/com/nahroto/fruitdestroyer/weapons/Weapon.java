@@ -2,23 +2,24 @@ package com.nahroto.fruitdestroyer.weapons;
 
 public class Weapon
 {
-    public static final int PISTOL = 0;
-    public static final int SHOTGUN = 1;
-    public static final int SMG = 2;
-    public static final int ASSAULT_RIFLE = 3;
-    public static final int MACHINE_GUN = 4;
-
+    private boolean isAutomatic;
     private int damage;
     private int rateOfFire;
     private int magSize;
-    private float accuracy;
+    private float spread;
 
-    public Weapon(int damage, int rateOfFire, int magSize, float accuracy)
+    public Weapon(boolean isAutomatic, int damage, int rateOfFire, int magSize, float spread)
     {
+        this.isAutomatic = isAutomatic;
         this.damage = damage;
         this.rateOfFire = rateOfFire;
         this.magSize = magSize;
-        this.accuracy = accuracy;
+        this.spread = spread;
+    }
+
+    public boolean isAutomatic()
+    {
+        return isAutomatic;
     }
 
     public int getDamage()
@@ -36,8 +37,8 @@ public class Weapon
         return magSize;
     }
 
-    public float getAccuracy()
+    public float getSpread()
     {
-        return accuracy;
+        return spread;
     }
 }

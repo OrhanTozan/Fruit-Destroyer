@@ -78,11 +78,8 @@ public class LoadingScreen2 implements Screen
         for (int i = 0; i < 5; i++)
             Explosion.totalExplosions.add(new Explosion(explosionsAtlas, APP.assets.get("sounds/explosion.ogg", Sound.class)));
 
-        // INIT PLAYER
-        player = new Player(gameScreenAtlas.createSprite("player"), gameScreenAtlas.createSprite("flash"), APP);
-
         // INIT BULLETS
-        for (int i = 0; i < Bullet.magSize; i++)
+        for (int i = 0; i < 30; i++)
             Bullet.totalBullets.add(new Bullet(gameScreenAtlas.createSprite("bullet")));
 
         // INIT ORANGES
@@ -92,6 +89,9 @@ public class LoadingScreen2 implements Screen
         // INIT ANANASES
         for (int i = 0; i < 20; i++)
             Enemy.totalEnemies.add(new Ananas(APP, gameScreenAtlas.findRegion("ananas"), gameScreenAtlas.findRegion("ananas-hit"), gameScreenAtlas.createSprite("red-bar"), gameScreenAtlas.createSprite("green-bar")));
+
+        // INIT PLAYER
+        player = new Player(gameScreenAtlas.createSprite("player"), gameScreenAtlas.createSprite("flash"), APP);
 
         // INIT INPUT-HANDLER
         inputHandler = new InputHandler(player);

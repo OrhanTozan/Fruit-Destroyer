@@ -141,7 +141,7 @@ public class GameScreen implements Screen
                 }
 
                 // UPDATE COLLISION
-                collisionHandler.update(player, actionMusic, deadHud);
+                collisionHandler.update(APP, player, actionMusic, deadHud);
 
                 if (Constants.STATUS == Constants.Status.DEAD)
                     break;
@@ -201,7 +201,7 @@ public class GameScreen implements Screen
                 }
 
                 // DO NOT SHOW RELOAD BUTTON WHEN AMMO IS FULL OR ALREADY RELOADING
-                if (player.ammo == 30 || player.isReloading())
+                if (player.ammo == Bullet.getWeapon().getMagSize() || player.isReloading())
                     gameHud.getActors().get(0).remove();
                 else
                     gameHud.addAllActorsToStage();
@@ -220,8 +220,7 @@ public class GameScreen implements Screen
                 break;
 
             case DEAD:
-                deadHud.update(delta);
-                break;
+                
         }
 
         // UPDATE CAMERA
