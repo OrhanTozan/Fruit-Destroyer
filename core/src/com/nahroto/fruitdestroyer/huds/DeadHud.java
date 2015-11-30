@@ -16,7 +16,7 @@ public class DeadHud extends Hud
 {
     private ImageButton retryButton;
 
-    public DeadHud(Viewport viewport, SpriteBatch batch, TextureRegion retryButtonUp, TextureRegion retryButtonDown, final Music actionMusic)
+    public DeadHud(Viewport viewport, SpriteBatch batch, TextureRegion retryButtonUp, TextureRegion retryButtonDown, final GameResetter gameResetter)
     {
         super(viewport, batch);
 
@@ -31,8 +31,10 @@ public class DeadHud extends Hud
                 // REMOVE THIS HUDS ACTORS
                 removeAllActorsFromStage();
 
+                System.out.println("cyka");
                 // RESET THE GAME
-                GameResetter.newGame(actionMusic);
+                gameResetter.newGame();
+                System.out.println("blyat");
             }
         });
 

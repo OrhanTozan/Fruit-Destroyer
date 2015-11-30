@@ -23,6 +23,7 @@ import com.nahroto.fruitdestroyer.entities.Player;
 import com.nahroto.fruitdestroyer.entities.enemies.Ananas;
 import com.nahroto.fruitdestroyer.entities.enemies.Enemy;
 import com.nahroto.fruitdestroyer.entities.enemies.Orange;
+import com.nahroto.fruitdestroyer.helpers.GameResetter;
 import com.nahroto.fruitdestroyer.huds.DeadHud;
 import com.nahroto.fruitdestroyer.huds.GameHud;
 
@@ -40,6 +41,8 @@ public class LoadingScreen2 implements Screen
 
     private long currentTime;
     private InputMultiplexer inputMultiplexer;
+
+    private CollisionHandler collisionHandler;
 
     private InputHandler inputHandler;
     private Font ammoStatus;
@@ -59,8 +62,6 @@ public class LoadingScreen2 implements Screen
     @Override
     public void show()
     {
-        Constants.STATUS = Constants.Status.LOADINGSCREEN2;
-
         //System.out.println("loadingscreen2");
         inputMultiplexer = new InputMultiplexer();
         currentTime = System.currentTimeMillis();
@@ -99,9 +100,10 @@ public class LoadingScreen2 implements Screen
         ammoStatus = new Font("fonts/trompus.otf", 100, Color.WHITE, Color.BLACK, 3, true);
 
         actionMusic = APP.assets.get("music/action.ogg", Music.class);
+        collisionHandler = new CollisionHandler(APP, gameScreenAtlas.findRegion("retry-button-up"), gameScreenAtlas.findRegion("retry-button-down"), bg, inputMultiplexer);
 
-        gameScreen = new GameScreen(APP, new GameHud(player, APP.viewport, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon")), new DeadHud(APP.viewport, APP.batch, gameScreenAtlas.findRegion("retry-button-up"), gameScreenAtlas.findRegion("retry-button-down"), actionMusic), bg, player, inputMultiplexer, inputHandler, new Input(), new CollisionHandler(), ammoStatus, actionMusic, gameScreenAtlas.createSprite("reload-icon"), new Integer(1), APP.assets.get("sounds/victory.ogg", Sound.class));
-
+        gameScreen = new GameScreen(APP, new GameHud(player, APP.viewport, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon")), bg, player, inputMultiplexer, inputHandler, new Input(), collisionHandler, ammoStatus, actionMusic, gameScreenAtlas.createSprite("reload-icon"), new Integer(1), APP.assets.get("sounds/victory.ogg", Sound.class));
+        collisionHandler.setGameScreen(APP, gameScreen);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.nahroto.fruitdestroyer.helpers;
 
 import com.badlogic.gdx.audio.Music;
+import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.Constants;
 import com.nahroto.fruitdestroyer.entities.Bullet;
 import com.nahroto.fruitdestroyer.entities.Player;
@@ -9,7 +10,16 @@ import com.nahroto.fruitdestroyer.screens.GameScreen;
 
 public class GameResetter
 {
-    public static void clearGame()
+    private final Application APP;
+    private GameScreen gameScreen;
+
+    public GameResetter(final Application APP, GameScreen gameScreen)
+    {
+        this.APP = APP;
+        this.gameScreen = gameScreen;
+    }
+
+    public void clearGame()
     {
         // CLEAR ALL ENEMIES
         Enemy.currentEnemies.clear();
@@ -20,20 +30,8 @@ public class GameResetter
         Bullet.currentBullets.clear();
     }
 
-    public static void newGame(Music actionMusic)
+    public void newGame()
     {
-        Constants.STATUS = Constants.Status.PLAYING;
-
-        // RESET WAVE
-        GameScreen.wave = 1;
-
-        // RESET PLAYER AMMO
-        Player.ammo = Bullet.getWeapon().getMagSize();
-
-        // START MUSIC AGAIN
-        actionMusic.play();
-
-        // START NEW WAVE
-        GameScreen.startNewWave();
+        APP.setScreen(gameScreen);
     }
 }

@@ -1,24 +1,31 @@
 package com.nahroto.fruitdestroyer.helpers;
 
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Intersector;
 import com.nahroto.fruitdestroyer.Application;
+import com.nahroto.fruitdestroyer.InputHandler;
 import com.nahroto.fruitdestroyer.entities.Bullet;
 import com.nahroto.fruitdestroyer.entities.Player;
 import com.nahroto.fruitdestroyer.entities.enemies.Enemy;
 import com.nahroto.fruitdestroyer.huds.DeadHud;
 import com.nahroto.fruitdestroyer.screens.DeadScreen;
+import com.nahroto.fruitdestroyer.screens.GameScreen;
 
 public class CollisionHandler
 {
     private DeadScreen deadScreen;
+    private GameResetter gameResetter;
+    private GameScreen gameScreen;
 
-    public CollisionHandler(final Application APP)
+    public CollisionHandler(final Application APP, TextureRegion retryButtonUp, TextureRegion retryButtonDown, Texture bg, InputMultiplexer inputMultiplexer)
     {
-        deadScreen = new DeadScreen(APP);
+        deadScreen = new DeadScreen(APP, retryButtonUp, retryButtonDown, gameResetter, bg, inputMultiplexer);
     }
 
-    public void update(Application APP, Player player, Music gameMusic, DeadHud deadHud)
+    public void update(Application APP, Player player, Music gameMusic)
     {
         for (int i = 0; i < Enemy.currentEnemies.size; i++)
         {
@@ -28,8 +35,6 @@ public class CollisionHandler
                 // IF ENEMY COLLIDES WITH BULLET
                 if (Intersector.overlapConvexPolygons(Enemy.currentEnemies.get(i).getBounds(), Bullet.currentBullets.get(j).getBounds()))
                 {
-                    // System.out.println(Enemy.currentEnemies.size);
-
                     // DAMAGE THE ENEMY
                     Enemy.currentEnemies.get(i).renderHit = true;
                     Enemy.currentEnemies.get(i).playSquishSound();
@@ -47,12 +52,16 @@ public class CollisionHandler
             // IF ENEMY COLLIDES WITH PLAYER
             if (Intersector.overlapConvexPolygons(Enemy.currentEnemies.get(i).getBounds(), player.getBounds()))
             {
-                GameResetter.clearGame();
-                deadHud.addAllActorsToStage();
-                APP.setScreen(randomScreen);
-                // Constants.STATUS = Constants.Status.DEAD;
+                gameResetter.clearGame();
+                APP.setScreen(deadScreen);
                 gameMusic.stop();
             }
         }
+    }
+
+    public void setGameScreen(final Application APP, GameScreen gameScreen)
+    {
+        this.gameScreen = gameScreen;
+        gameResetter = new GameResetter(APP, gameScreen);
     }
 }
