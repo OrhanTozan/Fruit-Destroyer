@@ -19,19 +19,20 @@ public class GameResetter
         this.gameScreen = gameScreen;
     }
 
-    public void clearGame()
+    public void newGame()
     {
         // CLEAR ALL ENEMIES
         Enemy.currentEnemies.clear();
 
-        System.out.println(Enemy.currentEnemies.size);
+        GameScreen.wave = 1;
 
         // CLEAR ALL BULLETS
         Bullet.currentBullets.clear();
+        APP.setScreen(gameScreen);
     }
 
-    public void newGame()
+    public void setGameScreen(GameScreen gameScreen)
     {
-        APP.setScreen(gameScreen);
+        this.gameScreen = gameScreen;
     }
 }

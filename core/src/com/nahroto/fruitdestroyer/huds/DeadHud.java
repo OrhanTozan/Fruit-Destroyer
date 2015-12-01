@@ -31,10 +31,8 @@ public class DeadHud extends Hud
                 // REMOVE THIS HUDS ACTORS
                 removeAllActorsFromStage();
 
-                System.out.println("cyka");
                 // RESET THE GAME
                 gameResetter.newGame();
-                System.out.println("blyat");
             }
         });
 

@@ -41,7 +41,7 @@ public class GameScreen implements Screen
     private InputHandler inputHandler;
     private Input input;
     private CollisionHandler collisionHandler;
-    private BitmapFont font;
+
     private GameHud gameHud;
     private Font ammoStatus;
     private Music actionMusic;
@@ -74,7 +74,7 @@ public class GameScreen implements Screen
     @Override
     public void show()
     {
-        System.out.println("cyka");
+        System.out.println("GAMESCREEN SHOW");
         inputMultiplexer.clear();
         inputMultiplexer.addProcessor(gameHud.getStage());
         inputMultiplexer.addProcessor(input);
@@ -87,10 +87,6 @@ public class GameScreen implements Screen
 
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
         APP.camera.update();
-
-
-        font = new BitmapFont();
-        font.setColor(Color.WHITE);
 
         reloadIcon.setPosition(110, 20);
 
@@ -251,9 +247,6 @@ public class GameScreen implements Screen
 
         // RENDER WAVE STATUS
         ammoStatus.render(APP.batch, "wave " + wave.toString(), Constants.V_WIDTH / 2 - (ammoStatus.getWidth("wave " + wave.toString()) / 2), Constants.V_HEIGHT - 30, false);
-
-        // SHOW FPS
-        font.draw(APP.batch, Gdx.graphics.getFramesPerSecond() + " ", 50, 1250);
 
         APP.batch.end();
 

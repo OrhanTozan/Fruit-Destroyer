@@ -49,6 +49,9 @@ public class LoadingScreen2 implements Screen
     private Music actionMusic;
 
     private GameScreen gameScreen;
+    private DeadScreen deadScreen;
+
+    private GameResetter gameResetter;
 
     private Font font;
 
@@ -100,10 +103,16 @@ public class LoadingScreen2 implements Screen
         ammoStatus = new Font("fonts/trompus.otf", 100, Color.WHITE, Color.BLACK, 3, true);
 
         actionMusic = APP.assets.get("music/action.ogg", Music.class);
-        collisionHandler = new CollisionHandler(APP, gameScreenAtlas.findRegion("retry-button-up"), gameScreenAtlas.findRegion("retry-button-down"), bg, inputMultiplexer);
+
+        gameResetter = new GameResetter(APP, gameScreen);
+
+        deadScreen = new DeadScreen(APP, gameScreenAtlas.findRegion("retry-button-up"), gameScreenAtlas.findRegion("retry-button-down"), gameResetter, bg, inputMultiplexer);
+
+        collisionHandler = new CollisionHandler(gameResetter, deadScreen);
 
         gameScreen = new GameScreen(APP, new GameHud(player, APP.viewport, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon")), bg, player, inputMultiplexer, inputHandler, new Input(), collisionHandler, ammoStatus, actionMusic, gameScreenAtlas.createSprite("reload-icon"), new Integer(1), APP.assets.get("sounds/victory.ogg", Sound.class));
-        collisionHandler.setGameScreen(APP, gameScreen);
+
+        gameResetter.setGameScreen(gameScreen);
     }
 
     @Override

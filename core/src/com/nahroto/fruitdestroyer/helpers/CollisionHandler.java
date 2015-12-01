@@ -16,13 +16,14 @@ import com.nahroto.fruitdestroyer.screens.GameScreen;
 
 public class CollisionHandler
 {
-    private DeadScreen deadScreen;
-    private GameResetter gameResetter;
-    private GameScreen gameScreen;
 
-    public CollisionHandler(final Application APP, TextureRegion retryButtonUp, TextureRegion retryButtonDown, Texture bg, InputMultiplexer inputMultiplexer)
+    private GameResetter gameResetter;
+    private DeadScreen deadScreen;
+
+    public CollisionHandler(GameResetter gameResetter, DeadScreen deadScreen)
     {
-        deadScreen = new DeadScreen(APP, retryButtonUp, retryButtonDown, gameResetter, bg, inputMultiplexer);
+        this.gameResetter = gameResetter;
+        this.deadScreen = deadScreen;
     }
 
     public void update(Application APP, Player player, Music gameMusic)
@@ -57,11 +58,5 @@ public class CollisionHandler
                 gameMusic.stop();
             }
         }
-    }
-
-    public void setGameScreen(final Application APP, GameScreen gameScreen)
-    {
-        this.gameScreen = gameScreen;
-        gameResetter = new GameResetter(APP, gameScreen);
     }
 }

@@ -7,6 +7,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.MathUtils;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.helpers.GameResetter;
 import com.nahroto.fruitdestroyer.huds.DeadHud;
@@ -39,6 +40,8 @@ public class DeadScreen implements Screen
     {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        System.out.println(MathUtils.random(0, 60));
 
         deadHud.update(delta);
 
