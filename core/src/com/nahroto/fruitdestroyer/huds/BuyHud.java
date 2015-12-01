@@ -28,6 +28,7 @@ public class BuyHud extends Hud
             public void run()
             {
                 GameScreen.buying = !GameScreen.buying;
+                Logger.log("reveretsd");
             }
         };
 
@@ -59,7 +60,7 @@ public class BuyHud extends Hud
     private void easeIn()
     {
         Logger.log(GameScreen.buying);
-        overlay.addAction(parallel(moveToAligned(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2, Align.center, 0.5f, Interpolation.pow2Out), run(toggleBuying)));
+        overlay.addAction(sequence(run(toggleBuying), moveToAligned(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2, Align.center, 0.5f, Interpolation.pow2Out)));
         Logger.log(GameScreen.buying);
     }
 
