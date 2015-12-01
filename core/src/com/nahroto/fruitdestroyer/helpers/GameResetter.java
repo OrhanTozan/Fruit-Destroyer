@@ -13,10 +13,9 @@ public class GameResetter
     private final Application APP;
     private GameScreen gameScreen;
 
-    public GameResetter(final Application APP, GameScreen gameScreen)
+    public GameResetter(final Application APP)
     {
         this.APP = APP;
-        this.gameScreen = gameScreen;
     }
 
     public void newGame()
@@ -24,10 +23,12 @@ public class GameResetter
         // CLEAR ALL ENEMIES
         Enemy.currentEnemies.clear();
 
-        GameScreen.wave = 1;
-
         // CLEAR ALL BULLETS
         Bullet.currentBullets.clear();
+
+        // RESET WAVE
+        GameScreen.wave = 1;
+
         APP.setScreen(gameScreen);
     }
 

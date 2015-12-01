@@ -17,12 +17,10 @@ import com.nahroto.fruitdestroyer.screens.GameScreen;
 public class CollisionHandler
 {
 
-    private GameResetter gameResetter;
     private DeadScreen deadScreen;
 
-    public CollisionHandler(GameResetter gameResetter, DeadScreen deadScreen)
+    public CollisionHandler(DeadScreen deadScreen)
     {
-        this.gameResetter = gameResetter;
         this.deadScreen = deadScreen;
     }
 
@@ -53,7 +51,6 @@ public class CollisionHandler
             // IF ENEMY COLLIDES WITH PLAYER
             if (Intersector.overlapConvexPolygons(Enemy.currentEnemies.get(i).getBounds(), player.getBounds()))
             {
-                gameResetter.clearGame();
                 APP.setScreen(deadScreen);
                 gameMusic.stop();
             }
