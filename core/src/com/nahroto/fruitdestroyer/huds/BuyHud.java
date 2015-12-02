@@ -1,5 +1,6 @@
 package com.nahroto.fruitdestroyer.huds;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Interpolation;
@@ -7,18 +8,26 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nahroto.fruitdestroyer.Constants;
-import com.nahroto.fruitdestroyer.Logger;
 import com.nahroto.fruitdestroyer.screens.GameScreen;
 
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
 
 public class BuyHud extends Hud
 {
-    private boolean on;
-    private Image overlay;
-    private Runnable toggleBuying;
+    private final float EASE_TIME = 1f;
 
-    public BuyHud(Viewport viewport, SpriteBatch batch, TextureAtlas gameScreenAtlas)
+    private boolean isShowed;
+    private boolean isEasing;
+
+    private Image overlay;
+    private Image blackShader;
+
+    private Runnable toggleBuying;
+    private Runnable toggleEasing;
+    private Runnable resetPosition;
+    private Runnable hideBlackShader;
+
+    public BuyHud(Viewport viewport, SpriteBatch batch, TextureAtlas gameScreenAtlas, Texture blackShaderTexture)
     {
         super(viewport, batch);
 
@@ -28,14 +37,43 @@ public class BuyHud extends Hud
             public void run()
             {
                 GameScreen.buying = !GameScreen.buying;
-                Logger.log("reveretsd");
             }
         };
 
+        toggleEasing = new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                isEasing = !isEasing;
+            }
+        };
+
+        resetPosition = new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                resetPosition();
+            }
+        };
+
+        hideBlackShader = new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                hideBlackShader();
+            }
+        };
+
+        blackShader = new Image(blackShaderTexture);
+        blackShader.addAction(alpha(0f));
+
         overlay = new Image(gameScreenAtlas.findRegion("overlay"));
-        overlay.setPosition(Constants.V_WIDTH, Constants.V_HEIGHT / 2, Align.left);
+        resetPosition();
 
-
+        actors.add(blackShader);
         actors.add(overlay);
 
         addAllActorsToStage();
@@ -43,29 +81,52 @@ public class BuyHud extends Hud
 
     public void toggle()
     {
-        if (!on)
+        if (isShowed == false)
         {
-            Logger.log("toggled");
             easeIn();
-            on = true;
+            showBlackShader();
+            isShowed = true;
         }
 
         else
         {
             easeOut();
-            on = false;
+            isShowed = false;
         }
     }
 
     private void easeIn()
     {
-        Logger.log(GameScreen.buying);
-        overlay.addAction(sequence(run(toggleBuying), moveToAligned(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2, Align.center, 0.5f, Interpolation.pow2Out)));
-        Logger.log(GameScreen.buying);
+        isEasing = true;
+        overlay.addAction(sequence(
+                moveToAligned(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2, Align.center, EASE_TIME, Interpolation.pow2Out),
+                run(toggleEasing)));
+        GameScreen.buying = true;
     }
 
     private void easeOut()
     {
-        overlay.addAction(sequence(moveToAligned(Constants.V_WIDTH, Constants.V_HEIGHT / 2, Align.left, 0.5f, Interpolation.pow2Out), run(toggleBuying)));
+        isEasing = true;
+        overlay.addAction(sequence(
+                parallel(moveToAligned(0, Constants.V_HEIGHT / 2, Align.right, EASE_TIME, Interpolation.pow2Out), run(hideBlackShader)),
+                run(toggleEasing),
+                run(toggleBuying),
+                run(resetPosition)));
+    }
+
+    private void resetPosition()
+    {
+        overlay.setPosition(Constants.V_WIDTH, Constants.V_HEIGHT / 2, Align.left);
+    }
+
+    private void showBlackShader()
+    {
+        blackShader.addAction(alpha(1f, EASE_TIME));
+    }
+
+    private void hideBlackShader()
+    {
+        blackShader.addAction(
+                alpha(0f, EASE_TIME));
     }
 }

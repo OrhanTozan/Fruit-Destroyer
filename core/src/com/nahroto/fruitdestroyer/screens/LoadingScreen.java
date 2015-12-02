@@ -34,7 +34,7 @@ public class LoadingScreen extends BasicLoadingScreen implements Screen
         APP.camera.update();
 
         // INIT BACKGROUND
-        bg = new Texture("backgrounds/map2.png");
+        bg = new Texture("backgrounds/map.png");
         bg.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
         // LOAD EXPLOSIONS ATLAS

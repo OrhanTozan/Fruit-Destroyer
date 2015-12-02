@@ -38,6 +38,8 @@ public class LoadingScreen2 implements Screen
     private TextureAtlas explosionsAtlas;
 
     private Texture bg;
+    private Texture blackShaderTexture;
+
     private Player player;
 
     private long currentTime;
@@ -105,13 +107,16 @@ public class LoadingScreen2 implements Screen
 
         actionMusic = APP.assets.get("music/action.ogg", Music.class);
 
+        blackShaderTexture = new Texture("backgrounds/blackShader.png");
+        blackShaderTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+
         gameResetter = new GameResetter(APP);
 
         deadScreen = new DeadScreen(APP, gameScreenAtlas.findRegion("retry-button-up"), gameScreenAtlas.findRegion("retry-button-down"), gameResetter, bg, inputMultiplexer);
 
         collisionHandler = new CollisionHandler(deadScreen);
 
-        gameScreen = new GameScreen(APP, new GameHud(player, APP.viewport, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon")), new BuyHud(APP.viewport, APP.batch, gameScreenAtlas), bg, player, inputMultiplexer, inputHandler, new Input(), collisionHandler, ammoStatus, actionMusic, gameScreenAtlas.createSprite("reload-icon"), new Integer(1), APP.assets.get("sounds/victory.ogg", Sound.class));
+        gameScreen = new GameScreen(APP, new GameHud(player, APP.viewport, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon")), new BuyHud(APP.viewport, APP.batch, gameScreenAtlas, blackShaderTexture), bg, player, inputMultiplexer, inputHandler, new Input(), collisionHandler, ammoStatus, actionMusic, gameScreenAtlas.createSprite("reload-icon"), new Integer(1), APP.assets.get("sounds/victory.ogg", Sound.class));
 
         gameResetter.setGameScreen(gameScreen);
     }
