@@ -41,12 +41,12 @@ public class DeadScreen implements Screen
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        System.out.println(MathUtils.random(0, 60));
-
+        // UPDATE
         deadHud.update(delta);
 
         APP.camera.update();
 
+        // RENDER
         APP.batch.setProjectionMatrix(APP.camera.combined);
         APP.batch.begin();
         APP.batch.draw(bg, -80, -80);

@@ -58,6 +58,7 @@ public class Player
     private float[] vertices;
 
     private int reloadTime;
+
     public Player(Sprite sprite, Sprite flashSprite, final Application APP)
     {
         this.APP = APP;
@@ -94,6 +95,7 @@ public class Player
         reloading = false;
 
         ammo = new Integer(Bullet.getWeapon().getMagSize());
+
         }
 
     public void update()

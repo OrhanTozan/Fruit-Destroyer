@@ -23,10 +23,6 @@ public class InputHandler
                 lastShotTime = System.currentTimeMillis();
                 player.shoot();
             }
-
-            // IF CURRENT WEAPON IS SEMI_AUTOMATIC, RESET INPUT TOUCHDOWN
-            if (!Bullet.getWeapon().isAutomatic())
-                Input.touchDown = false;
         }
     }
 }

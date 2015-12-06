@@ -56,7 +56,6 @@ public class GameScreen implements Screen
 
     public static boolean buying;
 
-
     private ShapeRenderer shapeRenderer;
 
     public GameScreen(final Application APP, GameHud gameHud, BuyHud buyHud, Texture bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Integer wave, Sound waveSFX)
@@ -81,6 +80,7 @@ public class GameScreen implements Screen
     public void show()
     {
         System.out.println("GAMESCREEN SHOW");
+
         inputMultiplexer.clear();
         inputMultiplexer.addProcessor(buyHud.getStage());
         inputMultiplexer.addProcessor(gameHud.getStage());
@@ -115,8 +115,8 @@ public class GameScreen implements Screen
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        if (Gdx.input.justTouched())
-            buyHud.toggle();
+        /* if (Gdx.input.justTouched())
+            buyHud.toggle(); */
 
         if (!GameScreen.buying)
         {

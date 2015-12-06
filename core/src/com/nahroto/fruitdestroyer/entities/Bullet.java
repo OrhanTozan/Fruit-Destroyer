@@ -13,6 +13,10 @@ import com.nahroto.fruitdestroyer.weapons.WeaponList;
 public class Bullet
 {
     public static final int VELOCITY = 1200;
+    private static final int startDamage = 10;
+    private static final int startROF = 200;
+    private static final int startMagSize = 20;
+    private static final float startSpread = 0.3f;
 
     public static Array<Bullet> totalBullets = new Array<Bullet>();
     public static Array<Bullet> currentBullets = new Array<Bullet>();
@@ -22,13 +26,7 @@ public class Bullet
     private Polygon bounds;
     private float[] vertices;
 
-    private static Weapon currentWeapon;
-
-    private final Weapon PISTOL;
-    private final Weapon SHOTGUN;
-    private final Weapon SUBMACHINE_GUN;
-    private final Weapon ASSAULT_RIFLE;
-    private final Weapon MACHINE_GUN;
+    private static Weapon weapon;
 
     public boolean isOutOfScreen;
     public boolean isUsed;
@@ -37,13 +35,7 @@ public class Bullet
     {
         this.sprite = sprite;
 
-        PISTOL = new Weapon(WeaponList.PISTOL.IS_AUTOMATIC, WeaponList.PISTOL.DAMAGE, WeaponList.PISTOL.RATE_OF_FIRE, WeaponList.PISTOL.MAG_SIZE, WeaponList.PISTOL.SPREAD);
-        SHOTGUN = new Weapon(WeaponList.SHOTGUN.IS_AUTOMATIC, WeaponList.SHOTGUN.DAMAGE, WeaponList.SHOTGUN.RATE_OF_FIRE, WeaponList.SHOTGUN.MAG_SIZE, WeaponList.SHOTGUN.SPREAD);
-        SUBMACHINE_GUN = new Weapon(WeaponList.SUBMACHINE_GUN.IS_AUTOMATIC, WeaponList.SUBMACHINE_GUN.DAMAGE, WeaponList.SUBMACHINE_GUN.RATE_OF_FIRE, WeaponList.SUBMACHINE_GUN.MAG_SIZE, WeaponList.SUBMACHINE_GUN.SPREAD);
-        ASSAULT_RIFLE = new Weapon(WeaponList.ASSAULT_RIFLE.IS_AUTOMATIC, WeaponList.ASSAULT_RIFLE.DAMAGE, WeaponList.ASSAULT_RIFLE.RATE_OF_FIRE, WeaponList.ASSAULT_RIFLE.MAG_SIZE, WeaponList.ASSAULT_RIFLE.SPREAD);
-        MACHINE_GUN = new Weapon(WeaponList.MACHINE_GUN.IS_AUTOMATIC, WeaponList.MACHINE_GUN.DAMAGE, WeaponList.MACHINE_GUN.RATE_OF_FIRE, WeaponList.MACHINE_GUN.MAG_SIZE, WeaponList.MACHINE_GUN.SPREAD);
-
-        currentWeapon = PISTOL;
+        weapon = new Weapon(startDamage, startROF, startMagSize, startSpread);
 
         velocity = new Vector2();
 
@@ -112,6 +104,6 @@ public class Bullet
 
     public static Weapon getWeapon()
     {
-        return currentWeapon;
+        return weapon;
     }
 }

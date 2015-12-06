@@ -77,6 +77,7 @@ public class BuyHud extends Hud
         overlay = new Image(gameScreenAtlas.findRegion("overlay"));
 
         extraAmmoButton = new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("moreAmmoUpgrade")), new TextureRegionDrawable(gameScreenAtlas.findRegion("moreAmmoUpgrade-down")));
+        extraAmmoButton.setPosition(overlay.getX(Align.center), overlay.getY(Align.center), Align.bottom);
 
         resetPosition();
 

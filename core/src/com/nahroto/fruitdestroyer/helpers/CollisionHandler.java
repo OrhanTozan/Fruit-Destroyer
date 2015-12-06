@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Intersector;
 import com.nahroto.fruitdestroyer.Application;
+import com.nahroto.fruitdestroyer.Input;
 import com.nahroto.fruitdestroyer.InputHandler;
 import com.nahroto.fruitdestroyer.entities.Bullet;
 import com.nahroto.fruitdestroyer.entities.Player;
@@ -51,6 +52,7 @@ public class CollisionHandler
             // IF ENEMY COLLIDES WITH PLAYER
             if (Intersector.overlapConvexPolygons(Enemy.currentEnemies.get(i).getBounds(), player.getBounds()))
             {
+                Input.touchDown = false;
                 APP.setScreen(deadScreen);
                 gameMusic.stop();
             }
