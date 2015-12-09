@@ -16,6 +16,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.CameraShaker;
+import com.nahroto.fruitdestroyer.RandomPositioner;
 import com.nahroto.fruitdestroyer.helpers.CollisionHandler;
 import com.nahroto.fruitdestroyer.Constants;
 import com.nahroto.fruitdestroyer.Explosion;
@@ -303,7 +304,7 @@ public class GameScreen implements Screen
         {
             Enemy.currentEnemies.add(Enemy.totalEnemies.get(i));
             Enemy.currentEnemies.get(i).restoreHealth();
-            Enemy.currentEnemies.get(i).setPosition(Constants.getRandomPosition(MathUtils.random(0, 15), Enemy.currentEnemies.get(i).getSprite().getWidth(), Enemy.currentEnemies.get(i).getSprite().getHeight()));
+            Enemy.currentEnemies.get(i).setPosition(RandomPositioner.getRandomPosition());
             Enemy.currentEnemies.get(i).calculateRotation();
             Enemy.currentEnemies.get(i).calculateVelocity();
         }

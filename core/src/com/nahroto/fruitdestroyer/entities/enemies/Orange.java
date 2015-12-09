@@ -14,6 +14,6 @@ public class Orange extends Enemy
         maxHealth = 30;
         health = maxHealth;
         explodable = false;
-        velocityMultiplier = 1f;
+        velocityMultiplier = 2f;
     }
 }

@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 import com.nahroto.fruitdestroyer.Application;
+import com.nahroto.fruitdestroyer.Logger;
 import com.nahroto.fruitdestroyer.helpers.CollisionHandler;
 import com.nahroto.fruitdestroyer.Constants;
 import com.nahroto.fruitdestroyer.Explosion;
