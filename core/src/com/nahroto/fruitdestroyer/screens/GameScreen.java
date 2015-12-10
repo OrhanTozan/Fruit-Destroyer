@@ -83,7 +83,6 @@ public class GameScreen implements Screen
         System.out.println("GAMESCREEN SHOW");
 
         inputMultiplexer.clear();
-        inputMultiplexer.addProcessor(buyHud.getStage());
         inputMultiplexer.addProcessor(gameHud.getStage());
         inputMultiplexer.addProcessor(input);
         Gdx.input.setInputProcessor(inputMultiplexer);
