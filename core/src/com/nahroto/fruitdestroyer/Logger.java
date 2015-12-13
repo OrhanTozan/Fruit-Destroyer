@@ -1,6 +1,5 @@
 package com.nahroto.fruitdestroyer;
 
-import com.nahroto.fruitdestroyer.entities.enemies.Enemy;
 
 public class Logger
 {

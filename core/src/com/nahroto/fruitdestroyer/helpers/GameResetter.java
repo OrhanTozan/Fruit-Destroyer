@@ -3,6 +3,7 @@ package com.nahroto.fruitdestroyer.helpers;
 import com.badlogic.gdx.audio.Music;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.Constants;
+import com.nahroto.fruitdestroyer.WaveGenerator;
 import com.nahroto.fruitdestroyer.entities.Bullet;
 import com.nahroto.fruitdestroyer.entities.Player;
 import com.nahroto.fruitdestroyer.entities.enemies.Enemy;
@@ -27,7 +28,7 @@ public class GameResetter
         Bullet.currentBullets.clear();
 
         // RESET WAVE
-        GameScreen.wave = 1;
+        WaveGenerator.wave = 1;
 
         APP.setScreen(gameScreen);
     }

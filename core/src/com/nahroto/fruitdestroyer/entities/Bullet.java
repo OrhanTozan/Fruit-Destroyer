@@ -13,6 +13,7 @@ import com.nahroto.fruitdestroyer.weapons.WeaponList;
 public class Bullet
 {
     public static final int VELOCITY = 1200;
+
     private static final int startDamage = 10;
     private static final int startROF = 200;
     private static final int startMagSize = 20;

@@ -17,6 +17,7 @@ import com.badlogic.gdx.utils.Array;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.CameraShaker;
 import com.nahroto.fruitdestroyer.RandomPositioner;
+import com.nahroto.fruitdestroyer.WaveGenerator;
 import com.nahroto.fruitdestroyer.helpers.CollisionHandler;
 import com.nahroto.fruitdestroyer.Constants;
 import com.nahroto.fruitdestroyer.Explosion;
@@ -35,7 +36,7 @@ public class GameScreen implements Screen
 {
     private final Application APP;
 
-    private static final float WAVE_MULTIPLIER = 1.6f;
+
 
     private Texture bg;
     private Player player;
@@ -53,13 +54,11 @@ public class GameScreen implements Screen
 
     private Sound waveSFX;
 
-    public static Integer wave;
-
     public static boolean buying;
 
     private ShapeRenderer shapeRenderer;
 
-    public GameScreen(final Application APP, GameHud gameHud, BuyHud buyHud, Texture bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Integer wave, Sound waveSFX)
+    public GameScreen(final Application APP, GameHud gameHud, BuyHud buyHud, Texture bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Sound waveSFX)
     {
         this.APP = APP;
         this.gameHud = gameHud;
@@ -73,7 +72,6 @@ public class GameScreen implements Screen
         this.ammoStatus = ammoStatus;
         this.actionMusic = actionMusic;
         this.reloadIcon = reloadIcon;
-        this.wave = wave;
         this.waveSFX = waveSFX;
     }
 
@@ -101,12 +99,10 @@ public class GameScreen implements Screen
 
         player.ammo = Bullet.getWeapon().getMagSize();
 
+        WaveGenerator.startNewWave();
+
         if (Constants.DEBUG)
             shapeRenderer = new ShapeRenderer();
-
-        wave = 1;
-
-        startNewWave();
     }
 
     @Override
@@ -185,8 +181,8 @@ public class GameScreen implements Screen
             {
                 System.out.println("NEW WAVE STARTED");
                 waveSFX.play();
-                wave++;
-                startNewWave();
+                WaveGenerator.wave++;
+                WaveGenerator.startNewWave();
             }
 
             // UPDATE EXPLOSIONS
@@ -264,7 +260,7 @@ public class GameScreen implements Screen
             reloadIcon.draw(APP.batch);
 
         // RENDER WAVE STATUS
-        ammoStatus.render(APP.batch, "wave " + wave.toString(), Constants.V_WIDTH / 2 - (ammoStatus.getWidth("wave " + wave.toString()) / 2), Constants.V_HEIGHT - 30, false);
+        ammoStatus.render(APP.batch, "wave " + WaveGenerator.wave.toString(), Constants.V_WIDTH / 2 - (ammoStatus.getWidth("wave " + WaveGenerator.wave.toString()) / 2), Constants.V_HEIGHT - 30, false);
 
         APP.batch.end();
 
@@ -294,18 +290,6 @@ public class GameScreen implements Screen
         {
             System.out.println("Total enemies: " + Enemy.totalEnemies.size + ", " + "current enemies: " + Enemy.currentEnemies.size);
             System.out.println("Total bullets: " + Bullet.totalBullets.size + ", " + "current bullets: " + Bullet.currentBullets.size);
-        }
-    }
-
-    public static void startNewWave()
-    {
-        for (int i = 0; i < MathUtils.round(wave * WAVE_MULTIPLIER); i++)
-        {
-            Enemy.currentEnemies.add(Enemy.totalEnemies.get(i));
-            Enemy.currentEnemies.get(i).restoreHealth();
-            Enemy.currentEnemies.get(i).setPosition(RandomPositioner.getRandomPosition());
-            Enemy.currentEnemies.get(i).calculateRotation();
-            Enemy.currentEnemies.get(i).calculateVelocity();
         }
     }
 
