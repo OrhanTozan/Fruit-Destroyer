@@ -13,7 +13,7 @@ public class Orange extends Enemy
     {
         super(APP, normalTexture, hitTexture, redBar, greenBar, 17, 10, 63, 60);
 
-        maxHealth = 30;
+        maxHealth = 15;
         health = maxHealth;
         explodable = false;
         velocityMultiplier = 2f;

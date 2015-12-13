@@ -5,8 +5,8 @@ import com.badlogic.gdx.math.Vector2;
 
 public class RandomPositioner
 {
-    private static final int MIN_BOUND = 200;
-    private static final int MAX_BOUND = 300;
+    private static final int MIN_DISTANCE = 200;
+    private static final int MAX_DISTANCE = 300;
 
     private static Vector2 randomPosition = new Vector2();
 
@@ -17,20 +17,25 @@ public class RandomPositioner
 
     public static Vector2 getRandomPosition()
     {
-        leftPosition = MathUtils.randomBoolean();
+        // leftPosition = MathUtils.randomBoolean();
         underPosition = MathUtils.randomBoolean();
 
-        if (leftPosition)
-            randomX = MathUtils.random(-MAX_BOUND, -MIN_BOUND);
+        /*if (leftPosition)
+            randomX = MathUtils.random(-MAX_DISTANCE, -MIN_DISTANCE);
         else
-            randomX = MathUtils.random(Constants.V_WIDTH + MIN_BOUND, Constants.V_WIDTH + MAX_BOUND);
+            randomX = MathUtils.random(Constants.V_WIDTH + MIN_DISTANCE, Constants.V_WIDTH + MAX_DISTANCE);*/
+
+        randomX = MathUtils.random(-MAX_DISTANCE, Constants.V_WIDTH + MAX_DISTANCE);
 
         if (underPosition)
-            randomY = MathUtils.random(-MAX_BOUND, -MIN_BOUND);
+            randomY = MathUtils.random(-MAX_DISTANCE, -MIN_DISTANCE);
         else
-            randomY = MathUtils.random(Constants.V_HEIGHT + MIN_BOUND, Constants.V_HEIGHT + MAX_BOUND);
+            randomY = MathUtils.random(Constants.V_HEIGHT + MIN_DISTANCE, Constants.V_HEIGHT + MAX_DISTANCE);
+
 
         randomPosition.set(randomX, randomY);
+
+        Logger.log(randomPosition);
 
         return randomPosition;
     }

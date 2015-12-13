@@ -1,6 +1,8 @@
 package com.nahroto.fruitdestroyer;
 
 
+import com.badlogic.gdx.math.Vector2;
+
 public class Logger
 {
     public static void log(String string)
@@ -31,5 +33,10 @@ public class Logger
     public static void log(boolean booleanA)
     {
         System.out.println(booleanA);
+    }
+
+    public static void log(Vector2 v2)
+    {
+        System.out.println(v2);
     }
 }

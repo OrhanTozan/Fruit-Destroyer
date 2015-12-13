@@ -37,7 +37,6 @@ public class GameScreen implements Screen
     private final Application APP;
 
 
-
     private Texture bg;
     private Player player;
     private InputMultiplexer inputMultiplexer;
@@ -99,10 +98,11 @@ public class GameScreen implements Screen
 
         player.ammo = Bullet.getWeapon().getMagSize();
 
-        WaveGenerator.startNewWave();
-
         if (Constants.DEBUG)
             shapeRenderer = new ShapeRenderer();
+
+        WaveGenerator.wave = 1;
+        WaveGenerator.startNewWave();
     }
 
     @Override
@@ -287,10 +287,7 @@ public class GameScreen implements Screen
             buyHud.render();
 
         if (Constants.DEBUG)
-        {
-            System.out.println("Total enemies: " + Enemy.totalEnemies.size + ", " + "current enemies: " + Enemy.currentEnemies.size);
             System.out.println("Total bullets: " + Bullet.totalBullets.size + ", " + "current bullets: " + Bullet.currentBullets.size);
-        }
     }
 
 

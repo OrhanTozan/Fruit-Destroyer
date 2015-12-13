@@ -19,9 +19,10 @@ import com.nahroto.fruitdestroyer.HealthBar;
 
 public class Enemy
 {
+    public static Array<Enemy> totalEnemies = new Array<Enemy>();
     public static Array<Enemy> currentEnemies = new Array<Enemy>();
 
-    protected static final int BASEVELOCITY = 40;
+    protected static final int BASEVELOCITY = 30;
     protected float velocityMultiplier;
     protected boolean explodable;
 

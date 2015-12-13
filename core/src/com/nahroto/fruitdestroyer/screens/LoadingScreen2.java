@@ -98,6 +98,9 @@ public class LoadingScreen2 implements Screen
         for (int i = 0; i < 20; i++)
             Ananas.totalAnanases.add(new Ananas(APP, gameScreenAtlas.findRegion("ananas"), gameScreenAtlas.findRegion("ananas-hit"), gameScreenAtlas.createSprite("red-bar"), gameScreenAtlas.createSprite("green-bar")));
 
+        Enemy.totalEnemies.addAll(Orange.totalOranges);
+        Enemy.totalEnemies.addAll(Ananas.totalAnanases);
+
         // INIT PLAYER
         player = new Player(gameScreenAtlas.createSprite("player"), gameScreenAtlas.createSprite("flash"), APP);
 
