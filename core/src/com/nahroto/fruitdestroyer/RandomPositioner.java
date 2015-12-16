@@ -35,8 +35,6 @@ public class RandomPositioner
 
         randomPosition.set(randomX, randomY);
 
-        Logger.log(randomPosition);
-
         return randomPosition;
     }
 }

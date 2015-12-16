@@ -16,6 +16,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.CameraShaker;
+import com.nahroto.fruitdestroyer.Logger;
 import com.nahroto.fruitdestroyer.RandomPositioner;
 import com.nahroto.fruitdestroyer.WaveGenerator;
 import com.nahroto.fruitdestroyer.helpers.CollisionHandler;
@@ -102,6 +103,7 @@ public class GameScreen implements Screen
             shapeRenderer = new ShapeRenderer();
 
         WaveGenerator.wave = 1;
+        Logger.log("NEW WAVE STARTED");
         WaveGenerator.startNewWave();
     }
 
@@ -170,14 +172,17 @@ public class GameScreen implements Screen
                         }
                         CameraShaker.startShaking(3f, 750);
                     }
+                    Enemy.currentEnemies.get(i).isUsed = false;
 
                     // REMOVE ENEMY
                     Enemy.currentEnemies.removeIndex(i);
                 }
             }
 
+            WaveGenerator.update();
+
             // WHEN WAVE IS CLEARED, START NEW WAVE
-            if (Enemy.currentEnemies.size == 0)
+            if (Enemy.currentEnemies.size == 0 && WaveGenerator.getQueue().size == 0)
             {
                 System.out.println("NEW WAVE STARTED");
                 waveSFX.play();
@@ -217,9 +222,7 @@ public class GameScreen implements Screen
         }
 
         else
-        {
             buyHud.update(delta);
-        }
 
         // UPDATE CAMERA
         APP.camera.update();

@@ -228,7 +228,7 @@ public class Player
     {
         switch (time)
         {
-            case 25:
+            case 25: // FASTEST
                 currentReloadSound = reload25SFX;
                 reloadTime = 460;
                 rotateSpeed = 4 * 4;
@@ -243,7 +243,7 @@ public class Player
                 reloadTime = 1390;
                 rotateSpeed = 4 * 1.33f;
                 break;
-            case 100:
+            case 100: // SLOWEST
                 currentReloadSound = reload100SFX;
                 reloadTime = 1850;
                 rotateSpeed = 4;

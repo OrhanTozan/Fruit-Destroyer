@@ -28,6 +28,8 @@ public class Enemy
 
     public boolean renderHit = false;
 
+    public boolean isUsed;
+
     protected long currentTime;
 
     protected int maxHealth;
@@ -99,7 +101,7 @@ public class Enemy
 
         int extraVelocity = MathUtils.random(0, 2);
 
-        velocity.set((BASEVELOCITY + (extraVelocity * 20)) * directionX, (BASEVELOCITY + (extraVelocity * 20)) * directionY);
+        velocity.set((BASEVELOCITY + (extraVelocity * 10)) * directionX, (BASEVELOCITY + (extraVelocity * 10)) * directionY);
         velocity.scl(velocityMultiplier);
     }
 
