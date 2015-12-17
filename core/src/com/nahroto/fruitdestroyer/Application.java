@@ -16,11 +16,19 @@ public class Application extends Game
 	public AssetManager assets;
 	
 	@Override
-	public void create () {
+	public void create ()
+	{
 		batch = new SpriteBatch();
 		camera = new OrthographicCamera();
 		viewport = new FitViewport(Constants.V_WIDTH, Constants.V_HEIGHT, camera);
 		assets = new AssetManager();
 		setScreen(new LoadingScreen(this));
+	}
+
+	@Override
+	public void dispose()
+	{
+		Logger.log("blyat");
+		assets.dispose();
 	}
 }

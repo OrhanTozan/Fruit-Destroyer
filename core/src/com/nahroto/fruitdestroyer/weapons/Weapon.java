@@ -5,14 +5,14 @@ public class Weapon
     private int damage;
     private int rateOfFire;
     private int magSize;
-    private float spread;
+    private float recoil;
 
-    public Weapon(int damage, int rateOfFire, int magSize, float spread)
+    public Weapon(int damage, int rateOfFire, int magSize, float recoil)
     {
         this.damage = damage;
         this.rateOfFire = rateOfFire;
         this.magSize = magSize;
-        this.spread = spread;
+        this.recoil = recoil;
     }
 
     public int getDamage()
@@ -30,8 +30,8 @@ public class Weapon
         return magSize;
     }
 
-    public float getSpread()
+    public float getRecoil()
     {
-        return spread;
+        return recoil;
     }
 }

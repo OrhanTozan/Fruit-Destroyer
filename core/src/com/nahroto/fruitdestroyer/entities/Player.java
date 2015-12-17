@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.Array;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.CameraShaker;
 import com.nahroto.fruitdestroyer.Constants;
+import com.nahroto.fruitdestroyer.Logger;
 import com.nahroto.fruitdestroyer.weapons.Weapon;
 
 import java.util.Calendar;
@@ -59,6 +60,14 @@ public class Player
 
     private int reloadTime;
 
+    public static float spread;
+    private long shootingTime;
+
+    private long timeSinceFirstShot;
+    private long timeSinceLastShot;
+    private boolean firstShotFired;
+    private static final float MAX_SPREAD = 0.6f;
+
     public Player(Sprite sprite, Sprite flashSprite, final Application APP)
     {
         this.APP = APP;
@@ -100,6 +109,9 @@ public class Player
 
     public void update()
     {
+        if (firstShotFired && System.currentTimeMillis() - timeSinceLastShot > 500)
+            firstShotFired = false;
+
         if (offsetNeeded && System.currentTimeMillis() - timeSinceShot > 50)
         {
             this.sprite.setPosition(Constants.V_WIDTH / 2 - 32, Constants.V_HEIGHT / 2 - 28);
@@ -154,6 +166,15 @@ public class Player
                 offsetNeeded = true;
                 flashNeeded = true;
 
+                timeSinceLastShot = System.currentTimeMillis();
+
+                if (!firstShotFired)
+                {
+                    Logger.log("first shot fired");
+                    firstShotFired = true;
+                    timeSinceFirstShot = System.currentTimeMillis();
+                }
+
                 // System.out.println(Bullet.totalBullets.get(0).isUsed);
                 for (int i = 0; i < Bullet.totalBullets.size; i++)
                 {
@@ -181,8 +202,10 @@ public class Player
                         // OFFSET PLAYER TO GIVE KICK
                         offsetBack();
 
+                        updateAccuracy();
+
                         Bullet.totalBullets.get(i).setPosition((Constants.V_WIDTH / 2 + bulletPositionX) - 10, (Constants.V_HEIGHT / 2 + bulletPositionY) - 10);
-                        Bullet.totalBullets.get(i).setVelocity((directionX + MathUtils.random(-Bullet.getWeapon().getSpread(), Bullet.getWeapon().getSpread())) * Bullet.VELOCITY, (directionY + MathUtils.random(-Bullet.getWeapon().getSpread(), Bullet.getWeapon().getSpread())) * Bullet.VELOCITY);
+                        Bullet.totalBullets.get(i).setVelocity((directionX + MathUtils.random(-spread, spread)) * Bullet.VELOCITY, (directionY + MathUtils.random(-spread, spread)) * Bullet.VELOCITY);
 
                         Bullet.currentBullets.add(Bullet.totalBullets.get(i));
                         break;
@@ -259,5 +282,15 @@ public class Player
     public Sprite getSprite()
     {
         return sprite;
+    }
+
+    public void updateAccuracy()
+    {
+        shootingTime = System.currentTimeMillis() - timeSinceFirstShot;
+        spread = (shootingTime / 450) * Bullet.getWeapon().getRecoil();
+        if (spread > MAX_SPREAD)
+            spread = MAX_SPREAD;
+
+        Logger.log("spread: " + spread);
     }
 }

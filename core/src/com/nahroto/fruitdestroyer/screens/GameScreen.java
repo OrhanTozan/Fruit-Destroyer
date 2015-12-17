@@ -30,8 +30,9 @@ import com.nahroto.fruitdestroyer.entities.Bullet;
 import com.nahroto.fruitdestroyer.entities.Player;
 import com.nahroto.fruitdestroyer.entities.enemies.Enemy;
 import com.nahroto.fruitdestroyer.huds.BuyHud;
-import com.nahroto.fruitdestroyer.huds.DeadHud;
 import com.nahroto.fruitdestroyer.huds.GameHud;
+
+import sun.rmi.runtime.Log;
 
 public class GameScreen implements Screen
 {
@@ -49,6 +50,7 @@ public class GameScreen implements Screen
     private BuyHud buyHud;
 
     private Font ammoStatus;
+    private Font accuracyStatus;
     private Music actionMusic;
     private Sprite reloadIcon;
 
@@ -58,7 +60,7 @@ public class GameScreen implements Screen
 
     private ShapeRenderer shapeRenderer;
 
-    public GameScreen(final Application APP, GameHud gameHud, BuyHud buyHud, Texture bg, Player player, InputMultiplexer inputMultiplexer, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Sound waveSFX)
+    public GameScreen(final Application APP, GameHud gameHud, BuyHud buyHud, Texture bg, Player player, InputMultiplexer inputMultiplexer, Font accuracyStatus, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Sound waveSFX)
     {
         this.APP = APP;
         this.gameHud = gameHud;
@@ -70,6 +72,7 @@ public class GameScreen implements Screen
         this.input = input;
         this.collisionHandler = collisionHandler;
         this.ammoStatus = ammoStatus;
+        this.accuracyStatus = accuracyStatus;
         this.actionMusic = actionMusic;
         this.reloadIcon = reloadIcon;
         this.waveSFX = waveSFX;
@@ -264,6 +267,7 @@ public class GameScreen implements Screen
 
         // RENDER WAVE STATUS
         ammoStatus.render(APP.batch, "wave " + WaveGenerator.wave.toString(), Constants.V_WIDTH / 2 - (ammoStatus.getWidth("wave " + WaveGenerator.wave.toString()) / 2), Constants.V_HEIGHT - 30, false);
+        accuracyStatus.render(APP.batch, "accuracy: " + (100 - Player.spread) + "%", Constants.V_WIDTH / 2, Constants.V_HEIGHT - 30, false);
 
         APP.batch.end();
 
@@ -321,6 +325,6 @@ public class GameScreen implements Screen
     @Override
     public void dispose()
     {
-
+        Logger.log("seuefea");
     }
 }
