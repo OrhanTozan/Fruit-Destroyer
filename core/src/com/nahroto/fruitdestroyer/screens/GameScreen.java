@@ -128,6 +128,7 @@ public class GameScreen implements Screen
 
             // UPDATE PLAYER
             player.update();
+            player.updateAccuracy();
 
             // UPDATE ENEMIES
             for (int i = 0; i < Enemy.currentEnemies.size; i++)
@@ -267,7 +268,7 @@ public class GameScreen implements Screen
 
         // RENDER WAVE STATUS
         ammoStatus.render(APP.batch, "wave " + WaveGenerator.wave.toString(), Constants.V_WIDTH / 2 - (ammoStatus.getWidth("wave " + WaveGenerator.wave.toString()) / 2), Constants.V_HEIGHT - 30, false);
-        accuracyStatus.render(APP.batch, "accuracy: " + (100 - Player.spread) + "%", Constants.V_WIDTH / 2, Constants.V_HEIGHT - 30, false);
+        accuracyStatus.render(APP.batch, "accuracy: " + (100 - (50 * Player.spread)) + "%", Constants.V_WIDTH / 2 - accuracyStatus.getWidth("accuracy: " + (100 - (50 * Player.spread)) + "%") / 2, 50, false);
 
         APP.batch.end();
 

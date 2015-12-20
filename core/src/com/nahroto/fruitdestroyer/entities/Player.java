@@ -105,12 +105,11 @@ public class Player
         reloading = false;
 
         ammo = new Integer(Bullet.getWeapon().getMagSize());
-
-        }
+    }
 
     public void update()
     {
-        if (firstShotFired && System.currentTimeMillis() - timeSinceLastShot > 500)
+        if (firstShotFired && System.currentTimeMillis() - timeSinceLastShot > 200)
             firstShotFired = false;
 
         if (offsetNeeded && System.currentTimeMillis() - timeSinceShot > 50)
@@ -203,8 +202,6 @@ public class Player
                         // OFFSET PLAYER TO GIVE KICK
                         offsetBack();
 
-                        updateAccuracy();
-
                         Bullet.totalBullets.get(i).setPosition((Constants.V_WIDTH / 2 + bulletPositionX) - 10, (Constants.V_HEIGHT / 2 + bulletPositionY) - 10);
                         Bullet.totalBullets.get(i).setVelocity((directionX + MathUtils.random(-spread, spread)) * Bullet.VELOCITY, (directionY + MathUtils.random(-spread, spread)) * Bullet.VELOCITY);
 
@@ -287,8 +284,13 @@ public class Player
 
     public void updateAccuracy()
     {
-        shootingTime = System.currentTimeMillis() - timeSinceFirstShot;
-        spread = (shootingTime / 1000) * Bullet.getWeapon().getRecoil();
+        if (firstShotFired)
+            shootingTime = System.currentTimeMillis() - timeSinceFirstShot;
+        else
+            shootingTime = 0;
+
+        spread = (shootingTime / 3000f) * Bullet.getWeapon().getRecoil();
+
         if (spread > MAX_SPREAD)
             spread = MAX_SPREAD;
 
