@@ -12,12 +12,12 @@ import com.nahroto.fruitdestroyer.weapons.WeaponList;
 
 public class Bullet
 {
-    public static final int VELOCITY = 1200;
+    public static final int VELOCITY = 1100;
 
     private static final int startDamage = 10;
     private static final int startROF = 200;
     private static final int startMagSize = 20;
-    private static final float startSpread = 0.3f;
+    private static final float startRecoil = 1f;
 
     public static Array<Bullet> totalBullets = new Array<Bullet>();
     public static Array<Bullet> currentBullets = new Array<Bullet>();
@@ -36,7 +36,7 @@ public class Bullet
     {
         this.sprite = sprite;
 
-        weapon = new Weapon(startDamage, startROF, startMagSize, startSpread);
+        weapon = new Weapon(startDamage, startROF, startMagSize, startRecoil);
 
         velocity = new Vector2();
 

@@ -66,7 +66,7 @@ public class Player
     private long timeSinceFirstShot;
     private long timeSinceLastShot;
     private boolean firstShotFired;
-    private static final float MAX_SPREAD = 0.6f;
+    private static final float MAX_SPREAD = 0.5f;
 
     public Player(Sprite sprite, Sprite flashSprite, final Application APP)
     {
@@ -84,6 +84,7 @@ public class Player
                 0, this.sprite.getHeight(),
                 this.sprite.getWidth() / 2, this.sprite.getHeight(),
                 this.sprite.getWidth() / 2, 0};
+
         bounds = new Polygon(vertices);
 
         shotSFX = APP.assets.get("sounds/shot.wav", Sound.class);
@@ -287,7 +288,7 @@ public class Player
     public void updateAccuracy()
     {
         shootingTime = System.currentTimeMillis() - timeSinceFirstShot;
-        spread = (shootingTime / 450) * Bullet.getWeapon().getRecoil();
+        spread = (shootingTime / 1000) * Bullet.getWeapon().getRecoil();
         if (spread > MAX_SPREAD)
             spread = MAX_SPREAD;
 
