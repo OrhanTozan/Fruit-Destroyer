@@ -27,10 +27,13 @@ public class Enemy
     protected boolean explodable;
 
     public boolean renderHit = false;
+    public boolean isCollidable;
 
     public boolean isUsed;
 
     protected long currentTime;
+    public long deadStartTime;
+    public boolean isDying;
 
     protected int maxHealth;
     protected int health;
@@ -51,16 +54,18 @@ public class Enemy
 
     protected TextureAtlas.AtlasRegion normalTexture;
     protected TextureAtlas.AtlasRegion hitTexture;
+    protected TextureAtlas.AtlasRegion deadTexture;
 
     protected Polygon bounds;
 
     protected Sound squishSFX;
     protected float[] vertices;
 
-    public Enemy(final Application APP, TextureAtlas.AtlasRegion normalTexture, TextureAtlas.AtlasRegion hitTexture, Sprite redBar, Sprite greenBar, int BOUNDING_X, int BOUNDING_Y, int BOUNDING_WIDTH, int BOUNDING_HEIGHT)
+    public Enemy(final Application APP, TextureAtlas.AtlasRegion normalTexture, TextureAtlas.AtlasRegion hitTexture, TextureAtlas.AtlasRegion deadTexture, Sprite redBar, Sprite greenBar, int BOUNDING_X, int BOUNDING_Y, int BOUNDING_WIDTH, int BOUNDING_HEIGHT)
     {
         this.normalTexture = normalTexture;
         this.hitTexture = hitTexture;
+        this.deadTexture = deadTexture;
 
         this.sprite = new Sprite(normalTexture);
 
@@ -87,6 +92,9 @@ public class Enemy
         position.set(this.sprite.getX(), this.sprite.getY());
 
         bounds.setOrigin(BOUNDING_WIDTH / 2, BOUNDING_HEIGHT / 2);
+
+        isCollidable = true;
+        isDying = false;
     }
 
     public void calculateVelocity()
@@ -120,11 +128,12 @@ public class Enemy
     {
         applyVelocityToPosition(delta);
         updateBounds();
-        if (renderHit && (System.currentTimeMillis() - currentTime > 100))
+        if (!isDying && renderHit && (System.currentTimeMillis() - currentTime > 100))
         {
             renderHit = false;
             setNormalTexture();
         }
+
     }
 
     public void render(SpriteBatch batch)
@@ -165,6 +174,18 @@ public class Enemy
     {
         sprite.setRegion(hitTexture);
         currentTime = System.currentTimeMillis();
+    }
+
+    public void setDeadTexture()
+    {
+        sprite.setRegion(deadTexture);
+        deadStartTime = System.currentTimeMillis();
+        isDying = true;
+    }
+
+    public void resetVelocity()
+    {
+        velocity.set(0, 0);
     }
 
     public float getAngle()

@@ -14,10 +14,10 @@ public class Bullet
 {
     public static final int VELOCITY = 1100;
 
-    private static final int startDamage = 10;
-    private static final int startROF = 200;
-    private static final int startMagSize = 20;
-    private static final float startRecoil = 1f;
+    private static final int START_DAMAGE = 10;
+    private static final int START_ROF = 200;
+    private static final int START_MAGSIZE = 200;
+    private static final float START_RECOIL = 1f;
 
     public static Array<Bullet> totalBullets = new Array<Bullet>();
     public static Array<Bullet> currentBullets = new Array<Bullet>();
@@ -36,7 +36,7 @@ public class Bullet
     {
         this.sprite = sprite;
 
-        weapon = new Weapon(startDamage, startROF, startMagSize, startRecoil);
+        weapon = new Weapon(START_DAMAGE, START_ROF, START_MAGSIZE, START_RECOIL);
 
         velocity = new Vector2();
 
@@ -67,10 +67,7 @@ public class Bullet
 
     private void isOutOfScreen()
     {
-        if (sprite.getX() > Constants.V_WIDTH || sprite.getX() + sprite.getWidth() < 0 || sprite.getY() > Constants.V_HEIGHT || sprite.getY()  + sprite.getHeight() < 0)
-            isOutOfScreen = true;
-        else
-            isOutOfScreen = false;
+        isOutOfScreen = sprite.getX() > Constants.V_WIDTH || sprite.getX() + sprite.getWidth() < 0 || sprite.getY() > Constants.V_HEIGHT || sprite.getY() + sprite.getHeight() < 0;
     }
 
     private void updateBounds()

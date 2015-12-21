@@ -23,25 +23,22 @@ public class WaveGenerator
 
     public static void startNewWave()
     {
+        Logger.log("NEW WAVE STARTED");
+
         startTime = System.currentTimeMillis();
 
         restoreAllEnemies();
 
         delayTime(0f);
-            addOranges(1);
+            addOranges(5);
             if (wave >= ANANAS_MINIMUM_WAVE)
                 addAnanases(MathUtils.round(wave * ANANAS_MULTIPLIER));
-
-        delayTime(10f);
-            addOranges(10);
     }
 
     public static void update()
     {
         if (queue.size > 0 && System.currentTimeMillis() - startTime >= delay * 1000)
-        {
             sendQueueImmediatly();
-        }
     }
 
     private static void delayTime(float delayTime)
@@ -60,6 +57,10 @@ public class WaveGenerator
     {
         for (Enemy enemy : queue)
         {
+            enemy.isCollidable = true;
+            enemy.isUsed = true;
+            enemy.isDying = false;
+
             enemy.setPosition(RandomPositioner.getRandomPosition());
             enemy.calculateRotation();
             enemy.calculateVelocity();

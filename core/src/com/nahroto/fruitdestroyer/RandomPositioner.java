@@ -17,13 +17,7 @@ public class RandomPositioner
 
     public static Vector2 getRandomPosition()
     {
-        // leftPosition = MathUtils.randomBoolean();
         underPosition = MathUtils.randomBoolean();
-
-        /*if (leftPosition)
-            randomX = MathUtils.random(-MAX_DISTANCE, -MIN_DISTANCE);
-        else
-            randomX = MathUtils.random(Constants.V_WIDTH + MIN_DISTANCE, Constants.V_WIDTH + MAX_DISTANCE);*/
 
         randomX = MathUtils.random(-MAX_DISTANCE, Constants.V_WIDTH + MAX_DISTANCE);
 

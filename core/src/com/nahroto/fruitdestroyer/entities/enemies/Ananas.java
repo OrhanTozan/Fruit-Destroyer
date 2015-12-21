@@ -9,9 +9,9 @@ public class Ananas extends Enemy
 {
     public static Array<Ananas> totalAnanases = new Array<Ananas>();
 
-    public Ananas(final Application APP, TextureAtlas.AtlasRegion normalTexture, TextureAtlas.AtlasRegion hitTexture, Sprite redBar, Sprite greenBar)
+    public Ananas(final Application APP, TextureAtlas.AtlasRegion normalTexture, TextureAtlas.AtlasRegion hitTexture, TextureAtlas.AtlasRegion deadTexture, Sprite redBar, Sprite greenBar)
     {
-        super(APP, normalTexture, hitTexture, redBar, greenBar, 21, 15, 98, 155);
+        super(APP, normalTexture, hitTexture, deadTexture, redBar, greenBar, 21, 15, 98, 155);
 
         maxHealth = 50;
         health = maxHealth;

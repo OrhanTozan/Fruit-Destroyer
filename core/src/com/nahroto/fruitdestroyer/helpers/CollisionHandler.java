@@ -29,32 +29,35 @@ public class CollisionHandler
     {
         for (int i = 0; i < Enemy.currentEnemies.size; i++)
         {
-            bulletLoop:
-            for (int j = 0; j < Bullet.currentBullets.size; j++)
+            if (Enemy.currentEnemies.get(i).isCollidable)
             {
-                // IF ENEMY COLLIDES WITH BULLET
-                if (Intersector.overlapConvexPolygons(Enemy.currentEnemies.get(i).getBounds(), Bullet.currentBullets.get(j).getBounds()))
+                bulletLoop:
+                for (int j = 0; j < Bullet.currentBullets.size; j++)
                 {
-                    // DAMAGE THE ENEMY
-                    Enemy.currentEnemies.get(i).renderHit = true;
-                    Enemy.currentEnemies.get(i).playSquishSound();
-                    Enemy.currentEnemies.get(i).setHitTexture();
-                    Enemy.currentEnemies.get(i).reduceHealth(Bullet.getWeapon().getDamage());
+                    // IF ENEMY COLLIDES WITH BULLET
+                    if (Intersector.overlapConvexPolygons(Enemy.currentEnemies.get(i).getBounds(), Bullet.currentBullets.get(j).getBounds()))
+                    {
+                        // DAMAGE THE ENEMY
+                        Enemy.currentEnemies.get(i).renderHit = true;
+                        Enemy.currentEnemies.get(i).playSquishSound();
+                        Enemy.currentEnemies.get(i).setHitTexture();
+                        Enemy.currentEnemies.get(i).reduceHealth(Bullet.getWeapon().getDamage());
 
-                    // REMOVE THE HIT BULLET
-                    Bullet.currentBullets.get(j).isUsed = false;
-                    Bullet.currentBullets.get(j).isOutOfScreen = false;
-                    Bullet.currentBullets.removeIndex(j);
-                    break bulletLoop;
+                        // REMOVE THE HIT BULLET
+                        Bullet.currentBullets.get(j).isUsed = false;
+                        Bullet.currentBullets.get(j).isOutOfScreen = false;
+                        Bullet.currentBullets.removeIndex(j);
+                        break bulletLoop;
+                    }
                 }
-            }
 
-            // IF ENEMY COLLIDES WITH PLAYER
-            if (Intersector.overlapConvexPolygons(Enemy.currentEnemies.get(i).getBounds(), player.getBounds()))
-            {
-                Input.touchDown = false;
-                APP.setScreen(deadScreen);
-                gameMusic.stop();
+                // IF ENEMY COLLIDES WITH PLAYER
+                if (Intersector.overlapConvexPolygons(Enemy.currentEnemies.get(i).getBounds(), player.getBounds()))
+                {
+                    Input.touchDown = false;
+                    APP.setScreen(deadScreen);
+                    gameMusic.stop();
+                }
             }
         }
     }

@@ -100,13 +100,12 @@ public class GameScreen implements Screen
 
         player.setReloadingConfig(100);
 
-        player.ammo = Bullet.getWeapon().getMagSize();
+        Player.ammo = Bullet.getWeapon().getMagSize();
 
         if (Constants.DEBUG)
             shapeRenderer = new ShapeRenderer();
 
         WaveGenerator.wave = 1;
-        Logger.log("NEW WAVE STARTED");
         WaveGenerator.startNewWave();
     }
 
@@ -156,7 +155,7 @@ public class GameScreen implements Screen
                 Enemy.currentEnemies.get(i).getHealthBar().update(Enemy.currentEnemies.get(i).getHealth(), Enemy.currentEnemies.get(i).getMaxHealth());
 
                 // IF ENEMY DIES
-                if (Enemy.currentEnemies.get(i).getHealth() <= 0)
+                if (!Enemy.currentEnemies.get(i).isDying && Enemy.currentEnemies.get(i).getHealth() <= 0)
                 {
                     // IF ENEMY IS EXPLODABLE
                     if (Enemy.currentEnemies.get(i).isExplodable())
@@ -176,22 +175,43 @@ public class GameScreen implements Screen
                         }
                         CameraShaker.startShaking(3f, 750);
                     }
-                    Enemy.currentEnemies.get(i).isUsed = false;
 
-                    // REMOVE ENEMY
+                    Enemy.currentEnemies.get(i).isCollidable = false;
+                    Enemy.currentEnemies.get(i).resetVelocity();
+                    Enemy.currentEnemies.get(i).setDeadTexture();
+                }
+            }
+
+            for (int i = 0; i < Enemy.currentEnemies.size; i++)
+            {
+                Logger.log(Enemy.currentEnemies.get(i).isDying);
+                Logger.log(System.currentTimeMillis() - Enemy.currentEnemies.get(i).deadStartTime);
+                if (Enemy.currentEnemies.get(i).isDying && System.currentTimeMillis() - Enemy.currentEnemies.get(i).deadStartTime >= 3000)
+                {
+                    Enemy.currentEnemies.get(i).isDying = false;
+                    Enemy.currentEnemies.get(i).isUsed = false;
                     Enemy.currentEnemies.removeIndex(i);
                 }
             }
 
             WaveGenerator.update();
 
+            int deadEnemies = 0;
+
             // WHEN WAVE IS CLEARED, START NEW WAVE
-            if (Enemy.currentEnemies.size == 0 && WaveGenerator.getQueue().size == 0)
+            for (Enemy enemy : Enemy.currentEnemies)
             {
-                System.out.println("NEW WAVE STARTED");
-                waveSFX.play();
-                WaveGenerator.wave++;
-                WaveGenerator.startNewWave();
+                if (enemy.getHealth() > 0)
+                    break;
+                else
+                    deadEnemies++;
+
+                if (deadEnemies == Enemy.currentEnemies.size && WaveGenerator.getQueue().size == 0)
+                {
+                    waveSFX.play();
+                    WaveGenerator.wave++;
+                    WaveGenerator.startNewWave();
+                }
             }
 
             // UPDATE EXPLOSIONS
@@ -207,7 +227,7 @@ public class GameScreen implements Screen
             }
 
             // DO NOT SHOW RELOAD BUTTON WHEN AMMO IS FULL OR ALREADY RELOADING
-            if (player.ammo == Bullet.getWeapon().getMagSize() || player.isReloading())
+            if (Player.ammo == Bullet.getWeapon().getMagSize() || player.isReloading())
                 gameHud.getActors().get(0).remove();
             else
                 gameHud.addAllActorsToStage();
@@ -258,17 +278,20 @@ public class GameScreen implements Screen
 
         // RENDER HEALTHBARS
         for (Enemy enemy : Enemy.currentEnemies)
-            enemy.getHealthBar().render(APP.batch, enemy.getHealth());
+        {
+            if (!enemy.isDying)
+                enemy.getHealthBar().render(APP.batch, enemy.getHealth());
+        }
 
         // RENDER RELOAD ICON IF RELOADING
         if (!player.isReloading())
-            ammoStatus.render(APP.batch, player.ammo.toString(), 110, 20 + ammoStatus.getHeight(player.ammo.toString()), false);
+            ammoStatus.render(APP.batch, Player.ammo.toString(), 110, 20 + ammoStatus.getHeight(Player.ammo.toString()), false);
         else
             reloadIcon.draw(APP.batch);
 
         // RENDER WAVE STATUS
         ammoStatus.render(APP.batch, "wave " + WaveGenerator.wave.toString(), Constants.V_WIDTH / 2 - (ammoStatus.getWidth("wave " + WaveGenerator.wave.toString()) / 2), Constants.V_HEIGHT - 30, false);
-        accuracyStatus.render(APP.batch, "accuracy: " + (100 - (50 * Player.spread)) + "%", Constants.V_WIDTH / 2 - accuracyStatus.getWidth("accuracy: " + (100 - (50 * Player.spread)) + "%") / 2, 50, false);
+        accuracyStatus.render(APP.batch, MathUtils.round((100 - (100 * Player.spread))) + "%", Constants.V_WIDTH / 2 - accuracyStatus.getWidth(MathUtils.round((100 - (100 * Player.spread))) + "%") / 2, 50, false);
 
         APP.batch.end();
 

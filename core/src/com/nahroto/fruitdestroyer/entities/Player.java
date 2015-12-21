@@ -66,7 +66,7 @@ public class Player
     private long timeSinceFirstShot;
     private long timeSinceLastShot;
     private boolean firstShotFired;
-    private static final float MAX_SPREAD = 0.5f;
+    private static final float MAX_SPREAD = 0.7f;
 
     public Player(Sprite sprite, Sprite flashSprite, final Application APP)
     {
@@ -183,6 +183,9 @@ public class Player
                         Bullet.totalBullets.get(i).isOutOfScreen = false;
                         Bullet.totalBullets.get(i).isUsed = true;
 
+                        deltaX += MathUtils.random(-spread, spread) * 500f;
+                        deltaY += MathUtils.random(-spread, spread) * 500f;
+
                         float length = (float) Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
                         deltaY *= -1;
@@ -203,7 +206,7 @@ public class Player
                         offsetBack();
 
                         Bullet.totalBullets.get(i).setPosition((Constants.V_WIDTH / 2 + bulletPositionX) - 10, (Constants.V_HEIGHT / 2 + bulletPositionY) - 10);
-                        Bullet.totalBullets.get(i).setVelocity((directionX + MathUtils.random(-spread, spread)) * Bullet.VELOCITY, (directionY + MathUtils.random(-spread, spread)) * Bullet.VELOCITY);
+                        Bullet.totalBullets.get(i).setVelocity(directionX * Bullet.VELOCITY, directionY * Bullet.VELOCITY);
 
                         Bullet.currentBullets.add(Bullet.totalBullets.get(i));
                         break;
@@ -294,6 +297,6 @@ public class Player
         if (spread > MAX_SPREAD)
             spread = MAX_SPREAD;
 
-        Logger.log("spread: " + spread);
+        // Logger.log("spread: " + spread);
     }
 }
