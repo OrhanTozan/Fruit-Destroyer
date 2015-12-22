@@ -31,8 +31,8 @@ public class WaveGenerator
 
         delayTime(0f);
             addOranges(5);
-            if (wave >= ANANAS_MINIMUM_WAVE)
-                addAnanases(MathUtils.round(wave * ANANAS_MULTIPLIER));
+            /*if (wave >= ANANAS_MINIMUM_WAVE)
+                addAnanases(MathUtils.round(wave * ANANAS_MULTIPLIER));*/
     }
 
     public static void update()
@@ -91,10 +91,15 @@ public class WaveGenerator
     {
         for (int i = 0; i < amount; i++)
         {
-            if (!Ananas.totalAnanases.get(i).isUsed)
+            checkIfUsedLoop:
+            for (Ananas ananas : Ananas.totalAnanases)
             {
-                queue.add(Ananas.totalAnanases.get(i));
-                Ananas.totalAnanases.get(i).isUsed = true;
+                if (!ananas.isUsed)
+                {
+                    queue.add(ananas);
+                    ananas.isUsed = true;
+                    break checkIfUsedLoop;
+                }
             }
         }
 

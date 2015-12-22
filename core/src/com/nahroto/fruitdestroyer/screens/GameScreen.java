@@ -184,9 +184,7 @@ public class GameScreen implements Screen
 
             for (int i = 0; i < Enemy.currentEnemies.size; i++)
             {
-                Logger.log(Enemy.currentEnemies.get(i).isDying);
-                Logger.log(System.currentTimeMillis() - Enemy.currentEnemies.get(i).deadStartTime);
-                if (Enemy.currentEnemies.get(i).isDying && System.currentTimeMillis() - Enemy.currentEnemies.get(i).deadStartTime >= 3000)
+                if (Enemy.currentEnemies.get(i).isDying && System.currentTimeMillis() - Enemy.currentEnemies.get(i).deadStartTime >= 300000)
                 {
                     Enemy.currentEnemies.get(i).isDying = false;
                     Enemy.currentEnemies.get(i).isUsed = false;
@@ -201,7 +199,7 @@ public class GameScreen implements Screen
             // WHEN WAVE IS CLEARED, START NEW WAVE
             for (Enemy enemy : Enemy.currentEnemies)
             {
-                if (enemy.getHealth() > 0)
+                if (!enemy.isDying)
                     break;
                 else
                     deadEnemies++;
@@ -277,11 +275,11 @@ public class GameScreen implements Screen
             currentExplosion.render(APP.batch);
 
         // RENDER HEALTHBARS
-        for (Enemy enemy : Enemy.currentEnemies)
+        /*for (Enemy enemy : Enemy.currentEnemies)
         {
-            if (!enemy.isDying)
+            if (!enemy.isDying && enemy.isUsed)
                 enemy.getHealthBar().render(APP.batch, enemy.getHealth());
-        }
+        }*/
 
         // RENDER RELOAD ICON IF RELOADING
         if (!player.isReloading())
@@ -291,7 +289,7 @@ public class GameScreen implements Screen
 
         // RENDER WAVE STATUS
         ammoStatus.render(APP.batch, "wave " + WaveGenerator.wave.toString(), Constants.V_WIDTH / 2 - (ammoStatus.getWidth("wave " + WaveGenerator.wave.toString()) / 2), Constants.V_HEIGHT - 30, false);
-        accuracyStatus.render(APP.batch, MathUtils.round((100 - (100 * Player.spread))) + "%", Constants.V_WIDTH / 2 - accuracyStatus.getWidth(MathUtils.round((100 - (100 * Player.spread))) + "%") / 2, 50, false);
+        accuracyStatus.render(APP.batch, MathUtils.round((100 - (100 * Player.spread))) + "%", Constants.V_WIDTH / 2 - accuracyStatus.getWidth(MathUtils.round((100 - (100 * Player.spread))) + "%") / 2, 60, false);
 
         APP.batch.end();
 
