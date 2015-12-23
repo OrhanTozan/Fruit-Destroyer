@@ -21,6 +21,7 @@ public class Enemy
 {
     public static Array<Enemy> totalEnemies = new Array<Enemy>();
     public static Array<Enemy> currentEnemies = new Array<Enemy>();
+    public static Array<TextureAtlas.AtlasRegion> currentCorpses = new Array<TextureAtlas.AtlasRegion>();
 
     protected static final int BASEVELOCITY = 30;
     protected float velocityMultiplier;
@@ -54,18 +55,16 @@ public class Enemy
 
     protected TextureAtlas.AtlasRegion normalTexture;
     protected TextureAtlas.AtlasRegion hitTexture;
-    protected TextureAtlas.AtlasRegion deadTexture;
 
     protected Polygon bounds;
 
     protected Sound squishSFX;
     protected float[] vertices;
 
-    public Enemy(final Application APP, TextureAtlas.AtlasRegion normalTexture, TextureAtlas.AtlasRegion hitTexture, TextureAtlas.AtlasRegion deadTexture, Sprite redBar, Sprite greenBar, int BOUNDING_X, int BOUNDING_Y, int BOUNDING_WIDTH, int BOUNDING_HEIGHT)
+    public Enemy(final Application APP, TextureAtlas.AtlasRegion normalTexture, TextureAtlas.AtlasRegion hitTexture, Sprite redBar, Sprite greenBar, int BOUNDING_X, int BOUNDING_Y, int BOUNDING_WIDTH, int BOUNDING_HEIGHT)
     {
         this.normalTexture = normalTexture;
         this.hitTexture = hitTexture;
-        this.deadTexture = deadTexture;
 
         this.sprite = new Sprite(normalTexture);
 
@@ -174,13 +173,6 @@ public class Enemy
     {
         sprite.setRegion(hitTexture);
         currentTime = System.currentTimeMillis();
-    }
-
-    public void setDeadTexture()
-    {
-        sprite.setRegion(deadTexture);
-        deadStartTime = System.currentTimeMillis();
-        isDying = true;
     }
 
     public void resetVelocity()

@@ -181,7 +181,7 @@ public class GameScreen implements Screen
 
             for (int i = 0; i < Enemy.currentEnemies.size; i++)
             {
-                if (Enemy.currentEnemies.get(i).isDying && System.currentTimeMillis() - Enemy.currentEnemies.get(i).deadStartTime >= 10000)
+                if (Enemy.currentEnemies.get(i).isDying && System.currentTimeMillis() - Enemy.currentEnemies.get(i).deadStartTime >= 20000)
                 {
                     Enemy.currentEnemies.get(i).isDying = false;
                     Enemy.currentEnemies.get(i).isUsed = false;
