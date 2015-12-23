@@ -120,7 +120,7 @@ public class LoadingScreen2 implements Screen
 
         collisionHandler = new CollisionHandler(deadScreen);
 
-        gameScreen = new GameScreen(APP, new GameHud(player, APP.viewport, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon")), new BuyHud(APP.viewport, APP.batch, gameScreenAtlas, blackShaderTexture), bg, player, inputMultiplexer, new Font("fonts/trompus.otf", 60, Color.WHITE, Color.BLACK, 3, true), inputHandler, new Input(), collisionHandler, ammoStatus, actionMusic, gameScreenAtlas.createSprite("reload-icon"), APP.assets.get("sounds/victory.ogg", Sound.class));
+        gameScreen = new GameScreen(APP, new GameHud(player, APP.viewport, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon"), gameScreenAtlas.findRegion("volumeButton"), actionMusic), new BuyHud(APP.viewport, APP.batch, gameScreenAtlas, blackShaderTexture), bg, player, inputMultiplexer, new Font("fonts/trompus.otf", 60, Color.WHITE, Color.BLACK, 3, true), inputHandler, new Input(), collisionHandler, ammoStatus, actionMusic, gameScreenAtlas.createSprite("reload-icon"), APP.assets.get("sounds/victory.ogg", Sound.class));
 
         gameResetter.setGameScreen(gameScreen);
     }

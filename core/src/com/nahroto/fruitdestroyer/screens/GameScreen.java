@@ -151,9 +151,6 @@ public class GameScreen implements Screen
             // UPDATE HEALTHBAR
             for (int i = 0; i < Enemy.currentEnemies.size; i++)
             {
-                Enemy.currentEnemies.get(i).getHealthBar().getRed().setPosition((Enemy.currentEnemies.get(i).getSprite().getX() + (Enemy.currentEnemies.get(i).getSprite().getWidth() / 2)) - (Enemy.currentEnemies.get(i).getHealthBar().getRed().getWidth() / 2), Enemy.currentEnemies.get(i).getSprite().getY() - HealthBar.Y_OFFSET);
-                Enemy.currentEnemies.get(i).getHealthBar().update(Enemy.currentEnemies.get(i).getHealth(), Enemy.currentEnemies.get(i).getMaxHealth());
-
                 // IF ENEMY DIES
                 if (!Enemy.currentEnemies.get(i).isDying && Enemy.currentEnemies.get(i).getHealth() <= 0)
                 {
@@ -184,7 +181,7 @@ public class GameScreen implements Screen
 
             for (int i = 0; i < Enemy.currentEnemies.size; i++)
             {
-                if (Enemy.currentEnemies.get(i).isDying && System.currentTimeMillis() - Enemy.currentEnemies.get(i).deadStartTime >= 300000)
+                if (Enemy.currentEnemies.get(i).isDying && System.currentTimeMillis() - Enemy.currentEnemies.get(i).deadStartTime >= 10000)
                 {
                     Enemy.currentEnemies.get(i).isDying = false;
                     Enemy.currentEnemies.get(i).isUsed = false;
@@ -240,6 +237,12 @@ public class GameScreen implements Screen
             else
                 reloadIcon.setRotation(0);
 
+            for (int i = 0; i < Enemy.currentEnemies.size; i++)
+            {
+                Enemy.currentEnemies.get(i).getHealthBar().getRed().setPosition((Enemy.currentEnemies.get(i).getSprite().getX() + (Enemy.currentEnemies.get(i).getSprite().getWidth() / 2)) - (Enemy.currentEnemies.get(i).getHealthBar().getRed().getWidth() / 2), Enemy.currentEnemies.get(i).getSprite().getY() - HealthBar.Y_OFFSET);
+                Enemy.currentEnemies.get(i).getHealthBar().update(Enemy.currentEnemies.get(i).getHealth(), Enemy.currentEnemies.get(i).getMaxHealth());
+            }
+
             CameraShaker.update(APP.camera);
         }
 
@@ -275,11 +278,11 @@ public class GameScreen implements Screen
             currentExplosion.render(APP.batch);
 
         // RENDER HEALTHBARS
-        /*for (Enemy enemy : Enemy.currentEnemies)
+        for (Enemy enemy : Enemy.currentEnemies)
         {
-            if (!enemy.isDying && enemy.isUsed)
+            if (!enemy.isDying && enemy.isUsed && enemy.getHealth() > 0)
                 enemy.getHealthBar().render(APP.batch, enemy.getHealth());
-        }*/
+        }
 
         // RENDER RELOAD ICON IF RELOADING
         if (!player.isReloading())

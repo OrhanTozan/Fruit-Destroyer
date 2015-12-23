@@ -10,7 +10,6 @@ public class RandomPositioner
 
     private static Vector2 randomPosition = new Vector2();
 
-    private static boolean leftPosition;
     private static boolean underPosition;
     private static float randomX;
     private static float randomY;

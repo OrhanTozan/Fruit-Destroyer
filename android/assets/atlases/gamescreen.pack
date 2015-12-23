@@ -108,6 +108,13 @@ reload-icon
   orig: 82, 84
   offset: 0, 0
   index: -1
+volumeButton
+  rotate: false
+  xy: 803, 321
+  size: 86, 68
+  orig: 86, 68
+  offset: 0, 0
+  index: -1
 flash
   rotate: false
   xy: 527, 171
@@ -131,7 +138,7 @@ green-bar
   index: -1
 bullet
   rotate: false
-  xy: 755, 324
+  xy: 352, 124
   size: 20, 20
   orig: 20, 20
   offset: 0, 0
