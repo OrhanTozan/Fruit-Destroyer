@@ -7,8 +7,7 @@ import com.nahroto.fruitdestroyer.Application;
 
 public class Ananas extends Enemy
 {
-    public static Array<Ananas> totalAnanases = new Array<Ananas>();
-    public static Array<TextureAtlas.AtlasRegion> totalAnanasCorpses = new Array<TextureAtlas.AtlasRegion>();
+
 
     public Ananas(final Application APP, TextureAtlas.AtlasRegion normalTexture, TextureAtlas.AtlasRegion hitTexture, Sprite redBar, Sprite greenBar)
     {

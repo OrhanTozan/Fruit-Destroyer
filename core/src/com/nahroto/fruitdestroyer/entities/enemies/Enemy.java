@@ -19,10 +19,6 @@ import com.nahroto.fruitdestroyer.HealthBar;
 
 public class Enemy
 {
-    public static Array<Enemy> totalEnemies = new Array<Enemy>();
-    public static Array<Enemy> currentEnemies = new Array<Enemy>();
-    public static Array<TextureAtlas.AtlasRegion> currentCorpses = new Array<TextureAtlas.AtlasRegion>();
-
     protected static final int BASEVELOCITY = 30;
     protected float velocityMultiplier;
     protected boolean explodable;

@@ -8,8 +8,6 @@ import com.badlogic.gdx.utils.Array;
 
 public class Corpse
 {
-    public static Array<Corpse> currentCorpses = new Array<Corpse>();
-
     private Sprite sprite;
     private Vector2 position;
 

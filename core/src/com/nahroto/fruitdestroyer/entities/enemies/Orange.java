@@ -7,8 +7,7 @@ import com.nahroto.fruitdestroyer.Application;
 
 public class Orange extends Enemy
 {
-    public static Array<Orange> totalOranges = new Array<Orange>();
-    public static Array<TextureAtlas.AtlasRegion> totalOrangeCorpses = new Array<TextureAtlas.AtlasRegion>();
+
 
     public Orange(final Application APP, TextureAtlas.AtlasRegion normalTexture, TextureAtlas.AtlasRegion hitTexture, Sprite redBar, Sprite greenBar)
     {

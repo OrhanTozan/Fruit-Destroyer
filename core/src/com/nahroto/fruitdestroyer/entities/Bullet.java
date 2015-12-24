@@ -19,9 +19,6 @@ public class Bullet
     private static final int START_MAGSIZE = 200;
     private static final float START_RECOIL = 1f;
 
-    public static Array<Bullet> totalBullets = new Array<Bullet>();
-    public static Array<Bullet> currentBullets = new Array<Bullet>();
-
     private Vector2 velocity;
     private Sprite sprite;
     private Polygon bounds;

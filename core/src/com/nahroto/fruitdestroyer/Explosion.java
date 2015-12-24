@@ -12,9 +12,6 @@ public class Explosion
     public static final int WIDTH = 256;
     private static final float ANIMATION_FPS = 20f;
 
-    public static Array<Explosion> totalExplosions = new Array<Explosion>();
-    public static Array<Explosion> currentExplosions = new Array<Explosion>();
-
     private Animation animation;
     private float elapsedTime;
 

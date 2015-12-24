@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.Logger;
+import com.nahroto.fruitdestroyer.entities.Corpse;
 import com.nahroto.fruitdestroyer.helpers.CollisionHandler;
 import com.nahroto.fruitdestroyer.Constants;
 import com.nahroto.fruitdestroyer.Explosion;
@@ -34,6 +35,21 @@ public class LoadingScreen2 implements Screen
     private final byte WAIT_TIME = 3;
 
     private final Application APP;
+
+    private Array<Enemy> totalEnemies;
+    private Array<Enemy> currentEnemies;
+    private Array<Orange> totalOranges;
+    private Array<Ananas> totalAnanases;
+
+    private Array<Corpse> currentCorpses;
+    private Array<Corpse> totalOrangeCorpses;
+    private Array<Corpse> totalAnanasCorpses;
+
+    private Array<Bullet> totalBullets;
+    private Array<Bullet> currentBullets;
+
+    private Array<Explosion> totalExplosions;
+    private Array<Explosion> currentExplosions;
 
     private TextureAtlas gameScreenAtlas;
     private TextureAtlas explosionsAtlas;
@@ -82,26 +98,42 @@ public class LoadingScreen2 implements Screen
         // INIT EXPLOSIONS
         explosionsAtlas = APP.assets.get("atlases/explosion.pack", TextureAtlas.class);
 
+        totalEnemies = new Array<Enemy>();
+        currentEnemies = new Array<Enemy>();
+        totalOranges = new Array<Orange>();
+        totalAnanases = new Array<Ananas>();
+
+        currentCorpses = new Array<Corpse>();
+        totalOrangeCorpses = new Array<Corpse>();
+        totalAnanasCorpses = new Array<Corpse>();
+
+        totalBullets = new Array<Bullet>();
+        currentBullets = new Array<Bullet>();
+
+        totalExplosions = new Array<Explosion>();
+        currentExplosions = new Array<Explosion>();
+
         // INIT EXPLOSION STUFF
         for (int i = 0; i < 5; i++)
-            Explosion.totalExplosions.add(new Explosion(explosionsAtlas, APP.assets.get("sounds/explosion.ogg", Sound.class)));
+            totalExplosions.add(new Explosion(explosionsAtlas, APP.assets.get("sounds/explosion.ogg", Sound.class)));
 
         // INIT BULLETS
         for (int i = 0; i < 30; i++)
-            Bullet.totalBullets.add(new Bullet(gameScreenAtlas.createSprite("bullet")));
+            totalBullets.add(new Bullet(gameScreenAtlas.createSprite("bullet")));
 
         // INIT ORANGES
         for (int i = 0; i < 30; i++)
-            Orange.totalOranges.add(new Orange(APP, gameScreenAtlas.findRegion("orange"), gameScreenAtlas.findRegion("orange-hit"), gameScreenAtlas.createSprite("red-bar"), gameScreenAtlas.createSprite("green-bar")));
+            totalOranges.add(new Orange(APP, gameScreenAtlas.findRegion("orange"), gameScreenAtlas.findRegion("orange-hit"), gameScreenAtlas.createSprite("red-bar"), gameScreenAtlas.createSprite("green-bar")));
 
         // INIT ANANASES
         for (int i = 0; i < 20; i++)
-            Ananas.totalAnanases.add(new Ananas(APP, gameScreenAtlas.findRegion("ananas"), gameScreenAtlas.findRegion("ananas-hit"), gameScreenAtlas.createSprite("red-bar"), gameScreenAtlas.createSprite("green-bar")));
+            totalAnanases.add(new Ananas(APP, gameScreenAtlas.findRegion("ananas"), gameScreenAtlas.findRegion("ananas-hit"), gameScreenAtlas.createSprite("red-bar"), gameScreenAtlas.createSprite("green-bar")));
 
+        for (int i = 0; i < 30; i++)
+            totalOrangeCorpses.add(new Corpse(gameScreenAtlas.findRegion("orange-dead")));
 
-
-        Enemy.totalEnemies.addAll(Orange.totalOranges);
-        Enemy.totalEnemies.addAll(Ananas.totalAnanases);
+        totalEnemies.addAll(totalOranges);
+        totalEnemies.addAll(totalAnanases);
 
         // INIT PLAYER
         player = new Player(gameScreenAtlas.createSprite("player"), gameScreenAtlas.createSprite("flash"), APP);
@@ -122,7 +154,7 @@ public class LoadingScreen2 implements Screen
 
         collisionHandler = new CollisionHandler(deadScreen);
 
-        gameScreen = new GameScreen(APP, new GameHud(player, APP.viewport, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon"), gameScreenAtlas.findRegion("volumeButton"), actionMusic), new BuyHud(APP.viewport, APP.batch, gameScreenAtlas, blackShaderTexture), bg, player, inputMultiplexer, new Font("fonts/trompus.otf", 60, Color.WHITE, Color.BLACK, 3, true), inputHandler, new Input(), collisionHandler, ammoStatus, actionMusic, gameScreenAtlas.createSprite("reload-icon"), APP.assets.get("sounds/victory.ogg", Sound.class));
+        gameScreen = new GameScreen(APP, totalEnemies, currentEnemies, totalOranges, totalAnanases, currentCorpses, totalOrangeCorpses, totalAnanasCorpses, totalBullets, currentBullets, totalExplosions, currentExplosions, new GameHud(player, APP.viewport, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon"), gameScreenAtlas.findRegion("volumeButton"), actionMusic), new BuyHud(APP.viewport, APP.batch, gameScreenAtlas, blackShaderTexture), bg, player, inputMultiplexer, new Font("fonts/trompus.otf", 60, Color.WHITE, Color.BLACK, 3, true), inputHandler, new Input(), collisionHandler, ammoStatus, actionMusic, gameScreenAtlas.createSprite("reload-icon"), APP.assets.get("sounds/victory.ogg", Sound.class));
 
         gameResetter.setGameScreen(gameScreen);
     }
