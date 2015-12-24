@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.Logger;
+import com.nahroto.fruitdestroyer.WaveGenerator;
 import com.nahroto.fruitdestroyer.entities.Corpse;
 import com.nahroto.fruitdestroyer.helpers.CollisionHandler;
 import com.nahroto.fruitdestroyer.Constants;
@@ -136,7 +137,7 @@ public class LoadingScreen2 implements Screen
         totalEnemies.addAll(totalAnanases);
 
         // INIT PLAYER
-        player = new Player(gameScreenAtlas.createSprite("player"), gameScreenAtlas.createSprite("flash"), APP);
+        player = new Player(gameScreenAtlas.createSprite("player"), gameScreenAtlas.createSprite("flash"), totalBullets, currentBullets, APP);
 
         // INIT INPUT-HANDLER
         inputHandler = new InputHandler(player);
@@ -148,13 +149,13 @@ public class LoadingScreen2 implements Screen
         blackShaderTexture = new Texture("backgrounds/blackShader.png");
         blackShaderTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
-        gameResetter = new GameResetter(APP);
+        gameResetter = new GameResetter(APP, currentEnemies, currentBullets);
 
         deadScreen = new DeadScreen(APP, gameScreenAtlas.findRegion("retry-button-up"), gameScreenAtlas.findRegion("retry-button-down"), gameResetter, bg, inputMultiplexer);
 
-        collisionHandler = new CollisionHandler(deadScreen);
+        collisionHandler = new CollisionHandler(deadScreen, currentEnemies, currentBullets);
 
-        gameScreen = new GameScreen(APP, totalEnemies, currentEnemies, totalOranges, totalAnanases, currentCorpses, totalOrangeCorpses, totalAnanasCorpses, totalBullets, currentBullets, totalExplosions, currentExplosions, new GameHud(player, APP.viewport, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon"), gameScreenAtlas.findRegion("volumeButton"), actionMusic), new BuyHud(APP.viewport, APP.batch, gameScreenAtlas, blackShaderTexture), bg, player, inputMultiplexer, new Font("fonts/trompus.otf", 60, Color.WHITE, Color.BLACK, 3, true), inputHandler, new Input(), collisionHandler, ammoStatus, actionMusic, gameScreenAtlas.createSprite("reload-icon"), APP.assets.get("sounds/victory.ogg", Sound.class));
+        gameScreen = new GameScreen(APP, new WaveGenerator(totalEnemies, currentEnemies, totalOranges, totalAnanases), totalEnemies, currentEnemies, totalOranges, totalAnanases, currentCorpses, totalOrangeCorpses, totalAnanasCorpses, totalBullets, currentBullets, totalExplosions, currentExplosions, new GameHud(player, APP.viewport, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon"), gameScreenAtlas.findRegion("volumeButton"), actionMusic), new BuyHud(APP.viewport, APP.batch, gameScreenAtlas, blackShaderTexture), bg, player, inputMultiplexer, new Font("fonts/trompus.otf", 60, Color.WHITE, Color.BLACK, 3, true), inputHandler, new Input(), collisionHandler, ammoStatus, actionMusic, gameScreenAtlas.createSprite("reload-icon"), APP.assets.get("sounds/victory.ogg", Sound.class));
 
         gameResetter.setGameScreen(gameScreen);
     }

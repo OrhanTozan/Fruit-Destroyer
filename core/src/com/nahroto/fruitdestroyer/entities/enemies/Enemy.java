@@ -16,6 +16,7 @@ import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.Constants;
 import com.nahroto.fruitdestroyer.Explosion;
 import com.nahroto.fruitdestroyer.HealthBar;
+import com.nahroto.fruitdestroyer.Logger;
 
 public class Enemy
 {
@@ -24,13 +25,10 @@ public class Enemy
     protected boolean explodable;
 
     public boolean renderHit = false;
-    public boolean isCollidable;
 
     public boolean isUsed;
 
     protected long currentTime;
-    public long deadStartTime;
-    public boolean isDying;
 
     protected int maxHealth;
     protected int health;
@@ -88,8 +86,6 @@ public class Enemy
 
         bounds.setOrigin(BOUNDING_WIDTH / 2, BOUNDING_HEIGHT / 2);
 
-        isCollidable = true;
-        isDying = false;
     }
 
     public void calculateVelocity()
@@ -123,12 +119,11 @@ public class Enemy
     {
         applyVelocityToPosition(delta);
         updateBounds();
-        if (!isDying && renderHit && (System.currentTimeMillis() - currentTime > 100))
+        if (renderHit && (System.currentTimeMillis() - currentTime > 100))
         {
             renderHit = false;
             setNormalTexture();
         }
-
     }
 
     public void render(SpriteBatch batch)
@@ -158,6 +153,16 @@ public class Enemy
     {
         sprite.setPosition(position.x, position.y);
         bounds.setPosition(position.x + BOUNDING_X, position.y + BOUNDING_Y);
+    }
+
+    public float getX()
+    {
+        return sprite.getX();
+    }
+
+    public float getY()
+    {
+        return sprite.getY();
     }
 
     public void setNormalTexture()

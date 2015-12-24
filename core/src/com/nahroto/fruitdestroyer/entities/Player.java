@@ -23,6 +23,9 @@ public class Player
 
     private final int KICK = 15;
 
+    private Array<Bullet> totalBullets;
+    private Array<Bullet> currentBullets;
+
     private Sprite sprite;
     private Sprite flashSprite;
 
@@ -68,9 +71,12 @@ public class Player
     private boolean firstShotFired;
     private static final float MAX_SPREAD = 0.7f;
 
-    public Player(Sprite sprite, Sprite flashSprite, final Application APP)
+    public Player(Sprite sprite, Sprite flashSprite, Array<Bullet> totalBullets, Array<Bullet> currentBullets, final Application APP)
     {
         this.APP = APP;
+
+        this.totalBullets = totalBullets;
+        this.currentBullets = currentBullets;
 
         this.sprite = sprite;
         this.sprite.setPosition(Constants.V_WIDTH / 2 - 32, Constants.V_HEIGHT / 2 - 28);
@@ -176,12 +182,12 @@ public class Player
                 }
 
                 // System.out.println(Bullet.totalBullets.get(0).isUsed);
-                for (int i = 0; i < Bullet.totalBullets.size; i++)
+                for (int i = 0; i < totalBullets.size; i++)
                 {
-                    if (Bullet.totalBullets.get(i).isUsed == false)
+                    if (totalBullets.get(i).isUsed == false)
                     {
-                        Bullet.totalBullets.get(i).isOutOfScreen = false;
-                        Bullet.totalBullets.get(i).isUsed = true;
+                        totalBullets.get(i).isOutOfScreen = false;
+                        totalBullets.get(i).isUsed = true;
 
                         deltaX += MathUtils.random(-spread, spread) * 500f;
                         deltaY += MathUtils.random(-spread, spread) * 500f;
@@ -205,10 +211,10 @@ public class Player
                         // OFFSET PLAYER TO GIVE KICK
                         offsetBack();
 
-                        Bullet.totalBullets.get(i).setPosition((Constants.V_WIDTH / 2 + bulletPositionX) - 10, (Constants.V_HEIGHT / 2 + bulletPositionY) - 10);
-                        Bullet.totalBullets.get(i).setVelocity(directionX * Bullet.VELOCITY, directionY * Bullet.VELOCITY);
+                        totalBullets.get(i).setPosition((Constants.V_WIDTH / 2 + bulletPositionX) - 10, (Constants.V_HEIGHT / 2 + bulletPositionY) - 10);
+                        totalBullets.get(i).setVelocity(directionX * Bullet.VELOCITY, directionY * Bullet.VELOCITY);
 
-                        Bullet.currentBullets.add(Bullet.totalBullets.get(i));
+                        currentBullets.add(totalBullets.get(i));
                         break;
                     }
                 }

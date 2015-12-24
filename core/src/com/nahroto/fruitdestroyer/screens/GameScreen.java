@@ -41,6 +41,8 @@ public class GameScreen implements Screen
 {
     private final Application APP;
 
+    private WaveGenerator waveGenerator;
+
     private Array<Enemy> totalEnemies;
     private Array<Enemy> currentEnemies;
     private Array<Orange> totalOranges;
@@ -77,9 +79,10 @@ public class GameScreen implements Screen
 
     private ShapeRenderer shapeRenderer;
 
-    public GameScreen(final Application APP, Array<Enemy> totalEnemies, Array<Enemy> currentEnemies, Array<Orange> totalOranges, Array<Ananas> totalAnanases, Array<Corpse> currentCorpses, Array<Corpse> totalOrangeCorpses, Array<Corpse> totalAnanasCorpses, Array<Bullet> totalBullets, Array<Bullet> currentBullets,Array<Explosion> totalExplosions, Array<Explosion> currentExplosions, GameHud gameHud, BuyHud buyHud, Texture bg, Player player, InputMultiplexer inputMultiplexer, Font accuracyStatus, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Sound waveSFX)
+    public GameScreen(final Application APP, WaveGenerator waveGenerator, Array<Enemy> totalEnemies, Array<Enemy> currentEnemies, Array<Orange> totalOranges, Array<Ananas> totalAnanases, Array<Corpse> currentCorpses, Array<Corpse> totalOrangeCorpses, Array<Corpse> totalAnanasCorpses, Array<Bullet> totalBullets, Array<Bullet> currentBullets,Array<Explosion> totalExplosions, Array<Explosion> currentExplosions, GameHud gameHud, BuyHud buyHud, Texture bg, Player player, InputMultiplexer inputMultiplexer, Font accuracyStatus, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Sound waveSFX)
     {
         this.APP = APP;
+        this.waveGenerator = waveGenerator;
         this.gameHud = gameHud;
         this.buyHud = buyHud;
         this.bg = bg;
@@ -133,8 +136,8 @@ public class GameScreen implements Screen
         if (Constants.DEBUG)
             shapeRenderer = new ShapeRenderer();
 
-        WaveGenerator.wave = 1;
-        WaveGenerator.startNewWave();
+        waveGenerator.wave = 1;
+        waveGenerator.startNewWave();
     }
 
     @Override
@@ -161,6 +164,7 @@ public class GameScreen implements Screen
             for (int i = 0; i < currentEnemies.size; i++)
                 currentEnemies.get(i).update(delta);
 
+
             // UPDATE BULLETS
             for (int i = 0; i < currentBullets.size; i++)
             {
@@ -180,15 +184,31 @@ public class GameScreen implements Screen
             for (int i = 0; i < currentEnemies.size; i++)
             {
                 // IF ENEMY DIES
-                if (currentEnemies.get(i).isDying && currentEnemies.get(i).getHealth() <= 0)
+                if (currentEnemies.get(i).getHealth() <= 0)
                 {
+                    if (currentEnemies.get(i) instanceof Orange)
+                    {
+                        for (Corpse corpse : totalOrangeCorpses)
+                        {
+                            if (!corpse.isBusy)
+                            {
+                                corpse.setStartTime();
+                                corpse.setPosition(currentEnemies.get(i).getX(), currentEnemies.get(i).getY());
+                                corpse.setAngle(currentEnemies.get(i).getAngle());
+                                corpse.isBusy = true;
+                                currentCorpses.add(corpse);
+                                break;
+                            }
+                        }
+                    }
+
                     // IF ENEMY IS EXPLODABLE
                     if (currentEnemies.get(i).isExplodable())
                     {
                         // GET AN EXPLOSION THAT ISNT BUSY
                         for (int j = 0; j < totalExplosions.size; j++)
                         {
-                            if (totalExplosions.get(j).isBusy)
+                            if (!totalExplosions.get(j).isBusy)
                             {
                                 totalExplosions.get(j).getSound().play();
                                 totalExplosions.get(j).setPosition(((currentEnemies.get(i).getSprite().getX() + (currentEnemies.get(i).getSprite().getWidth() / 2)) - (Explosion.WIDTH / 2)), ((currentEnemies.get(i).getSprite().getY() + (currentEnemies.get(i).getSprite().getHeight() / 2)) - (Explosion.WIDTH / 2)));
@@ -200,40 +220,19 @@ public class GameScreen implements Screen
                         }
                         CameraShaker.startShaking(3f, 750);
                     }
-
-                    currentEnemies.get(i).isCollidable = false;
-                    currentEnemies.get(i).resetVelocity();
-                }
-            }
-
-            for (int i = 0; i < currentEnemies.size; i++)
-            {
-                if (currentEnemies.get(i).isDying && System.currentTimeMillis() - currentEnemies.get(i).deadStartTime >= 20000)
-                {
-                    currentEnemies.get(i).isDying = false;
-                    currentEnemies.get(i).isUsed = false;
                     currentEnemies.removeIndex(i);
                 }
             }
 
-            WaveGenerator.update();
+            waveGenerator.update();
 
-            int deadEnemies = 0;
 
             // WHEN WAVE IS CLEARED, START NEW WAVE
-            for (Enemy enemy : currentEnemies)
+            if (currentEnemies.size == 0 && waveGenerator.getQueue().size == 0)
             {
-                if (!enemy.isDying)
-                    break;
-                else
-                    deadEnemies++;
-
-                if (deadEnemies == currentEnemies.size && WaveGenerator.getQueue().size == 0)
-                {
-                    waveSFX.play();
-                    WaveGenerator.wave++;
-                    WaveGenerator.startNewWave();
-                }
+                waveSFX.play();
+                waveGenerator.wave++;
+                waveGenerator.startNewWave();
             }
 
             // UPDATE EXPLOSIONS
@@ -254,7 +253,6 @@ public class GameScreen implements Screen
             else
                 gameHud.addAllActorsToStage();
 
-
             // UPDATE GAMEHUD
             gameHud.update(delta);
 
@@ -268,6 +266,16 @@ public class GameScreen implements Screen
             {
                 currentEnemies.get(i).getHealthBar().getRed().setPosition((currentEnemies.get(i).getSprite().getX() + (currentEnemies.get(i).getSprite().getWidth() / 2)) - (currentEnemies.get(i).getHealthBar().getRed().getWidth() / 2), currentEnemies.get(i).getSprite().getY() - HealthBar.Y_OFFSET);
                 currentEnemies.get(i).getHealthBar().update(currentEnemies.get(i).getHealth(), currentEnemies.get(i).getMaxHealth());
+            }
+
+            for (int i = 0; i < currentCorpses.size; i++)
+            {
+                currentCorpses.get(i).update();
+                if (currentCorpses.get(i).isDone)
+                {
+                    currentCorpses.get(i).isDone = false;
+                    currentCorpses.removeIndex(i);
+                }
             }
 
             CameraShaker.update(APP.camera);
@@ -289,6 +297,9 @@ public class GameScreen implements Screen
         // RENDER BACKGROUND
         APP.batch.draw(bg, -80, -80);
 
+        for (Corpse corpse : currentCorpses)
+            corpse.render(APP.batch);
+
         // RENDER ENEMIES
         for (Enemy enemy : currentEnemies)
             enemy.render(APP.batch);
@@ -307,7 +318,7 @@ public class GameScreen implements Screen
         // RENDER HEALTHBARS
         for (Enemy enemy : currentEnemies)
         {
-            if (!enemy.isDying && enemy.isUsed && enemy.getHealth() > 0)
+            if (enemy.isUsed && enemy.getHealth() > 0)
                 enemy.getHealthBar().render(APP.batch, enemy.getHealth());
         }
 
