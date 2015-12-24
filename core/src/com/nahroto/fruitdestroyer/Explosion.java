@@ -30,7 +30,6 @@ public class Explosion
 
         this.sound = sound;
         isBusy = false;
-
     }
 
     public void update(float delta)
