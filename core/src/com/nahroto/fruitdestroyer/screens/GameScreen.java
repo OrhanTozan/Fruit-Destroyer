@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
@@ -72,6 +73,7 @@ public class GameScreen implements Screen
     private Font accuracyStatus;
     private Music actionMusic;
     private Sprite reloadIcon;
+    private Sprite accuracyIcon;
 
     private Sound waveSFX;
 
@@ -79,7 +81,7 @@ public class GameScreen implements Screen
 
     private ShapeRenderer shapeRenderer;
 
-    public GameScreen(final Application APP, WaveGenerator waveGenerator, Array<Enemy> totalEnemies, Array<Enemy> currentEnemies, Array<Orange> totalOranges, Array<Ananas> totalAnanases, Array<Corpse> currentCorpses, Array<Corpse> totalOrangeCorpses, Array<Corpse> totalAnanasCorpses, Array<Bullet> totalBullets, Array<Bullet> currentBullets,Array<Explosion> totalExplosions, Array<Explosion> currentExplosions, GameHud gameHud, BuyHud buyHud, Texture bg, Player player, InputMultiplexer inputMultiplexer, Font accuracyStatus, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Sound waveSFX)
+    public GameScreen(final Application APP, WaveGenerator waveGenerator, Array<Enemy> totalEnemies, Array<Enemy> currentEnemies, Array<Orange> totalOranges, Array<Ananas> totalAnanases, Array<Corpse> currentCorpses, Array<Corpse> totalOrangeCorpses, Array<Corpse> totalAnanasCorpses, Array<Bullet> totalBullets, Array<Bullet> currentBullets,Array<Explosion> totalExplosions, Array<Explosion> currentExplosions, GameHud gameHud, BuyHud buyHud, Texture bg, Player player, InputMultiplexer inputMultiplexer, Font accuracyStatus, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Sound waveSFX, Sprite accuracyIcon)
     {
         this.APP = APP;
         this.waveGenerator = waveGenerator;
@@ -107,6 +109,7 @@ public class GameScreen implements Screen
         this.currentBullets = currentBullets;
         this.totalExplosions = totalExplosions;
         this.currentExplosions = currentExplosions;
+        this.accuracyIcon = accuracyIcon;
     }
 
     @Override
@@ -128,6 +131,7 @@ public class GameScreen implements Screen
         APP.camera.update();
 
         reloadIcon.setPosition(110, 20);
+        accuracyIcon.setPosition(280, 15);
 
         player.setReloadingConfig(100);
 
@@ -220,6 +224,8 @@ public class GameScreen implements Screen
                         }
                         CameraShaker.startShaking(3f, 750);
                     }
+
+                    currentEnemies.get(i).isUsed = false;
                     currentEnemies.removeIndex(i);
                 }
             }
@@ -284,6 +290,8 @@ public class GameScreen implements Screen
         else
             buyHud.update(delta);
 
+        Logger.log(Gdx.graphics.getFramesPerSecond());
+
         // UPDATE CAMERA
         APP.camera.update();
 
@@ -330,7 +338,8 @@ public class GameScreen implements Screen
 
         // RENDER WAVE STATUS
         ammoStatus.render(APP.batch, "wave " + WaveGenerator.wave.toString(), Constants.V_WIDTH / 2 - (ammoStatus.getWidth("wave " + WaveGenerator.wave.toString()) / 2), Constants.V_HEIGHT - 30, false);
-        accuracyStatus.render(APP.batch, MathUtils.round((100 - (100 * Player.spread))) + "%", Constants.V_WIDTH / 2 - accuracyStatus.getWidth(MathUtils.round((100 - (100 * Player.spread))) + "%") / 2, 60, false);
+        accuracyStatus.render(APP.batch, MathUtils.round((100 - (100 * Player.spread))) + "%", Constants.V_WIDTH / 2 - accuracyStatus.getWidth(MathUtils.round((100 - (100 * Player.spread))) + "%") / 2 + 30, 60, false);
+        accuracyIcon.draw(APP.batch);
 
         APP.batch.end();
 

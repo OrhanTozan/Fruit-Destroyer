@@ -8,7 +8,7 @@ import com.badlogic.gdx.utils.Array;
 
 public class Corpse
 {
-    private static final float DEAD_TIME = 5f;
+    private static final float DEAD_TIME = 10f;
 
     private Sprite sprite;
 

@@ -20,7 +20,7 @@ import com.nahroto.fruitdestroyer.Logger;
 
 public class Enemy
 {
-    protected static final int BASEVELOCITY = 30;
+    protected static final int BASEVELOCITY = 50;
     protected float velocityMultiplier;
     protected boolean explodable;
 

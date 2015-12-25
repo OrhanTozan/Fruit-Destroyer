@@ -25,7 +25,6 @@ public class RandomPositioner
         else
             randomY = MathUtils.random(Constants.V_HEIGHT + MIN_DISTANCE, Constants.V_HEIGHT + MAX_DISTANCE);
 
-
         randomPosition.set(randomX, randomY);
 
         return randomPosition;

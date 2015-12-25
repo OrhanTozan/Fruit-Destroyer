@@ -5,140 +5,154 @@ filter: Linear,Linear
 repeat: none
 overlay
   rotate: false
-  xy: 1, 352
+  xy: 1, 359
   size: 564, 664
   orig: 564, 664
   offset: 0, 0
   index: -1
 retry-button-up
   rotate: false
-  xy: 1, 146
+  xy: 1, 153
   size: 378, 204
   orig: 378, 204
   offset: 0, 0
   index: -1
 retry-button-down
   rotate: false
-  xy: 567, 818
+  xy: 567, 825
   size: 378, 198
   orig: 378, 198
   offset: 0, 0
   index: -1
 moreAmmoUpgrade-down
   rotate: false
-  xy: 567, 582
+  xy: 567, 589
   size: 234, 234
   orig: 234, 234
   offset: 0, 0
   index: -1
 moreAmmoUpgrade
   rotate: false
-  xy: 567, 346
+  xy: 567, 353
   size: 234, 234
   orig: 234, 234
   offset: 0, 0
   index: -1
 reload-down
   rotate: false
-  xy: 1, 8
+  xy: 1, 15
   size: 226, 136
   orig: 226, 136
   offset: 0, 0
   index: -1
 ananas-hit
   rotate: false
-  xy: 381, 168
+  xy: 381, 175
   size: 144, 182
   orig: 144, 182
   offset: 0, 0
   index: -1
 ananas
   rotate: false
-  xy: 803, 634
+  xy: 803, 641
   size: 144, 182
   orig: 144, 182
   offset: 0, 0
   index: -1
 reload-up
   rotate: false
-  xy: 527, 208
+  xy: 527, 215
   size: 226, 136
   orig: 226, 136
   offset: 0, 0
   index: -1
 bullet-icon
   rotate: false
-  xy: 947, 929
+  xy: 947, 936
   size: 76, 87
   orig: 76, 87
   offset: 0, 0
   index: -1
+flash2
+  rotate: false
+  xy: 229, 60
+  size: 129, 91
+  orig: 129, 91
+  offset: 0, 0
+  index: -1
 player
   rotate: false
-  xy: 229, 87
+  xy: 229, 1
   size: 121, 57
   orig: 121, 57
   offset: 0, 0
   index: -1
 orange-dead
   rotate: false
-  xy: 803, 553
+  xy: 803, 560
   size: 90, 79
   orig: 90, 79
   offset: 0, 0
   index: -1
 orange-hit
   rotate: false
-  xy: 803, 472
+  xy: 803, 479
   size: 90, 79
   orig: 90, 79
   offset: 0, 0
   index: -1
 orange
   rotate: false
-  xy: 803, 391
+  xy: 803, 398
   size: 90, 79
   orig: 90, 79
   offset: 0, 0
   index: -1
 reload-icon
   rotate: false
-  xy: 229, 1
+  xy: 895, 555
   size: 82, 84
   orig: 82, 84
   offset: 0, 0
   index: -1
 volumeButton
   rotate: false
-  xy: 803, 321
+  xy: 895, 485
   size: 86, 68
   orig: 86, 68
   offset: 0, 0
   index: -1
+accuracy-icon
+  rotate: false
+  xy: 947, 878
+  size: 56, 56
+  orig: 56, 56
+  offset: 0, 0
+  index: -1
 flash
   rotate: false
-  xy: 527, 171
+  xy: 527, 178
   size: 47, 35
   orig: 47, 35
   offset: 0, 0
   index: -1
 red-bar
   rotate: false
-  xy: 381, 151
+  xy: 381, 158
   size: 50, 15
   orig: 50, 15
   offset: 0, 0
   index: -1
 green-bar
   rotate: false
-  xy: 947, 914
+  xy: 803, 383
   size: 48, 13
   orig: 48, 13
   offset: 0, 0
   index: -1
 bullet
   rotate: false
-  xy: 352, 124
+  xy: 755, 331
   size: 20, 20
   orig: 20, 20
   offset: 0, 0
