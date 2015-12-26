@@ -128,7 +128,7 @@ public class Player
             flashNeeded = false;
 
         if (flashNeeded)
-            flashSprite.setPosition(Constants.V_WIDTH / 2 + flashPositionX, (Constants.V_HEIGHT / 2 + flashPositionY) - (44 / 2) /* - CONSTANT*/);
+            flashSprite.setPosition((Constants.V_WIDTH / 2) + flashPositionX, ((Constants.V_HEIGHT / 2) + flashPositionY) - flashSprite.getHeight() / 2);
 
         if (reloading && System.currentTimeMillis() - timeSinceReload > reloadTime)
         {
@@ -202,11 +202,11 @@ public class Player
                         float bulletPositionX = (MathUtils.cos(angle * MathUtils.degreesToRadians) * 85);
                         float bulletPositionY = (MathUtils.sin(angle * MathUtils.degreesToRadians) * 85);
 
-                        flashPositionX = (MathUtils.cos(angle * MathUtils.degreesToRadians) * 60);
-                        flashPositionY = (MathUtils.sin(angle * MathUtils.degreesToRadians));
+                        flashPositionX = (MathUtils.cos(angle * MathUtils.degreesToRadians) * 80);
+                        flashPositionY = (MathUtils.sin(angle * MathUtils.degreesToRadians) * 80);
 
                         flashSprite.setRotation(angle);
-                        flashSprite.setPosition(Constants.V_WIDTH / 2 + flashPositionX, (Constants.V_HEIGHT / 2) - (44 / 2));
+                        flashSprite.setPosition((Constants.V_WIDTH / 2) + flashPositionX, ((Constants.V_HEIGHT / 2) + flashPositionY) - flashSprite.getHeight() / 2);
 
                         // OFFSET PLAYER TO GIVE KICK
                         offsetBack();

@@ -135,6 +135,9 @@ public class LoadingScreen2 implements Screen
         for (int i = 0; i < 30; i++)
             totalOrangeCorpses.add(new Corpse(gameScreenAtlas.findRegion("orange-dead")));
 
+        for (int i = 0; i < 30; i ++)
+            totalAnanasCorpses.add(new Corpse(gameScreenAtlas.findRegion("ananas-dead")));
+
         totalEnemies.addAll(totalOranges);
         totalEnemies.addAll(totalAnanases);
 

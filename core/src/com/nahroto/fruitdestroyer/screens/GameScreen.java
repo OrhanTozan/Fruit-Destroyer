@@ -81,6 +81,8 @@ public class GameScreen implements Screen
 
     private ShapeRenderer shapeRenderer;
 
+    private Texture piksel;
+
     public GameScreen(final Application APP, WaveGenerator waveGenerator, Array<Enemy> totalEnemies, Array<Enemy> currentEnemies, Array<Orange> totalOranges, Array<Ananas> totalAnanases, Array<Corpse> currentCorpses, Array<Corpse> totalOrangeCorpses, Array<Corpse> totalAnanasCorpses, Array<Bullet> totalBullets, Array<Bullet> currentBullets,Array<Explosion> totalExplosions, Array<Explosion> currentExplosions, GameHud gameHud, BuyHud buyHud, Texture bg, Player player, InputMultiplexer inputMultiplexer, Font accuracyStatus, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Sound waveSFX, Sprite accuracyIcon)
     {
         this.APP = APP;
@@ -130,6 +132,8 @@ public class GameScreen implements Screen
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
         APP.camera.update();
 
+        piksel = new Texture("backgrounds/piksel.png");
+
         reloadIcon.setPosition(110, 20);
         accuracyIcon.setPosition(280, 15);
 
@@ -150,8 +154,8 @@ public class GameScreen implements Screen
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        /* if (Gdx.input.justTouched())
-            buyHud.toggle(); */
+        if (Gdx.input.justTouched() && !buying)
+            buyHud.toggle(inputMultiplexer);
 
         if (!GameScreen.buying)
         {
@@ -199,6 +203,20 @@ public class GameScreen implements Screen
                                 corpse.setStartTime();
                                 corpse.setPosition(currentEnemies.get(i).getX(), currentEnemies.get(i).getY());
                                 corpse.setAngle(currentEnemies.get(i).getAngle());
+                                corpse.isBusy = true;
+                                currentCorpses.add(corpse);
+                                break;
+                            }
+                        }
+                    }
+                    if (currentEnemies.get(i) instanceof Ananas)
+                    {
+                        for (Corpse corpse : totalAnanasCorpses)
+                        {
+                            if (!corpse.isBusy)
+                            {
+                                corpse.setStartTime();
+                                corpse.setPosition(currentEnemies.get(i).getX(), currentEnemies.get(i).getY());
                                 corpse.isBusy = true;
                                 currentCorpses.add(corpse);
                                 break;
@@ -340,6 +358,8 @@ public class GameScreen implements Screen
         ammoStatus.render(APP.batch, "wave " + WaveGenerator.wave.toString(), Constants.V_WIDTH / 2 - (ammoStatus.getWidth("wave " + WaveGenerator.wave.toString()) / 2), Constants.V_HEIGHT - 30, false);
         accuracyStatus.render(APP.batch, MathUtils.round((100 - (100 * Player.spread))) + "%", Constants.V_WIDTH / 2 - accuracyStatus.getWidth(MathUtils.round((100 - (100 * Player.spread))) + "%") / 2 + 30, 60, false);
         accuracyIcon.draw(APP.batch);
+
+        APP.batch.draw(piksel, Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2);
 
         APP.batch.end();
 

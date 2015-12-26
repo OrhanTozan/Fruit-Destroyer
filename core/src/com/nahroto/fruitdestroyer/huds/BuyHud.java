@@ -1,5 +1,7 @@
 package com.nahroto.fruitdestroyer.huds;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -17,23 +19,31 @@ import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
 public class BuyHud extends Hud
 {
     private final float EASE_TIME = 0.7f;
+    private final int SPACE_BETWEEN_BUTTONS = 60;
 
     private boolean isShowed;
     private boolean isEasing;
 
     private Image overlay;
+    private Image upgradesTitle;
     private Image blackShader;
 
     private ImageButton extraAmmoButton;
+    private ImageButton accuracyButton;
 
     private Runnable toggleBuying;
     private Runnable toggleEasing;
     private Runnable resetPosition;
     private Runnable hideBlackShader;
 
+    private InputMultiplexer inputMultiplexer;
+
     public BuyHud(Viewport viewport, SpriteBatch batch, TextureAtlas gameScreenAtlas, Texture blackShaderTexture)
     {
         super(viewport, batch);
+
+        inputMultiplexer = new InputMultiplexer();
+        inputMultiplexer.addProcessor(stage);
 
         toggleBuying = new Runnable()
         {
@@ -75,15 +85,23 @@ public class BuyHud extends Hud
         blackShader.addAction(alpha(0f));
 
         overlay = new Image(gameScreenAtlas.findRegion("overlay"));
+        upgradesTitle = new Image(gameScreenAtlas.findRegion("upgrades-text"));
+
+        upgradesTitle.setPosition(overlay.getX(Align.top), overlay.getY(Align.top) - 70, Align.top);
 
         extraAmmoButton = new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("moreAmmoUpgrade")), new TextureRegionDrawable(gameScreenAtlas.findRegion("moreAmmoUpgrade-down")));
-        extraAmmoButton.setPosition(overlay.getX(Align.center), overlay.getY(Align.center), Align.bottom);
+        accuracyButton = new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("accuracyUpgrade")), new TextureRegionDrawable(gameScreenAtlas.findRegion("accuracyUpgrade-down")));
+
+        extraAmmoButton.setPosition(overlay.getX() + SPACE_BETWEEN_BUTTONS, upgradesTitle.getY(Align.bottom) - 30, Align.topLeft);
+        accuracyButton.setPosition(overlay.getX() + extraAmmoButton.getWidth() + SPACE_BETWEEN_BUTTONS, upgradesTitle.getY(Align.bottom) - 30, Align.topLeft);
 
         resetPosition();
 
         actors.add(blackShader);
         actors.add(overlay);
+        actors.add(upgradesTitle);
         actors.add(extraAmmoButton);
+        actors.add(accuracyButton);
 
         addAllActorsToStage();
     }
@@ -97,13 +115,16 @@ public class BuyHud extends Hud
 
     private void updateComponents()
     {
-        extraAmmoButton.setPosition(overlay.getX(Align.center), overlay.getY(Align.center), Align.bottom);
+        upgradesTitle.setPosition(overlay.getX(Align.top), overlay.getY(Align.top) - 70, Align.top);
+        extraAmmoButton.setPosition(overlay.getX() + SPACE_BETWEEN_BUTTONS, upgradesTitle.getY(Align.bottom) - 30, Align.topLeft);
+        accuracyButton.setPosition(overlay.getX() + extraAmmoButton.getWidth() + SPACE_BETWEEN_BUTTONS, upgradesTitle.getY(Align.bottom) - 30, Align.topLeft);
     }
 
-    public void toggle()
+    public void toggle(InputMultiplexer gameScreenInput)
     {
         if (isShowed == false)
         {
+            Gdx.input.setInputProcessor(inputMultiplexer);
             easeIn();
             showBlackShader();
             isShowed = true;
@@ -111,6 +132,7 @@ public class BuyHud extends Hud
 
         else
         {
+            Gdx.input.setInputProcessor(gameScreenInput);
             easeOut();
             isShowed = false;
         }
