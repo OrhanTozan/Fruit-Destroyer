@@ -9,9 +9,11 @@ import com.nahroto.fruitdestroyer.entities.enemies.Orange;
 
 public class WaveGenerator
 {
-    private final int ANANAS_MINIMUM_WAVE = 1;
-    private final float ORANGE_MULTIPLIER = 1.2f;
-    private final float ANANAS_MULTIPLIER = 0.5f;
+    public static final int BUY_WAVE = 3;
+
+    private static final int ANANAS_MINIMUM_WAVE = 1;
+    private static final float ORANGE_MULTIPLIER = 1.2f;
+    private static final float ANANAS_MULTIPLIER = 0.5f;
 
     private Array<Enemy> totalEnemies;
     private Array<Enemy> currentEnemies;
@@ -22,7 +24,7 @@ public class WaveGenerator
 
     private Array<Enemy> queue;
 
-    private float delay = 0;
+    private float delay;
     private long startTime;
 
     public WaveGenerator(Array<Enemy> totalEnemies, Array<Enemy> currentEnemies, Array<Orange> totalOranges, Array<Ananas> totalAnanases)

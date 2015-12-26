@@ -81,8 +81,6 @@ public class GameScreen implements Screen
 
     private ShapeRenderer shapeRenderer;
 
-    private Texture piksel;
-
     public GameScreen(final Application APP, WaveGenerator waveGenerator, Array<Enemy> totalEnemies, Array<Enemy> currentEnemies, Array<Orange> totalOranges, Array<Ananas> totalAnanases, Array<Corpse> currentCorpses, Array<Corpse> totalOrangeCorpses, Array<Corpse> totalAnanasCorpses, Array<Bullet> totalBullets, Array<Bullet> currentBullets,Array<Explosion> totalExplosions, Array<Explosion> currentExplosions, GameHud gameHud, BuyHud buyHud, Texture bg, Player player, InputMultiplexer inputMultiplexer, Font accuracyStatus, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Sound waveSFX, Sprite accuracyIcon)
     {
         this.APP = APP;
@@ -132,8 +130,6 @@ public class GameScreen implements Screen
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
         APP.camera.update();
 
-        piksel = new Texture("backgrounds/piksel.png");
-
         reloadIcon.setPosition(110, 20);
         accuracyIcon.setPosition(280, 15);
 
@@ -148,15 +144,8 @@ public class GameScreen implements Screen
         waveGenerator.startNewWave();
     }
 
-    @Override
-    public void render(float delta)
+    private void update(float delta)
     {
-        Gdx.gl.glClearColor(0, 0, 0, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-        if (Gdx.input.justTouched() && !buying)
-            buyHud.toggle(inputMultiplexer);
-
         if (!GameScreen.buying)
         {
             // HANDLE INPUT
@@ -254,9 +243,17 @@ public class GameScreen implements Screen
             // WHEN WAVE IS CLEARED, START NEW WAVE
             if (currentEnemies.size == 0 && waveGenerator.getQueue().size == 0)
             {
-                waveSFX.play();
-                waveGenerator.wave++;
-                waveGenerator.startNewWave();
+                if (waveGenerator.wave % WaveGenerator.BUY_WAVE == 0)
+                {
+                    Input.touchDown = false;
+                    buyHud.toggle(inputMultiplexer);
+                }
+                else
+                {
+                    waveSFX.play();
+                    waveGenerator.wave++;
+                    waveGenerator.startNewWave();
+                }
             }
 
             // UPDATE EXPLOSIONS
@@ -315,6 +312,15 @@ public class GameScreen implements Screen
 
         // UPDATE
         APP.batch.setProjectionMatrix(APP.camera.combined);
+    }
+
+    @Override
+    public void render(float delta)
+    {
+        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        update(delta);
 
         // --- RENDER ---
 
@@ -359,7 +365,6 @@ public class GameScreen implements Screen
         accuracyStatus.render(APP.batch, MathUtils.round((100 - (100 * Player.spread))) + "%", Constants.V_WIDTH / 2 - accuracyStatus.getWidth(MathUtils.round((100 - (100 * Player.spread))) + "%") / 2 + 30, 60, false);
         accuracyIcon.draw(APP.batch);
 
-        APP.batch.draw(piksel, Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2);
 
         APP.batch.end();
 

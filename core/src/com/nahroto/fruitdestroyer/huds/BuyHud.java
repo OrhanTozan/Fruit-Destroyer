@@ -2,16 +2,20 @@ package com.nahroto.fruitdestroyer.huds;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Interpolation;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nahroto.fruitdestroyer.Constants;
+import com.nahroto.fruitdestroyer.WaveGenerator;
 import com.nahroto.fruitdestroyer.screens.GameScreen;
 
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
@@ -30,17 +34,20 @@ public class BuyHud extends Hud
 
     private ImageButton extraAmmoButton;
     private ImageButton accuracyButton;
+    private ImageButton doneButton;
 
     private Runnable toggleBuying;
     private Runnable toggleEasing;
     private Runnable resetPosition;
     private Runnable hideBlackShader;
+    private Runnable startNewWave;
 
     private InputMultiplexer inputMultiplexer;
 
-    public BuyHud(Viewport viewport, SpriteBatch batch, TextureAtlas gameScreenAtlas, Texture blackShaderTexture)
+    public BuyHud(Viewport viewport, SpriteBatch batch, TextureAtlas gameScreenAtlas, Texture blackShaderTexture, final Sound waveSFX, final WaveGenerator waveGenerator)
     {
         super(viewport, batch);
+
 
         inputMultiplexer = new InputMultiplexer();
         inputMultiplexer.addProcessor(stage);
@@ -81,6 +88,17 @@ public class BuyHud extends Hud
             }
         };
 
+        startNewWave = new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                waveSFX.play();
+                WaveGenerator.wave++;
+                waveGenerator.startNewWave();
+            }
+        };
+
         blackShader = new Image(blackShaderTexture);
         blackShader.addAction(alpha(0f));
 
@@ -91,9 +109,20 @@ public class BuyHud extends Hud
 
         extraAmmoButton = new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("moreAmmoUpgrade")), new TextureRegionDrawable(gameScreenAtlas.findRegion("moreAmmoUpgrade-down")));
         accuracyButton = new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("accuracyUpgrade")), new TextureRegionDrawable(gameScreenAtlas.findRegion("accuracyUpgrade-down")));
+        doneButton = new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("upgradeDone")), new TextureRegionDrawable(gameScreenAtlas.findRegion("upgradeDone-down")));
 
         extraAmmoButton.setPosition(overlay.getX() + SPACE_BETWEEN_BUTTONS, upgradesTitle.getY(Align.bottom) - 30, Align.topLeft);
         accuracyButton.setPosition(overlay.getX() + extraAmmoButton.getWidth() + SPACE_BETWEEN_BUTTONS, upgradesTitle.getY(Align.bottom) - 30, Align.topLeft);
+        doneButton.setPosition(overlay.getX(Align.center), overlay.getY(Align.bottom) + SPACE_BETWEEN_BUTTONS, Align.bottom);
+
+        doneButton.addListener(new ClickListener()
+        {
+            @Override
+            public void clicked(InputEvent event, float x, float y)
+            {
+                easeOut();
+            }
+        });
 
         resetPosition();
 
@@ -102,6 +131,7 @@ public class BuyHud extends Hud
         actors.add(upgradesTitle);
         actors.add(extraAmmoButton);
         actors.add(accuracyButton);
+        actors.add(doneButton);
 
         addAllActorsToStage();
     }
@@ -118,6 +148,7 @@ public class BuyHud extends Hud
         upgradesTitle.setPosition(overlay.getX(Align.top), overlay.getY(Align.top) - 70, Align.top);
         extraAmmoButton.setPosition(overlay.getX() + SPACE_BETWEEN_BUTTONS, upgradesTitle.getY(Align.bottom) - 30, Align.topLeft);
         accuracyButton.setPosition(overlay.getX() + extraAmmoButton.getWidth() + SPACE_BETWEEN_BUTTONS, upgradesTitle.getY(Align.bottom) - 30, Align.topLeft);
+        doneButton.setPosition(overlay.getX(Align.center), overlay.getY(Align.bottom) + SPACE_BETWEEN_BUTTONS, Align.bottom);
     }
 
     public void toggle(InputMultiplexer gameScreenInput)
@@ -154,7 +185,8 @@ public class BuyHud extends Hud
                 parallel(moveToAligned(0, Constants.V_HEIGHT / 2, Align.right, EASE_TIME, Interpolation.pow2Out), run(hideBlackShader)),
                 run(toggleEasing),
                 run(toggleBuying),
-                run(resetPosition)));
+                run(resetPosition),
+                run(startNewWave)));
     }
 
     private void resetPosition()
