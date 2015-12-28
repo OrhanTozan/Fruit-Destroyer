@@ -16,7 +16,7 @@ public class Bullet
 
     private static final int START_DAMAGE = 10;
     private static final int START_ROF = 200;
-    private static final int START_MAGSIZE = 200;
+    private static final int START_MAGSIZE = 20;
     private static final float START_RECOIL = 1f;
 
     private Vector2 velocity;

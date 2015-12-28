@@ -246,7 +246,8 @@ public class GameScreen implements Screen
                 if (waveGenerator.wave % WaveGenerator.BUY_WAVE == 0)
                 {
                     Input.touchDown = false;
-                    buyHud.toggle(inputMultiplexer);
+                    buyHud.turnON();
+                    Logger.log("BUYTIME");
                 }
                 else
                 {
@@ -305,7 +306,7 @@ public class GameScreen implements Screen
         else
             buyHud.update(delta);
 
-        Logger.log(Gdx.graphics.getFramesPerSecond());
+        // Logger.log(Gdx.graphics.getFramesPerSecond());
 
         // UPDATE CAMERA
         APP.camera.update();

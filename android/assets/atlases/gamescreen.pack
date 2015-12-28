@@ -5,107 +5,128 @@ filter: Linear,Linear
 repeat: none
 overlay
   rotate: false
-  xy: 1, 959
+  xy: 1, 971
   size: 664, 1064
   orig: 664, 1064
   offset: 0, 0
   index: -1
-upgradeDone-down
-  rotate: false
-  xy: 1, 777
-  size: 486, 180
-  orig: 486, 180
-  offset: 0, 0
-  index: -1
-upgradeDone
-  rotate: false
-  xy: 1, 595
-  size: 486, 180
-  orig: 486, 180
-  offset: 0, 0
-  index: -1
 retry-button-up
   rotate: false
-  xy: 1, 389
+  xy: 1, 765
   size: 378, 204
   orig: 378, 204
   offset: 0, 0
   index: -1
 retry-button-down
   rotate: false
-  xy: 1, 189
+  xy: 1, 565
   size: 378, 198
   orig: 378, 198
   offset: 0, 0
   index: -1
+upgradeDone-down
+  rotate: false
+  xy: 667, 1852
+  size: 337, 183
+  orig: 337, 183
+  offset: 0, 0
+  index: -1
+upgradeDone
+  rotate: false
+  xy: 1, 380
+  size: 337, 183
+  orig: 337, 183
+  offset: 0, 0
+  index: -1
 upgrades-text
   rotate: false
-  xy: 1, 97
+  xy: 1, 288
   size: 402, 90
   orig: 402, 90
   offset: 0, 0
   index: -1
 accuracyUpgrade-down
   rotate: false
-  xy: 667, 1834
+  xy: 667, 1661
   size: 189, 189
   orig: 189, 189
   offset: 0, 0
   index: -1
 accuracyUpgrade
   rotate: false
-  xy: 667, 1643
+  xy: 381, 780
   size: 189, 189
   orig: 189, 189
   offset: 0, 0
   index: -1
 moreAmmoUpgrade-down
   rotate: false
-  xy: 667, 1452
+  xy: 1, 97
   size: 189, 189
   orig: 189, 189
   offset: 0, 0
   index: -1
 moreAmmoUpgrade
   rotate: false
-  xy: 667, 1261
+  xy: 667, 1470
   size: 189, 189
   orig: 189, 189
   offset: 0, 0
   index: -1
+reloadUpgrade-down
+  rotate: false
+  xy: 381, 589
+  size: 189, 189
+  orig: 189, 189
+  offset: 0, 0
+  index: -1
+reloadUpgrade
+  rotate: false
+  xy: 192, 97
+  size: 189, 189
+  orig: 189, 189
+  offset: 0, 0
+  index: -1
+points-overlay
+  rotate: false
+  xy: 667, 1318
+  size: 187, 150
+  orig: 187, 150
+  offset: 0, 0
+  index: -1
 ananas-hit
   rotate: false
-  xy: 489, 775
+  xy: 858, 1668
   size: 144, 182
   orig: 144, 182
   offset: 0, 0
   index: -1
 ananas
   rotate: false
-  xy: 858, 1841
+  xy: 667, 1134
   size: 144, 182
   orig: 144, 182
   offset: 0, 0
   index: -1
 reload-down
   rotate: false
-  xy: 667, 1123
-  size: 226, 136
-  orig: 226, 136
-  offset: 0, 0
-  index: -1
-reload-up
-  rotate: false
-  xy: 667, 985
+  xy: 667, 996
   size: 226, 136
   orig: 226, 136
   offset: 0, 0
   index: -1
 ananas-dead
   rotate: false
-  xy: 489, 645
+  xy: 858, 1538
   size: 128, 128
   orig: 128, 128
+  offset: 0, 0
+  index: -1
+reload-up
+  rotate: false
+  xy: 667, 858
+  size: 226, 136
+  orig: 226, 136
   offset: 0, 0
   index: -1
 player
@@ -117,56 +138,56 @@ player
   index: -1
 orange-dead
   rotate: false
-  xy: 381, 514
+  xy: 572, 890
   size: 90, 79
   orig: 90, 79
   offset: 0, 0
   index: -1
 orange-hit
   rotate: false
-  xy: 858, 1760
+  xy: 572, 809
   size: 90, 79
   orig: 90, 79
   offset: 0, 0
   index: -1
 orange
   rotate: false
-  xy: 381, 433
+  xy: 572, 728
   size: 90, 79
   orig: 90, 79
   offset: 0, 0
   index: -1
 reload-icon
   rotate: false
-  xy: 858, 1674
+  xy: 572, 642
   size: 82, 84
   orig: 82, 84
   offset: 0, 0
   index: -1
 bullet-icon
   rotate: false
-  xy: 381, 344
+  xy: 664, 769
   size: 76, 87
   orig: 76, 87
   offset: 0, 0
   index: -1
 volumeButton
   rotate: false
-  xy: 858, 1604
+  xy: 742, 788
   size: 86, 68
   orig: 86, 68
   offset: 0, 0
   index: -1
 flash2
   rotate: false
-  xy: 489, 599
+  xy: 858, 1492
   size: 82, 44
   orig: 82, 44
   offset: 0, 0
   index: -1
 accuracy-icon
   rotate: false
-  xy: 381, 280
+  xy: 830, 794
   size: 62, 62
   orig: 62, 62
   offset: 0, 0
@@ -180,7 +201,7 @@ flash
   index: -1
 red-bar
   rotate: false
-  xy: 667, 968
+  xy: 381, 572
   size: 50, 15
   orig: 50, 15
   offset: 0, 0
@@ -194,7 +215,7 @@ green-bar
   index: -1
 bullet
   rotate: false
-  xy: 635, 937
+  xy: 340, 543
   size: 20, 20
   orig: 20, 20
   offset: 0, 0
