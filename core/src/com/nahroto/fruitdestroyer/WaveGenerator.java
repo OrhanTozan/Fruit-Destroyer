@@ -11,7 +11,7 @@ public class WaveGenerator
 {
     public static final int BUY_WAVE = 1;
 
-    private static final int ANANAS_MINIMUM_WAVE = 1;
+    private static final int ANANAS_MINIMUM_WAVE = 5;
     private static final float ORANGE_MULTIPLIER = 1.2f;
     private static final float ANANAS_MULTIPLIER = 0.5f;
 

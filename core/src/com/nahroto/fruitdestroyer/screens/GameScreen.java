@@ -246,6 +246,7 @@ public class GameScreen implements Screen
                 if (waveGenerator.wave % WaveGenerator.BUY_WAVE == 0)
                 {
                     Input.touchDown = false;
+                    buyHud.addPoints(BuyHud.POINTS_REWARD);
                     buyHud.turnON();
                     Logger.log("BUYTIME");
                 }

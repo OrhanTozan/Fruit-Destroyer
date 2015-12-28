@@ -3,6 +3,7 @@ package com.nahroto.fruitdestroyer.huds;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -10,11 +11,13 @@ import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nahroto.fruitdestroyer.Constants;
+import com.nahroto.fruitdestroyer.Font;
 import com.nahroto.fruitdestroyer.Logger;
 import com.nahroto.fruitdestroyer.WaveGenerator;
 import com.nahroto.fruitdestroyer.screens.GameScreen;
@@ -23,12 +26,16 @@ import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
 
 public class BuyHud extends Hud
 {
-    private final float EASE_TIME = 0.7f;
-    private final int SPACE_BETWEEN_BUTTONS = 60;
-    private final int UPGRADEBUTTONS_Y = 600;
+    public static final int POINTS_REWARD = 3;
 
-    private boolean isShowed;
+    private static final float EASE_TIME = 0.7f;
+    private static final int UPGRADEBUTTONS_Y = 750;
+
+    private Integer pointsValue;
+
     private boolean isEasing;
+
+    private Label pointsLabel;
 
     private Image overlay;
     private Image pointsOverlay;
@@ -55,6 +62,9 @@ public class BuyHud extends Hud
 
 
         inputMultiplexer = new InputMultiplexer();
+        pointsValue = new Integer(0);
+
+
         inputMultiplexer.addProcessor(stage);
 
         toggleBuying = new Runnable()
@@ -113,14 +123,19 @@ public class BuyHud extends Hud
             }
         };
 
+        //pointsLabel = new Label()
+
         blackShader = new Image(blackShaderTexture);
         blackShader.addAction(alpha(0f));
+
+        pointsLabel = new Label(pointsValue.toString(), new Label.LabelStyle(new Font("fonts/trompus.otf", 70, Color.LIME, Color.BLACK, 3, true).getFont(), Color.LIME));
 
         overlay = new Image(gameScreenAtlas.findRegion("overlay"));
         pointsOverlay = new Image(gameScreenAtlas.findRegion("points-overlay"));
         upgradesTitle = new Image(gameScreenAtlas.findRegion("upgrades-text"));
 
-        pointsOverlay.setPosition(overlay.getX() + SPACE_BETWEEN_BUTTONS, overlay.getY() + SPACE_BETWEEN_BUTTONS);
+        pointsOverlay.setPosition(overlay.getX() + 70, overlay.getY() + 70);
+        pointsLabel.setPosition(pointsOverlay.getX(Align.center), pointsOverlay.getY(Align.center) - 25, Align.center);
         upgradesTitle.setPosition(overlay.getX(Align.top), overlay.getY(Align.top) - 70, Align.top);
 
         extraAmmoButton = new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("moreAmmoUpgrade")), new TextureRegionDrawable(gameScreenAtlas.findRegion("moreAmmoUpgrade-down")));
@@ -128,9 +143,9 @@ public class BuyHud extends Hud
         reloadSpeedButton = new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("reloadUpgrade")), new TextureRegionDrawable(gameScreenAtlas.findRegion("reloadUpgrade-down")));
         doneButton = new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("upgradeDone")), new TextureRegionDrawable(gameScreenAtlas.findRegion("upgradeDone-down")));
 
-        extraAmmoButton.setPosition(overlay.getX(Align.center)  - accuracyButton.getWidth() - SPACE_BETWEEN_BUTTONS, overlay.getY() + UPGRADEBUTTONS_Y, Align.center);
+        extraAmmoButton.setPosition(overlay.getX(Align.center)  - accuracyButton.getWidth(), overlay.getY() + UPGRADEBUTTONS_Y, Align.center);
         accuracyButton.setPosition(overlay.getX(Align.center), overlay.getY() + UPGRADEBUTTONS_Y, Align.center);
-        reloadSpeedButton.setPosition(overlay.getX(Align.center)  + accuracyButton.getWidth() + SPACE_BETWEEN_BUTTONS, overlay.getY() + UPGRADEBUTTONS_Y, Align.center);
+        reloadSpeedButton.setPosition(overlay.getX(Align.center)  + accuracyButton.getWidth(), overlay.getY() + UPGRADEBUTTONS_Y, Align.center);
         doneButton.setPosition(overlay.getX(Align.center) + 110, pointsOverlay.getY(Align.center), Align.center);
 
         doneButton.addListener(new ClickListener()
@@ -147,6 +162,7 @@ public class BuyHud extends Hud
         actors.add(blackShader);
         actors.add(overlay);
         actors.add(pointsOverlay);
+        actors.add(pointsLabel);
         actors.add(upgradesTitle);
         actors.add(extraAmmoButton);
         actors.add(accuracyButton);
@@ -166,10 +182,12 @@ public class BuyHud extends Hud
     private void updateComponents()
     {
         upgradesTitle.setPosition(overlay.getX(Align.top), overlay.getY(Align.top) - 70, Align.top);
-        pointsOverlay.setPosition(overlay.getX() + SPACE_BETWEEN_BUTTONS, overlay.getY() + SPACE_BETWEEN_BUTTONS);
-        extraAmmoButton.setPosition(overlay.getX(Align.center)  - accuracyButton.getWidth() - SPACE_BETWEEN_BUTTONS, overlay.getY() + UPGRADEBUTTONS_Y, Align.center);
+        pointsOverlay.setPosition(overlay.getX() + 70, overlay.getY() + 70);
+        pointsLabel.setPosition(pointsOverlay.getX(Align.center), pointsOverlay.getY(Align.center) - 25, Align.center);
+        pointsLabel.setText(pointsValue.toString());
+        extraAmmoButton.setPosition(overlay.getX(Align.center)  - accuracyButton.getWidth(), overlay.getY() + UPGRADEBUTTONS_Y, Align.center);
         accuracyButton.setPosition(overlay.getX(Align.center), overlay.getY() + UPGRADEBUTTONS_Y, Align.center);
-        reloadSpeedButton.setPosition(overlay.getX(Align.center)  + accuracyButton.getWidth() + SPACE_BETWEEN_BUTTONS, overlay.getY() + UPGRADEBUTTONS_Y, Align.center);
+        reloadSpeedButton.setPosition(overlay.getX(Align.center) + accuracyButton.getWidth(), overlay.getY() + UPGRADEBUTTONS_Y, Align.center);
         doneButton.setPosition(overlay.getX(Align.center) + 110, pointsOverlay.getY(Align.center), Align.center);
     }
 
@@ -178,15 +196,12 @@ public class BuyHud extends Hud
         Gdx.input.setInputProcessor(inputMultiplexer);
         easeIn();
         showBlackShader();
-        isShowed = true;
     }
 
     private void easeIn()
     {
         isEasing = true;
-        overlay.addAction(sequence(
-                moveToAligned(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2, Align.center, EASE_TIME, Interpolation.pow2Out),
-                run(toggleEasing)));
+        overlay.addAction(sequence(moveToAligned(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2, Align.center, EASE_TIME, Interpolation.pow2Out), run(toggleEasing)));
         GameScreen.buying = true;
     }
 
@@ -217,5 +232,11 @@ public class BuyHud extends Hud
     {
         blackShader.addAction(
                 alpha(0f, EASE_TIME));
+    }
+
+    public void addPoints(int extraPoints)
+    {
+        pointsValue += extraPoints;
+        pointsLabel.setText(pointsValue.toString());
     }
 }
