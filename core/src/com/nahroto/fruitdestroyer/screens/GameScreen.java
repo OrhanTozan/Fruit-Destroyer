@@ -14,11 +14,11 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Array;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.CameraShaker;
 import com.nahroto.fruitdestroyer.Logger;
-import com.nahroto.fruitdestroyer.RandomPositioner;
 import com.nahroto.fruitdestroyer.WaveGenerator;
 import com.nahroto.fruitdestroyer.entities.Corpse;
 import com.nahroto.fruitdestroyer.entities.enemies.Ananas;
@@ -36,7 +36,8 @@ import com.nahroto.fruitdestroyer.entities.enemies.Enemy;
 import com.nahroto.fruitdestroyer.huds.BuyHud;
 import com.nahroto.fruitdestroyer.huds.GameHud;
 
-import sun.rmi.runtime.Log;
+import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
+
 
 public class GameScreen implements Screen
 {
@@ -69,6 +70,8 @@ public class GameScreen implements Screen
     private GameHud gameHud;
     private BuyHud buyHud;
 
+    private Image whiteShader;
+
     private Font ammoStatus;
     private Font accuracyStatus;
     private Music actionMusic;
@@ -81,7 +84,7 @@ public class GameScreen implements Screen
 
     private ShapeRenderer shapeRenderer;
 
-    public GameScreen(final Application APP, WaveGenerator waveGenerator, Array<Enemy> totalEnemies, Array<Enemy> currentEnemies, Array<Orange> totalOranges, Array<Ananas> totalAnanases, Array<Corpse> currentCorpses, Array<Corpse> totalOrangeCorpses, Array<Corpse> totalAnanasCorpses, Array<Bullet> totalBullets, Array<Bullet> currentBullets,Array<Explosion> totalExplosions, Array<Explosion> currentExplosions, GameHud gameHud, BuyHud buyHud, Texture bg, Player player, InputMultiplexer inputMultiplexer, Font accuracyStatus, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Sound waveSFX, Sprite accuracyIcon)
+    public GameScreen(final Application APP, WaveGenerator waveGenerator, Image whiteShader, Array<Enemy> totalEnemies, Array<Enemy> currentEnemies, Array<Orange> totalOranges, Array<Ananas> totalAnanases, Array<Corpse> currentCorpses, Array<Corpse> totalOrangeCorpses, Array<Corpse> totalAnanasCorpses, Array<Bullet> totalBullets, Array<Bullet> currentBullets,Array<Explosion> totalExplosions, Array<Explosion> currentExplosions, GameHud gameHud, BuyHud buyHud, Texture bg, Player player, InputMultiplexer inputMultiplexer, Font accuracyStatus, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Sound waveSFX, Sprite accuracyIcon)
     {
         this.APP = APP;
         this.waveGenerator = waveGenerator;
@@ -110,6 +113,7 @@ public class GameScreen implements Screen
         this.totalExplosions = totalExplosions;
         this.currentExplosions = currentExplosions;
         this.accuracyIcon = accuracyIcon;
+        this.whiteShader = whiteShader;
     }
 
     @Override
@@ -136,6 +140,8 @@ public class GameScreen implements Screen
         player.setReloadingConfig(100);
 
         Player.ammo = Bullet.getWeapon().getMagSize();
+
+        whiteShader.addAction(alpha(0f));
 
         if (Constants.DEBUG)
             shapeRenderer = new ShapeRenderer();
@@ -229,6 +235,7 @@ public class GameScreen implements Screen
                                 break;
                             }
                         }
+                        animateWhiteShader();
                         CameraShaker.startShaking(3f, 750);
                     }
 
@@ -237,6 +244,7 @@ public class GameScreen implements Screen
                 }
             }
 
+            whiteShader.act(delta);
             waveGenerator.update();
 
 
@@ -316,6 +324,14 @@ public class GameScreen implements Screen
         APP.batch.setProjectionMatrix(APP.camera.combined);
     }
 
+    private void animateWhiteShader()
+    {
+        whiteShader.addAction(sequence(
+                alpha(1f),
+                alpha(0f, 0.5f)
+                ));
+    }
+
     @Override
     public void render(float delta)
     {
@@ -325,7 +341,6 @@ public class GameScreen implements Screen
         update(delta);
 
         // --- RENDER ---
-
         APP.batch.begin();
 
         // RENDER BACKGROUND
@@ -363,10 +378,10 @@ public class GameScreen implements Screen
             reloadIcon.draw(APP.batch);
 
         // RENDER WAVE STATUS
+        whiteShader.draw(APP.batch, 1f);
         ammoStatus.render(APP.batch, "wave " + WaveGenerator.wave.toString(), Constants.V_WIDTH / 2 - (ammoStatus.getWidth("wave " + WaveGenerator.wave.toString()) / 2), Constants.V_HEIGHT - 30, false);
         accuracyStatus.render(APP.batch, MathUtils.round((100 - (100 * Player.spread))) + "%", Constants.V_WIDTH / 2 - accuracyStatus.getWidth(MathUtils.round((100 - (100 * Player.spread))) + "%") / 2 + 30, 60, false);
         accuracyIcon.draw(APP.batch);
-
 
         APP.batch.end();
 

@@ -1,9 +1,11 @@
 package com.nahroto.fruitdestroyer.huds;
 
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
@@ -13,6 +15,8 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nahroto.fruitdestroyer.Constants;
 import com.nahroto.fruitdestroyer.entities.Player;
+
+import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
 
 public class GameHud extends Hud
 {
@@ -55,6 +59,7 @@ public class GameHud extends Hud
 
         actors.add(reloadButton);
         actors.add(soundButton);
+        // actors.add(whiteShader);
         actors.add(bulletIcon);
 
         addAllActorsToStage();
