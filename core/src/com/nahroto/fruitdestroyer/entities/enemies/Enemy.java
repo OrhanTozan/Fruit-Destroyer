@@ -29,6 +29,7 @@ public class Enemy
     public boolean isUsed;
 
     protected long currentTime;
+    protected long lastTimeHit;
 
     protected int maxHealth;
     protected int health;
@@ -42,8 +43,13 @@ public class Enemy
 
     protected float angle;
 
+    protected float directionX;
+    protected float directionY;
+
     protected Vector2 velocity;
     protected Vector2 position;
+
+    protected Vector2 forwardVelocity;
 
     protected Sprite sprite;
 
@@ -66,6 +72,7 @@ public class Enemy
 
         velocity = new Vector2();
         position = new Vector2();
+        forwardVelocity = new Vector2();
         bounds = new Polygon();
 
         healthBar = new HealthBar(redBar, greenBar);
@@ -95,12 +102,13 @@ public class Enemy
 
         float length = (float) Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
-        float directionX = deltaX / length;
-        float directionY = deltaY / length;
+        directionX = deltaX / length;
+        directionY = deltaY / length;
 
         int extraVelocity = MathUtils.random(0, 2);
 
-        velocity.set((BASEVELOCITY + (extraVelocity * 10)) * directionX, (BASEVELOCITY + (extraVelocity * 10)) * directionY);
+        forwardVelocity.set((BASEVELOCITY + (extraVelocity * 10)) * directionX, (BASEVELOCITY + (extraVelocity * 10)) * directionY);
+        velocity.set(forwardVelocity);
         velocity.scl(velocityMultiplier);
     }
 
@@ -115,8 +123,17 @@ public class Enemy
         bounds.setRotation(angle);
     }
 
+    public void knockback(float knockbackPower)
+    {
+        lastTimeHit = System.currentTimeMillis();
+        velocity.set(-knockbackPower * directionX, -knockbackPower * directionY);
+    }
+
     public void update(float delta)
     {
+        if (System.currentTimeMillis() - lastTimeHit > 100)
+            velocity.set(forwardVelocity);
+
         applyVelocityToPosition(delta);
         updateBounds();
         if (renderHit && (System.currentTimeMillis() - currentTime > 100))

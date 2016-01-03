@@ -18,6 +18,7 @@ public class Bullet
     private static final int START_ROF = 200;
     private static final int START_MAGSIZE = 20;
     private static final float START_RECOIL = 1f;
+    private static final float START_KNOCKBACKPOWER = 75f;
 
     private Vector2 velocity;
     private Sprite sprite;
@@ -33,7 +34,7 @@ public class Bullet
     {
         this.sprite = sprite;
 
-        weapon = new Weapon(START_DAMAGE, START_ROF, START_MAGSIZE, START_RECOIL);
+        weapon = new Weapon(START_DAMAGE, START_ROF, START_MAGSIZE, START_RECOIL, START_KNOCKBACKPOWER);
 
         velocity = new Vector2();
 

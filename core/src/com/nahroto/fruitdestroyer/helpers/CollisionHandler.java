@@ -46,6 +46,9 @@ public class CollisionHandler
                     currentEnemies.get(i).setHitTexture();
                     currentEnemies.get(i).reduceHealth(Bullet.getWeapon().getDamage());
 
+                    // KNOCKBACK ENEMY
+                    currentEnemies.get(i).knockback(Bullet.getWeapon().getKnockbackPower());
+
                     // REMOVE THE HIT BULLET
                     currentBullets.get(j).isUsed = false;
                     currentBullets.get(j).isOutOfScreen = false;
