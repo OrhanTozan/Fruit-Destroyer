@@ -160,7 +160,7 @@ public class Player
             if (!reloading)
             {
                 if (!CameraShaker.busy)
-                    CameraShaker.startShaking(1f, 300);
+                    CameraShaker.startShaking(1.5f, 300);
 
                 shotSFX.play();
 

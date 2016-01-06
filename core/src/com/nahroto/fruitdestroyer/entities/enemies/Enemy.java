@@ -148,7 +148,7 @@ public class Enemy
         sprite.draw(batch);
     }
 
-    protected void applyVelocityToPosition(float delta)
+    public void applyVelocityToPosition(float delta)
     {
         velocity.scl(delta);
         sprite.translate(velocity.x, velocity.y);

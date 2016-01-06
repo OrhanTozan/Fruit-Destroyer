@@ -30,7 +30,7 @@ public class CollisionHandler
         this.currentBullets = currentBullets;
     }
 
-    public void update(Application APP, Player player, Music gameMusic)
+    public void update(Application APP, Player player, Music gameMusic, float delta)
     {
         for (int i = 0; i < currentEnemies.size; i++)
         {
@@ -48,6 +48,7 @@ public class CollisionHandler
 
                     // KNOCKBACK ENEMY
                     currentEnemies.get(i).knockback(Bullet.getWeapon().getKnockbackPower());
+                    currentEnemies.get(i).applyVelocityToPosition(delta);
 
                     // REMOVE THE HIT BULLET
                     currentBullets.get(j).isUsed = false;

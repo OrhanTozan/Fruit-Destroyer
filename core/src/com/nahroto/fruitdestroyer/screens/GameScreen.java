@@ -135,7 +135,7 @@ public class GameScreen implements Screen
         APP.camera.update();
 
         reloadIcon.setPosition(110, 20);
-        accuracyIcon.setPosition(280, 15);
+        accuracyIcon.setPosition(275, 15);
 
         player.setReloadingConfig(100);
 
@@ -181,7 +181,7 @@ public class GameScreen implements Screen
             }
 
             // UPDATE COLLISION
-            collisionHandler.update(APP, player, actionMusic);
+            collisionHandler.update(APP, player, actionMusic, delta);
 
             // UPDATE HEALTHBAR
             for (int i = 0; i < currentEnemies.size; i++)
@@ -236,7 +236,7 @@ public class GameScreen implements Screen
                             }
                         }
                         animateWhiteShader();
-                        CameraShaker.startShaking(3f, 750);
+                        CameraShaker.startShaking(4f, 750);
                     }
 
                     currentEnemies.get(i).isUsed = false;
