@@ -142,6 +142,7 @@ public class GameScreen implements Screen
         Player.ammo = Bullet.getWeapon().getMagSize();
 
         whiteShader.addAction(alpha(0f));
+        whiteShader.setPosition(-80, -80);
 
         if (Constants.DEBUG)
             shapeRenderer = new ShapeRenderer();
