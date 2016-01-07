@@ -130,9 +130,8 @@ public class BuyHud extends Hud
             }
         };
 
-
-
         blackShader = new Image(blackShaderTexture);
+        blackShader.setPosition(-80, -80);
         blackShader.addAction(alpha(0f));
 
         pointsLabel = new Label(pointsValue.toString(), new Label.LabelStyle(new Font("fonts/trompus.otf", 70, new Color(0.25f, 0.85f, 0.15f, 1f), Color.BLACK, 3, true).getFont(), new Color(0.25f, 0.85f, 0.15f, 1f)));
@@ -160,13 +159,46 @@ public class BuyHud extends Hud
                 addAllActorsToStage();
             }
         });
+        accuracyButton.addListener(new ClickListener()
+        {
+            @Override
+            public void clicked(InputEvent event, float x, float y)
+            {
+                actors.add(blackShader);
+                actors.addAll(accuracyOverlay.getActors());
+                addAllActorsToStage();
+            }
+        });
+        reloadSpeedButton.addListener(new ClickListener()
+        {
+            @Override
+            public void clicked(InputEvent event, float x, float y)
+            {
+                actors.add(blackShader);
+                actors.addAll(reloadSpeedOverlay.getActors());
+                addAllActorsToStage();
+            }
+        });
+        knockbackButton.addListener(new ClickListener()
+        {
+            @Override
+            public void clicked(InputEvent event, float x, float y)
+            {
+                actors.add(blackShader);
+                actors.addAll(knockBackOverlay.getActors());
+                addAllActorsToStage();
+            }
+        });
 
         extraAmmoOverlay = new UpgradeOverlay("More ammo!", extraAmmoButton, gameScreenAtlas);
         accuracyOverlay = new UpgradeOverlay("More accurate!",accuracyButton, gameScreenAtlas);
         reloadSpeedOverlay = new UpgradeOverlay("Faster reloading!", reloadSpeedButton, gameScreenAtlas);
         knockBackOverlay = new UpgradeOverlay("Higher knockbackpower!", knockbackButton, gameScreenAtlas);
 
-        extraAmmoOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2, Align.center);
+        extraAmmoOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 + 100, Align.center);
+        accuracyOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 + 100, Align.center);
+        reloadSpeedOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 + 100, Align.center);
+        knockBackOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 + 100, Align.center);
 
         doneButton = new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("upgradeDone")), new TextureRegionDrawable(gameScreenAtlas.findRegion("upgradeDone-down")));
 
@@ -198,10 +230,6 @@ public class BuyHud extends Hud
         actors.add(reloadSpeedButton);
         actors.add(knockbackButton);
         actors.add(doneButton);
-        /*actors.addAll(extraAmmoOverlay.getActors());
-        actors.addAll(accuracyOverlay.getActors());
-        actors.addAll(reloadSpeedOverlay.getActors());
-        actors.addAll(knockBackOverlay.getActors());*/
 
         addAllActorsToStage();
     }
