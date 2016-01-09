@@ -9,6 +9,7 @@ import com.nahroto.fruitdestroyer.entities.Bullet;
 import com.nahroto.fruitdestroyer.entities.Corpse;
 import com.nahroto.fruitdestroyer.entities.Player;
 import com.nahroto.fruitdestroyer.entities.enemies.Enemy;
+import com.nahroto.fruitdestroyer.huds.BuyHud;
 import com.nahroto.fruitdestroyer.screens.GameScreen;
 
 public class GameResetter
@@ -60,6 +61,9 @@ public class GameResetter
 
         // RESET WAVE
         WaveGenerator.wave = 1;
+
+        // RESET POINTS
+        BuyHud.pointsValue = 0;
 
         APP.setScreen(gameScreen);
     }

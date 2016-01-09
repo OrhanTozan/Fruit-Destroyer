@@ -6,9 +6,9 @@ public class Weapon
     private int rateOfFire;
     private int magSize;
     private float recoil;
-    private float knockbackPower;
+    private int knockbackPower;
 
-    public Weapon(int damage, int rateOfFire, int magSize, float recoil, float knockbackPower)
+    public Weapon(int damage, int rateOfFire, int magSize, float recoil, int knockbackPower)
     {
         this.damage = damage;
         this.rateOfFire = rateOfFire;
@@ -37,8 +37,33 @@ public class Weapon
         return recoil;
     }
 
-    public float getKnockbackPower()
+    public int getKnockbackPower()
     {
         return knockbackPower;
+    }
+
+    public void setDamage(int damage)
+    {
+        this.damage = damage;
+    }
+
+    public void setRateOfFire(int rateOfFire)
+    {
+        this.rateOfFire = rateOfFire;
+    }
+
+    public void setMagSize(int magSize)
+    {
+        this.magSize = magSize;
+    }
+
+    public void setRecoil(float recoil)
+    {
+        this.recoil = recoil;
+    }
+
+    public void setKnockbackPower(int knockbackPower)
+    {
+        this.knockbackPower = knockbackPower;
     }
 }

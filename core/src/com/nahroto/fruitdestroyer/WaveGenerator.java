@@ -74,7 +74,7 @@ public class WaveGenerator
         {
             enemy.isUsed = true;
 
-            enemy.setPosition(RandomPositioner.getRandomPosition());
+            enemy.setPosition(RandomPositioner.getRandomPosition(enemy.getSprite().getHeight()));
             enemy.calculateRotation();
             enemy.calculateVelocity();
         }

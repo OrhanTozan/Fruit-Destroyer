@@ -71,6 +71,8 @@ public class Player
     private boolean firstShotFired;
     private static final float MAX_SPREAD = 0.7f;
 
+    private static int reloadSpeedPercentage;
+
     public Player(Sprite sprite, Sprite flashSprite, Array<Bullet> totalBullets, Array<Bullet> currentBullets, final Application APP)
     {
         this.APP = APP;
@@ -254,9 +256,10 @@ public class Player
         return reloading;
     }
 
-    public void setReloadingConfig(int time)
+    public void setReloadingConfig(int percentage)
     {
-        switch (time)
+        reloadSpeedPercentage = percentage;
+        switch (percentage)
         {
             case 25: // FASTEST
                 currentReloadSound = reload25SFX;
@@ -279,6 +282,10 @@ public class Player
                 rotateSpeed = 4;
                 break;
         }
+    }
+    public static int getReloadSpeedPercentage()
+    {
+        return reloadSpeedPercentage;
     }
 
     public Polygon getBounds()
