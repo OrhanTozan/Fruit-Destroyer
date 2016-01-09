@@ -154,9 +154,7 @@ public class BuyHud extends Hud
             @Override
             public void clicked(InputEvent event, float x, float y)
             {
-                actors.add(blackShader);
-                actors.addAll(extraAmmoOverlay.getActors());
-                addAllActorsToStage();
+                addUpgradeOverlayActors();
             }
         });
         accuracyButton.addListener(new ClickListener()
@@ -164,9 +162,7 @@ public class BuyHud extends Hud
             @Override
             public void clicked(InputEvent event, float x, float y)
             {
-                actors.add(blackShader);
-                actors.addAll(accuracyOverlay.getActors());
-                addAllActorsToStage();
+                addUpgradeOverlayActors();
             }
         });
         reloadSpeedButton.addListener(new ClickListener()
@@ -174,9 +170,7 @@ public class BuyHud extends Hud
             @Override
             public void clicked(InputEvent event, float x, float y)
             {
-                actors.add(blackShader);
-                actors.addAll(reloadSpeedOverlay.getActors());
-                addAllActorsToStage();
+                addUpgradeOverlayActors();
             }
         });
         knockbackButton.addListener(new ClickListener()
@@ -184,16 +178,14 @@ public class BuyHud extends Hud
             @Override
             public void clicked(InputEvent event, float x, float y)
             {
-                actors.add(blackShader);
-                actors.addAll(knockBackOverlay.getActors());
-                addAllActorsToStage();
+                addUpgradeOverlayActors();
             }
         });
 
-        extraAmmoOverlay = new UpgradeOverlay("More ammo!", extraAmmoButton, gameScreenAtlas);
-        accuracyOverlay = new UpgradeOverlay("More accurate!",accuracyButton, gameScreenAtlas);
-        reloadSpeedOverlay = new UpgradeOverlay("Faster reloading!", reloadSpeedButton, gameScreenAtlas);
-        knockBackOverlay = new UpgradeOverlay("Higher knockbackpower!", knockbackButton, gameScreenAtlas);
+        extraAmmoOverlay = new UpgradeOverlay("More ammo!", extraAmmoButton, gameScreenAtlas, this);
+        accuracyOverlay = new UpgradeOverlay("More accurate!",accuracyButton, gameScreenAtlas, this);
+        reloadSpeedOverlay = new UpgradeOverlay("Faster reloading!", reloadSpeedButton, gameScreenAtlas, this);
+        knockBackOverlay = new UpgradeOverlay("Higher knockbackpower!", knockbackButton, gameScreenAtlas, this);
 
         extraAmmoOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 + 100, Align.center);
         accuracyOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 + 100, Align.center);
@@ -231,7 +223,7 @@ public class BuyHud extends Hud
         actors.add(knockbackButton);
         actors.add(doneButton);
 
-        addAllActorsToStage();
+        addAllActors();
     }
 
     @Override
@@ -252,6 +244,30 @@ public class BuyHud extends Hud
         reloadSpeedButton.setPosition(overlay.getX(Align.center)  + accuracyButton.getWidth(), overlay.getY() + UPGRADEBUTTONS_Y - 100, Align.center);
         knockbackButton.setPosition(accuracyButton.getX(), overlay.getY() + UPGRADEBUTTONS_Y - 300);
         doneButton.setPosition(overlay.getX(Align.center) + 110, pointsOverlay.getY(Align.center), Align.center);
+    }
+
+    public void addBuyOverlayActors()
+    {
+        actors.add(blackShader);
+        actors.add(overlay);
+        actors.add(pointsOverlay);
+        actors.add(pointsLabel);
+        actors.add(upgradesTitle);
+        actors.add(extraAmmoButton);
+        actors.add(accuracyButton);
+        actors.add(reloadSpeedButton);
+        actors.add(knockbackButton);
+        actors.add(doneButton);
+        addAllActors();
+    }
+
+    public void addUpgradeOverlayActors()
+    {
+        actors.add(blackShader);
+        actors.add(pointsOverlay);
+        actors.add(pointsLabel);
+        actors.addAll(knockBackOverlay.getActors());
+        addAllActors();
     }
 
     public void turnON()

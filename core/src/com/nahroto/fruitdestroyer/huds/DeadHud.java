@@ -29,7 +29,7 @@ public class DeadHud extends Hud
             public void clicked(InputEvent event, float x, float y)
             {
                 // REMOVE THIS HUDS ACTORS
-                removeAllActorsFromStage();
+                removeAllActors();
 
                 // RESET THE GAME
                 gameResetter.newGame();

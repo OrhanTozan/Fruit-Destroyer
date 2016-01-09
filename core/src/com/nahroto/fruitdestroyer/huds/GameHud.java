@@ -62,6 +62,6 @@ public class GameHud extends Hud
         // actors.add(whiteShader);
         actors.add(bulletIcon);
 
-        addAllActorsToStage();
+        addAllActors();
     }
 }

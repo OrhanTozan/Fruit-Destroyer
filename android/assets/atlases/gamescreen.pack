@@ -199,16 +199,23 @@ orange
   orig: 90, 79
   offset: 0, 0
   index: -1
+exitButton
+  rotate: false
+  xy: 572, 187
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
 flash2
   rotate: false
-  xy: 572, 203
+  xy: 89, 25
   size: 82, 44
   orig: 82, 44
   offset: 0, 0
   index: -1
 accuracy-icon
   rotate: false
-  xy: 89, 7
+  xy: 798, 587
   size: 62, 62
   orig: 62, 62
   offset: 0, 0
@@ -229,7 +236,7 @@ red-bar
   index: -1
 green-bar
   rotate: false
-  xy: 798, 636
+  xy: 634, 234
   size: 48, 13
   orig: 48, 13
   offset: 0, 0

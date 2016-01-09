@@ -42,6 +42,6 @@ public class MenuHud extends Hud
         actors.add(this.title);
         actors.add(playButton);
 
-        addAllActorsToStage();
+        addAllActors();
     }
 }

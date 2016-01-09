@@ -19,7 +19,7 @@ public class Hud
         Gdx.input.setInputProcessor(stage);
     }
 
-    public void addAllActorsToStage()
+    public void addAllActors()
     {
         for (Actor actor : actors)
         {
@@ -27,12 +27,17 @@ public class Hud
         }
     }
 
-    public void removeAllActorsFromStage()
+    public void removeAllActors()
     {
         for (Actor actor : stage.getActors())
         {
             actor.remove();
         }
+    }
+
+    public void emptyActorList()
+    {
+        actors.clear();
     }
 
     public void update(float delta)

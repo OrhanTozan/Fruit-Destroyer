@@ -30,7 +30,7 @@ public class DeadScreen implements Screen
     @Override
     public void show()
     {
-        deadHud.addAllActorsToStage();
+        deadHud.addAllActors();
         inputMultiplexer.clear();
         inputMultiplexer.addProcessor(deadHud.getStage());
     }

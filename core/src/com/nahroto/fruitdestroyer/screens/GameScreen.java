@@ -283,7 +283,7 @@ public class GameScreen implements Screen
             if (Player.ammo == Bullet.getWeapon().getMagSize() || player.isReloading())
                 gameHud.getActors().get(0).remove();
             else
-                gameHud.addAllActorsToStage();
+                gameHud.addAllActors();
 
             // UPDATE GAMEHUD
             gameHud.update(delta);
