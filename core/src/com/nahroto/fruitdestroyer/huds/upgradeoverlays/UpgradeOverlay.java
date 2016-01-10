@@ -30,7 +30,7 @@ public abstract class UpgradeOverlay
     protected Label descriptionLabel;
     protected ImageButton exitButton;
 
-    public UpgradeOverlay(String description, final int upgradeCost, final ImageButton button, TextureAtlas gameScreenAtlas, final BuyHud buyHud)
+    public UpgradeOverlay(String description, final Integer upgradeCost, final ImageButton button, TextureAtlas gameScreenAtlas, final BuyHud buyHud)
     {
         actors = new Array<Actor>();
         position = new Vector2();
@@ -69,7 +69,7 @@ public abstract class UpgradeOverlay
 
         currentValueLabel = new Label("nan", new Label.LabelStyle(new Font("fonts/trompus.otf", 35, Color.WHITE, Color.BLACK, 2, true).getFont(), Color.WHITE));
         nextValueLabel = new Label("nan", new Label.LabelStyle(new Font("fonts/trompus.otf", 35, Color.WHITE, Color.BLACK, 2, true).getFont(), Color.WHITE));
-        descriptionLabel = new Label(description, new Label.LabelStyle(new Font("fonts/trompus.otf", 35, Color.WHITE, Color.BLACK, 2, true).getFont(), Color.WHITE));
+        descriptionLabel = new Label(description, new Label.LabelStyle(new Font("fonts/trompus.otf", 30, Color.WHITE, Color.BLACK, 1, true).getFont(), Color.WHITE));
 
         actors.add(background);
         actors.add(this.button);
@@ -93,7 +93,7 @@ public abstract class UpgradeOverlay
         button.setPosition(background.getX(Align.center), background.getY() + 275, align);
         currentValueLabel.setPosition(background.getX() + 135, background.getY() + 270, Align.top);
         nextValueLabel.setPosition(background.getX() + 490, background.getY() + 270, Align.top);
-        descriptionLabel.setPosition(background.getX() + 100, background.getY() + 130);
+        descriptionLabel.setPosition(background.getX() + 60, background.getY() + 175, Align.topLeft);
         exitButton.setPosition(background.getX() + background.getWidth() - 60, background.getY() + background.getHeight() - 60);
     }
 

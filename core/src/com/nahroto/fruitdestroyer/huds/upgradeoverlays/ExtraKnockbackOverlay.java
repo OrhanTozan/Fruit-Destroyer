@@ -14,7 +14,7 @@ public class ExtraKnockbackOverlay extends UpgradeOverlay
 
     public ExtraKnockbackOverlay(ImageButton button, TextureAtlas gameScreenAtlas, BuyHud buyHud)
     {
-        super("Knockback enemies farther", 1, button, gameScreenAtlas, buyHud);
+        super("The knockbackpower of your bullets. The higher, the farther the enemies will leap behind when hit! Upgrade cost: 1 point", 1, button, gameScreenAtlas, buyHud);
 
         currentValue = new Integer(Bullet.START_KNOCKBACKPOWER);
         nextValue = new Integer(currentValue + UPGRADE_STEP);

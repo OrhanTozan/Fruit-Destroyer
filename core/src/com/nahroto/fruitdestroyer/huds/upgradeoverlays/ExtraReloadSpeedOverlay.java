@@ -19,7 +19,7 @@ public class ExtraReloadSpeedOverlay extends UpgradeOverlay
 
     public ExtraReloadSpeedOverlay(ImageButton button, TextureAtlas gameScreenAtlas, BuyHud buyHud)
     {
-        super("Reload faster!", 4, button, gameScreenAtlas, buyHud);
+        super("Your reloading speed. The higher, the faster you will reload your weapon!\nUpgrade cost: 4 points", 4, button, gameScreenAtlas, buyHud);
 
         currentPercentage = new Integer(100);
         nextPercentage = new Integer(currentPercentage + UPGRADE_STEP);

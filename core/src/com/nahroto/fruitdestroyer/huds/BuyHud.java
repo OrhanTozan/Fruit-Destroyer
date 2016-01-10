@@ -37,7 +37,7 @@ public class BuyHud extends Hud
 
     public static Integer pointsValue;
 
-    private boolean isEasing;
+
 
     private Label pointsLabel;
 
@@ -59,7 +59,6 @@ public class BuyHud extends Hud
     private ImageButton doneButton;
 
     private Runnable toggleBuying;
-    private Runnable toggleEasing;
     private Runnable resetPosition;
     private Runnable hideBlackShader;
     private Runnable startNewWave;
@@ -70,7 +69,6 @@ public class BuyHud extends Hud
     public BuyHud(Viewport viewport, SpriteBatch batch, TextureAtlas gameScreenAtlas, Texture blackShaderTexture, final Sound waveSFX, final WaveGenerator waveGenerator, final InputMultiplexer gameScreenInput)
     {
         super(viewport, batch);
-
 
         inputMultiplexer = new InputMultiplexer();
         pointsValue = new Integer(0);
@@ -83,15 +81,6 @@ public class BuyHud extends Hud
             public void run()
             {
                 GameScreen.buying = !GameScreen.buying;
-            }
-        };
-
-        toggleEasing = new Runnable()
-        {
-            @Override
-            public void run()
-            {
-                isEasing = !isEasing;
             }
         };
 
@@ -190,6 +179,8 @@ public class BuyHud extends Hud
         extraReloadSpeedOverlay = new ExtraReloadSpeedOverlay(reloadSpeedButton, gameScreenAtlas, this);
         extraKnockbackOverlay = new ExtraKnockbackOverlay(knockbackButton, gameScreenAtlas, this);
 
+        resetPosition();
+
         extraAmmoOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 + 100, Align.center);
         extraAccuracyOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 + 100, Align.center);
         extraReloadSpeedOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 + 100, Align.center);
@@ -213,7 +204,6 @@ public class BuyHud extends Hud
             }
         });
 
-        resetPosition();
 
         actors.add(blackShader);
         actors.add(overlay);
@@ -289,17 +279,14 @@ public class BuyHud extends Hud
 
     private void easeIn()
     {
-        isEasing = true;
-        overlay.addAction(sequence(moveToAligned(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2, Align.center, EASE_TIME, Interpolation.pow2Out), run(toggleEasing)));
         GameScreen.buying = true;
+        overlay.addAction(sequence(moveToAligned(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2, Align.center, EASE_TIME, Interpolation.pow2Out)));
     }
 
     private void easeOut()
     {
-        isEasing = true;
         overlay.addAction(sequence(
                 parallel(moveToAligned(0, Constants.V_HEIGHT / 2, Align.right, EASE_TIME, Interpolation.pow2Out), run(hideBlackShader)),
-                run(toggleEasing),
                 run(startNewWave),
                 run(setGameScreenInput),
                 run(toggleBuying),
