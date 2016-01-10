@@ -14,7 +14,7 @@ public class ExtraAccuracyOverlay extends UpgradeOverlay
 
     public ExtraAccuracyOverlay(ImageButton button, TextureAtlas gameScreenAtlas, BuyHud buyHud)
     {
-        super("Your shooting accuracy. The higher, the more accurate!\nUpgrade cost: 1 point", 1, button, gameScreenAtlas, buyHud);
+        super("Your shooting accuracy. The higher, the more accurate!", 1, button, gameScreenAtlas, buyHud);
 
         currentValue = new Float(1 / Bullet.START_RECOIL);
         nextValue = new Float(currentValue + UPGRADE_STEP);
