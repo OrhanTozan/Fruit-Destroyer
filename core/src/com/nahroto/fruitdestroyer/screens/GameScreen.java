@@ -249,23 +249,6 @@ public class GameScreen implements Screen
             waveGenerator.update();
 
 
-            // WHEN WAVE IS CLEARED, START NEW WAVE
-            if (currentEnemies.size == 0 && waveGenerator.getQueue().size == 0)
-            {
-                if (waveGenerator.wave % WaveGenerator.BUY_WAVE == 0)
-                {
-                    Input.touchDown = false;
-                    buyHud.addPoints(BuyHud.POINTS_REWARD);
-                    buyHud.turnON();
-                    Logger.log("BUYTIME");
-                }
-                else
-                {
-                    waveSFX.play();
-                    waveGenerator.wave++;
-                    waveGenerator.startNewWave();
-                }
-            }
 
             // UPDATE EXPLOSIONS
             for (int i = 0; i < currentExplosions.size; i++)
@@ -311,10 +294,36 @@ public class GameScreen implements Screen
             }
 
             CameraShaker.update(APP.camera);
+
+            // WHEN WAVE IS CLEARED, START NEW WAVE
+            if (currentEnemies.size == 0 && waveGenerator.getQueue().size == 0)
+            {
+                if (waveGenerator.wave % WaveGenerator.BUY_WAVE == 0)
+                {
+                    Input.touchDown = false;
+                    buying = true;
+                    buyHud.update(delta);
+                    buyHud.turnON();
+                    Logger.log("BUYTIME");
+                }
+                else
+                {
+                    waveSFX.play();
+                    waveGenerator.wave++;
+                    waveGenerator.startNewWave();
+                }
+            }
         }
 
         else
+        {
             buyHud.update(delta);
+            for (int i = 0; i < currentEnemies.size; i++)
+            {
+                currentEnemies.get(i).getHealthBar().getRed().setPosition((currentEnemies.get(i).getSprite().getX() + (currentEnemies.get(i).getSprite().getWidth() / 2)) - (currentEnemies.get(i).getHealthBar().getRed().getWidth() / 2), currentEnemies.get(i).getSprite().getY() - HealthBar.Y_OFFSET);
+                currentEnemies.get(i).getHealthBar().update(currentEnemies.get(i).getHealth(), currentEnemies.get(i).getMaxHealth());
+            }
+        }
 
         // Logger.log(Gdx.graphics.getFramesPerSecond());
 

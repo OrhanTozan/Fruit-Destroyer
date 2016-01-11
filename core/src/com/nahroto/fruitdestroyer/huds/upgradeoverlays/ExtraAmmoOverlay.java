@@ -14,7 +14,7 @@ public class ExtraAmmoOverlay extends UpgradeOverlay
 
     public ExtraAmmoOverlay(ImageButton button, TextureAtlas gameScreenAtlas, BuyHud buyHud)
     {
-        super("The magsize of your weapon.\nThe higher, the more bullets\nyou can fire before the\nneed to reload!", 1, button, gameScreenAtlas, buyHud);
+        super("The magsize of your weapon.\nThe higher, the more bullets\nyou can fire before you\nrun out of ammo!", 1, button, gameScreenAtlas, buyHud);
 
         currentValue = new Integer(Bullet.START_MAGSIZE);
         nextValue = new Integer(currentValue + UPGRADE_STEP);

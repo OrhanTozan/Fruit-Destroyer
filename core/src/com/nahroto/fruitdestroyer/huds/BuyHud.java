@@ -37,8 +37,6 @@ public class BuyHud extends Hud
 
     public static Integer pointsValue;
 
-
-
     private Label pointsLabel;
 
     private Image overlay;
@@ -63,6 +61,7 @@ public class BuyHud extends Hud
     private Runnable hideBlackShader;
     private Runnable startNewWave;
     private Runnable setGameScreenInput;
+    private Runnable turnON;
 
     private InputMultiplexer inputMultiplexer;
 
@@ -122,6 +121,18 @@ public class BuyHud extends Hud
             }
         };
 
+        turnON = new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                addPoints(BuyHud.POINTS_REWARD);
+                Gdx.input.setInputProcessor(inputMultiplexer);
+                easeIn();
+                showBlackShader();
+            }
+        };
+
         blackShader = new Image(blackShaderTexture);
         blackShader.setPosition(-80, -80);
         blackShader.addAction(alpha(0f));
@@ -131,6 +142,8 @@ public class BuyHud extends Hud
         overlay = new Image(gameScreenAtlas.findRegion("overlay"));
         pointsOverlay = new Image(gameScreenAtlas.findRegion("points-overlay"));
         upgradesTitle = new Image(gameScreenAtlas.findRegion("upgrades-text"));
+
+        resetPosition();
 
         pointsOverlay.setPosition(overlay.getX() + 70, overlay.getY() + 70);
         pointsLabel.setPosition(pointsOverlay.getX(Align.center), pointsOverlay.getY(Align.center) - 25, Align.center);
@@ -178,8 +191,6 @@ public class BuyHud extends Hud
         extraAccuracyOverlay = new ExtraAccuracyOverlay(accuracyButton, gameScreenAtlas, this);
         extraReloadSpeedOverlay = new ExtraReloadSpeedOverlay(reloadSpeedButton, gameScreenAtlas, this);
         extraKnockbackOverlay = new ExtraKnockbackOverlay(knockbackButton, gameScreenAtlas, this);
-
-        resetPosition();
 
         extraAmmoOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2, Align.center);
         extraAccuracyOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2, Align.center);
@@ -239,6 +250,7 @@ public class BuyHud extends Hud
         doneButton.setPosition(overlay.getX(Align.center) + 110, pointsOverlay.getY(Align.center), Align.center);
     }
 
+
     public void addBuyOverlayActors()
     {
         actors.add(blackShader);
@@ -272,9 +284,7 @@ public class BuyHud extends Hud
 
     public void turnON()
     {
-        Gdx.input.setInputProcessor(inputMultiplexer);
-        easeIn();
-        showBlackShader();
+        this.getStage().addAction(sequence(delay(1f), run(turnON)));
     }
 
     private void easeIn()

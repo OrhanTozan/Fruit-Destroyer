@@ -67,7 +67,7 @@ public class ExtraReloadSpeedOverlay extends UpgradeOverlay
     public void setPosition(float x, float y, int align)
     {
         super.setPosition(x, y, align);
-        currentValueLabel.setPosition(background.getX() + 110, background.getY() + 270, Align.top);
-        nextValueLabel.setPosition(background.getX() + 465, background.getY() + 270, Align.top);
+        currentValueLabel.setPosition(background.getX() + 110, background.getY() + 420, Align.top);
+        nextValueLabel.setPosition(background.getX() + 465, background.getY() + 420, Align.top);
     }
 }

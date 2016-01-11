@@ -29,7 +29,6 @@ import com.nahroto.fruitdestroyer.entities.enemies.Enemy;
 import com.nahroto.fruitdestroyer.entities.enemies.Orange;
 import com.nahroto.fruitdestroyer.helpers.GameResetter;
 import com.nahroto.fruitdestroyer.huds.BuyHud;
-import com.nahroto.fruitdestroyer.huds.DeadHud;
 import com.nahroto.fruitdestroyer.huds.GameHud;
 
 public class LoadingScreen2 implements Screen
@@ -86,17 +85,8 @@ public class LoadingScreen2 implements Screen
         this.APP = APP;
         this.font = font;
         this.bg = bg;
-    }
 
-    @Override
-    public void show()
-    {
-        System.out.println("loadingscreen2");
         inputMultiplexer = new InputMultiplexer();
-        currentTime = System.currentTimeMillis();
-
-        APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
-        APP.camera.update();
 
         // INIT GAMESCREEN ATLAS
         gameScreenAtlas = APP.assets.get("atlases/gamescreen.pack", TextureAtlas.class);
@@ -173,6 +163,16 @@ public class LoadingScreen2 implements Screen
     }
 
     @Override
+    public void show()
+    {
+        Logger.log("new loadingscreen2");
+
+        APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
+        APP.camera.update();
+        APP.setScreen(gameScreen);
+    }
+
+    @Override
     public void render(float delta)
     {
         Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -180,8 +180,6 @@ public class LoadingScreen2 implements Screen
 
         // UPDATE
         APP.camera.update();
-        if (System.currentTimeMillis() - currentTime > WAIT_TIME * 1000)
-            APP.setScreen(gameScreen);
 
         // RENDER
         APP.batch.setProjectionMatrix(APP.camera.combined);

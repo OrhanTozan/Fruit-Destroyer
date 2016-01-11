@@ -35,7 +35,7 @@ public class MenuHud extends Hud
         {
             public void clicked(InputEvent event, float x, float y)
             {
-                APP.setScreen(new LoadingScreen2(APP, font, bg));
+                APP.setScreen(APP.loadingScreen2);
             }
         });
 

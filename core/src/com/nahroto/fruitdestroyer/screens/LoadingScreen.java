@@ -66,10 +66,12 @@ public class LoadingScreen extends BasicLoadingScreen implements Screen
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        if (APP.assets.update() && System.currentTimeMillis() - currentTime > 3000)
+        if (APP.assets.update())
         {
+            APP.loadingScreen2 = new LoadingScreen2(APP, font, bg);
             menuScreenAtlas = APP.assets.get("atlases/menuscreen.pack", TextureAtlas.class);
-            APP.setScreen(new MenuScreen(APP, font, bg, new MenuHud(APP, font, APP.viewport, APP.batch, menuScreenAtlas.findRegion("title"), menuScreenAtlas.findRegion("playbutton-up"), menuScreenAtlas.findRegion("playbutton-down"), bg), APP.assets.get("music/epictheme.ogg", Music.class)));
+            APP.menuScreen = new MenuScreen(APP, font, bg, new MenuHud(APP, font, APP.viewport, APP.batch, menuScreenAtlas.findRegion("title"), menuScreenAtlas.findRegion("playbutton-up"), menuScreenAtlas.findRegion("playbutton-down"), bg), APP.assets.get("music/epictheme.ogg", Music.class));
+            APP.setScreen(APP.menuScreen);
         }
 
         APP.batch.setProjectionMatrix(APP.camera.combined);
@@ -81,7 +83,7 @@ public class LoadingScreen extends BasicLoadingScreen implements Screen
     @Override
     public void resize(int width, int height)
     {
-
+        APP.viewport.update(width, height);
     }
 
     @Override
