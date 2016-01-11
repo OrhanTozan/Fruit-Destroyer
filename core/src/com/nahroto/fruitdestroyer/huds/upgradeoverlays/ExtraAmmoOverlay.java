@@ -2,6 +2,7 @@ package com.nahroto.fruitdestroyer.huds.upgradeoverlays;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.utils.Align;
 import com.nahroto.fruitdestroyer.entities.Bullet;
 import com.nahroto.fruitdestroyer.huds.BuyHud;
 
@@ -14,13 +15,14 @@ public class ExtraAmmoOverlay extends UpgradeOverlay
 
     public ExtraAmmoOverlay(ImageButton button, TextureAtlas gameScreenAtlas, BuyHud buyHud)
     {
-        super("The magsize of your weapon.\nThe higher, the more bullets\nyou can fire before you\nrun out of ammo!", 1, button, gameScreenAtlas, buyHud);
+        super("The magsize of your weapon.\nUseful when raided by big\ngroups of enemies!", 1, button, gameScreenAtlas, buyHud);
 
         currentValue = new Integer(Bullet.START_MAGSIZE);
         nextValue = new Integer(currentValue + UPGRADE_STEP);
 
         currentValueLabel.setText(currentValue.toString());
         nextValueLabel.setText(nextValue.toString());
+        setTitleText("AMMO");
     }
 
     @Override
@@ -30,5 +32,12 @@ public class ExtraAmmoOverlay extends UpgradeOverlay
         nextValue += UPGRADE_STEP;
         currentValueLabel.setText(currentValue.toString());
         nextValueLabel.setText(nextValue.toString());
+    }
+
+    @Override
+    public void setPosition(float x, float y, int align)
+    {
+        super.setPosition(x, y, align);
+        title.setPosition(background.getX(Align.center) - (titleFont.getWidth("AMMO") / 2), background.getY(Align.top) - 160);
     }
 }

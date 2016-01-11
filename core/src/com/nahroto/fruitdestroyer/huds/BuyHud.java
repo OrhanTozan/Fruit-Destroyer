@@ -192,10 +192,10 @@ public class BuyHud extends Hud
         extraReloadSpeedOverlay = new ExtraReloadSpeedOverlay(reloadSpeedButton, gameScreenAtlas, this);
         extraKnockbackOverlay = new ExtraKnockbackOverlay(knockbackButton, gameScreenAtlas, this);
 
-        extraAmmoOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2, Align.center);
-        extraAccuracyOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2, Align.center);
-        extraReloadSpeedOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2, Align.center);
-        extraKnockbackOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2, Align.center);
+        extraAmmoOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 + 25, Align.center);
+        extraAccuracyOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 + 25, Align.center);
+        extraReloadSpeedOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 + 25, Align.center);
+        extraKnockbackOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 + 25, Align.center);
 
         doneButton = new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("upgradeDone")), new TextureRegionDrawable(gameScreenAtlas.findRegion("upgradeDone-down")));
 
@@ -240,14 +240,14 @@ public class BuyHud extends Hud
     private void updateComponents()
     {
         upgradesTitle.setPosition(overlay.getX(Align.top), overlay.getY(Align.top) - 70, Align.top);
-        pointsOverlay.setPosition(overlay.getX() + 70, overlay.getY() + 70);
+        pointsOverlay.setPosition(overlay.getX() + 55, overlay.getY() + 55);
         pointsLabel.setPosition(pointsOverlay.getX(Align.center), pointsOverlay.getY(Align.center) - 25, Align.center);
         pointsLabel.setText(pointsValue.toString());
         extraAmmoButton.setPosition(overlay.getX(Align.center) - accuracyButton.getWidth(), overlay.getY() + UPGRADEBUTTONS_Y - 100, Align.center);
         accuracyButton.setPosition(overlay.getX(Align.center), overlay.getY() + UPGRADEBUTTONS_Y, Align.center);
         reloadSpeedButton.setPosition(overlay.getX(Align.center) + accuracyButton.getWidth(), overlay.getY() + UPGRADEBUTTONS_Y - 100, Align.center);
         knockbackButton.setPosition(accuracyButton.getX(), overlay.getY() + UPGRADEBUTTONS_Y - 300);
-        doneButton.setPosition(overlay.getX(Align.center) + 110, pointsOverlay.getY(Align.center), Align.center);
+        doneButton.setPosition(overlay.getX(Align.center) + 115, pointsOverlay.getY(Align.center), Align.center);
     }
 
 

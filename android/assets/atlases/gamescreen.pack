@@ -5,245 +5,245 @@ filter: Linear,Linear
 repeat: none
 overlay
   rotate: false
-  xy: 1, 972
+  xy: 1, 958
   size: 664, 1064
   orig: 664, 1064
   offset: 0, 0
   index: -1
 upgradeDescBG
   rotate: false
-  xy: 1, 424
-  size: 596, 546
-  orig: 596, 546
+  xy: 1, 260
+  size: 596, 696
+  orig: 596, 696
   offset: 0, 0
   index: -1
 retry-button-up
   rotate: false
-  xy: 1, 218
+  xy: 667, 1818
   size: 378, 204
   orig: 378, 204
   offset: 0, 0
   index: -1
 retry-button-down
   rotate: false
-  xy: 1, 18
+  xy: 1, 60
   size: 378, 198
   orig: 378, 198
   offset: 0, 0
   index: -1
 upgradeDone-down
   rotate: false
-  xy: 667, 1853
+  xy: 667, 1633
   size: 337, 183
   orig: 337, 183
   offset: 0, 0
   index: -1
 upgradeDone
   rotate: false
-  xy: 667, 1668
+  xy: 1047, 1839
   size: 337, 183
   orig: 337, 183
   offset: 0, 0
   index: -1
+upgrades-text
+  rotate: false
+  xy: 1386, 1932
+  size: 402, 90
+  orig: 402, 90
+  offset: 0, 0
+  index: -1
 accuracyUpgrade-down
   rotate: false
-  xy: 381, 233
+  xy: 381, 69
   size: 189, 189
   orig: 189, 189
   offset: 0, 0
   index: -1
 accuracyUpgrade
   rotate: false
-  xy: 667, 1477
+  xy: 667, 1442
   size: 189, 189
   orig: 189, 189
   offset: 0, 0
   index: -1
 knockbackUpgrade-down
   rotate: false
-  xy: 381, 42
+  xy: 667, 1251
   size: 189, 189
   orig: 189, 189
   offset: 0, 0
   index: -1
 knockbackUpgrade
   rotate: false
-  xy: 667, 1286
+  xy: 667, 1060
   size: 189, 189
   orig: 189, 189
   offset: 0, 0
   index: -1
 moreAmmoUpgrade-down
   rotate: false
-  xy: 667, 1095
+  xy: 858, 1442
   size: 189, 189
   orig: 189, 189
   offset: 0, 0
   index: -1
-ananas-hit
-  rotate: false
-  xy: 858, 1484
-  size: 144, 182
-  orig: 144, 182
-  offset: 0, 0
-  index: -1
-ananas
-  rotate: false
-  xy: 858, 1300
-  size: 144, 182
-  orig: 144, 182
-  offset: 0, 0
-  index: -1
 moreAmmoUpgrade
   rotate: false
-  xy: 667, 904
+  xy: 858, 1251
   size: 189, 189
   orig: 189, 189
   offset: 0, 0
   index: -1
 reloadUpgrade-down
   rotate: false
-  xy: 599, 713
-  size: 189, 189
-  orig: 189, 189
-  offset: 0, 0
-  index: -1
-reloadUpgrade
-  rotate: false
-  xy: 599, 522
+  xy: 858, 1060
   size: 189, 189
   orig: 189, 189
   offset: 0, 0
   index: -1
 reload-down
   rotate: false
-  xy: 599, 384
+  xy: 667, 922
   size: 226, 136
   orig: 226, 136
   offset: 0, 0
   index: -1
 reload-up
   rotate: false
-  xy: 572, 246
+  xy: 1386, 1794
   size: 226, 136
   orig: 226, 136
   offset: 0, 0
   index: -1
 points-overlay
   rotate: false
-  xy: 572, 94
+  xy: 1614, 1780
   size: 187, 150
   orig: 187, 150
   offset: 0, 0
   index: -1
+reloadUpgrade
+  rotate: false
+  xy: 599, 731
+  size: 189, 189
+  orig: 189, 189
+  offset: 0, 0
+  index: -1
+ananas-hit
+  rotate: false
+  xy: 599, 547
+  size: 144, 182
+  orig: 144, 182
+  offset: 0, 0
+  index: -1
+ananas
+  rotate: false
+  xy: 599, 363
+  size: 144, 182
+  orig: 144, 182
+  offset: 0, 0
+  index: -1
 ananas-dead
   rotate: false
-  xy: 858, 1170
+  xy: 895, 930
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-upgrades-text
-  rotate: false
-  xy: 572, 2
-  size: 402, 90
-  orig: 402, 90
-  offset: 0, 0
-  index: -1
 player
   rotate: false
-  xy: 858, 1111
+  xy: 1, 1
   size: 121, 57
   orig: 121, 57
   offset: 0, 0
   index: -1
 orange-dead
   rotate: false
-  xy: 858, 1030
+  xy: 1790, 1943
   size: 90, 79
   orig: 90, 79
   offset: 0, 0
   index: -1
 orange-hit
   rotate: false
-  xy: 858, 949
+  xy: 790, 841
   size: 90, 79
   orig: 90, 79
-  offset: 0, 0
-  index: -1
-bullet-icon
-  rotate: false
-  xy: 790, 815
-  size: 76, 87
-  orig: 76, 87
-  offset: 0, 0
-  index: -1
-reload-icon
-  rotate: false
-  xy: 790, 729
-  size: 82, 84
-  orig: 82, 84
   offset: 0, 0
   index: -1
 orange
   rotate: false
-  xy: 790, 648
+  xy: 599, 282
   size: 90, 79
   orig: 90, 79
   offset: 0, 0
   index: -1
+reload-icon
+  rotate: false
+  xy: 790, 755
+  size: 82, 84
+  orig: 82, 84
+  offset: 0, 0
+  index: -1
+bullet-icon
+  rotate: false
+  xy: 1882, 1935
+  size: 76, 87
+  orig: 76, 87
+  offset: 0, 0
+  index: -1
 volumeButton
   rotate: false
-  xy: 790, 578
+  xy: 1960, 1954
   size: 86, 68
   orig: 86, 68
   offset: 0, 0
   index: -1
 flash2
   rotate: false
-  xy: 790, 532
+  xy: 124, 14
   size: 82, 44
   orig: 82, 44
   offset: 0, 0
   index: -1
 accuracy-icon
   rotate: false
-  xy: 599, 908
+  xy: 691, 299
   size: 62, 62
   orig: 62, 62
   offset: 0, 0
   index: -1
 exitButton
   rotate: false
-  xy: 761, 184
+  xy: 1803, 1881
   size: 60, 60
   orig: 60, 60
   offset: 0, 0
   index: -1
 flash
   rotate: false
-  xy: 858, 912
+  xy: 208, 23
   size: 47, 35
   orig: 47, 35
   offset: 0, 0
   index: -1
 red-bar
   rotate: false
-  xy: 1, 1
+  xy: 1047, 1822
   size: 50, 15
   orig: 50, 15
   offset: 0, 0
   index: -1
 green-bar
   rotate: false
-  xy: 381, 27
+  xy: 599, 943
   size: 48, 13
   orig: 48, 13
   offset: 0, 0
   index: -1
 bullet
   rotate: false
-  xy: 572, 402
+  xy: 572, 238
   size: 20, 20
   orig: 20, 20
   offset: 0, 0

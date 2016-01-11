@@ -19,7 +19,7 @@ public class ExtraReloadSpeedOverlay extends UpgradeOverlay
 
     public ExtraReloadSpeedOverlay(ImageButton button, TextureAtlas gameScreenAtlas, BuyHud buyHud)
     {
-        super("Your reloading speed. The higher, the faster you will reload your weapon!", 4, button, gameScreenAtlas, buyHud);
+        super("Reloading speed of your\nweapon. Increase this stat so\nyou can reload faster!", 4, button, gameScreenAtlas, buyHud);
 
         currentPercentage = new Integer(100);
         nextPercentage = new Integer(currentPercentage + UPGRADE_STEP);
@@ -29,6 +29,7 @@ public class ExtraReloadSpeedOverlay extends UpgradeOverlay
 
         currentValueLabel.setText(currentSpeedStatus);
         nextValueLabel.setText(nextSpeedStatus);
+        setTitleText("RELOAD SPEED");
     }
 
     @Override
@@ -67,7 +68,8 @@ public class ExtraReloadSpeedOverlay extends UpgradeOverlay
     public void setPosition(float x, float y, int align)
     {
         super.setPosition(x, y, align);
-        currentValueLabel.setPosition(background.getX() + 110, background.getY() + 420, Align.top);
-        nextValueLabel.setPosition(background.getX() + 465, background.getY() + 420, Align.top);
+        title.setPosition(background.getX(Align.center) - (titleFont.getWidth("RELOAD SPEED") / 2), background.getY(Align.top) - 160);
+        currentValueLabel.setPosition(background.getX() + 125 - (currentValueFont.getWidth(currentSpeedStatus) / 2), background.getY() + 370);
+        nextValueLabel.setPosition(background.getX() + 475 - (nextValueFont.getWidth(nextSpeedStatus) / 2), background.getY() + 370);
     }
 }
