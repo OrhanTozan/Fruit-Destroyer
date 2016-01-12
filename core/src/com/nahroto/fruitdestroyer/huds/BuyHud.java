@@ -20,6 +20,7 @@ import com.nahroto.fruitdestroyer.Constants;
 import com.nahroto.fruitdestroyer.Font;
 import com.nahroto.fruitdestroyer.Logger;
 import com.nahroto.fruitdestroyer.WaveGenerator;
+import com.nahroto.fruitdestroyer.entities.Player;
 import com.nahroto.fruitdestroyer.huds.upgradeoverlays.ExtraAccuracyOverlay;
 import com.nahroto.fruitdestroyer.huds.upgradeoverlays.ExtraAmmoOverlay;
 import com.nahroto.fruitdestroyer.huds.upgradeoverlays.ExtraKnockbackOverlay;
@@ -65,7 +66,7 @@ public class BuyHud extends Hud
 
     private InputMultiplexer inputMultiplexer;
 
-    public BuyHud(Viewport viewport, SpriteBatch batch, TextureAtlas gameScreenAtlas, Texture blackShaderTexture, final Sound waveSFX, final WaveGenerator waveGenerator, final InputMultiplexer gameScreenInput)
+    public BuyHud(Viewport viewport, SpriteBatch batch, TextureAtlas gameScreenAtlas, Texture blackShaderTexture, final Sound waveSFX, final WaveGenerator waveGenerator, final InputMultiplexer gameScreenInput, Player player)
     {
         super(viewport, batch);
 
@@ -187,10 +188,10 @@ public class BuyHud extends Hud
             }
         });
 
-        extraAmmoOverlay = new ExtraAmmoOverlay(extraAmmoButton, gameScreenAtlas, this);
-        extraAccuracyOverlay = new ExtraAccuracyOverlay(accuracyButton, gameScreenAtlas, this);
-        extraReloadSpeedOverlay = new ExtraReloadSpeedOverlay(reloadSpeedButton, gameScreenAtlas, this);
-        extraKnockbackOverlay = new ExtraKnockbackOverlay(knockbackButton, gameScreenAtlas, this);
+        extraAmmoOverlay = new ExtraAmmoOverlay(extraAmmoButton, gameScreenAtlas, this, player);
+        extraAccuracyOverlay = new ExtraAccuracyOverlay(accuracyButton, gameScreenAtlas, this, player);
+        extraReloadSpeedOverlay = new ExtraReloadSpeedOverlay(reloadSpeedButton, gameScreenAtlas, this, player);
+        extraKnockbackOverlay = new ExtraKnockbackOverlay(knockbackButton, gameScreenAtlas, this, player);
 
         extraAmmoOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 + 25, Align.center);
         extraAccuracyOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 + 25, Align.center);
@@ -212,6 +213,7 @@ public class BuyHud extends Hud
             public void clicked(InputEvent event, float x, float y)
             {
                 easeOut();
+                GameHud.reloadingIsAllowed = true;
             }
         });
 

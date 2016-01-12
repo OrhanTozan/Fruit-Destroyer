@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.nahroto.fruitdestroyer.Font;
 import com.nahroto.fruitdestroyer.Logger;
+import com.nahroto.fruitdestroyer.entities.Player;
 import com.nahroto.fruitdestroyer.huds.BuyHud;
 
 public abstract class UpgradeOverlay
@@ -35,7 +36,7 @@ public abstract class UpgradeOverlay
     protected Font currentValueFont;
     protected Font nextValueFont;
 
-    public UpgradeOverlay(String description, final Integer upgradeCost, final ImageButton button, TextureAtlas gameScreenAtlas, final BuyHud buyHud)
+    public UpgradeOverlay(String description, final Integer upgradeCost, final ImageButton button, TextureAtlas gameScreenAtlas, final BuyHud buyHud, final Player player)
     {
         actors = new Array<Actor>();
         position = new Vector2();
@@ -52,8 +53,8 @@ public abstract class UpgradeOverlay
             {
                 if (buyHud.getPoints() >= upgradeCost)
                 {
-                    upgrade();
-                    buyHud.reducePoints(1);
+                    upgrade(player);
+                    buyHud.reducePoints(upgradeCost);
                 }
             }
         });
@@ -90,7 +91,7 @@ public abstract class UpgradeOverlay
         actors.add(exitButton);
     }
 
-    protected abstract void upgrade();
+    protected abstract void upgrade(Player player);
 
     protected void setTitleText(String text)
     {

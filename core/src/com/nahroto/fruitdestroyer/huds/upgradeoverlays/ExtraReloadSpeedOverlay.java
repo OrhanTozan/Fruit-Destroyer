@@ -9,17 +9,17 @@ import com.nahroto.fruitdestroyer.huds.BuyHud;
 
 public class ExtraReloadSpeedOverlay extends UpgradeOverlay
 {
-    private static final int UPGRADE_STEP = -25;
+    public static final int UPGRADE_STEP = -25;
 
     private String currentSpeedStatus;
     private String nextSpeedStatus;
 
-    private Integer currentPercentage;
-    private Integer nextPercentage;
+    public static Integer currentPercentage;
+    public static Integer nextPercentage;
 
-    public ExtraReloadSpeedOverlay(ImageButton button, TextureAtlas gameScreenAtlas, BuyHud buyHud)
+    public ExtraReloadSpeedOverlay(ImageButton button, TextureAtlas gameScreenAtlas, BuyHud buyHud, Player player)
     {
-        super("Reloading speed of your\nweapon. Increase this stat so\nyou can reload faster!", 4, button, gameScreenAtlas, buyHud);
+        super("Reloading speed of your\nweapon. Increase this stat so\nyou can reload faster!", 4, button, gameScreenAtlas, buyHud, player);
 
         currentPercentage = new Integer(100);
         nextPercentage = new Integer(currentPercentage + UPGRADE_STEP);
@@ -33,7 +33,7 @@ public class ExtraReloadSpeedOverlay extends UpgradeOverlay
     }
 
     @Override
-    protected void upgrade()
+    protected void upgrade(Player player)
     {
         currentPercentage = nextPercentage;
         nextPercentage += UPGRADE_STEP;
@@ -41,6 +41,8 @@ public class ExtraReloadSpeedOverlay extends UpgradeOverlay
         nextSpeedStatus = percentageToStatus(nextPercentage);
         currentValueLabel.setText(currentSpeedStatus);
         nextValueLabel.setText(nextSpeedStatus);
+
+        player.setReloadingConfig(currentPercentage);
     }
 
     private String percentageToStatus(int percentage)

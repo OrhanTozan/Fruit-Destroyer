@@ -84,7 +84,7 @@ public class GameScreen implements Screen
 
     private ShapeRenderer shapeRenderer;
 
-    public GameScreen(final Application APP, WaveGenerator waveGenerator, Image whiteShader, Array<Enemy> totalEnemies, Array<Enemy> currentEnemies, Array<Orange> totalOranges, Array<Ananas> totalAnanases, Array<Corpse> currentCorpses, Array<Corpse> totalOrangeCorpses, Array<Corpse> totalAnanasCorpses, Array<Bullet> totalBullets, Array<Bullet> currentBullets,Array<Explosion> totalExplosions, Array<Explosion> currentExplosions, GameHud gameHud, BuyHud buyHud, Texture bg, Player player, InputMultiplexer inputMultiplexer, Font accuracyStatus, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Font ammoStatus, Music actionMusic, Sprite reloadIcon, Sound waveSFX, Sprite accuracyIcon)
+    public GameScreen(final Application APP, WaveGenerator waveGenerator, Image whiteShader, Array<Enemy> totalEnemies, Array<Enemy> currentEnemies, Array<Orange> totalOranges, Array<Ananas> totalAnanases, Array<Corpse> currentCorpses, Array<Corpse> totalOrangeCorpses, Array<Corpse> totalAnanasCorpses, Array<Bullet> totalBullets, Array<Bullet> currentBullets,Array<Explosion> totalExplosions, Array<Explosion> currentExplosions, GameHud gameHud, BuyHud buyHud, Texture bg, Player player, InputMultiplexer inputMultiplexer, Font accuracyStatus, Font ammoStatus, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Music actionMusic, Sprite reloadIcon, Sound waveSFX, Sprite accuracyIcon)
     {
         this.APP = APP;
         this.waveGenerator = waveGenerator;
@@ -248,8 +248,6 @@ public class GameScreen implements Screen
             whiteShader.act(delta);
             waveGenerator.update();
 
-
-
             // UPDATE EXPLOSIONS
             for (int i = 0; i < currentExplosions.size; i++)
             {
@@ -302,6 +300,7 @@ public class GameScreen implements Screen
                 {
                     Input.touchDown = false;
                     buying = true;
+                    GameHud.reloadingIsAllowed = false;
                     buyHud.update(delta);
                     buyHud.turnON();
                     Logger.log("BUYTIME");
@@ -388,8 +387,7 @@ public class GameScreen implements Screen
             reloadIcon.draw(APP.batch);
 
         // RENDER WAVE STATUS
-        whiteShader.draw(APP.batch, 1f);
-        ammoStatus.render(APP.batch, "wave " + WaveGenerator.wave.toString(), Constants.V_WIDTH / 2 - (ammoStatus.getWidth("wave " + WaveGenerator.wave.toString()) / 2), Constants.V_HEIGHT - 30, false);
+        // ammoStatus.render(APP.batch, "wave " + WaveGenerator.wave.toString(), Constants.V_WIDTH / 2 - (ammoStatus.getWidth("wave " + WaveGenerator.wave.toString()) / 2), Constants.V_HEIGHT - 30, false);
         accuracyStatus.render(APP.batch, MathUtils.round((100 - (100 * Player.spread))) + "%", Constants.V_WIDTH / 2 - accuracyStatus.getWidth(MathUtils.round((100 - (100 * Player.spread))) + "%") / 2 + 30, 60, false);
         accuracyIcon.draw(APP.batch);
 
@@ -413,6 +411,8 @@ public class GameScreen implements Screen
         }
 
         gameHud.render();
+
+        whiteShader.draw(APP.batch, 1f);
 
         if (GameScreen.buying == true)
             buyHud.render();

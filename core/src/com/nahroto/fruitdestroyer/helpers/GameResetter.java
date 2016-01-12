@@ -10,6 +10,10 @@ import com.nahroto.fruitdestroyer.entities.Corpse;
 import com.nahroto.fruitdestroyer.entities.Player;
 import com.nahroto.fruitdestroyer.entities.enemies.Enemy;
 import com.nahroto.fruitdestroyer.huds.BuyHud;
+import com.nahroto.fruitdestroyer.huds.upgradeoverlays.ExtraAccuracyOverlay;
+import com.nahroto.fruitdestroyer.huds.upgradeoverlays.ExtraAmmoOverlay;
+import com.nahroto.fruitdestroyer.huds.upgradeoverlays.ExtraKnockbackOverlay;
+import com.nahroto.fruitdestroyer.huds.upgradeoverlays.ExtraReloadSpeedOverlay;
 import com.nahroto.fruitdestroyer.screens.GameScreen;
 
 public class GameResetter
@@ -64,6 +68,19 @@ public class GameResetter
 
         // RESET POINTS
         BuyHud.pointsValue = 0;
+
+        // RESET WEAPON STATS
+        ExtraAmmoOverlay.currentValue = Bullet.START_MAGSIZE;
+        ExtraAmmoOverlay.nextValue = ExtraAmmoOverlay.currentValue + ExtraAmmoOverlay.UPGRADE_STEP;
+
+        ExtraAccuracyOverlay.currentValue = (1 / Bullet.START_RECOIL);
+        ExtraAccuracyOverlay.nextValue = ExtraAccuracyOverlay.currentValue + ExtraAccuracyOverlay.UPGRADE_STEP;
+
+        ExtraReloadSpeedOverlay.currentPercentage = 100;
+        ExtraReloadSpeedOverlay.nextPercentage = ExtraReloadSpeedOverlay.currentPercentage + ExtraReloadSpeedOverlay.UPGRADE_STEP;
+
+        ExtraKnockbackOverlay.currentValue = Bullet.START_KNOCKBACKPOWER;
+        ExtraKnockbackOverlay.nextValue = ExtraKnockbackOverlay.currentValue + ExtraKnockbackOverlay.UPGRADE_STEP;
 
         APP.setScreen(gameScreen);
     }

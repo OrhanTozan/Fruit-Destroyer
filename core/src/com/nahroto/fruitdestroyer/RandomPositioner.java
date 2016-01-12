@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public class RandomPositioner
 {
-    private static final int MAX_DISTANCE = 300;
+    private static final int MAX_DISTANCE = 100;
 
     private static Vector2 randomPosition = new Vector2();
 

@@ -4,18 +4,19 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.utils.Align;
 import com.nahroto.fruitdestroyer.entities.Bullet;
+import com.nahroto.fruitdestroyer.entities.Player;
 import com.nahroto.fruitdestroyer.huds.BuyHud;
 
 public class ExtraAmmoOverlay extends UpgradeOverlay
 {
-    private static final int UPGRADE_STEP = 10;
+    public static final int UPGRADE_STEP = 10;
 
-    private Integer currentValue;
-    private Integer nextValue;
+    public static Integer currentValue;
+    public static Integer nextValue;
 
-    public ExtraAmmoOverlay(ImageButton button, TextureAtlas gameScreenAtlas, BuyHud buyHud)
+    public ExtraAmmoOverlay(ImageButton button, TextureAtlas gameScreenAtlas, BuyHud buyHud, Player player)
     {
-        super("The magsize of your weapon.\nUseful when raided by big\ngroups of enemies!", 1, button, gameScreenAtlas, buyHud);
+        super("The magsize of your weapon.\nUseful when raided by big\ngroups of enemies!", 1, button, gameScreenAtlas, buyHud, player);
 
         currentValue = new Integer(Bullet.START_MAGSIZE);
         nextValue = new Integer(currentValue + UPGRADE_STEP);
@@ -26,12 +27,14 @@ public class ExtraAmmoOverlay extends UpgradeOverlay
     }
 
     @Override
-    protected void upgrade()
+    protected void upgrade(Player player)
     {
         currentValue = nextValue;
         nextValue += UPGRADE_STEP;
         currentValueLabel.setText(currentValue.toString());
         nextValueLabel.setText(nextValue.toString());
+
+        Bullet.getWeapon().setMagSize(currentValue);
     }
 
     @Override
