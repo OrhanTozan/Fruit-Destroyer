@@ -29,6 +29,7 @@ import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
 public class GameHud extends Hud
 {
     public static boolean reloadingIsAllowed = true;
+    public boolean animatingWave;
 
     private ImageButton reloadButton;
     private ImageButton soundButton;
@@ -77,7 +78,7 @@ public class GameHud extends Hud
         soundButton.setPosition(10, Constants.V_HEIGHT - 10, Align.topLeft);
         bulletIcon.setPosition(20, 17);
         waveLabel.setPosition(Constants.V_WIDTH / 2 - (waveFont.getWidth("Wave " + WaveGenerator.wave.toString()) / 2), Constants.V_HEIGHT - 100);
-        whiteShader.setPosition(-80, 80);
+        whiteShader.setPosition(-80, -80);
 
         reloadButton.addListener(new ClickListener()
         {
@@ -110,6 +111,20 @@ public class GameHud extends Hud
         actors.add(waveLabel);
 
         addAllActors();
+    }
+
+    private void updateWaveText()
+    {
+        waveLabel.setText("Wave " + WaveGenerator.wave.toString());
+    }
+
+    public void animateWaveLabel()
+    {
+        Logger.log("activated");
+        animatingWave = true;
+        waveLabel.addAction(moveTo(waveLabel.getX(), Constants.V_HEIGHT + 100, 1f));
+
+        updateWaveText();
     }
 
     public void animateWhiteShader()

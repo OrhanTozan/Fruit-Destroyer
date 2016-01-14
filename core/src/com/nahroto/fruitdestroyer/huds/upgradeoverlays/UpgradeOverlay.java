@@ -111,7 +111,7 @@ public abstract class UpgradeOverlay
         currentValueLabel.setPosition(background.getX() + 135, background.getY() + 405, Align.top);
         nextValueLabel.setPosition(background.getX() + 485, background.getY() + 405, Align.top);
         descriptionLabel.setPosition(background.getX() + 60, background.getY() + 305, Align.topLeft);
-        exitButton.setPosition(background.getX() + background.getWidth() - 60, background.getY() + background.getHeight() - 60);
+        exitButton.setPosition(background.getX() + background.getWidth() - 32, background.getY() + background.getHeight() - 32, Align.center);
     }
 
     public void update()

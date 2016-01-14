@@ -286,7 +286,7 @@ public class GameScreen implements Screen
             // WHEN WAVE IS CLEARED, START NEW WAVE
             if (currentEnemies.size == 0 && waveGenerator.getQueue().size == 0)
             {
-                if (waveGenerator.wave % WaveGenerator.BUY_WAVE == 0)
+                if (waveGenerator.wave % WaveGenerator.BUY_WAVE == 0 && !gameHud.animatingWave)
                 {
                     Input.touchDown = false;
                     buying = true;
@@ -297,9 +297,7 @@ public class GameScreen implements Screen
                 }
                 else
                 {
-                    waveSFX.play();
-                    waveGenerator.wave++;
-                    waveGenerator.startNewWave();
+                    Logger.log("freedom");
                 }
             }
         }

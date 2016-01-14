@@ -5,245 +5,245 @@ filter: Linear,Linear
 repeat: none
 overlay
   rotate: false
-  xy: 1, 958
+  xy: 1, 969
   size: 664, 1064
   orig: 664, 1064
   offset: 0, 0
   index: -1
 upgradeDescBG
   rotate: false
-  xy: 1, 260
+  xy: 1, 271
   size: 596, 696
   orig: 596, 696
   offset: 0, 0
   index: -1
 retry-button-up
   rotate: false
-  xy: 667, 1818
+  xy: 667, 1829
   size: 378, 204
   orig: 378, 204
   offset: 0, 0
   index: -1
 retry-button-down
   rotate: false
-  xy: 1, 60
+  xy: 1, 71
   size: 378, 198
   orig: 378, 198
   offset: 0, 0
   index: -1
 upgradeDone-down
   rotate: false
-  xy: 667, 1633
+  xy: 667, 1644
   size: 337, 183
   orig: 337, 183
   offset: 0, 0
   index: -1
 upgradeDone
   rotate: false
-  xy: 1047, 1839
+  xy: 1047, 1850
   size: 337, 183
   orig: 337, 183
   offset: 0, 0
   index: -1
 upgrades-text
   rotate: false
-  xy: 1386, 1932
+  xy: 1386, 1943
   size: 402, 90
   orig: 402, 90
   offset: 0, 0
   index: -1
 accuracyUpgrade-down
   rotate: false
-  xy: 381, 69
+  xy: 381, 80
   size: 189, 189
   orig: 189, 189
   offset: 0, 0
   index: -1
 accuracyUpgrade
   rotate: false
-  xy: 667, 1442
+  xy: 667, 1453
   size: 189, 189
   orig: 189, 189
   offset: 0, 0
   index: -1
 knockbackUpgrade-down
   rotate: false
-  xy: 667, 1251
+  xy: 667, 1262
   size: 189, 189
   orig: 189, 189
   offset: 0, 0
   index: -1
 knockbackUpgrade
   rotate: false
-  xy: 667, 1060
+  xy: 667, 1071
   size: 189, 189
   orig: 189, 189
   offset: 0, 0
   index: -1
 moreAmmoUpgrade-down
   rotate: false
-  xy: 858, 1442
+  xy: 858, 1453
   size: 189, 189
   orig: 189, 189
   offset: 0, 0
   index: -1
 moreAmmoUpgrade
   rotate: false
-  xy: 858, 1251
+  xy: 858, 1262
   size: 189, 189
   orig: 189, 189
   offset: 0, 0
   index: -1
 reloadUpgrade-down
   rotate: false
-  xy: 858, 1060
+  xy: 858, 1071
   size: 189, 189
   orig: 189, 189
   offset: 0, 0
   index: -1
 reload-down
   rotate: false
-  xy: 667, 922
+  xy: 667, 933
   size: 226, 136
   orig: 226, 136
   offset: 0, 0
   index: -1
 reload-up
   rotate: false
-  xy: 1386, 1794
+  xy: 1386, 1805
   size: 226, 136
   orig: 226, 136
   offset: 0, 0
   index: -1
 points-overlay
   rotate: false
-  xy: 1614, 1780
+  xy: 1614, 1791
   size: 187, 150
   orig: 187, 150
   offset: 0, 0
   index: -1
 reloadUpgrade
   rotate: false
-  xy: 599, 731
+  xy: 599, 742
   size: 189, 189
   orig: 189, 189
   offset: 0, 0
   index: -1
 ananas-hit
   rotate: false
-  xy: 599, 547
+  xy: 599, 558
   size: 144, 182
   orig: 144, 182
   offset: 0, 0
   index: -1
 ananas
   rotate: false
-  xy: 599, 363
+  xy: 599, 374
   size: 144, 182
   orig: 144, 182
   offset: 0, 0
   index: -1
 ananas-dead
   rotate: false
-  xy: 895, 930
+  xy: 895, 941
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 player
   rotate: false
-  xy: 1, 1
+  xy: 1, 12
   size: 121, 57
   orig: 121, 57
   offset: 0, 0
   index: -1
 orange-dead
   rotate: false
-  xy: 1790, 1943
+  xy: 1790, 1954
   size: 90, 79
   orig: 90, 79
   offset: 0, 0
   index: -1
 orange-hit
   rotate: false
-  xy: 790, 841
+  xy: 790, 852
   size: 90, 79
   orig: 90, 79
   offset: 0, 0
   index: -1
 orange
   rotate: false
-  xy: 599, 282
+  xy: 599, 293
   size: 90, 79
   orig: 90, 79
   offset: 0, 0
   index: -1
 reload-icon
   rotate: false
-  xy: 790, 755
+  xy: 790, 766
   size: 82, 84
   orig: 82, 84
   offset: 0, 0
   index: -1
+exitButton
+  rotate: false
+  xy: 1882, 1953
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
 bullet-icon
   rotate: false
-  xy: 1882, 1935
+  xy: 1964, 1946
   size: 76, 87
   orig: 76, 87
   offset: 0, 0
   index: -1
 volumeButton
   rotate: false
-  xy: 1960, 1954
+  xy: 124, 1
   size: 86, 68
   orig: 86, 68
   offset: 0, 0
   index: -1
 flash2
   rotate: false
-  xy: 124, 14
+  xy: 212, 25
   size: 82, 44
   orig: 82, 44
   offset: 0, 0
   index: -1
 accuracy-icon
   rotate: false
-  xy: 691, 299
+  xy: 691, 310
   size: 62, 62
   orig: 62, 62
   offset: 0, 0
   index: -1
-exitButton
-  rotate: false
-  xy: 1803, 1881
-  size: 60, 60
-  orig: 60, 60
-  offset: 0, 0
-  index: -1
 flash
   rotate: false
-  xy: 208, 23
+  xy: 296, 34
   size: 47, 35
   orig: 47, 35
   offset: 0, 0
   index: -1
 red-bar
   rotate: false
-  xy: 1047, 1822
+  xy: 1047, 1833
   size: 50, 15
   orig: 50, 15
   offset: 0, 0
   index: -1
 green-bar
   rotate: false
-  xy: 599, 943
+  xy: 599, 954
   size: 48, 13
   orig: 48, 13
   offset: 0, 0
   index: -1
 bullet
   rotate: false
-  xy: 572, 238
+  xy: 572, 249
   size: 20, 20
   orig: 20, 20
   offset: 0, 0

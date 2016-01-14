@@ -79,6 +79,9 @@ public class LoadingScreen2 implements Screen
     private Sound waveSFX;
     private WaveGenerator waveGenerator;
 
+    private GameHud gameHud;
+    private BuyHud buyHud;
+
     public LoadingScreen2(final Application APP, final Font font, Texture bg)
     {
         this.APP = APP;
@@ -156,7 +159,9 @@ public class LoadingScreen2 implements Screen
         collisionHandler = new CollisionHandler(deadScreen, currentEnemies, currentBullets);
         waveSFX = APP.assets.get("sounds/victory.ogg", Sound.class);
         waveGenerator = new WaveGenerator(totalEnemies, currentEnemies, totalOranges, totalAnanases);
-        gameScreen = new GameScreen(APP, waveGenerator, totalEnemies, currentEnemies, totalOranges, totalAnanases, currentCorpses, totalOrangeCorpses, totalAnanasCorpses, totalBullets, currentBullets, totalExplosions, currentExplosions, new GameHud(player, APP.viewport, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon"), gameScreenAtlas.findRegion("volumeButton"), actionMusic), new BuyHud(APP.viewport, APP.batch, gameScreenAtlas, blackShaderTexture, waveSFX, waveGenerator, inputMultiplexer, player), bg, player, inputMultiplexer, new Font("fonts/trompus.otf", 50, Color.WHITE, Color.BLACK, 3, true), ammoStatus, inputHandler, new Input(), collisionHandler, actionMusic, gameScreenAtlas.createSprite("reload-icon"), waveSFX, gameScreenAtlas.createSprite("accuracy-icon"));
+        gameHud = new GameHud(player, APP.viewport, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon"), gameScreenAtlas.findRegion("volumeButton"), actionMusic);
+        buyHud = new BuyHud(APP.viewport, APP.batch, gameHud, gameScreenAtlas, blackShaderTexture, waveSFX, waveGenerator, inputMultiplexer, player);
+        gameScreen = new GameScreen(APP, waveGenerator, totalEnemies, currentEnemies, totalOranges, totalAnanases, currentCorpses, totalOrangeCorpses, totalAnanasCorpses, totalBullets, currentBullets, totalExplosions, currentExplosions, gameHud, buyHud, bg, player, inputMultiplexer, new Font("fonts/trompus.otf", 50, Color.WHITE, Color.BLACK, 3, true), ammoStatus, inputHandler, new Input(), collisionHandler, actionMusic, gameScreenAtlas.createSprite("reload-icon"), waveSFX, gameScreenAtlas.createSprite("accuracy-icon"));
 
         gameResetter.setGameScreen(gameScreen);
     }

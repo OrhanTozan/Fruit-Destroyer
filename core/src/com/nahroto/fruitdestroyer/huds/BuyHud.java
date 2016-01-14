@@ -60,13 +60,13 @@ public class BuyHud extends Hud
     private Runnable toggleBuying;
     private Runnable resetPosition;
     private Runnable hideBlackShader;
-    private Runnable startNewWave;
+    private Runnable animateWave;
     private Runnable setGameScreenInput;
     private Runnable turnON;
 
     private InputMultiplexer inputMultiplexer;
 
-    public BuyHud(Viewport viewport, SpriteBatch batch, TextureAtlas gameScreenAtlas, Texture blackShaderTexture, final Sound waveSFX, final WaveGenerator waveGenerator, final InputMultiplexer gameScreenInput, Player player)
+    public BuyHud(Viewport viewport, SpriteBatch batch, final GameHud gameHud, TextureAtlas gameScreenAtlas, Texture blackShaderTexture, final Sound waveSFX, final WaveGenerator waveGenerator, final InputMultiplexer gameScreenInput, Player player)
     {
         super(viewport, batch);
 
@@ -102,14 +102,12 @@ public class BuyHud extends Hud
             }
         };
 
-        startNewWave = new Runnable()
+        animateWave = new Runnable()
         {
             @Override
             public void run()
             {
-                waveSFX.play();
-                WaveGenerator.wave++;
-                waveGenerator.startNewWave();
+                gameHud.animateWaveLabel();
             }
         };
 
@@ -299,7 +297,7 @@ public class BuyHud extends Hud
     {
         overlay.addAction(sequence(
                 parallel(moveToAligned(0, Constants.V_HEIGHT / 2, Align.right, EASE_TIME, Interpolation.pow2Out), run(hideBlackShader)),
-                run(startNewWave),
+                run(animateWave),
                 run(setGameScreenInput),
                 run(toggleBuying),
                 run(resetPosition)
