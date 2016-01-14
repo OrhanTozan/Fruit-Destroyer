@@ -5,13 +5,9 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -236,7 +232,7 @@ public class GameScreen implements Screen
                                 break;
                             }
                         }
-                        animateWhiteShader();
+                        gameHud.animateWhiteShader();
                         CameraShaker.startShaking(4f, 750);
                     }
 
@@ -333,13 +329,7 @@ public class GameScreen implements Screen
         APP.batch.setProjectionMatrix(APP.camera.combined);
     }
 
-    private void animateWhiteShader()
-    {
-        whiteShader.addAction(sequence(
-                alpha(1f),
-                alpha(0f, 0.5f)
-                ));
-    }
+
 
     @Override
     public void render(float delta)
@@ -391,6 +381,7 @@ public class GameScreen implements Screen
         accuracyStatus.render(APP.batch, MathUtils.round((100 - (100 * Player.spread))) + "%", Constants.V_WIDTH / 2 - accuracyStatus.getWidth(MathUtils.round((100 - (100 * Player.spread))) + "%") / 2 + 30, 60, false);
         accuracyIcon.draw(APP.batch);
 
+
         APP.batch.end();
 
         if (Constants.DEBUG)
@@ -410,9 +401,12 @@ public class GameScreen implements Screen
             shapeRenderer.end();
         }
 
+        /*APP.batch.begin();
+        whiteShader.draw(APP.batch, 1f);
+        APP.batch.end();*/
+
         gameHud.render();
 
-        whiteShader.draw(APP.batch, 1f);
 
         if (GameScreen.buying == true)
             buyHud.render();

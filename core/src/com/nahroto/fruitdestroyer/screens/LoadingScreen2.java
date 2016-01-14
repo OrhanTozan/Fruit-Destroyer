@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Array;
 import com.nahroto.fruitdestroyer.Application;
@@ -157,7 +156,7 @@ public class LoadingScreen2 implements Screen
         collisionHandler = new CollisionHandler(deadScreen, currentEnemies, currentBullets);
         waveSFX = APP.assets.get("sounds/victory.ogg", Sound.class);
         waveGenerator = new WaveGenerator(totalEnemies, currentEnemies, totalOranges, totalAnanases);
-        gameScreen = new GameScreen(APP, waveGenerator, new Image(new Texture("backgrounds/whiteShader.png")), totalEnemies, currentEnemies, totalOranges, totalAnanases, currentCorpses, totalOrangeCorpses, totalAnanasCorpses, totalBullets, currentBullets, totalExplosions, currentExplosions, new GameHud(player, APP.viewport, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon"), gameScreenAtlas.findRegion("volumeButton"), actionMusic), new BuyHud(APP.viewport, APP.batch, gameScreenAtlas, blackShaderTexture, waveSFX, waveGenerator, inputMultiplexer, player), bg, player, inputMultiplexer, new Font("fonts/trompus.otf", 50, Color.WHITE, Color.BLACK, 3, true), ammoStatus, inputHandler, new Input(), collisionHandler, actionMusic, gameScreenAtlas.createSprite("reload-icon"), waveSFX, gameScreenAtlas.createSprite("accuracy-icon"));
+        gameScreen = new GameScreen(APP, waveGenerator, new Image(new Texture("backgrounds/whiteShader.png")), totalEnemies, currentEnemies, totalOranges, totalAnanases, currentCorpses, totalOrangeCorpses, totalAnanasCorpses, totalBullets, currentBullets, totalExplosions, currentExplosions, new GameHud(player, gameScreenAtlas, APP.viewport, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon"), gameScreenAtlas.findRegion("volumeButton"), actionMusic), new BuyHud(APP.viewport, APP.batch, gameScreenAtlas, blackShaderTexture, waveSFX, waveGenerator, inputMultiplexer, player), bg, player, inputMultiplexer, new Font("fonts/trompus.otf", 50, Color.WHITE, Color.BLACK, 3, true), ammoStatus, inputHandler, new Input(), collisionHandler, actionMusic, gameScreenAtlas.createSprite("reload-icon"), waveSFX, gameScreenAtlas.createSprite("accuracy-icon"));
 
         gameResetter.setGameScreen(gameScreen);
     }
