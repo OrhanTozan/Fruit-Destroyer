@@ -66,7 +66,6 @@ public class GameScreen implements Screen
     private GameHud gameHud;
     private BuyHud buyHud;
 
-    private Image whiteShader;
 
     private Font ammoStatus;
     private Font accuracyStatus;
@@ -80,7 +79,7 @@ public class GameScreen implements Screen
 
     private ShapeRenderer shapeRenderer;
 
-    public GameScreen(final Application APP, WaveGenerator waveGenerator, Image whiteShader, Array<Enemy> totalEnemies, Array<Enemy> currentEnemies, Array<Orange> totalOranges, Array<Ananas> totalAnanases, Array<Corpse> currentCorpses, Array<Corpse> totalOrangeCorpses, Array<Corpse> totalAnanasCorpses, Array<Bullet> totalBullets, Array<Bullet> currentBullets,Array<Explosion> totalExplosions, Array<Explosion> currentExplosions, GameHud gameHud, BuyHud buyHud, Texture bg, Player player, InputMultiplexer inputMultiplexer, Font accuracyStatus, Font ammoStatus, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Music actionMusic, Sprite reloadIcon, Sound waveSFX, Sprite accuracyIcon)
+    public GameScreen(final Application APP, WaveGenerator waveGenerator, Array<Enemy> totalEnemies, Array<Enemy> currentEnemies, Array<Orange> totalOranges, Array<Ananas> totalAnanases, Array<Corpse> currentCorpses, Array<Corpse> totalOrangeCorpses, Array<Corpse> totalAnanasCorpses, Array<Bullet> totalBullets, Array<Bullet> currentBullets,Array<Explosion> totalExplosions, Array<Explosion> currentExplosions, GameHud gameHud, BuyHud buyHud, Texture bg, Player player, InputMultiplexer inputMultiplexer, Font accuracyStatus, Font ammoStatus, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Music actionMusic, Sprite reloadIcon, Sound waveSFX, Sprite accuracyIcon)
     {
         this.APP = APP;
         this.waveGenerator = waveGenerator;
@@ -109,7 +108,6 @@ public class GameScreen implements Screen
         this.totalExplosions = totalExplosions;
         this.currentExplosions = currentExplosions;
         this.accuracyIcon = accuracyIcon;
-        this.whiteShader = whiteShader;
     }
 
     @Override
@@ -136,9 +134,6 @@ public class GameScreen implements Screen
         player.setReloadingConfig(100);
 
         Player.ammo = Bullet.getWeapon().getMagSize();
-
-        whiteShader.addAction(alpha(0f));
-        whiteShader.setPosition(-80, -80);
 
         if (Constants.DEBUG)
             shapeRenderer = new ShapeRenderer();
@@ -241,7 +236,6 @@ public class GameScreen implements Screen
                 }
             }
 
-            whiteShader.act(delta);
             waveGenerator.update();
 
             // UPDATE EXPLOSIONS
@@ -401,9 +395,6 @@ public class GameScreen implements Screen
             shapeRenderer.end();
         }
 
-        /*APP.batch.begin();
-        whiteShader.draw(APP.batch, 1f);
-        APP.batch.end();*/
 
         gameHud.render();
 

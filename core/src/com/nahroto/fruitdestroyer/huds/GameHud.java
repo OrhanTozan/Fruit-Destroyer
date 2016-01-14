@@ -41,7 +41,7 @@ public class GameHud extends Hud
     private Runnable setWhiteShaderVisible;
     private Runnable setWhiteShaderInvisible;
 
-    public GameHud(final Player player, TextureAtlas atlas, Viewport viewport, SpriteBatch batch, TextureRegion reloadButtonUp, TextureRegion reloadButtonDown, TextureRegion bulletIconTexture, TextureRegion soundButtonTexture, final Music actionMusic)
+    public GameHud(final Player player, Viewport viewport, SpriteBatch batch, TextureRegion reloadButtonUp, TextureRegion reloadButtonDown, TextureRegion bulletIconTexture, TextureRegion soundButtonTexture, final Music actionMusic)
     {
         super(viewport, batch);
 
@@ -77,6 +77,7 @@ public class GameHud extends Hud
         soundButton.setPosition(10, Constants.V_HEIGHT - 10, Align.topLeft);
         bulletIcon.setPosition(20, 17);
         waveLabel.setPosition(Constants.V_WIDTH / 2 - (waveFont.getWidth("Wave " + WaveGenerator.wave.toString()) / 2), Constants.V_HEIGHT - 100);
+        whiteShader.setPosition(-80, 80);
 
         reloadButton.addListener(new ClickListener()
         {
