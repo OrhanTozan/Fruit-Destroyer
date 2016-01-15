@@ -1,6 +1,7 @@
 package com.nahroto.fruitdestroyer.huds;
 
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -17,6 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.Constants;
 import com.nahroto.fruitdestroyer.Font;
 import com.nahroto.fruitdestroyer.Logger;
@@ -28,21 +30,30 @@ import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
 
 public class GameHud extends Hud
 {
+
     public static boolean reloadingIsAllowed = true;
-    public boolean animatingWave;
+    public static boolean animatingWave;
 
     private ImageButton reloadButton;
     private ImageButton soundButton;
     private Image bulletIcon;
     private Label waveLabel;
     private Image whiteShader;
+    private Image blackShader;
+
+    private Sound orchestra;
 
     private Font waveFont;
 
     private Runnable setWhiteShaderVisible;
     private Runnable setWhiteShaderInvisible;
+    private Runnable setWaveClearedText;
+    private Runnable setWaveStatusText;
+    private Runnable showBlackShader;
+    private Runnable hideBlackShader;
+    private Runnable playOrchestra;
 
-    public GameHud(final Player player, Viewport viewport, SpriteBatch batch, TextureRegion reloadButtonUp, TextureRegion reloadButtonDown, TextureRegion bulletIconTexture, TextureRegion soundButtonTexture, final Music actionMusic)
+    public GameHud(final Player player, Viewport viewport, Application APP, SpriteBatch batch, TextureRegion reloadButtonUp, TextureRegion reloadButtonDown, TextureRegion bulletIconTexture, TextureRegion soundButtonTexture, final Music actionMusic)
     {
         super(viewport, batch);
 
@@ -54,6 +65,13 @@ public class GameHud extends Hud
 
         waveFont = new Font("fonts/trompus.otf", 100, Color.WHITE, Color.BLACK, 3, true);
         waveLabel = new Label("Wave " + WaveGenerator.wave.toString(), new Label.LabelStyle(waveFont.getFont(), Color.WHITE));
+        blackShader = new Image(new Texture("backgrounds/blackShader.png"));
+
+        orchestra = APP.assets.get("sounds/orchestra.wav", Sound.class);
+
+        blackShader.setPosition(-80, -80);
+        blackShader.addAction(alpha(0f));
+
 
         setWhiteShaderVisible = new Runnable()
         {
@@ -70,6 +88,51 @@ public class GameHud extends Hud
             public void run()
             {
                 whiteShader.setVisible(false);
+            }
+        };
+
+        setWaveClearedText = new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                waveLabel.setText("WAVE " + WaveGenerator.wave.toString() + "\nCLEARED!");
+            }
+        };
+
+        setWaveStatusText = new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                waveLabel.setText("Wave " + WaveGenerator.wave.toString());
+            }
+        };
+
+        showBlackShader = new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                showBlackShader();
+            }
+        };
+
+        hideBlackShader = new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                hideBlackShader();
+            }
+        };
+
+        playOrchestra = new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                orchestra.play();
             }
         };
 
@@ -102,16 +165,29 @@ public class GameHud extends Hud
 
         whiteShader.setVisible(false);
         whiteShader.setTouchable(Touchable.disabled);
-        Logger.log(whiteShader.isTouchable());
+        blackShader.setTouchable(Touchable.disabled);
 
         actors.add(reloadButton);
         actors.add(soundButton);
         actors.add(whiteShader);
+        actors.add(blackShader);
         actors.add(bulletIcon);
         actors.add(waveLabel);
 
         addAllActors();
     }
+
+    private void showBlackShader()
+    {
+        Logger.log("asd");
+        blackShader.addAction(alpha(1f, 0.5f));
+    }
+
+    private void hideBlackShader()
+    {
+        blackShader.addAction(alpha(0f, 0.5f));
+    }
+
 
     private void updateWaveText()
     {
@@ -122,7 +198,16 @@ public class GameHud extends Hud
     {
         Logger.log("activated");
         animatingWave = true;
-        waveLabel.addAction(moveTo(waveLabel.getX(), Constants.V_HEIGHT + 100, 1f));
+        waveLabel.addAction(sequence(
+                // EASE OUT OF SCREEN AND SHOW BLOACKSHADER
+                parallel(moveTo(waveLabel.getX(), Constants.V_HEIGHT + 100, 0.5f), run(showBlackShader)),
+                // SET WAVE CLEARED TEXT
+                run(setWaveClearedText),
+                // TELEPORT TO THE LEFT SIDE OF SCREEN
+                moveTo(-waveFont.getWidth("WAVE " + WaveGenerator.wave.toString() + "\nCLEARED!"), Constants.V_HEIGHT / 2 - waveFont.getHeight("WAVE " + WaveGenerator.wave.toString() + "\nCLEARED!") / 2),
+                // EASE TO MIDDLE OF SCREEN
+                parallel(moveTo(Constants.V_WIDTH / 2 - waveFont.getWidth("WAVE " + WaveGenerator.wave.toString() + "\nCLEARED!") / 2, Constants.V_HEIGHT / 2 - waveFont.getHeight("WAVE " + WaveGenerator.wave.toString() + "\nCLEARED!") / 2, 0.5f), run(playOrchestra))
+                ));
 
         updateWaveText();
     }

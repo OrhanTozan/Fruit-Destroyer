@@ -284,8 +284,9 @@ public class GameScreen implements Screen
             CameraShaker.update(APP.camera);
 
             // WHEN WAVE IS CLEARED, START NEW WAVE
-            if (currentEnemies.size == 0 && waveGenerator.getQueue().size == 0)
+            if (currentEnemies.size == 0 && waveGenerator.getQueue().size == 0 && !gameHud.animatingWave)
             {
+                gameHud.animateWaveLabel();
                 if (waveGenerator.wave % WaveGenerator.BUY_WAVE == 0 && !gameHud.animatingWave)
                 {
                     Input.touchDown = false;

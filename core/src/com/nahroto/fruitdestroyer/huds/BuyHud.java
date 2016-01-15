@@ -33,7 +33,7 @@ public class BuyHud extends Hud
 {
     public static final int POINTS_REWARD = 3;
 
-    private static final float EASE_TIME = 0.7f;
+    private static final float EASE_TIME = 0.5f;
     private static final int UPGRADEBUTTONS_Y = 800;
 
     public static Integer pointsValue;
@@ -297,7 +297,6 @@ public class BuyHud extends Hud
     {
         overlay.addAction(sequence(
                 parallel(moveToAligned(0, Constants.V_HEIGHT / 2, Align.right, EASE_TIME, Interpolation.pow2Out), run(hideBlackShader)),
-                run(animateWave),
                 run(setGameScreenInput),
                 run(toggleBuying),
                 run(resetPosition)
