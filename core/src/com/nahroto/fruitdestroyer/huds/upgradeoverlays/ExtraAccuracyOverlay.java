@@ -6,7 +6,6 @@ import com.badlogic.gdx.utils.Align;
 import com.nahroto.fruitdestroyer.entities.Bullet;
 import com.nahroto.fruitdestroyer.entities.Player;
 import com.nahroto.fruitdestroyer.huds.BuyHud;
-import com.nahroto.fruitdestroyer.weapons.Weapon;
 
 public class ExtraAccuracyOverlay extends UpgradeOverlay
 {

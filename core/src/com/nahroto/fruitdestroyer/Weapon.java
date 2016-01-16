@@ -1,4 +1,4 @@
-package com.nahroto.fruitdestroyer.weapons;
+package com.nahroto.fruitdestroyer;
 
 public class Weapon
 {

@@ -286,20 +286,7 @@ public class GameScreen implements Screen
             // WHEN WAVE IS CLEARED, START NEW WAVE
             if (currentEnemies.size == 0 && waveGenerator.getQueue().size == 0 && !gameHud.animatingWave)
             {
-                gameHud.animateWaveLabel();
-                if (waveGenerator.wave % WaveGenerator.BUY_WAVE == 0 && !gameHud.animatingWave)
-                {
-                    Input.touchDown = false;
-                    buying = true;
-                    GameHud.reloadingIsAllowed = false;
-                    buyHud.update(delta);
-                    buyHud.turnON();
-                    Logger.log("BUYTIME");
-                }
-                else
-                {
-                    Logger.log("freedom");
-                }
+                gameHud.animateWaveLabel(waveGenerator.isBuyRound());
             }
         }
 

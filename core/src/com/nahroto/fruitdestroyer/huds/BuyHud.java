@@ -69,7 +69,7 @@ public class BuyHud extends Hud
 
     private InputMultiplexer inputMultiplexer;
 
-    public BuyHud(Viewport viewport, SpriteBatch batch, final GameHud gameHud, TextureAtlas gameScreenAtlas, Texture blackShaderTexture, final InputMultiplexer gameScreenInput, Player player)
+    public BuyHud(Viewport viewport, SpriteBatch batch, final GameHud gameHud, final WaveGenerator waveGenerator, TextureAtlas gameScreenAtlas, Texture blackShaderTexture, final InputMultiplexer gameScreenInput, Player player)
     {
         super(viewport, batch);
 
@@ -119,7 +119,7 @@ public class BuyHud extends Hud
             @Override
             public void run()
             {
-                gameHud.animateWaveLabel();
+                gameHud.animateWaveLabel(waveGenerator.isBuyRound());
             }
         };
 

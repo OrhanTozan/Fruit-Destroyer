@@ -64,6 +64,8 @@ public class GameHud extends Hud
     private Runnable animatingWaveFalse;
     private Runnable startNewWave;
     private Runnable setGameScreenInput;
+    private Runnable prepareWaveStatus;
+    private Runnable animateWave;
 
     public GameHud(final Player player, Viewport viewport, final WaveGenerator waveGenerator, final InputMultiplexer gameScreenInput, Application APP, SpriteBatch batch, TextureRegion reloadButtonUp, TextureRegion reloadButtonDown, TextureRegion bulletIconTexture, TextureRegion soundButtonTexture, final Music actionMusic)
     {
@@ -158,6 +160,24 @@ public class GameHud extends Hud
             }
         };
 
+        prepareWaveStatus = new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                prepareWaveStatus();
+            }
+        };
+
+        animateWave = new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                animateNextWave();
+            }
+        };
+
         increaseWaveValue = new Runnable()
         {
             @Override
@@ -191,6 +211,7 @@ public class GameHud extends Hud
             public void run()
             {
                 Gdx.input.setInputProcessor(gameScreenInput);
+                reloadingIsAllowed = true;
             }
         };
 
@@ -246,29 +267,47 @@ public class GameHud extends Hud
     }
 
 
-    private void updateWaveText()
+    public void updateWaveText()
     {
         waveLabel.setText("Wave " + WaveGenerator.wave.toString());
     }
 
-    public void animateWaveLabel()
+    public void animateWaveLabel(boolean buyTime)
     {
         Logger.log("activated");
         Input.touchDown = false;
         GameHud.reloadingIsAllowed = false;
         animatingWave = true;
-        waveLabel.addAction(sequence(
-                // EASE OUT OF SCREEN AND SHOW BLOACKSHADER
-                parallel(moveTo(waveLabel.getX(), Constants.V_HEIGHT + 100, 0.5f), run(showBlackShader)),
-                // SET WAVE CLEARED TEXT
-                run(setWaveClearedText),
-                // TELEPORT TO THE LEFT SIDE OF SCREEN
-                moveTo(-waveFont.getWidth("WAVE " + WaveGenerator.wave.toString() + "\nCLEARED!"), Constants.V_HEIGHT / 2 - waveFont.getHeight("WAVE " + WaveGenerator.wave.toString() + "\nCLEARED!") / 2),
-                // EASE TO MIDDLE OF SCREEN
-                parallel(moveTo(Constants.V_WIDTH / 2 - waveFont.getWidth("WAVE " + WaveGenerator.wave.toString() + "\nCLEARED!") / 2, Constants.V_HEIGHT / 2 - waveFont.getHeight("WAVE " + WaveGenerator.wave.toString() + "\nCLEARED!") / 2, 0.5f, Interpolation.pow2Out), run(playOrchestra)),
-                delay(0.5f),
-                run(enableBuyHud)
-                ));
+        if (buyTime)
+        {
+            waveLabel.addAction(sequence(
+                    // EASE OUT OF SCREEN AND SHOW BLOACKSHADER
+                    parallel(moveTo(waveLabel.getX(), Constants.V_HEIGHT + 100, 0.5f), run(showBlackShader)),
+                    // SET WAVE CLEARED TEXT
+                    run(setWaveClearedText),
+                    // TELEPORT TO THE LEFT SIDE OF SCREEN
+                    moveTo(-waveFont.getWidth("WAVE " + WaveGenerator.wave.toString() + "\nCLEARED!"), Constants.V_HEIGHT / 2 - waveFont.getHeight("WAVE " + WaveGenerator.wave.toString() + "\nCLEARED!") / 2),
+                    // EASE TO MIDDLE OF SCREEN
+                    parallel(moveTo(Constants.V_WIDTH / 2 - waveFont.getWidth("WAVE " + WaveGenerator.wave.toString() + "\nCLEARED!") / 2, Constants.V_HEIGHT / 2 - waveFont.getHeight("WAVE " + WaveGenerator.wave.toString() + "\nCLEARED!") / 2, 0.5f, Interpolation.pow2Out), run(playOrchestra)),
+                    delay(0.5f),
+                    run(enableBuyHud)));
+        }
+        else
+        {
+            waveLabel.addAction(sequence(
+                    // EASE OUT OF SCREEN AND SHOW BLOACKSHADER
+                    parallel(moveTo(waveLabel.getX(), Constants.V_HEIGHT + 100, 0.5f), run(showBlackShader)),
+                    // SET WAVE CLEARED TEXT
+                    run(setWaveClearedText),
+                    // TELEPORT TO THE LEFT SIDE OF SCREEN
+                    moveTo(-waveFont.getWidth("WAVE " + WaveGenerator.wave.toString() + "\nCLEARED!"), Constants.V_HEIGHT / 2 - waveFont.getHeight("WAVE " + WaveGenerator.wave.toString() + "\nCLEARED!") / 2),
+                    // EASE TO MIDDLE OF SCREEN
+                    parallel(moveTo(Constants.V_WIDTH / 2 - waveFont.getWidth("WAVE " + WaveGenerator.wave.toString() + "\nCLEARED!") / 2, Constants.V_HEIGHT / 2 - waveFont.getHeight("WAVE " + WaveGenerator.wave.toString() + "\nCLEARED!") / 2, 0.5f, Interpolation.pow2Out), run(playOrchestra)),
+                    delay(1.5f),
+                    run(prepareWaveStatus),
+                    run(animateWave)));
+        };
+
 
         updateWaveText();
     }

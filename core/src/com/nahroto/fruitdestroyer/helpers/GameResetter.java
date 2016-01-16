@@ -10,6 +10,7 @@ import com.nahroto.fruitdestroyer.entities.Corpse;
 import com.nahroto.fruitdestroyer.entities.Player;
 import com.nahroto.fruitdestroyer.entities.enemies.Enemy;
 import com.nahroto.fruitdestroyer.huds.BuyHud;
+import com.nahroto.fruitdestroyer.huds.GameHud;
 import com.nahroto.fruitdestroyer.huds.upgradeoverlays.ExtraAccuracyOverlay;
 import com.nahroto.fruitdestroyer.huds.upgradeoverlays.ExtraAmmoOverlay;
 import com.nahroto.fruitdestroyer.huds.upgradeoverlays.ExtraKnockbackOverlay;
@@ -20,6 +21,8 @@ public class GameResetter
 {
     private final Application APP;
     private GameScreen gameScreen;
+
+    private GameHud gameHud;
 
     private Array<Enemy> currentEnemies;
     private Array<Bullet> currentBullets;
@@ -69,6 +72,8 @@ public class GameResetter
         // RESET POINTS
         BuyHud.pointsValue = 0;
 
+        gameHud.updateWaveText();
+
         // RESET WEAPON STATS
         ExtraAmmoOverlay.currentValue = Bullet.START_MAGSIZE;
         ExtraAmmoOverlay.nextValue = ExtraAmmoOverlay.currentValue + ExtraAmmoOverlay.UPGRADE_STEP;
@@ -88,5 +93,10 @@ public class GameResetter
     public void setGameScreen(GameScreen gameScreen)
     {
         this.gameScreen = gameScreen;
+    }
+
+    public void setGameHud(GameHud gameHud)
+    {
+        this.gameHud = gameHud;
     }
 }

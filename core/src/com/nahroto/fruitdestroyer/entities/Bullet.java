@@ -3,12 +3,9 @@ package com.nahroto.fruitdestroyer.entities;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Polygon;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.Array;
 import com.nahroto.fruitdestroyer.Constants;
-import com.nahroto.fruitdestroyer.weapons.Weapon;
-import com.nahroto.fruitdestroyer.weapons.WeaponList;
+import com.nahroto.fruitdestroyer.Weapon;
 
 public class Bullet
 {

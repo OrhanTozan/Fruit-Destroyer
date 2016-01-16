@@ -160,11 +160,12 @@ public class LoadingScreen2 implements Screen
         waveSFX = APP.assets.get("sounds/victory.ogg", Sound.class);
         waveGenerator = new WaveGenerator(totalEnemies, currentEnemies, totalOranges, totalAnanases);
         gameHud = new GameHud(player, APP.viewport, waveGenerator, inputMultiplexer, APP, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon"), gameScreenAtlas.findRegion("volumeButton"), actionMusic);
-        buyHud = new BuyHud(APP.viewport, APP.batch, gameHud, gameScreenAtlas, blackShaderTexture, inputMultiplexer, player);
+        buyHud = new BuyHud(APP.viewport, APP.batch, gameHud, waveGenerator, gameScreenAtlas, blackShaderTexture, inputMultiplexer, player);
         gameHud.init(buyHud);
         gameScreen = new GameScreen(APP, waveGenerator, totalEnemies, currentEnemies, totalOranges, totalAnanases, currentCorpses, totalOrangeCorpses, totalAnanasCorpses, totalBullets, currentBullets, totalExplosions, currentExplosions, gameHud, buyHud, bg, player, inputMultiplexer, new Font("fonts/trompus.otf", 50, Color.WHITE, Color.BLACK, 3, true), ammoStatus, inputHandler, new Input(), collisionHandler, actionMusic, gameScreenAtlas.createSprite("reload-icon"), waveSFX, gameScreenAtlas.createSprite("accuracy-icon"));
 
         gameResetter.setGameScreen(gameScreen);
+        gameResetter.setGameHud(gameHud);
     }
 
     @Override

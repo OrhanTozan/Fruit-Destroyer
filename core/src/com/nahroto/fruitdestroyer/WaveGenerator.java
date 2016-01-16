@@ -9,7 +9,7 @@ import com.nahroto.fruitdestroyer.entities.enemies.Orange;
 
 public class WaveGenerator
 {
-    public static final int BUY_WAVE = 1;
+    public static final int BUY_WAVE = 3;
 
     private static final int ANANAS_MINIMUM_WAVE = 1;
     private static final float ORANGE_MULTIPLIER = 1.2f;
@@ -55,6 +55,11 @@ public class WaveGenerator
     {
         if (queue.size > 0 && System.currentTimeMillis() - startTime >= delay * 1000)
             sendQueueImmediatly();
+    }
+
+    public boolean isBuyRound()
+    {
+        return (wave % BUY_WAVE == 0);
     }
 
     private void delayTime(float delayTime)
