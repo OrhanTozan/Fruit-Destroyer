@@ -287,6 +287,12 @@ public class GameScreen implements Screen
             if (currentEnemies.size == 0 && waveGenerator.getQueue().size == 0 && !gameHud.animatingWave)
             {
                 gameHud.animateWaveLabel(waveGenerator.isBuyRound());
+                buyHud.update(delta);
+                for (int i = 0; i < currentEnemies.size; i++)
+                {
+                    currentEnemies.get(i).getHealthBar().getRed().setPosition((currentEnemies.get(i).getSprite().getX() + (currentEnemies.get(i).getSprite().getWidth() / 2)) - (currentEnemies.get(i).getHealthBar().getRed().getWidth() / 2), currentEnemies.get(i).getSprite().getY() - HealthBar.Y_OFFSET);
+                    currentEnemies.get(i).getHealthBar().update(currentEnemies.get(i).getHealth(), currentEnemies.get(i).getMaxHealth());
+                }
             }
         }
 
@@ -302,7 +308,14 @@ public class GameScreen implements Screen
         }
 
         else if (!GameScreen.buying && gameHud.animatingWave)
+        {
             gameHud.update(delta);
+            for (int i = 0; i < currentEnemies.size; i++)
+            {
+                currentEnemies.get(i).getHealthBar().getRed().setPosition((currentEnemies.get(i).getSprite().getX() + (currentEnemies.get(i).getSprite().getWidth() / 2)) - (currentEnemies.get(i).getHealthBar().getRed().getWidth() / 2), currentEnemies.get(i).getSprite().getY() - HealthBar.Y_OFFSET);
+                currentEnemies.get(i).getHealthBar().update(currentEnemies.get(i).getHealth(), currentEnemies.get(i).getMaxHealth());
+            }
+        }
 
         // Logger.log(Gdx.graphics.getFramesPerSecond());
 

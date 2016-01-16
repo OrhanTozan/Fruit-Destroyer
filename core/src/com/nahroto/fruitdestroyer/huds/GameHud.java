@@ -310,6 +310,7 @@ public class GameHud extends Hud
 
 
         updateWaveText();
+
     }
 
     public void prepareWaveStatus()
