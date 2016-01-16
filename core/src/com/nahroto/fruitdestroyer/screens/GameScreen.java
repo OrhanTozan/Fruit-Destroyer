@@ -144,7 +144,7 @@ public class GameScreen implements Screen
 
     private void update(float delta)
     {
-        if (!GameScreen.buying)
+        if (!GameScreen.buying && !gameHud.animatingWave)
         {
             // HANDLE INPUT
             inputHandler.update();
@@ -303,8 +303,9 @@ public class GameScreen implements Screen
             }
         }
 
-        else
+        else if (GameScreen.buying)
         {
+            Logger.log("updating buyhud");
             buyHud.update(delta);
             for (int i = 0; i < currentEnemies.size; i++)
             {
@@ -312,6 +313,9 @@ public class GameScreen implements Screen
                 currentEnemies.get(i).getHealthBar().update(currentEnemies.get(i).getHealth(), currentEnemies.get(i).getMaxHealth());
             }
         }
+
+        else if (!GameScreen.buying && gameHud.animatingWave)
+            gameHud.update(delta);
 
         // Logger.log(Gdx.graphics.getFramesPerSecond());
 

@@ -61,12 +61,15 @@ public class BuyHud extends Hud
     private Runnable resetPosition;
     private Runnable hideBlackShader;
     private Runnable animateWave;
+    private Runnable animateNextWave;
+    private Runnable prepareWaveStatus;
+
     private Runnable setGameScreenInput;
     private Runnable turnON;
 
     private InputMultiplexer inputMultiplexer;
 
-    public BuyHud(Viewport viewport, SpriteBatch batch, final GameHud gameHud, TextureAtlas gameScreenAtlas, Texture blackShaderTexture, final Sound waveSFX, final WaveGenerator waveGenerator, final InputMultiplexer gameScreenInput, Player player)
+    public BuyHud(Viewport viewport, SpriteBatch batch, final GameHud gameHud, TextureAtlas gameScreenAtlas, Texture blackShaderTexture, final InputMultiplexer gameScreenInput, Player player)
     {
         super(viewport, batch);
 
@@ -102,12 +105,31 @@ public class BuyHud extends Hud
             }
         };
 
+        prepareWaveStatus = new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                gameHud.prepareWaveStatus();
+            }
+        };
+
         animateWave = new Runnable()
         {
             @Override
             public void run()
             {
                 gameHud.animateWaveLabel();
+            }
+        };
+
+        animateNextWave = new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                Logger.log("animatin next wave");
+                gameHud.animateNextWave();
             }
         };
 
@@ -297,9 +319,10 @@ public class BuyHud extends Hud
     {
         overlay.addAction(sequence(
                 parallel(moveToAligned(0, Constants.V_HEIGHT / 2, Align.right, EASE_TIME, Interpolation.pow2Out), run(hideBlackShader)),
-                run(setGameScreenInput),
-                run(toggleBuying),
-                run(resetPosition)
+                run(resetPosition),
+                run(prepareWaveStatus),
+                run(animateNextWave),
+                run(toggleBuying)
                 ));
     }
 
@@ -310,12 +333,12 @@ public class BuyHud extends Hud
 
     private void showBlackShader()
     {
-        blackShader.addAction(alpha(1f, EASE_TIME));
+        blackShader.addAction(alpha(1f, EASE_TIME, Interpolation.pow2Out));
     }
 
     private void hideBlackShader()
     {
-        blackShader.addAction(alpha(0f, EASE_TIME));
+        blackShader.addAction(alpha(0f, EASE_TIME, Interpolation.pow2Out));
     }
 
     public void addPoints(int amount)
