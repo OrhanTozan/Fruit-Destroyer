@@ -32,7 +32,9 @@ public class GameResetter
     private Array<Bullet> totalBullets;
     private Array<Corpse> totalCorpses;
 
-    public GameResetter(final Application APP, Array<Enemy> currentEnemies, Array<Bullet> currentBullets, Array<Corpse> currentCorpses, Array<Enemy> totalEnemies, Array<Bullet> totalBullets, Array<Corpse> totalCorpses)
+    private Player player;
+
+    public GameResetter(final Application APP, Player player, Array<Enemy> currentEnemies, Array<Bullet> currentBullets, Array<Corpse> currentCorpses, Array<Enemy> totalEnemies, Array<Bullet> totalBullets, Array<Corpse> totalCorpses)
     {
         this.APP = APP;
         this.currentEnemies= currentEnemies;
@@ -41,6 +43,7 @@ public class GameResetter
         this.totalEnemies = totalEnemies;
         this.totalBullets = totalBullets;
         this.totalCorpses = totalCorpses;
+        this.player = player;
     }
 
     public void newGame()
@@ -75,6 +78,11 @@ public class GameResetter
         gameHud.updateWaveText();
 
         // RESET WEAPON STATS
+        Bullet.resetWeapon();
+
+        player.setReloadingConfig(100);
+
+        // RESET UPGRADE STATS
         ExtraAmmoOverlay.currentValue = Bullet.START_MAGSIZE;
         ExtraAmmoOverlay.nextValue = ExtraAmmoOverlay.currentValue + ExtraAmmoOverlay.UPGRADE_STEP;
 

@@ -7,6 +7,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.nahroto.fruitdestroyer.Constants;
 import com.nahroto.fruitdestroyer.Weapon;
 
+import sun.nio.cs.ext.SJIS_0213;
+
 public class Bullet
 {
     public static final int VELOCITY = 1100;
@@ -98,5 +100,14 @@ public class Bullet
     public static Weapon getWeapon()
     {
         return weapon;
+    }
+
+    public static void resetWeapon()
+    {
+        weapon.setDamage(START_DAMAGE);
+        weapon.setRateOfFire(START_ROF);
+        weapon.setMagSize(START_MAGSIZE);
+        weapon.setRecoil(START_RECOIL);
+        weapon.setKnockbackPower(START_KNOCKBACKPOWER);
     }
 }
