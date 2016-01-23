@@ -11,9 +11,7 @@ public class WaveGenerator
 {
     public static final int BUY_WAVE = 3;
 
-    private static final int ANANAS_MINIMUM_WAVE = 1;
-    private static final float ORANGE_MULTIPLIER = 1.2f;
-    private static final float ANANAS_MULTIPLIER = 0.5f;
+    private static final int ANANAS_MINIMUM_WAVE = 6;
 
     private Array<Enemy> totalEnemies;
     private Array<Enemy> currentEnemies;
@@ -45,15 +43,31 @@ public class WaveGenerator
 
         restoreAllEnemies();
 
-        delayTime(0f);
-            addOranges(MathUtils.round(wave * ORANGE_MULTIPLIER));
-            if (wave >= ANANAS_MINIMUM_WAVE)
-                addAnanases(MathUtils.round(wave * ANANAS_MULTIPLIER));
+        if (wave >= 0)
+        {
+            delayTime(0f);
+                int amountOranges1 = MathUtils.round(wave * 1.5f);
+                int amountAnanases1 = MathUtils.round(wave * 0.5f);
+
+                addOranges(amountOranges1);
+                if (wave >= ANANAS_MINIMUM_WAVE)
+                    addAnanases(amountAnanases1);
+        }
+
+        if (wave >= 5)
+        {
+            delayTime(8f);
+                int amountOranges2 = MathUtils.round(wave * 0.5f);
+                int amountAnanases2 = MathUtils.round(wave * 0.2f);
+
+                addOranges(amountOranges2);
+                addAnanases(amountAnanases2);
+        }
     }
 
     public void update()
     {
-        if (queue.size > 0 && System.currentTimeMillis() - startTime >= delay * 1000)
+        if ( (queue.size > 0) && (System.currentTimeMillis() - startTime >= delay * 1000) )
             sendQueueImmediatly();
     }
 
@@ -101,7 +115,7 @@ public class WaveGenerator
             }
         }
 
-        if (delay == 0)
+        if (delay == 0f)
             sendQueueImmediatly();
     }
 
@@ -121,7 +135,7 @@ public class WaveGenerator
             }
         }
 
-        if (delay == 0)
+        if (delay == 0f)
             sendQueueImmediatly();
     }
 
