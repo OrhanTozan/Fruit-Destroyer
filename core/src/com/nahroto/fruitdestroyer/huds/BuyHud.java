@@ -317,13 +317,7 @@ public class BuyHud extends Hud
 
     private void easeOut()
     {
-        overlay.addAction(sequence(
-                parallel(moveToAligned(0, Constants.V_HEIGHT / 2, Align.right, EASE_TIME, Interpolation.pow2Out), run(hideBlackShader)),
-                run(resetPosition),
-                run(prepareWaveStatus),
-                run(animateNextWave),
-                run(toggleBuying)
-                ));
+        overlay.addAction(sequence(parallel(moveToAligned(0, Constants.V_HEIGHT / 2, Align.right, EASE_TIME, Interpolation.pow2Out), run(hideBlackShader)), run(resetPosition), run(prepareWaveStatus), run(animateNextWave), run(toggleBuying)));
     }
 
     private void resetPosition()
@@ -362,5 +356,25 @@ public class BuyHud extends Hud
     public int getPoints()
     {
         return pointsValue;
+    }
+
+    public ExtraAmmoOverlay getExtraAmmoOverlay()
+    {
+        return extraAmmoOverlay;
+    }
+
+    public ExtraAccuracyOverlay getExtraAccuracyOverlay()
+    {
+        return extraAccuracyOverlay;
+    }
+
+    public ExtraReloadSpeedOverlay getExtraReloadSpeedOverlay()
+    {
+        return extraReloadSpeedOverlay;
+    }
+
+    public ExtraKnockbackOverlay getExtraKnockbackOverlay()
+    {
+        return extraKnockbackOverlay;
     }
 }

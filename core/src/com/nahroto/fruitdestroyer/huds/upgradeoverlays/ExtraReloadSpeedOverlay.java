@@ -45,6 +45,17 @@ public class ExtraReloadSpeedOverlay extends UpgradeOverlay
         player.setReloadingConfig(currentPercentage);
     }
 
+    @Override
+    public void reset()
+    {
+        currentPercentage = 100;
+        nextPercentage = currentPercentage + UPGRADE_STEP;
+        currentSpeedStatus = percentageToStatus(currentPercentage);
+        nextSpeedStatus = percentageToStatus(nextPercentage);
+        currentValueLabel.setText(currentSpeedStatus);
+        nextValueLabel.setText(nextSpeedStatus);
+    }
+
     private String percentageToStatus(int percentage)
     {
         switch (percentage)

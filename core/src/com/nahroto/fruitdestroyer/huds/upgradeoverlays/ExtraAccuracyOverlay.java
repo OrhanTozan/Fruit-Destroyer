@@ -38,6 +38,15 @@ public class ExtraAccuracyOverlay extends UpgradeOverlay
     }
 
     @Override
+    public void reset()
+    {
+        currentValue = (1 / Bullet.START_RECOIL);
+        nextValue = currentValue + UPGRADE_STEP;
+        currentValueLabel.setText(currentValue.toString());
+        nextValueLabel.setText(nextValue.toString());
+    }
+
+    @Override
     public void setPosition(float x, float y, int align)
     {
         super.setPosition(x, y, align);

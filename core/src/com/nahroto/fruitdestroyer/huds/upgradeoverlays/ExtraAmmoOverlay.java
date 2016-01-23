@@ -38,6 +38,15 @@ public class ExtraAmmoOverlay extends UpgradeOverlay
     }
 
     @Override
+    public void reset()
+    {
+        currentValue = Bullet.START_MAGSIZE;
+        nextValue = currentValue + UPGRADE_STEP;
+        currentValueLabel.setText(currentValue.toString());
+        nextValueLabel.setText(nextValue.toString());
+    }
+
+    @Override
     public void setPosition(float x, float y, int align)
     {
         super.setPosition(x, y, align);

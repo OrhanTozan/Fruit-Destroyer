@@ -34,6 +34,11 @@ public class GameResetter
 
     private Player player;
 
+    private ExtraAmmoOverlay extraAmmoOverlay;
+    private ExtraAccuracyOverlay extraAccuracyOverlay;
+    private ExtraReloadSpeedOverlay extraReloadSpeedOverlay;
+    private ExtraKnockbackOverlay extraKnockbackOverlay;
+
     public GameResetter(final Application APP, Player player, Array<Enemy> currentEnemies, Array<Bullet> currentBullets, Array<Corpse> currentCorpses, Array<Enemy> totalEnemies, Array<Bullet> totalBullets, Array<Corpse> totalCorpses)
     {
         this.APP = APP;
@@ -83,17 +88,13 @@ public class GameResetter
         player.setReloadingConfig(100);
 
         // RESET UPGRADE STATS
-        ExtraAmmoOverlay.currentValue = Bullet.START_MAGSIZE;
-        ExtraAmmoOverlay.nextValue = ExtraAmmoOverlay.currentValue + ExtraAmmoOverlay.UPGRADE_STEP;
+        extraAmmoOverlay.reset();
 
-        ExtraAccuracyOverlay.currentValue = (1 / Bullet.START_RECOIL);
-        ExtraAccuracyOverlay.nextValue = ExtraAccuracyOverlay.currentValue + ExtraAccuracyOverlay.UPGRADE_STEP;
+        extraAccuracyOverlay.reset();
 
-        ExtraReloadSpeedOverlay.currentPercentage = 100;
-        ExtraReloadSpeedOverlay.nextPercentage = ExtraReloadSpeedOverlay.currentPercentage + ExtraReloadSpeedOverlay.UPGRADE_STEP;
+        extraReloadSpeedOverlay.reset();
 
-        ExtraKnockbackOverlay.currentValue = Bullet.START_KNOCKBACKPOWER;
-        ExtraKnockbackOverlay.nextValue = ExtraKnockbackOverlay.currentValue + ExtraKnockbackOverlay.UPGRADE_STEP;
+        extraKnockbackOverlay.reset();
 
         APP.setScreen(gameScreen);
     }
@@ -106,5 +107,13 @@ public class GameResetter
     public void setGameHud(GameHud gameHud)
     {
         this.gameHud = gameHud;
+    }
+
+    public void setOverlays(ExtraAmmoOverlay extraAmmoOverlay, ExtraAccuracyOverlay extraAccuracyOverlay, ExtraReloadSpeedOverlay extraReloadSpeedOverlay, ExtraKnockbackOverlay extraKnockbackOverlay)
+    {
+        this.extraAmmoOverlay = extraAmmoOverlay;
+        this.extraAccuracyOverlay = extraAccuracyOverlay;
+        this.extraReloadSpeedOverlay = extraReloadSpeedOverlay;
+        this.extraKnockbackOverlay = extraKnockbackOverlay;
     }
 }

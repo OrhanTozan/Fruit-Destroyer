@@ -152,7 +152,7 @@ public class LoadingScreen2 implements Screen
 
         blackShaderTexture = new Texture("backgrounds/blackShader.png");
 
-        gameResetter = new GameResetter(APP, currentEnemies, currentBullets, currentCorpses, totalEnemies, totalBullets, totalCorpses);
+        gameResetter = new GameResetter(APP, player, currentEnemies, currentBullets, currentCorpses, totalEnemies, totalBullets, totalCorpses);
 
         deadScreen = new DeadScreen(APP, gameScreenAtlas.findRegion("retry-button-up"), gameScreenAtlas.findRegion("retry-button-down"), gameResetter, bg, inputMultiplexer);
 
@@ -166,6 +166,7 @@ public class LoadingScreen2 implements Screen
 
         gameResetter.setGameScreen(gameScreen);
         gameResetter.setGameHud(gameHud);
+        gameResetter.setOverlays(buyHud.getExtraAmmoOverlay(), buyHud.getExtraAccuracyOverlay(), buyHud.getExtraReloadSpeedOverlay(), buyHud.getExtraKnockbackOverlay());
     }
 
     @Override

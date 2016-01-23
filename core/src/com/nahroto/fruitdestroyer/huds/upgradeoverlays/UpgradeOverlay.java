@@ -93,6 +93,8 @@ public abstract class UpgradeOverlay
 
     protected abstract void upgrade(Player player);
 
+    public abstract void reset();
+
     protected void setTitleText(String text)
     {
         title.setText(text);
