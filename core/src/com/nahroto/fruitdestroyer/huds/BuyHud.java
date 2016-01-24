@@ -191,7 +191,7 @@ public class BuyHud extends Hud
             @Override
             public void clicked(InputEvent event, float x, float y)
             {
-                addUpgradeOverlayActors("extraAmmo");
+                addOverlayActors("extraAmmo");
             }
         });
         accuracyButton.addListener(new ClickListener()
@@ -199,7 +199,7 @@ public class BuyHud extends Hud
             @Override
             public void clicked(InputEvent event, float x, float y)
             {
-                addUpgradeOverlayActors("extraAccuracy");
+                addOverlayActors("extraAccuracy");
             }
         });
         reloadSpeedButton.addListener(new ClickListener()
@@ -207,7 +207,7 @@ public class BuyHud extends Hud
             @Override
             public void clicked(InputEvent event, float x, float y)
             {
-                addUpgradeOverlayActors("extraReloadSpeed");
+                addOverlayActors("extraReloadSpeed");
             }
         });
         knockbackButton.addListener(new ClickListener()
@@ -215,7 +215,7 @@ public class BuyHud extends Hud
             @Override
             public void clicked(InputEvent event, float x, float y)
             {
-                addUpgradeOverlayActors("extraKnockback");
+                addOverlayActors("extraKnockback");
             }
         });
 
@@ -303,15 +303,19 @@ public class BuyHud extends Hud
         actors.add(pointsOverlay);
         actors.add(pointsLabel);
         actors.add(upgradesTitle);
+        actors.add(powerupTitle);
         actors.add(extraAmmoButton);
         actors.add(accuracyButton);
         actors.add(reloadSpeedButton);
         actors.add(knockbackButton);
+        actors.add(marksmanButton);
+        actors.add(instakillButton);
+        actors.add(bombButton);
         actors.add(doneButton);
         addAllActors();
     }
 
-    public void addUpgradeOverlayActors(String upgradeType)
+    public void addOverlayActors(String upgradeType)
     {
         actors.add(blackShader);
         actors.add(pointsOverlay);

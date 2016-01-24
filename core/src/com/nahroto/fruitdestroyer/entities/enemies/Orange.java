@@ -7,8 +7,6 @@ import com.nahroto.fruitdestroyer.Application;
 
 public class Orange extends Enemy
 {
-
-
     public Orange(final Application APP, TextureAtlas.AtlasRegion normalTexture, TextureAtlas.AtlasRegion hitTexture, Sprite redBar, Sprite greenBar)
     {
         super(APP, normalTexture, hitTexture, redBar, greenBar, 17, 10, 63, 60);

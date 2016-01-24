@@ -12,8 +12,6 @@ import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.helpers.GameResetter;
 import com.nahroto.fruitdestroyer.huds.DeadHud;
 
-import box2dLight.RayHandler;
-
 public class DeadScreen implements Screen
 {
     private final Application APP;
