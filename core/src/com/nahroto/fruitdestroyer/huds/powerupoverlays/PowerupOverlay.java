@@ -46,8 +46,8 @@ public class PowerupOverlay
                 buyHud.addBuyOverlayActors();
             }
         });
-        descriptionLabel = new Label(description, new Label.LabelStyle(new Font("fonts/trompus.otf", 40, Color.WHITE, Color.BLACK, 2, true).getFont(), Color.WHITE));
-        costLabel = new Label("Price: " + cost.toString() + " points.", new Label.LabelStyle(new Font("fonts/trompus.otf", 35, Color.WHITE, Color.BLACK, 2, true).getFont(), Color.YELLOW));
+        descriptionLabel = new Label(description, new Label.LabelStyle(new Font("fonts/trompus.otf", 30, Color.WHITE, Color.BLACK, 2, true).getFont(), Color.WHITE));
+        costLabel = new Label("Price: " + cost.toString() + " points.", new Label.LabelStyle(new Font("fonts/trompus.otf", 40, Color.WHITE, Color.BLACK, 2, true).getFont(), Color.YELLOW));
 
         actors.add(background);
         actors.add(costLabel);

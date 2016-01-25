@@ -81,7 +81,7 @@ public abstract class UpgradeOverlay
         nextValueFont = new Font("fonts/trompus.otf", 35, Color.WHITE, Color.BLACK, 2, true);
         currentValueLabel = new Label("nan", new Label.LabelStyle(currentValueFont.getFont(), Color.WHITE));
         nextValueLabel = new Label("nan", new Label.LabelStyle(nextValueFont.getFont(), Color.WHITE));
-        costLabel = new Label("Price: " + upgradeCost.toString() + " points.", new Label.LabelStyle(new Font("fonts/trompus.otf", 40, Color.WHITE, Color.BLACK, 2, true).getFont(), Color.YELLOW));
+        costLabel = new Label("Price: " + upgradeCost.toString() + " points", new Label.LabelStyle(new Font("fonts/trompus.otf", 40, Color.WHITE, Color.BLACK, 2, true).getFont(), Color.YELLOW));
         descriptionLabel = new Label(description, new Label.LabelStyle(new Font("fonts/trompus.otf", 30, Color.WHITE, Color.BLACK, 2, true).getFont(), Color.WHITE));
 
         actors.add(background);
