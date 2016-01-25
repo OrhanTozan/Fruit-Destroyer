@@ -25,7 +25,6 @@ public class Application extends Game
 	public GameScreen gameScreen;
 	public DeadScreen deadScreen;
 
-	
 	@Override
 	public void create ()
 	{
@@ -42,7 +41,10 @@ public class Application extends Game
 	@Override
 	public void dispose()
 	{
-		Logger.log("blyat");
+		Logger.log("disposed");
 		assets.dispose();
+		loadingScreen.dispose();
+		menuScreen.dispose();
+		loadingScreen2.dispose();
 	}
 }

@@ -28,6 +28,7 @@ public abstract class UpgradeOverlay
     protected Label title;
     protected Label currentValueLabel;
     protected Label nextValueLabel;
+    protected Label costLabel;
     protected ImageButton button;
     protected Label descriptionLabel;
     protected ImageButton exitButton;
@@ -80,6 +81,7 @@ public abstract class UpgradeOverlay
         nextValueFont = new Font("fonts/trompus.otf", 35, Color.WHITE, Color.BLACK, 2, true);
         currentValueLabel = new Label("nan", new Label.LabelStyle(currentValueFont.getFont(), Color.WHITE));
         nextValueLabel = new Label("nan", new Label.LabelStyle(nextValueFont.getFont(), Color.WHITE));
+        costLabel = new Label("Price: " + upgradeCost.toString() + " points.", new Label.LabelStyle(new Font("fonts/trompus.otf", 40, Color.WHITE, Color.BLACK, 2, true).getFont(), Color.YELLOW));
         descriptionLabel = new Label(description, new Label.LabelStyle(new Font("fonts/trompus.otf", 30, Color.WHITE, Color.BLACK, 2, true).getFont(), Color.WHITE));
 
         actors.add(background);
@@ -88,7 +90,16 @@ public abstract class UpgradeOverlay
         actors.add(currentValueLabel);
         actors.add(nextValueLabel);
         actors.add(descriptionLabel);
+        actors.add(costLabel);
         actors.add(exitButton);
+    }
+
+    public void updatePriceLabelColor(int currentPoints)
+    {
+        if (currentPoints >= upgradeCost)
+            costLabel.setColor(Color.GREEN);
+        else
+            costLabel.setColor(Color.RED);
     }
 
     protected abstract void upgrade(Player player);
@@ -110,14 +121,10 @@ public abstract class UpgradeOverlay
         position.set(x, y);
         background.setPosition(position.x, position.y, align);
         button.setPosition(background.getX(Align.center), background.getY() + 415, align);
+        costLabel.setPosition(background.getX() + 50, background.getY() + 50);
         currentValueLabel.setPosition(background.getX() + 135, background.getY() + 405, Align.top);
         nextValueLabel.setPosition(background.getX() + 485, background.getY() + 405, Align.top);
         descriptionLabel.setPosition(background.getX() + 60, background.getY() + 305, Align.topLeft);
         exitButton.setPosition(background.getX() + background.getWidth() - 32, background.getY() + background.getHeight() - 32, Align.center);
-    }
-
-    public void update()
-    {
-        Logger.log(currentValueLabel.getX(Align.top) + ", " + currentValueLabel.getY(Align.top));
     }
 }
