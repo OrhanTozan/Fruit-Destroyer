@@ -21,6 +21,9 @@ public class PowerupOverlay
     private Vector2 position;
 
     private Image background;
+    private Image title;
+    private Image checkedBox;
+    private Image uncheckedBox;
     private ImageButton exitButton;
     private ImageButton powerupButton;
     private Label costLabel;
@@ -34,6 +37,8 @@ public class PowerupOverlay
         actors = new Array<Actor>();
         position = new Vector2();
         background = new Image(gameScreenAtlas.findRegion("powerupDescBG"));
+        checkedBox = new Image(gameScreenAtlas.findRegion("checked"));
+        uncheckedBox = new Image(gameScreenAtlas.findRegion("unchecked"));
         exitButton = new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("exitButton")));
         exitButton.addListener(new ClickListener()
         {
@@ -47,9 +52,12 @@ public class PowerupOverlay
             }
         });
         descriptionLabel = new Label(description, new Label.LabelStyle(new Font("fonts/trompus.otf", 30, Color.WHITE, Color.BLACK, 2, true).getFont(), Color.WHITE));
-        costLabel = new Label("Price: " + cost.toString() + " points.", new Label.LabelStyle(new Font("fonts/trompus.otf", 40, Color.WHITE, Color.BLACK, 2, true).getFont(), Color.YELLOW));
-
+        if (cost == 1)
+            costLabel = new Label("Price: " + cost.toString() + " point", new Label.LabelStyle(new Font("fonts/trompus.otf", 40, Color.WHITE, Color.BLACK, 2, true).getFont(), Color.YELLOW));
+        else
+            costLabel = new Label("Price: " + cost.toString() + " points", new Label.LabelStyle(new Font("fonts/trompus.otf", 40, Color.WHITE, Color.BLACK, 2, true).getFont(), Color.YELLOW));
         actors.add(background);
+        actors.add(uncheckedBox);
         actors.add(costLabel);
         actors.add(descriptionLabel);
         actors.add(costLabel);
@@ -69,8 +77,10 @@ public class PowerupOverlay
     {
         position.set(x, y);
         background.setPosition(position.x, position.y, align);
+        checkedBox.setPosition(background.getX() + 100, background.getY() + 360);
+        uncheckedBox.setPosition(background.getX() + 100, background.getY() + 360);
         powerupButton.setPosition(background.getX(Align.center), background.getY() + 415, align);
-        costLabel.setPosition(background.getX() + 60, background.getY() + 50);
+        costLabel.setPosition(background.getX() + 50, background.getY() + 50);
         descriptionLabel.setPosition(background.getX() + 60, background.getY() + 305, Align.topLeft);
         exitButton.setPosition(background.getX() + background.getWidth() - 32, background.getY() + background.getHeight() - 32, Align.center);
     }
