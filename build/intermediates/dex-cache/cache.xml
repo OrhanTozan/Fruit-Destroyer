@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="E:\NahroTo\Fruit_Destroyer\core\build\libs\core-1.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="20cf81cfd7a6ec89e5cdee6740c1a758020ad8fc">
+        <dex dex="E:\NahroTo\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\core-1.0-2c1b1bb2987e56afbe525d2bc59c9fe2dbffa5ec.jar" />
+    </item>
+
+</items>

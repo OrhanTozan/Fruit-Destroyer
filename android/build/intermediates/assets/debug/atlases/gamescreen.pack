@@ -1,0 +1,306 @@
+
+gamescreen.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+overlay
+  rotate: false
+  xy: 1, 964
+  size: 664, 1064
+  orig: 664, 1064
+  offset: 0, 0
+  index: -1
+powerupDescBG
+  rotate: false
+  xy: 1, 266
+  size: 596, 696
+  orig: 596, 696
+  offset: 0, 0
+  index: -1
+upgradeDescBG
+  rotate: false
+  xy: 667, 1332
+  size: 596, 696
+  orig: 596, 696
+  offset: 0, 0
+  index: -1
+retry-button-up
+  rotate: false
+  xy: 1, 60
+  size: 378, 204
+  orig: 378, 204
+  offset: 0, 0
+  index: -1
+retry-button-down
+  rotate: false
+  xy: 667, 1132
+  size: 378, 198
+  orig: 378, 198
+  offset: 0, 0
+  index: -1
+powerup-text
+  rotate: false
+  xy: 1265, 1938
+  size: 435, 90
+  orig: 435, 90
+  offset: 0, 0
+  index: -1
+upgradeDone-down
+  rotate: false
+  xy: 1265, 1753
+  size: 337, 183
+  orig: 337, 183
+  offset: 0, 0
+  index: -1
+upgradeDone
+  rotate: false
+  xy: 1265, 1568
+  size: 337, 183
+  orig: 337, 183
+  offset: 0, 0
+  index: -1
+upgrades-text
+  rotate: false
+  xy: 667, 1040
+  size: 402, 90
+  orig: 402, 90
+  offset: 0, 0
+  index: -1
+accuracyUpgrade-down
+  rotate: false
+  xy: 381, 75
+  size: 189, 189
+  orig: 189, 189
+  offset: 0, 0
+  index: -1
+accuracyUpgrade
+  rotate: false
+  xy: 1265, 1377
+  size: 189, 189
+  orig: 189, 189
+  offset: 0, 0
+  index: -1
+knockbackUpgrade-down
+  rotate: false
+  xy: 1047, 1141
+  size: 189, 189
+  orig: 189, 189
+  offset: 0, 0
+  index: -1
+knockbackUpgrade
+  rotate: false
+  xy: 1456, 1377
+  size: 189, 189
+  orig: 189, 189
+  offset: 0, 0
+  index: -1
+reload-down
+  rotate: false
+  xy: 1702, 1892
+  size: 226, 136
+  orig: 226, 136
+  offset: 0, 0
+  index: -1
+reload-up
+  rotate: false
+  xy: 667, 902
+  size: 226, 136
+  orig: 226, 136
+  offset: 0, 0
+  index: -1
+moreAmmoUpgrade-down
+  rotate: false
+  xy: 599, 711
+  size: 189, 189
+  orig: 189, 189
+  offset: 0, 0
+  index: -1
+moreAmmoUpgrade
+  rotate: false
+  xy: 599, 520
+  size: 189, 189
+  orig: 189, 189
+  offset: 0, 0
+  index: -1
+reloadUpgrade-down
+  rotate: false
+  xy: 599, 329
+  size: 189, 189
+  orig: 189, 189
+  offset: 0, 0
+  index: -1
+points-overlay
+  rotate: false
+  xy: 895, 888
+  size: 187, 150
+  orig: 187, 150
+  offset: 0, 0
+  index: -1
+reloadUpgrade
+  rotate: false
+  xy: 1604, 1701
+  size: 189, 189
+  orig: 189, 189
+  offset: 0, 0
+  index: -1
+ananas-hit
+  rotate: false
+  xy: 1795, 1708
+  size: 144, 182
+  orig: 144, 182
+  offset: 0, 0
+  index: -1
+ananas-dead
+  rotate: false
+  xy: 1604, 1571
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+ananas
+  rotate: false
+  xy: 1647, 1387
+  size: 144, 182
+  orig: 144, 182
+  offset: 0, 0
+  index: -1
+flash2
+  rotate: false
+  xy: 1604, 1892
+  size: 82, 44
+  orig: 82, 44
+  offset: 0, 0
+  index: -1
+bomb-down
+  rotate: false
+  xy: 599, 181
+  size: 146, 146
+  orig: 146, 146
+  offset: 0, 0
+  index: -1
+bomb-up
+  rotate: false
+  xy: 572, 33
+  size: 146, 146
+  orig: 146, 146
+  offset: 0, 0
+  index: -1
+instakill-down
+  rotate: false
+  xy: 1084, 993
+  size: 146, 146
+  orig: 146, 146
+  offset: 0, 0
+  index: -1
+instakill-up
+  rotate: false
+  xy: 1084, 845
+  size: 146, 146
+  orig: 146, 146
+  offset: 0, 0
+  index: -1
+marksman-down
+  rotate: false
+  xy: 1265, 1229
+  size: 146, 146
+  orig: 146, 146
+  offset: 0, 0
+  index: -1
+marksman-up
+  rotate: false
+  xy: 1413, 1229
+  size: 146, 146
+  orig: 146, 146
+  offset: 0, 0
+  index: -1
+player
+  rotate: false
+  xy: 1, 1
+  size: 121, 57
+  orig: 121, 57
+  offset: 0, 0
+  index: -1
+orange-dead
+  rotate: false
+  xy: 790, 821
+  size: 90, 79
+  orig: 90, 79
+  offset: 0, 0
+  index: -1
+orange-hit
+  rotate: false
+  xy: 1930, 1949
+  size: 90, 79
+  orig: 90, 79
+  offset: 0, 0
+  index: -1
+orange
+  rotate: false
+  xy: 790, 740
+  size: 90, 79
+  orig: 90, 79
+  offset: 0, 0
+  index: -1
+reload-icon
+  rotate: false
+  xy: 1561, 1291
+  size: 82, 84
+  orig: 82, 84
+  offset: 0, 0
+  index: -1
+bullet-icon
+  rotate: false
+  xy: 790, 651
+  size: 76, 87
+  orig: 76, 87
+  offset: 0, 0
+  index: -1
+exitButton
+  rotate: false
+  xy: 790, 569
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+volumeButton
+  rotate: false
+  xy: 790, 499
+  size: 86, 68
+  orig: 86, 68
+  offset: 0, 0
+  index: -1
+accuracy-icon
+  rotate: false
+  xy: 790, 435
+  size: 62, 62
+  orig: 62, 62
+  offset: 0, 0
+  index: -1
+flash
+  rotate: false
+  xy: 599, 927
+  size: 47, 35
+  orig: 47, 35
+  offset: 0, 0
+  index: -1
+red-bar
+  rotate: false
+  xy: 1734, 1684
+  size: 50, 15
+  orig: 50, 15
+  offset: 0, 0
+  index: -1
+green-bar
+  rotate: false
+  xy: 381, 60
+  size: 48, 13
+  orig: 48, 13
+  offset: 0, 0
+  index: -1
+bullet
+  rotate: false
+  xy: 747, 307
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
