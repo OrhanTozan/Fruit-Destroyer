@@ -15,25 +15,29 @@ import com.badlogic.gdx.utils.Array;
 import com.nahroto.fruitdestroyer.Font;
 import com.nahroto.fruitdestroyer.huds.BuyHud;
 
-public class PowerupOverlay
+public abstract class PowerupOverlay
 {
     private Integer cost;
     private Vector2 position;
 
     private Image background;
-    private Image title;
     private Image checkedBox;
     private Image uncheckedBox;
     private ImageButton exitButton;
     private ImageButton powerupButton;
+    private Label title;
     private Label costLabel;
     private Label descriptionLabel;
     private Array<Actor> actors;
 
-    public PowerupOverlay(String description, Integer cost, ImageButton powerupButton, TextureAtlas gameScreenAtlas, final BuyHud buyHud)
+    private Font titleFont;
+    private String titleText;
+
+    public PowerupOverlay(String titleText, String description, Integer cost, ImageButton powerupButton, TextureAtlas gameScreenAtlas, final BuyHud buyHud)
     {
         this.cost = cost;
         this.powerupButton = powerupButton;
+        this.titleText = titleText;
         actors = new Array<Actor>();
         position = new Vector2();
         background = new Image(gameScreenAtlas.findRegion("powerupDescBG"));
@@ -51,18 +55,27 @@ public class PowerupOverlay
                 buyHud.addBuyOverlayActors();
             }
         });
+
+        titleFont = new Font("fonts/trompus.otf", 55, Color.WHITE, Color.BLACK, 4, true);
+        title = new Label(titleText, new Label.LabelStyle(titleFont.getFont(), Color.WHITE));
         descriptionLabel = new Label(description, new Label.LabelStyle(new Font("fonts/trompus.otf", 30, Color.WHITE, Color.BLACK, 2, true).getFont(), Color.WHITE));
         if (cost == 1)
             costLabel = new Label("Price: " + cost.toString() + " point", new Label.LabelStyle(new Font("fonts/trompus.otf", 40, Color.WHITE, Color.BLACK, 2, true).getFont(), Color.YELLOW));
         else
             costLabel = new Label("Price: " + cost.toString() + " points", new Label.LabelStyle(new Font("fonts/trompus.otf", 40, Color.WHITE, Color.BLACK, 2, true).getFont(), Color.YELLOW));
         actors.add(background);
+        actors.add(title);
         actors.add(uncheckedBox);
         actors.add(costLabel);
         actors.add(descriptionLabel);
         actors.add(costLabel);
         actors.add(powerupButton);
         actors.add(exitButton);
+    }
+
+    public void upgrade()
+    {
+
     }
 
     public void updatePriceLabelColor(int currentPoints)
@@ -77,6 +90,7 @@ public class PowerupOverlay
     {
         position.set(x, y);
         background.setPosition(position.x, position.y, align);
+        title.setPosition(background.getX(Align.center) - (titleFont.getWidth(titleText) / 2), background.getY(Align.top) - 160);
         checkedBox.setPosition(background.getX() + 100, background.getY() + 360);
         uncheckedBox.setPosition(background.getX() + 100, background.getY() + 360);
         powerupButton.setPosition(background.getX(Align.center), background.getY() + 415, align);
