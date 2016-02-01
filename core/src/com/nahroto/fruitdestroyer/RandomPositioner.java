@@ -9,22 +9,22 @@ public class RandomPositioner
 
     private static Vector2 randomPosition = new Vector2();
 
-    private static boolean underPosition;
+    private static boolean positionIsUnder;
     private static float randomX;
     private static float randomY;
 
     public static Vector2 getRandomPosition(float height)
     {
-        underPosition = MathUtils.randomBoolean();
+        positionIsUnder = MathUtils.randomBoolean();
 
         randomX = MathUtils.random(-MAX_DISTANCE, Constants.V_WIDTH + MAX_DISTANCE);
 
-        if (underPosition)
+        if (positionIsUnder)
             randomY = MathUtils.random(-MAX_DISTANCE, 0);
         else
             randomY = MathUtils.random(Constants.V_HEIGHT, Constants.V_HEIGHT + MAX_DISTANCE);
 
-        if (underPosition)
+        if (positionIsUnder)
             randomPosition.set(randomX, randomY - height);
         else
             randomPosition.set(randomX, randomY);

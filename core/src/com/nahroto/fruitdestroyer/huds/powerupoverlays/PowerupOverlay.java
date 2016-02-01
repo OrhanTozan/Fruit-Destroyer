@@ -16,7 +16,7 @@ import com.nahroto.fruitdestroyer.Font;
 import com.nahroto.fruitdestroyer.Input;
 import com.nahroto.fruitdestroyer.huds.BuyHud;
 
-public class PowerupOverlay
+public final class PowerupOverlay
 {
     private boolean isOwned = false;
 

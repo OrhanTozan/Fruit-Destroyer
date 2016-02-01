@@ -3,12 +3,8 @@ package com.nahroto.fruitdestroyer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 
-public class Constants
+public final class Constants
 {
-    public static final boolean DEBUG = false;
-
     public static final int V_WIDTH = 720;
     public static final int V_HEIGHT = 1280;
-
-
 }

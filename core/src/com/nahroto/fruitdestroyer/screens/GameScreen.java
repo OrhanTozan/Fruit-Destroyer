@@ -13,6 +13,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.CameraShaker;
+import com.nahroto.fruitdestroyer.Debug;
 import com.nahroto.fruitdestroyer.Logger;
 import com.nahroto.fruitdestroyer.WaveGenerator;
 import com.nahroto.fruitdestroyer.entities.Corpse;
@@ -132,7 +133,7 @@ public class GameScreen implements Screen
 
         Player.ammo = Bullet.getWeapon().getMagSize();
 
-        if (Constants.DEBUG)
+        if (Debug.DRAW_HITBOXES)
             shapeRenderer = new ShapeRenderer();
 
         waveGenerator.wave = 1;
@@ -295,7 +296,9 @@ public class GameScreen implements Screen
 
         else if (GameScreen.buying)
         {
-            Logger.log("updating buyhud");
+            if (Debug.INFO)
+                Logger.log("updating buyhud");
+
             buyHud.update(delta);
             for (int i = 0; i < currentEnemies.size; i++)
             {
@@ -380,11 +383,10 @@ public class GameScreen implements Screen
 
 
 
-        if (Constants.DEBUG)
+        if (Debug.DRAW_HITBOXES)
         {
             shapeRenderer.setProjectionMatrix(APP.camera.combined);
 
-            System.out.println((int) player.getSprite().getX() + " " + (int) player.getBounds().getX());
             shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
 
             shapeRenderer.polygon(player.getBounds().getTransformedVertices());
@@ -404,8 +406,8 @@ public class GameScreen implements Screen
         if (GameScreen.buying == true)
             buyHud.render();
 
-        if (Constants.DEBUG)
-            System.out.println("Total bullets: " + totalBullets.size + ", " + "current bullets: " + currentBullets.size);
+        if (Debug.LOG_BULLETS)
+            Logger.log("Total bullets: " + totalBullets.size + ", " + "current bullets: " + currentBullets.size);
     }
 
 

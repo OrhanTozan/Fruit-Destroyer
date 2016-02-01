@@ -36,8 +36,11 @@ public class WaveGenerator
 
     public void startNewWave()
     {
-        Logger.log("NEW WAVE STARTED");
-        Logger.log("WAVE: " + wave);
+        if (Debug.LOG_WAVES)
+        {
+            Logger.log("NEW WAVE STARTED");
+            Logger.log("WAVE: " + wave);
+        }
 
         startTime = System.currentTimeMillis();
 
