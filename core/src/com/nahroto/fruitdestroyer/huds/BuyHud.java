@@ -228,7 +228,7 @@ public class BuyHud extends Hud
             @Override
             public void clicked(InputEvent event, float x, float y)
             {
-                addOverlayActors("marksman");
+                addOverlayActors("Marksman");
             }
         });
         instakillButton.addListener(new ClickListener()
@@ -236,7 +236,7 @@ public class BuyHud extends Hud
             @Override
             public void clicked(InputEvent event, float x, float y)
             {
-                addOverlayActors("instakill");
+                addOverlayActors("InstaKiller");
             }
         });
         bombButton.addListener(new ClickListener()
@@ -244,7 +244,7 @@ public class BuyHud extends Hud
             @Override
             public void clicked(InputEvent event, float x, float y)
             {
-                addOverlayActors("bomb");
+                addOverlayActors("Bacteria Bomb");
             }
         });
 
@@ -253,30 +253,9 @@ public class BuyHud extends Hud
         extraReloadSpeedOverlay = new ExtraReloadSpeedOverlay(reloadSpeedButton, gameScreenAtlas, this, player);
         extraKnockbackOverlay = new ExtraKnockbackOverlay(knockbackButton, gameScreenAtlas, this, player);
 
-        marksmanOverlay = new PowerupOverlay("Marksman", "marksman", 1, new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("marksman-up")), new TextureRegionDrawable(gameScreenAtlas.findRegion("marksman-down"))), gameScreenAtlas, this)
-        {
-            @Override
-            public void upgrade()
-            {
-
-            }
-        };
-        instakillOverlay = new PowerupOverlay("InstaKiller", "instakill", 1, new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("instakill-up")), new TextureRegionDrawable(gameScreenAtlas.findRegion("instakill-down"))), gameScreenAtlas, this)
-        {
-            @Override
-            public void upgrade()
-            {
-
-            }
-        };
-        bombOverlay = new PowerupOverlay("Bacteria Bomb", "bomb", 1, new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("bomb-up")), new TextureRegionDrawable(gameScreenAtlas.findRegion("bomb-down"))), gameScreenAtlas, this)
-        {
-            @Override
-            public void upgrade()
-            {
-
-            }
-        };
+        marksmanOverlay = new PowerupOverlay("Marksman", "marksman", 1, new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("marksman-up")), new TextureRegionDrawable(gameScreenAtlas.findRegion("marksman-down"))), gameScreenAtlas, this);
+        instakillOverlay = new PowerupOverlay("InstaKiller", "instakill", 1, new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("instakill-up")), new TextureRegionDrawable(gameScreenAtlas.findRegion("instakill-down"))), gameScreenAtlas, this);
+        bombOverlay = new PowerupOverlay("Bacteria Bomb", "bomb", 1, new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("bomb-up")), new TextureRegionDrawable(gameScreenAtlas.findRegion("bomb-down"))), gameScreenAtlas, this);
 
         extraAmmoOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 + 25, Align.center);
         extraAccuracyOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 + 25, Align.center);
@@ -396,11 +375,11 @@ public class BuyHud extends Hud
             actors.addAll(extraReloadSpeedOverlay.getActors());
         else if (upgradeType.equals("extraKnockback"))
             actors.addAll(extraKnockbackOverlay.getActors());
-        else if (upgradeType.equals("marksman"))
+        else if (upgradeType.equals("Marksman"))
             actors.addAll(marksmanOverlay.getActors());
-        else if (upgradeType.equals("instakill"))
+        else if (upgradeType.equals("InstaKiller"))
             actors.addAll(instakillOverlay.getActors());
-        else if (upgradeType.equals("bomb"))
+        else if (upgradeType.equals("Bacteria Bomb"))
             actors.addAll(bombOverlay.getActors());
         addAllActors();
     }

@@ -13,10 +13,13 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.nahroto.fruitdestroyer.Font;
+import com.nahroto.fruitdestroyer.Input;
 import com.nahroto.fruitdestroyer.huds.BuyHud;
 
-public abstract class PowerupOverlay
+public class PowerupOverlay
 {
+    private boolean isOwned = false;
+
     private Integer cost;
     private Vector2 position;
 
@@ -33,10 +36,10 @@ public abstract class PowerupOverlay
     private Font titleFont;
     private String titleText;
 
-    public PowerupOverlay(String titleText, String description, Integer cost, ImageButton powerupButton, TextureAtlas gameScreenAtlas, final BuyHud buyHud)
+    public PowerupOverlay(String titleText, String description, final Integer cost, ImageButton powerupButton, TextureAtlas gameScreenAtlas, final BuyHud buyHud)
     {
         this.cost = cost;
-        this.powerupButton = powerupButton;
+        this.powerupButton = new ImageButton(powerupButton.getStyle());
         this.titleText = titleText;
         actors = new Array<Actor>();
         position = new Vector2();
@@ -56,6 +59,16 @@ public abstract class PowerupOverlay
             }
         });
 
+        this.powerupButton.addListener(new ClickListener()
+        {
+            @Override
+            public void clicked(InputEvent event, float x, float y)
+            {
+                if (buyHud.getPoints() >= cost)
+                    upgrade(buyHud);
+            }
+        });
+
         titleFont = new Font("fonts/trompus.otf", 55, Color.WHITE, Color.BLACK, 4, true);
         title = new Label(titleText, new Label.LabelStyle(titleFont.getFont(), Color.WHITE));
         descriptionLabel = new Label(description, new Label.LabelStyle(new Font("fonts/trompus.otf", 30, Color.WHITE, Color.BLACK, 2, true).getFont(), Color.WHITE));
@@ -69,13 +82,30 @@ public abstract class PowerupOverlay
         actors.add(costLabel);
         actors.add(descriptionLabel);
         actors.add(costLabel);
-        actors.add(powerupButton);
+        actors.add(this.powerupButton);
         actors.add(exitButton);
     }
 
-    public void upgrade()
+    public void upgrade(BuyHud buyHud)
     {
+        if (!isOwned)
+        {
+            isOwned = true;
+            actors.clear();
+            actors.add(background);
+            actors.add(title);
+            actors.add(checkedBox);
+            actors.add(costLabel);
+            actors.add(descriptionLabel);
+            actors.add(costLabel);
+            actors.add(powerupButton);
+            actors.add(exitButton);
 
+            buyHud.addBuyOverlayActors();
+            buyHud.addOverlayActors(titleText);
+
+            buyHud.reducePoints(cost);
+        }
     }
 
     public void updatePriceLabelColor(int currentPoints)
