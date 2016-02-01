@@ -80,8 +80,8 @@
       <file leaf-file-name="PowerupOverlay.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/powerupoverlays/PowerupOverlay.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.41415313">
-              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.58584684">
+              <caret line="118" column="36" selection-start-line="118" selection-start-column="36" selection-end-line="118" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -2547,7 +2547,7 @@
       <recent name="com.nahroto.fruitdestroyer" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.E:/NahroTo/Fruit_Destroyer/desktop [desktop:dist]">
+  <component name="RunManager" selected="Application.Desktop">
     <configuration default="false" name="E:/NahroTo/Fruit_Destroyer/desktop [gradlew desktop:dist]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -3344,8 +3344,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/powerupoverlays/PowerupOverlay.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41415313">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.58584684">
+          <caret line="118" column="36" selection-start-line="118" selection-start-column="36" selection-end-line="118" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
