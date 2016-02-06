@@ -17,6 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nahroto.fruitdestroyer.Constants;
+import com.nahroto.fruitdestroyer.Debug;
 import com.nahroto.fruitdestroyer.Font;
 import com.nahroto.fruitdestroyer.Logger;
 import com.nahroto.fruitdestroyer.WaveGenerator;
@@ -138,7 +139,8 @@ public class BuyHud extends Hud
             @Override
             public void run()
             {
-                Logger.log("animatin next wave");
+                if (Debug.INFO)
+                    Logger.log("animatin next wave");
                 gameHud.animateNextWave();
             }
         };
@@ -456,5 +458,20 @@ public class BuyHud extends Hud
     public ExtraKnockbackOverlay getExtraKnockbackOverlay()
     {
         return extraKnockbackOverlay;
+    }
+
+    public PowerupOverlay getMarksmanOverlay()
+    {
+        return marksmanOverlay;
+    }
+
+    public PowerupOverlay getInstakillOverlay()
+    {
+        return instakillOverlay;
+    }
+
+    public PowerupOverlay getBombOverlay()
+    {
+        return bombOverlay;
     }
 }

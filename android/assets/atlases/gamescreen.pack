@@ -311,9 +311,23 @@ green-bar
   orig: 48, 13
   offset: 0, 0
   index: -1
+bullet2
+  rotate: false
+  xy: 572, 268
+  size: 25, 13
+  orig: 25, 13
+  offset: 0, 0
+  index: -1
+bullet3
+  rotate: false
+  xy: 747, 328
+  size: 30, 16
+  orig: 30, 16
+  offset: 0, 0
+  index: -1
 bullet
   rotate: false
-  xy: 747, 324
+  xy: 720, 176
   size: 20, 20
   orig: 20, 20
   offset: 0, 0

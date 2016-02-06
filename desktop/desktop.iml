@@ -28,10 +28,10 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="core" exported="" />
-    <orderEntry type="library" exported="" name="gdx-backend-lwjgl-1.9.1" level="project" />
-    <orderEntry type="library" exported="" name="gdx-platform-1.9.1-natives-desktop" level="project" />
-    <orderEntry type="library" exported="" name="gdx-freetype-platform-1.9.1-natives-desktop" level="project" />
-    <orderEntry type="library" exported="" name="gdx-1.9.1" level="project" />
+    <orderEntry type="library" exported="" name="gdx-backend-lwjgl-1.9.2" level="project" />
+    <orderEntry type="library" exported="" name="gdx-platform-1.9.2-natives-desktop" level="project" />
+    <orderEntry type="library" exported="" name="gdx-freetype-platform-1.9.2-natives-desktop" level="project" />
+    <orderEntry type="library" exported="" name="gdx-1.9.2" level="project" />
     <orderEntry type="library" exported="" name="lwjgl-2.9.2" level="project" />
     <orderEntry type="library" exported="" name="lwjgl_util-2.9.2" level="project" />
     <orderEntry type="library" exported="" name="jlayer-1.0.1-gdx" level="project" />

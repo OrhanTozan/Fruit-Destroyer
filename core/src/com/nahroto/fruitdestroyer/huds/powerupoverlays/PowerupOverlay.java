@@ -108,6 +108,20 @@ public final class PowerupOverlay
         }
     }
 
+    public void reset()
+    {
+        isOwned = false;
+        actors.clear();
+        actors.add(background);
+        actors.add(title);
+        actors.add(uncheckedBox);
+        actors.add(costLabel);
+        actors.add(descriptionLabel);
+        actors.add(costLabel);
+        actors.add(powerupButton);
+        actors.add(exitButton);
+    }
+
     public void updatePriceLabelColor(int currentPoints)
     {
         if (currentPoints >= cost)

@@ -39,11 +39,12 @@ public class Bullet
 
         vertices = new float[]{
                 0, 0,
-                0, 10,
-                10, 10,
-                10, 0 };
+                0, sprite.getHeight(),
+                sprite.getWidth(), sprite.getHeight(),
+                sprite.getWidth(), 0 };
 
         bounds = new Polygon(vertices);
+        bounds.setOrigin(this.sprite.getWidth() / 2, this.sprite.getHeight() / 2);
         isOutOfScreen = false;
         isUsed = false;
     }
@@ -69,7 +70,7 @@ public class Bullet
 
     private void updateBounds()
     {
-        bounds.setPosition(sprite.getX() + 5, sprite.getY() + 5);
+        bounds.setPosition(sprite.getX(), sprite.getY());
     }
 
     public void render(SpriteBatch batch)

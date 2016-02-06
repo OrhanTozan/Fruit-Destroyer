@@ -9,7 +9,7 @@ import com.nahroto.fruitdestroyer.huds.BuyHud;
 
 public class ExtraKnockbackOverlay extends UpgradeOverlay
 {
-    public static final int UPGRADE_STEP = 10;
+    public static final int UPGRADE_STEP = 30;
 
     public static Integer currentValue;
     public static Integer nextValue;

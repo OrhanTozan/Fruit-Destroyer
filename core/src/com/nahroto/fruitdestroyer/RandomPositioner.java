@@ -3,7 +3,7 @@ package com.nahroto.fruitdestroyer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 
-public class RandomPositioner
+public final class RandomPositioner
 {
     private static final int MAX_DISTANCE = 100;
 

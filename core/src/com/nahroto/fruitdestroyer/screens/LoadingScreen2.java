@@ -119,7 +119,7 @@ public class LoadingScreen2 implements Screen
 
         // INIT BULLETS
         for (int i = 0; i < 30; i++)
-            totalBullets.add(new Bullet(gameScreenAtlas.createSprite("bullet")));
+            totalBullets.add(new Bullet(gameScreenAtlas.createSprite("bullet3")));
 
         // INIT ORANGES
         for (int i = 0; i < 30; i++)
@@ -167,7 +167,7 @@ public class LoadingScreen2 implements Screen
 
         gameResetter.setGameScreen(gameScreen);
         gameResetter.setGameHud(gameHud);
-        gameResetter.setOverlays(buyHud.getExtraAmmoOverlay(), buyHud.getExtraAccuracyOverlay(), buyHud.getExtraReloadSpeedOverlay(), buyHud.getExtraKnockbackOverlay());
+        gameResetter.setOverlays(buyHud.getExtraAmmoOverlay(), buyHud.getExtraAccuracyOverlay(), buyHud.getExtraReloadSpeedOverlay(), buyHud.getExtraKnockbackOverlay(), buyHud.getMarksmanOverlay(), buyHud.getInstakillOverlay(), buyHud.getBombOverlay());
     }
 
     @Override

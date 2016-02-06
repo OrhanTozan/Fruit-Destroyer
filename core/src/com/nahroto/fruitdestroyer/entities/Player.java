@@ -206,10 +206,13 @@ public class Player
                         flashSprite.setRotation(angle);
                         flashSprite.setPosition((Constants.V_WIDTH / 2) + flashPositionX, ((Constants.V_HEIGHT / 2) + flashPositionY) - flashSprite.getHeight() / 2);
 
+                        totalBullets.get(i).getSprite().setRotation(angle);
+                        totalBullets.get(i).getBounds().setRotation(angle);
+
                         // OFFSET PLAYER TO GIVE KICK
                         offsetBack();
 
-                        totalBullets.get(i).setPosition((Constants.V_WIDTH / 2 + bulletPositionX) - 10, (Constants.V_HEIGHT / 2 + bulletPositionY) - 10);
+                        totalBullets.get(i).setPosition((Constants.V_WIDTH / 2 + bulletPositionX) - 15, (Constants.V_HEIGHT / 2 + bulletPositionY) - 15);
                         totalBullets.get(i).setVelocity(directionX * Bullet.VELOCITY, directionY * Bullet.VELOCITY);
 
                         currentBullets.add(totalBullets.get(i));

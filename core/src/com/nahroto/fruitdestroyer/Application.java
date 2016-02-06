@@ -41,7 +41,8 @@ public class Application extends Game
 	@Override
 	public void dispose()
 	{
-		Logger.log("disposed");
+		if (Debug.INFO)
+			Logger.log("disposed");
 		assets.dispose();
 		loadingScreen.dispose();
 		menuScreen.dispose();

@@ -11,6 +11,7 @@ import com.nahroto.fruitdestroyer.entities.Player;
 import com.nahroto.fruitdestroyer.entities.enemies.Enemy;
 import com.nahroto.fruitdestroyer.huds.BuyHud;
 import com.nahroto.fruitdestroyer.huds.GameHud;
+import com.nahroto.fruitdestroyer.huds.powerupoverlays.PowerupOverlay;
 import com.nahroto.fruitdestroyer.huds.upgradeoverlays.ExtraAccuracyOverlay;
 import com.nahroto.fruitdestroyer.huds.upgradeoverlays.ExtraAmmoOverlay;
 import com.nahroto.fruitdestroyer.huds.upgradeoverlays.ExtraKnockbackOverlay;
@@ -38,6 +39,9 @@ public class GameResetter
     private ExtraAccuracyOverlay extraAccuracyOverlay;
     private ExtraReloadSpeedOverlay extraReloadSpeedOverlay;
     private ExtraKnockbackOverlay extraKnockbackOverlay;
+    private PowerupOverlay marksmanOverlay;
+    private PowerupOverlay instaKillOverlay;
+    private PowerupOverlay bombOverlay;
 
     public GameResetter(final Application APP, Player player, Array<Enemy> currentEnemies, Array<Bullet> currentBullets, Array<Corpse> currentCorpses, Array<Enemy> totalEnemies, Array<Bullet> totalBullets, Array<Corpse> totalCorpses)
     {
@@ -89,12 +93,12 @@ public class GameResetter
 
         // RESET UPGRADE STATS
         extraAmmoOverlay.reset();
-
         extraAccuracyOverlay.reset();
-
         extraReloadSpeedOverlay.reset();
-
         extraKnockbackOverlay.reset();
+        marksmanOverlay.reset();
+        instaKillOverlay.reset();
+        bombOverlay.reset();
 
         APP.setScreen(gameScreen);
     }
@@ -109,11 +113,14 @@ public class GameResetter
         this.gameHud = gameHud;
     }
 
-    public void setOverlays(ExtraAmmoOverlay extraAmmoOverlay, ExtraAccuracyOverlay extraAccuracyOverlay, ExtraReloadSpeedOverlay extraReloadSpeedOverlay, ExtraKnockbackOverlay extraKnockbackOverlay)
+    public void setOverlays(ExtraAmmoOverlay extraAmmoOverlay, ExtraAccuracyOverlay extraAccuracyOverlay, ExtraReloadSpeedOverlay extraReloadSpeedOverlay, ExtraKnockbackOverlay extraKnockbackOverlay, PowerupOverlay marksmanOverlay, PowerupOverlay instaKillOverlay, PowerupOverlay bombOverlay)
     {
         this.extraAmmoOverlay = extraAmmoOverlay;
         this.extraAccuracyOverlay = extraAccuracyOverlay;
         this.extraReloadSpeedOverlay = extraReloadSpeedOverlay;
         this.extraKnockbackOverlay = extraKnockbackOverlay;
+        this.marksmanOverlay = marksmanOverlay;
+        this.instaKillOverlay = instaKillOverlay;
+        this.bombOverlay = bombOverlay;
     }
 }
