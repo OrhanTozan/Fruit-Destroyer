@@ -147,7 +147,6 @@ public class Player
 
         angle = (MathUtils.atan2(deltaX, deltaY) * MathUtils.radiansToDegrees) - 90;
 
-        // System.out.println(angle);
         sprite.setRotation(angle);
     }
 
@@ -206,8 +205,11 @@ public class Player
                         flashSprite.setRotation(angle);
                         flashSprite.setPosition((Constants.V_WIDTH / 2) + flashPositionX, ((Constants.V_HEIGHT / 2) + flashPositionY) - flashSprite.getHeight() / 2);
 
-                        totalBullets.get(i).getSprite().setRotation(angle);
-                        totalBullets.get(i).getBounds().setRotation(angle);
+                        deltaY *= -1;
+                        float bulletAngle = (MathUtils.atan2(deltaX, deltaY) * MathUtils.radiansToDegrees) - 90;
+
+                        totalBullets.get(i).getSprite().setRotation(bulletAngle);
+                        totalBullets.get(i).getBounds().setRotation(bulletAngle);
 
                         // OFFSET PLAYER TO GIVE KICK
                         offsetBack();
