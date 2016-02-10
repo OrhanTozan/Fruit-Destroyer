@@ -13,6 +13,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Array;
 import com.nahroto.fruitdestroyer.Application;
+import com.nahroto.fruitdestroyer.Debug;
 import com.nahroto.fruitdestroyer.Logger;
 import com.nahroto.fruitdestroyer.WaveGenerator;
 import com.nahroto.fruitdestroyer.entities.Corpse;
@@ -173,7 +174,8 @@ public class LoadingScreen2 implements Screen
     @Override
     public void show()
     {
-        Logger.log("new loadingscreen2");
+        if (Debug.INFO)
+            Logger.log("new loadingscreen2");
 
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
         APP.camera.update();
