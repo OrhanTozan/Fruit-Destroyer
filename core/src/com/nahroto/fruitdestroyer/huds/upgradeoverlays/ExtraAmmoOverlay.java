@@ -9,14 +9,14 @@ import com.nahroto.fruitdestroyer.huds.BuyHud;
 
 public class ExtraAmmoOverlay extends UpgradeOverlay
 {
-    public static final int UPGRADE_STEP = 10;
+    public static final int UPGRADE_STEP = 5;
 
     public static Integer currentValue;
     public static Integer nextValue;
 
     public ExtraAmmoOverlay(ImageButton button, TextureAtlas gameScreenAtlas, BuyHud buyHud, Player player)
     {
-        super("The magsize of your weapon.\nUseful when raided by big\ngroups of enemies!", 1, button, gameScreenAtlas, buyHud, player);
+        super("The magsize of your weapon.\nUseful when raided by big\ngroups of enemies!", 2, button, gameScreenAtlas, buyHud, player);
 
         currentValue = new Integer(Bullet.START_MAGSIZE);
         nextValue = new Integer(currentValue + UPGRADE_STEP);

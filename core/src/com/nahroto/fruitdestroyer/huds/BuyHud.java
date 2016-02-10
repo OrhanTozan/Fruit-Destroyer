@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -37,6 +38,7 @@ public class BuyHud extends Hud
 
     private static final float EASE_TIME = 0.5f;
     private static final int UPGRADEBUTTONS_Y = 800;
+    private static final int POWERUPOFFSET_Y = 15;
 
     public static Integer pointsValue;
 
@@ -47,6 +49,7 @@ public class BuyHud extends Hud
     private Image upgradesTitle;
     private Image powerupTitle;
     private Image blackShader;
+    private Image comingsoon;
 
     private ImageButton extraAmmoButton;
     private ImageButton accuracyButton;
@@ -176,13 +179,15 @@ public class BuyHud extends Hud
         pointsOverlay = new Image(gameScreenAtlas.findRegion("points-overlay"));
         upgradesTitle = new Image(gameScreenAtlas.findRegion("upgrades-text"));
         powerupTitle = new Image(gameScreenAtlas.findRegion("powerup-text"));
+        comingsoon = new Image(gameScreenAtlas.findRegion("comingsoon2"));
 
         resetPosition();
 
         pointsOverlay.setPosition(overlay.getX() + 70, overlay.getY() + 70);
         pointsLabel.setPosition(pointsOverlay.getX(Align.center), pointsOverlay.getY(Align.center) - 25, Align.center);
         upgradesTitle.setPosition(overlay.getX(Align.top), overlay.getY(Align.top) - 70, Align.top);
-        powerupTitle.setPosition(overlay.getX(Align.top), overlay.getY(Align.center) - 30, Align.top);
+        powerupTitle.setPosition(overlay.getX(Align.top), overlay.getY(Align.center) - 30 - POWERUPOFFSET_Y, Align.top);
+        comingsoon.setPosition(overlay.getX(Align.top), overlay.getY(Align.center) - 20, Align.top);
 
         extraAmmoButton = new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("moreAmmoUpgrade")), new TextureRegionDrawable(gameScreenAtlas.findRegion("moreAmmoUpgrade-down")));
         accuracyButton = new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("accuracyUpgrade")), new TextureRegionDrawable(gameScreenAtlas.findRegion("accuracyUpgrade-down")));
@@ -192,6 +197,10 @@ public class BuyHud extends Hud
         marksmanButton = new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("marksman-up")), new TextureRegionDrawable(gameScreenAtlas.findRegion("marksman-down")));
         instakillButton = new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("instakill-up")), new TextureRegionDrawable(gameScreenAtlas.findRegion("instakill-down")));
         bombButton = new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("bomb-up")), new TextureRegionDrawable(gameScreenAtlas.findRegion("bomb-down")));
+
+        marksmanButton.setTouchable(Touchable.disabled);
+        instakillButton.setTouchable(Touchable.disabled);
+        bombButton.setTouchable(Touchable.disabled);
 
         extraAmmoButton.addListener(new ClickListener()
         {
@@ -264,9 +273,9 @@ public class BuyHud extends Hud
         extraReloadSpeedOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 + 25, Align.center);
         extraKnockbackOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 + 25, Align.center);
 
-        marksmanOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 + 25, Align.center);
-        instakillOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 + 25, Align.center);
-        bombOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 + 25, Align.center);
+        marksmanOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 + 25 - POWERUPOFFSET_Y, Align.center);
+        instakillOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 + 25 - POWERUPOFFSET_Y, Align.center);
+        bombOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 + 25 - POWERUPOFFSET_Y, Align.center);
 
         doneButton = new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("upgradeDone")), new TextureRegionDrawable(gameScreenAtlas.findRegion("upgradeDone-down")));
 
@@ -305,6 +314,7 @@ public class BuyHud extends Hud
         actors.add(marksmanButton);
         actors.add(instakillButton);
         actors.add(bombButton);
+        actors.add(comingsoon);
         actors.add(doneButton);
 
         addAllActors();
@@ -320,17 +330,18 @@ public class BuyHud extends Hud
     private void updateComponents()
     {
         upgradesTitle.setPosition(overlay.getX(Align.top), overlay.getY(Align.top) - 70, Align.top);
-        powerupTitle.setPosition(overlay.getX(Align.top), overlay.getY(Align.center) - 30, Align.top);
+        powerupTitle.setPosition(overlay.getX(Align.top), overlay.getY(Align.center) - 30 - POWERUPOFFSET_Y, Align.top);
+        comingsoon.setPosition(overlay.getX(Align.top), overlay.getY(Align.center) - 30, Align.top);
         pointsOverlay.setPosition(overlay.getX() + 55, overlay.getY() + 55);
-        pointsLabel.setPosition(pointsOverlay.getX(Align.center), pointsOverlay.getY(Align.center) - 25, Align.center);
         pointsLabel.setText(pointsValue.toString());
+        pointsLabel.setPosition(pointsOverlay.getX(Align.center) - pointsLabel.getGlyphLayout().width / 2, pointsOverlay.getY(Align.center) - 62);
         extraAmmoButton.setPosition(overlay.getX(Align.center) - accuracyButton.getWidth(), overlay.getY() + UPGRADEBUTTONS_Y - 100, Align.center);
         accuracyButton.setPosition(overlay.getX(Align.center), overlay.getY() + UPGRADEBUTTONS_Y, Align.center);
         reloadSpeedButton.setPosition(overlay.getX(Align.center) + accuracyButton.getWidth(), overlay.getY() + UPGRADEBUTTONS_Y - 100, Align.center);
         knockbackButton.setPosition(accuracyButton.getX(), overlay.getY() + UPGRADEBUTTONS_Y - 300);
-        marksmanButton.setPosition(overlay.getX() + 150, powerupTitle.getY(Align.top) - 100, Align.top);
-        instakillButton.setPosition(marksmanButton.getX(Align.right) + 100, powerupTitle.getY(Align.top) - 100, Align.top);
-        bombButton.setPosition(instakillButton.getX(Align.right) + 100, powerupTitle.getY(Align.top) - 100, Align.top);
+        marksmanButton.setPosition(overlay.getX() + 150, powerupTitle.getY(Align.top) - 100 - POWERUPOFFSET_Y, Align.top);
+        instakillButton.setPosition(marksmanButton.getX(Align.right) + 100, powerupTitle.getY(Align.top) - 100 - POWERUPOFFSET_Y, Align.top);
+        bombButton.setPosition(instakillButton.getX(Align.right) + 100, powerupTitle.getY(Align.top) - 100 - POWERUPOFFSET_Y, Align.top);
         doneButton.setPosition(overlay.getX(Align.center) + 115, pointsOverlay.getY(Align.center), Align.center);
 
         extraAmmoOverlay.updatePriceLabelColor(pointsValue);
@@ -360,6 +371,7 @@ public class BuyHud extends Hud
         actors.add(marksmanButton);
         actors.add(instakillButton);
         actors.add(bombButton);
+        actors.add(comingsoon);
         actors.add(doneButton);
         addAllActors();
     }

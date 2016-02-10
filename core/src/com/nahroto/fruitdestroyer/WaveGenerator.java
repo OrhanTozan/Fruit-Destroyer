@@ -48,18 +48,20 @@ public class WaveGenerator
 
         if (wave >= 0)
         {
-            delayTime(0f);
-                int amountOranges1 = MathUtils.round(wave * 1.5f);
-                int amountAnanases1 = MathUtils.round(wave * 0.5f);
+            delayTime(0f); // FIRST GROUP
+                int amountOranges1 = MathUtils.round(wave * 2f);
 
                 addOranges(amountOranges1);
                 if (wave >= ANANAS_MINIMUM_WAVE)
+                {
+                    int amountAnanases1 = MathUtils.round(wave * 0.5f);
                     addAnanases(amountAnanases1);
+                }
         }
 
         if (wave >= 5)
         {
-            delayTime(8f);
+            delayTime(8f); // SECOND GROUP
                 int amountOranges2 = MathUtils.round(wave * 0.5f);
                 int amountAnanases2 = MathUtils.round(wave * 0.2f);
 

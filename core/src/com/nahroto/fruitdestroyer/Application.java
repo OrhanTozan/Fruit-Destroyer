@@ -39,6 +39,13 @@ public class Application extends Game
 	}
 
 	@Override
+	public void render()
+	{
+		super.render();
+		Logger.log(WaveGenerator.wave.toString());
+	}
+
+	@Override
 	public void dispose()
 	{
 		if (Debug.INFO)

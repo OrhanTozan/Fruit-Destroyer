@@ -78,9 +78,6 @@ public class GameResetter
         // CLEAR ALL CORPSES
         currentCorpses.clear();
 
-        // RESET WAVE
-        WaveGenerator.wave = 1;
-
         // RESET POINTS
         BuyHud.pointsValue = 0;
 

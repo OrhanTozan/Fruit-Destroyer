@@ -59,7 +59,7 @@ public class DeadScreen implements Screen
     @Override
     public void resize(int width, int height)
     {
-
+        APP.viewport.update(width, height);
     }
 
     @Override
