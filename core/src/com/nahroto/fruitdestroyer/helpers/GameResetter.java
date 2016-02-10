@@ -81,6 +81,10 @@ public class GameResetter
         // RESET POINTS
         BuyHud.pointsValue = 0;
 
+        // RESET WAVE VALUE
+        WaveGenerator.wave = 1;
+
+        // UPDATE WAVE COUNTER
         gameHud.updateWaveText();
 
         // RESET WEAPON STATS

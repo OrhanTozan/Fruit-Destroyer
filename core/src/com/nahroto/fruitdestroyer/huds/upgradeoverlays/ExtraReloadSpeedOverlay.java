@@ -19,7 +19,7 @@ public class ExtraReloadSpeedOverlay extends UpgradeOverlay
 
     public ExtraReloadSpeedOverlay(ImageButton button, TextureAtlas gameScreenAtlas, BuyHud buyHud, Player player)
     {
-        super("Reloading speed of your\nweapon. Increase this stat so\nyou can reload faster!", 4, button, gameScreenAtlas, buyHud, player);
+        super("Reloading speed of your\nweapon. Increase this stat so\nyou can reload faster!", 7, button, gameScreenAtlas, buyHud, player);
 
         currentPercentage = new Integer(100);
         nextPercentage = new Integer(currentPercentage + UPGRADE_STEP);

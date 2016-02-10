@@ -9,7 +9,7 @@ import com.nahroto.fruitdestroyer.huds.BuyHud;
 
 public class ExtraKnockbackOverlay extends UpgradeOverlay
 {
-    public static final int UPGRADE_STEP = 30;
+    public static final int UPGRADE_STEP = 50;
 
     public static Integer currentValue;
     public static Integer nextValue;
@@ -51,5 +51,7 @@ public class ExtraKnockbackOverlay extends UpgradeOverlay
     {
         super.setPosition(x, y, align);
         title.setPosition(background.getX(Align.center) - (titleFont.getWidth("KNOCKBACK POWER") / 2), background.getY(Align.top) - 160);
+        currentValueLabel.setPosition(background.getX() + 125 - (currentValueFont.getWidth(currentValue.toString()) / 2), background.getY() + 370);
+        nextValueLabel.setPosition(background.getX() + 475 - (nextValueFont.getWidth(nextValue.toString()) / 2), background.getY() + 370);
     }
 }

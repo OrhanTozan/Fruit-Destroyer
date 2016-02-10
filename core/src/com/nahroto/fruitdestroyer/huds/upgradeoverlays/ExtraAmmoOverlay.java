@@ -16,7 +16,7 @@ public class ExtraAmmoOverlay extends UpgradeOverlay
 
     public ExtraAmmoOverlay(ImageButton button, TextureAtlas gameScreenAtlas, BuyHud buyHud, Player player)
     {
-        super("The magsize of your weapon.\nUseful when raided by big\ngroups of enemies!", 2, button, gameScreenAtlas, buyHud, player);
+        super("The magsize of your weapon.\nUseful when raided by big\ngroups of enemies!", 3, button, gameScreenAtlas, buyHud, player);
 
         currentValue = new Integer(Bullet.START_MAGSIZE);
         nextValue = new Integer(currentValue + UPGRADE_STEP);
@@ -51,5 +51,7 @@ public class ExtraAmmoOverlay extends UpgradeOverlay
     {
         super.setPosition(x, y, align);
         title.setPosition(background.getX(Align.center) - (titleFont.getWidth("AMMO") / 2), background.getY(Align.top) - 160);
+        currentValueLabel.setPosition(background.getX() + 125 - (currentValueFont.getWidth(currentValue.toString()) / 2), background.getY() + 370);
+        nextValueLabel.setPosition(background.getX() + 475 - (nextValueFont.getWidth(nextValue.toString()) / 2), background.getY() + 370);
     }
 }

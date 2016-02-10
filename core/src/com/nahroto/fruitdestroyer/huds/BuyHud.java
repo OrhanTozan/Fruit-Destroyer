@@ -34,7 +34,7 @@ import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
 
 public class BuyHud extends Hud
 {
-    public static final int POINTS_REWARD = 3;
+    public static final int POINTS_REWARD = 5;
 
     private static final float EASE_TIME = 0.5f;
     private static final int UPGRADEBUTTONS_Y = 800;
@@ -179,7 +179,7 @@ public class BuyHud extends Hud
         pointsOverlay = new Image(gameScreenAtlas.findRegion("points-overlay"));
         upgradesTitle = new Image(gameScreenAtlas.findRegion("upgrades-text"));
         powerupTitle = new Image(gameScreenAtlas.findRegion("powerup-text"));
-        comingsoon = new Image(gameScreenAtlas.findRegion("comingsoon2"));
+        comingsoon = new Image(gameScreenAtlas.findRegion("comingsoon"));
 
         resetPosition();
 

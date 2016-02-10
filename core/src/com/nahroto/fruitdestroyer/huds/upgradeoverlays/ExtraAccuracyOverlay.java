@@ -9,7 +9,7 @@ import com.nahroto.fruitdestroyer.huds.BuyHud;
 
 public class ExtraAccuracyOverlay extends UpgradeOverlay
 {
-    public static final float UPGRADE_STEP = 1f;
+    public static final float UPGRADE_STEP = 0.5f;
 
     public static Float currentValue;
     public static Float nextValue;
@@ -18,7 +18,7 @@ public class ExtraAccuracyOverlay extends UpgradeOverlay
     {
         super("Reduces your weapon recoil.\nIncrease this stat for\nimproved shooting accuracy!", 1, button, gameScreenAtlas, buyHud, player);
 
-        currentValue = new Float(1 / Bullet.START_RECOIL);
+        currentValue = new Float(10 / Bullet.START_RECOIL);
         nextValue = new Float(currentValue + UPGRADE_STEP);
 
         currentValueLabel.setText(currentValue.toString());
@@ -34,13 +34,13 @@ public class ExtraAccuracyOverlay extends UpgradeOverlay
         currentValueLabel.setText(currentValue.toString());
         nextValueLabel.setText(nextValue.toString());
 
-        Bullet.getWeapon().setRecoil(1 / currentValue);
+        Bullet.getWeapon().setRecoil(10 / currentValue);
     }
 
     @Override
     public void reset()
     {
-        currentValue = (1 / Bullet.START_RECOIL);
+        currentValue = (10 / Bullet.START_RECOIL);
         nextValue = currentValue + UPGRADE_STEP;
         currentValueLabel.setText(currentValue.toString());
         nextValueLabel.setText(nextValue.toString());
@@ -51,5 +51,7 @@ public class ExtraAccuracyOverlay extends UpgradeOverlay
     {
         super.setPosition(x, y, align);
         title.setPosition(background.getX(Align.center) - (titleFont.getWidth("ACCURACY") / 2), background.getY(Align.top) - 160);
+        currentValueLabel.setPosition(background.getX() + 125 - (currentValueFont.getWidth(currentValue.toString()) / 2), background.getY() + 370);
+        nextValueLabel.setPosition(background.getX() + 475 - (nextValueFont.getWidth(nextValue.toString()) / 2), background.getY() + 370);
     }
 }
