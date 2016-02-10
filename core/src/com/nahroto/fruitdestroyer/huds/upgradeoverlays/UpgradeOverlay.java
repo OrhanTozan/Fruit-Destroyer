@@ -19,6 +19,7 @@ import com.nahroto.fruitdestroyer.huds.BuyHud;
 
 public abstract class UpgradeOverlay
 {
+    protected boolean maxValue = false;
     protected int upgradeCost;
 
     protected Array<Actor> actors;
