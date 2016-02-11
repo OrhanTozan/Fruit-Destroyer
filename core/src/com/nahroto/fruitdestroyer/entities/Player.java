@@ -17,7 +17,7 @@ public class Player
 {
     private final Application APP;
 
-    private final int KICK = 15;
+    private final int KICK = 40;
 
     private Array<Bullet> totalBullets;
     private Array<Bullet> currentBullets;
