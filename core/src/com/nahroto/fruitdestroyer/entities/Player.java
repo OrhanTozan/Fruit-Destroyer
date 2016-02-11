@@ -17,7 +17,8 @@ public class Player
 {
     private final Application APP;
 
-    private final int KICK = 40;
+    private static final int KICK = 40;
+    private static final float MAX_SPREAD = 0.7f;
 
     private Array<Bullet> totalBullets;
     private Array<Bullet> currentBullets;
@@ -65,7 +66,6 @@ public class Player
     private long timeSinceFirstShot;
     private long timeSinceLastShot;
     private boolean firstShotFired;
-    private static final float MAX_SPREAD = 0.7f;
 
     private static int reloadSpeedPercentage;
 

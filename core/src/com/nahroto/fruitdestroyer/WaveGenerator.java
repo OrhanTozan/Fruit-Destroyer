@@ -49,24 +49,31 @@ public class WaveGenerator
         if (wave >= 0)
         {
             delayTime(0f); // FIRST GROUP
-                int amountOranges1 = MathUtils.round(wave * 2f);
+                int amountOranges1 = MathUtils.round(wave * 1f);
 
                 addOranges(amountOranges1);
-                if (wave >= ANANAS_MINIMUM_WAVE)
+                if (wave >= ANANAS_MINIMUM_WAVE || true)
                 {
                     int amountAnanases1 = MathUtils.round(wave * 0.5f);
                     addAnanases(amountAnanases1);
                 }
-        }
 
-        if (wave >= 5)
-        {
             delayTime(8f); // SECOND GROUP
                 int amountOranges2 = MathUtils.round(wave * 0.5f);
                 int amountAnanases2 = MathUtils.round(wave * 0.2f);
 
                 addOranges(amountOranges2);
                 addAnanases(amountAnanases2);
+        }
+
+        if (wave >= 5)
+        {
+            delayTime(16f); // THIRD GROUP
+                int amountOranges3 = MathUtils.round(wave * 0.5f);
+                int amountAnanases3 = MathUtils.round(wave * 0.2f);
+
+                addOranges(amountOranges3);
+                addAnanases(amountAnanases3);
         }
     }
 

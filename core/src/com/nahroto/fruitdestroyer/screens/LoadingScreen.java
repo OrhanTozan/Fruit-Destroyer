@@ -19,6 +19,7 @@ public class LoadingScreen extends BasicLoadingScreen implements Screen
 
     private TextureAtlas menuScreenAtlas;
     private Texture bg;
+    private MenuHud menuHud;
 
     public LoadingScreen(final Application APP)
     {
@@ -57,7 +58,6 @@ public class LoadingScreen extends BasicLoadingScreen implements Screen
         APP.assets.load("sounds/orchestra.wav", Sound.class);
 
         // LOAD MUSIC
-        APP.assets.load("music/epictheme.ogg", Music.class);
         APP.assets.load("music/action.ogg", Music.class);
     }
 

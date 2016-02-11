@@ -179,7 +179,9 @@ public class LoadingScreen2 implements Screen
 
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
         APP.camera.update();
-        APP.setScreen(gameScreen);
+
+        if (APP.assets.update())
+            APP.setScreen(gameScreen);
     }
 
     @Override

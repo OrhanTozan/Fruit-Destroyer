@@ -118,10 +118,6 @@ public class GameScreen implements Screen
         inputMultiplexer.addProcessor(input);
         Gdx.input.setInputProcessor(inputMultiplexer);
 
-        actionMusic.setLooping(true);
-        actionMusic.setLooping(true);
-        actionMusic.play();
-        actionMusic.setLooping(true);
 
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
         APP.camera.update();
