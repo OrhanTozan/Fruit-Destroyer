@@ -29,6 +29,8 @@ public class Application extends Game
 	public GameScreen gameScreen;
 	public DeadScreen deadScreen;
 
+	private boolean firstTime = true;
+
 	@Override
 	public void create ()
 	{
@@ -40,16 +42,17 @@ public class Application extends Game
 		assets.load("music/epictheme.ogg", Music.class);
 		introScreen = new IntroScreen(this);
 		loadingScreen = new LoadingScreen(this);
-
-		if (assets.update())
-			setScreen(introScreen);
 	}
 
 	@Override
 	public void render()
 	{
 		super.render();
-		Logger.log(Gdx.graphics.getFramesPerSecond());
+		if (assets.update() && firstTime)
+		{
+			setScreen(introScreen);
+			firstTime = false;
+		}
 	}
 
 	@Override

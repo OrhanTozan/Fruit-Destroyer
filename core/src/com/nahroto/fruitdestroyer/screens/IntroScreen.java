@@ -7,6 +7,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.Constants;
+import com.nahroto.fruitdestroyer.Logger;
 import com.nahroto.fruitdestroyer.huds.IntroHud;
 
 public class IntroScreen implements Screen
@@ -25,6 +26,7 @@ public class IntroScreen implements Screen
     @Override
     public void show()
     {
+        Logger.log("intro screen");
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
         APP.camera.update();
 
@@ -32,6 +34,8 @@ public class IntroScreen implements Screen
 
         music.setLooping(true);
         music.play();
+
+        introHud.start();
     }
 
     @Override
