@@ -54,7 +54,7 @@ public abstract class UpgradeOverlay
             @Override
             public void clicked(InputEvent event, float x, float y)
             {
-                if (buyHud.getPoints() >= upgradeCost)
+                if (buyHud.getPoints() >= upgradeCost && !maxValue)
                 {
                     upgrade(player);
                     buyHud.reducePoints(upgradeCost);

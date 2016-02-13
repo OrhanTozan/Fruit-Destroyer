@@ -58,7 +58,7 @@ public class WaveGenerator
                     addAnanases(amountAnanases1);
                 }
 
-            delayTime(8f); // SECOND GROUP
+            delayTime(7f); // SECOND GROUP
                 int amountOranges2 = MathUtils.round(wave * 0.5f);
                 int amountAnanases2 = MathUtils.round(wave * 0.2f);
 
@@ -155,8 +155,11 @@ public class WaveGenerator
     {
         makeEnemiesReady();
         currentEnemies.addAll(queue);
-        Logger.log("queue released!, size: " + queue.size);
-        Logger.log("current enemies size: " + currentEnemies.size);
+        if (Debug.LOG_WAVES)
+        {
+            Logger.log("queue released!, size: " + queue.size);
+            Logger.log("current enemies size: " + currentEnemies.size);
+        }
         queue.clear();
     }
 

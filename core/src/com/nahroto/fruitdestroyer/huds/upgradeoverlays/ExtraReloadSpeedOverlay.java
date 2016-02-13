@@ -44,6 +44,9 @@ public class ExtraReloadSpeedOverlay extends UpgradeOverlay
         nextValueLabel.setText(nextSpeedStatus);
 
         player.setReloadingConfig(currentPercentage);
+
+        if (currentPercentage == 25)
+            maxValue = true;
     }
 
     @Override
@@ -55,6 +58,7 @@ public class ExtraReloadSpeedOverlay extends UpgradeOverlay
         nextSpeedStatus = percentageToStatus(nextPercentage);
         currentValueLabel.setText(currentSpeedStatus);
         nextValueLabel.setText(nextSpeedStatus);
+        maxValue = false;
     }
 
     private String percentageToStatus(int percentage)

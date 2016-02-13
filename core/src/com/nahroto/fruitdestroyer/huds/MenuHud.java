@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.Constants;
+import com.nahroto.fruitdestroyer.Debug;
 import com.nahroto.fruitdestroyer.Font;
 import com.nahroto.fruitdestroyer.Logger;
 import com.nahroto.fruitdestroyer.screens.LoadingScreen2;
@@ -37,10 +38,12 @@ public class MenuHud extends Hud
         {
             public void clicked(InputEvent event, float x, float y)
             {
-                Logger.log("BUTTON PRESSED");
+                if (Debug.INFO)
+                    Logger.log("BUTTON PRESSED");
                 if (APP.getScreen().getClass() == MenuScreen.class)
                 {
-                    Logger.log("BUTTON ACTIVATED");
+                    if(Debug.INFO)
+                        Logger.log("BUTTON ACTIVATED");
                     APP.setScreen(APP.loadingScreen2);
                 }
             }

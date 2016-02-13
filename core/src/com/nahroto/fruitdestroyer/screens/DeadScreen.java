@@ -20,6 +20,9 @@ public class DeadScreen implements Screen
     private DeadHud deadHud;
     private Texture bg;
     private InputMultiplexer inputMultiplexer;
+    private long startTime;
+
+    private boolean adShown;
 
     public DeadScreen(final Application APP, TextureRegion retryButtonUp, TextureRegion retryButtonDown, GameResetter gameResetter, Texture bg, InputMultiplexer inputMultiplexer)
     {
@@ -34,9 +37,13 @@ public class DeadScreen implements Screen
     {
         if (Debug.SCREEN_INFO)
             Logger.log("DeadScreen");
+        adShown = false;
         deadHud.addAllActors();
         inputMultiplexer.clear();
         inputMultiplexer.addProcessor(deadHud.getStage());
+
+        startTime = System.currentTimeMillis();
+        deadHud.disableInput();
     }
 
     @Override
@@ -45,7 +52,13 @@ public class DeadScreen implements Screen
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        // UPDATE
+        if (!adShown && System.currentTimeMillis() - startTime >= 1000)
+        {
+            adShown = true;
+            APP.showAd();
+            deadHud.enableInput();
+        }
+
         deadHud.update(delta);
 
         APP.camera.update();
@@ -57,6 +70,8 @@ public class DeadScreen implements Screen
         APP.batch.end();
 
         deadHud.render();
+
+
 
     }
 

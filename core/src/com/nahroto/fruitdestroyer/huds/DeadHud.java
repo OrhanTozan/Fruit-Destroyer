@@ -4,7 +4,9 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -58,5 +60,17 @@ public class DeadHud extends Hud
         super.update(delta);
         waveLabel.setText("Wave " + WaveGenerator.wave.toString());
         waveLabel.setPosition(retryButton.getX(Align.center) - waveFont.getWidth("Wave " + WaveGenerator.wave.toString()) / 2, 1000);
+    }
+
+    public void disableInput()
+    {
+        for (Actor actor : actors)
+            actor.setTouchable(Touchable.disabled);
+    }
+
+    public void enableInput()
+    {
+        for (Actor actor : actors)
+            actor.setTouchable(Touchable.enabled);
     }
 }

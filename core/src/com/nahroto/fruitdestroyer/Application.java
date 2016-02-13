@@ -36,7 +36,18 @@ public class Application extends Game
 	public GameScreen gameScreen;
 	public DeadScreen deadScreen;
 
+	public AdsController adsController;
+
 	private boolean firstTime = true;
+
+	public Application(AdsController adsController)
+	{
+		if (adsController != null)
+			this.adsController = adsController;
+		else
+			this.adsController = new DummyAdsController();
+	}
+
 
 	@Override
 	public void create ()
@@ -61,17 +72,36 @@ public class Application extends Game
 			setScreen(introScreen);
 			firstTime = false;
 		}
-		Logger.log(Gdx.graphics.getFramesPerSecond());
+		// Logger.log(Gdx.graphics.getFramesPerSecond());
 	}
 
 	@Override
 	public void dispose()
 	{
+		super.dispose();
 		if (Debug.INFO)
 			Logger.log("disposed");
 		assets.dispose();
 		loadingScreen.dispose();
 		menuScreen.dispose();
 		loadingScreen2.dispose();
+	}
+
+	public void showAd()
+	{
+		if (adsController.isWifiConnected())
+		{
+			adsController.showInterstitialAd(new Runnable()
+			{
+				@Override
+				public void run()
+				{
+					if (Debug.AD_INFO)
+						System.out.println("Interstitial app closed");
+				}
+			});
+		}
+		else if (Debug.AD_INFO)
+			System.out.println("Interstitial ad not (yet) loaded");
 	}
 }

@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.Array;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.CameraShaker;
 import com.nahroto.fruitdestroyer.Constants;
+import com.nahroto.fruitdestroyer.Debug;
 import com.nahroto.fruitdestroyer.Logger;
 
 public class Player
@@ -173,7 +174,8 @@ public class Player
 
                 if (!firstShotFired)
                 {
-                    Logger.log("first shot fired");
+                    if (Debug.INFO)
+                        Logger.log("first shot fired");
                     firstShotFired = true;
                     timeSinceFirstShot = System.currentTimeMillis();
                 }

@@ -12,6 +12,7 @@ public class DesktopLauncher
 		config.title = "Fruit Destroyer";
 		config.width = 480;
 		config.height = 800;
-		new LwjglApplication(new Application(), config);
+		config.resizable = true;
+		new LwjglApplication(new Application(null), config);
 	}
 }
