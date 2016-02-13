@@ -2,11 +2,11 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\core\build\libs\core-1.0.jar"
+        jar="C:\Users\Musa Tozan\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-freetype\1.9.2\3609253d14edb1b3ca5aacff4e06989edde75be4\gdx-freetype-1.9.2.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="9258d6b9c76e9f9d0b1a2a44f344ce97d44f8929">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\core-1.0-29b3745a2124a267304d6e7e0a93437f3d61d048.jar" />
+        sha1="3609253d14edb1b3ca5aacff4e06989edde75be4">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\gdx-freetype-1.9.2-1e4c37fb91f11323b8f10a0a668829bc5146635b.jar" />
     </item>
     <item
         jar="C:\Users\Musa Tozan\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-backend-android\1.9.2\342b830bc718dc1965c8f13fc58dc500e8bd262f\gdx-backend-android-1.9.2.jar"
@@ -16,11 +16,11 @@
         <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\gdx-backend-android-1.9.2-d08b8b57ca96a8a48fd6ff3df2fb01312f79dd02.jar" />
     </item>
     <item
-        jar="C:\Users\Musa Tozan\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-freetype\1.9.2\3609253d14edb1b3ca5aacff4e06989edde75be4\gdx-freetype-1.9.2.jar"
+        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\core\build\libs\core-1.0.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="3609253d14edb1b3ca5aacff4e06989edde75be4">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\gdx-freetype-1.9.2-1e4c37fb91f11323b8f10a0a668829bc5146635b.jar" />
+        sha1="2a9472d44390f5930e0ae214487acbd3d2af830c">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\core-1.0-29b3745a2124a267304d6e7e0a93437f3d61d048.jar" />
     </item>
     <item
         jar="C:\Users\Musa Tozan\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx\1.9.2\e641cb91bec06bc64d9ddf7a7d7062caceec73cd\gdx-1.9.2.jar"

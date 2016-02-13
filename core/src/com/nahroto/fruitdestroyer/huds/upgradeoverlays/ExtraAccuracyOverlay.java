@@ -3,6 +3,7 @@ package com.nahroto.fruitdestroyer.huds.upgradeoverlays;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.utils.Align;
+import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.entities.Bullet;
 import com.nahroto.fruitdestroyer.entities.Player;
 import com.nahroto.fruitdestroyer.huds.BuyHud;
@@ -14,9 +15,9 @@ public class ExtraAccuracyOverlay extends UpgradeOverlay
     public static Float currentValue;
     public static Float nextValue;
 
-    public ExtraAccuracyOverlay(ImageButton button, TextureAtlas gameScreenAtlas, BuyHud buyHud, Player player)
+    public ExtraAccuracyOverlay(final Application APP, ImageButton button, TextureAtlas gameScreenAtlas, BuyHud buyHud, Player player)
     {
-        super("Reduces your weapon recoil.\nIncrease this stat for\nimproved shooting accuracy!", 1, button, gameScreenAtlas, buyHud, player);
+        super(APP, "Reduces your weapon recoil.\nIncrease this stat for\nimproved shooting accuracy!", 1, button, gameScreenAtlas, buyHud, player);
 
         currentValue = new Float(10 / Bullet.START_RECOIL);
         nextValue = new Float(currentValue + UPGRADE_STEP);

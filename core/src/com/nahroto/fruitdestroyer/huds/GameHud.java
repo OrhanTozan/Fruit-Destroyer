@@ -77,7 +77,7 @@ public class GameHud extends Hud
         bulletIcon = new Image(bulletIconTexture);
         whiteShader = new Image(new Texture("backgrounds/whiteShader.png"));
 
-        waveFont = new Font("fonts/trompus.otf", 100, Color.WHITE, Color.BLACK, 3, true);
+        waveFont = new Font(APP, "trompus13.otf", "fonts/trompus.otf", 100, Color.WHITE, Color.BLACK, 3, true);
         waveLabel = new Label("Wave " + WaveGenerator.wave.toString(), new Label.LabelStyle(waveFont.getFont(), Color.WHITE));
         blackShader = new Image(new Texture("backgrounds/blackShader.png"));
 

@@ -111,7 +111,14 @@ public class GameScreen implements Screen
     @Override
     public void show()
     {
-        System.out.println("GAMESCREEN SHOW");
+        if (Debug.SCREEN_INFO)
+            Logger.log("GameScreen");
+
+        actionMusic.setLooping(true);
+        actionMusic.play();
+        actionMusic.setLooping(true);
+        actionMusic.setLooping(true);
+
 
         inputMultiplexer.clear();
         inputMultiplexer.addProcessor(gameHud.getStage());

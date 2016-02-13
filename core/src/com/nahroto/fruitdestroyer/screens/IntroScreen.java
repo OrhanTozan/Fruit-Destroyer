@@ -7,6 +7,8 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.Constants;
+import com.nahroto.fruitdestroyer.Debug;
+import com.nahroto.fruitdestroyer.Font;
 import com.nahroto.fruitdestroyer.Logger;
 import com.nahroto.fruitdestroyer.huds.IntroHud;
 
@@ -17,22 +19,23 @@ public class IntroScreen implements Screen
     private IntroHud introHud;
     private Music music;
 
-    public IntroScreen(Application APP)
+    public IntroScreen(Application APP, Font slimJoe, Font bigJohn)
     {
         this.APP = APP;
-        introHud = new IntroHud(APP.viewport, APP.batch);
+
+        introHud = new IntroHud(APP, APP.viewport, APP.batch, slimJoe, bigJohn);
     }
 
     @Override
     public void show()
     {
-        Logger.log("intro screen");
+        if (Debug.SCREEN_INFO)
+            Logger.log("IntroScreen");
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
         APP.camera.update();
 
-        music = APP.assets.get("music/epictheme.ogg", Music.class);
+        music = APP.assets.get("music/transition.mp3", Music.class);
 
-        music.setLooping(true);
         music.play();
 
         introHud.start();

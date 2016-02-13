@@ -148,7 +148,7 @@ public class LoadingScreen2 implements Screen
         // INIT INPUT-HANDLER
         inputHandler = new InputHandler(player);
 
-        ammoStatus = new Font("fonts/trompus.otf", 100, Color.WHITE, Color.BLACK, 3, true);
+        ammoStatus = new Font(APP, "trompus.otf", "fonts/trompus.otf", 100, Color.WHITE, Color.BLACK, 3, true);
 
         actionMusic = APP.assets.get("music/action.ogg", Music.class);
 
@@ -162,9 +162,9 @@ public class LoadingScreen2 implements Screen
         waveSFX = APP.assets.get("sounds/victory.ogg", Sound.class);
         waveGenerator = new WaveGenerator(totalEnemies, currentEnemies, totalOranges, totalAnanases);
         gameHud = new GameHud(player, APP.viewport, waveGenerator, inputMultiplexer, APP, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon"), gameScreenAtlas.findRegion("volumeButton"), actionMusic);
-        buyHud = new BuyHud(APP.viewport, APP.batch, gameHud, waveGenerator, gameScreenAtlas, blackShaderTexture, inputMultiplexer, player);
+        buyHud = new BuyHud(APP, APP.viewport, APP.batch, gameHud, waveGenerator, gameScreenAtlas, blackShaderTexture, inputMultiplexer, player);
         gameHud.init(buyHud);
-        gameScreen = new GameScreen(APP, waveGenerator, totalEnemies, currentEnemies, totalOranges, totalAnanases, currentCorpses, totalOrangeCorpses, totalAnanasCorpses, totalBullets, currentBullets, totalExplosions, currentExplosions, gameHud, buyHud, bg, player, inputMultiplexer, new Font("fonts/trompus.otf", 50, Color.WHITE, Color.BLACK, 3, true), ammoStatus, inputHandler, new Input(), collisionHandler, actionMusic, gameScreenAtlas.createSprite("reload-icon"), waveSFX, gameScreenAtlas.createSprite("accuracy-icon"));
+        gameScreen = new GameScreen(APP, waveGenerator, totalEnemies, currentEnemies, totalOranges, totalAnanases, currentCorpses, totalOrangeCorpses, totalAnanasCorpses, totalBullets, currentBullets, totalExplosions, currentExplosions, gameHud, buyHud, bg, player, inputMultiplexer, new Font(APP, "trompus14.otf", "fonts/trompus.otf", 50, Color.WHITE, Color.BLACK, 3, true), ammoStatus, inputHandler, new Input(), collisionHandler, actionMusic, gameScreenAtlas.createSprite("reload-icon"), waveSFX, gameScreenAtlas.createSprite("accuracy-icon"));
 
         gameResetter.setGameScreen(gameScreen);
         gameResetter.setGameHud(gameHud);
@@ -175,7 +175,7 @@ public class LoadingScreen2 implements Screen
     public void show()
     {
         if (Debug.INFO)
-            Logger.log("new loadingscreen2");
+            Logger.log("LoadingScreen2");
 
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
         APP.camera.update();

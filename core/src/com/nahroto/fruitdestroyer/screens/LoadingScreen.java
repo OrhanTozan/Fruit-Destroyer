@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.Constants;
+import com.nahroto.fruitdestroyer.Debug;
+import com.nahroto.fruitdestroyer.Logger;
 import com.nahroto.fruitdestroyer.huds.MenuHud;
 
 public class LoadingScreen extends BasicLoadingScreen implements Screen
@@ -23,20 +25,21 @@ public class LoadingScreen extends BasicLoadingScreen implements Screen
 
     public LoadingScreen(final Application APP)
     {
-        super();
+        super(APP);
         this.APP = APP;
     }
 
     @Override
     public void show()
     {
+        if (Debug.SCREEN_INFO)
+            Logger.log("LoadingScreen");
         currentTime = System.currentTimeMillis();
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
         APP.camera.update();
 
-        // INIT BACKGROUND
-        bg = new Texture("backgrounds/map.png");
-        bg.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        // LOAD BACKGROUND
+        APP.assets.load("backgrounds/map.png", Texture.class);
 
         // LOAD EXPLOSIONS ATLAS
         APP.assets.load("atlases/explosion.pack", TextureAtlas.class);
@@ -59,6 +62,7 @@ public class LoadingScreen extends BasicLoadingScreen implements Screen
 
         // LOAD MUSIC
         APP.assets.load("music/action.ogg", Music.class);
+        APP.assets.load("music/epictheme.ogg", Music.class);
     }
 
     @Override
@@ -69,9 +73,11 @@ public class LoadingScreen extends BasicLoadingScreen implements Screen
 
         if (APP.assets.update())
         {
+            bg = APP.assets.get("backgrounds/map.png", Texture.class);
+            bg.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
             APP.loadingScreen2 = new LoadingScreen2(APP, font, bg);
             menuScreenAtlas = APP.assets.get("atlases/menuscreen.pack", TextureAtlas.class);
-            APP.menuScreen = new MenuScreen(APP, font, bg, new MenuHud(APP, font, APP.viewport, APP.batch, menuScreenAtlas.findRegion("title"), menuScreenAtlas.findRegion("playbutton-up"), menuScreenAtlas.findRegion("playbutton-down"), bg), APP.assets.get("music/epictheme.ogg", Music.class));
+            APP.menuScreen = new MenuScreen(APP, font, bg, new MenuHud(APP, font, APP.viewport, APP.batch, menuScreenAtlas.findRegion("title"), menuScreenAtlas.findRegion("play-button-up"), menuScreenAtlas.findRegion("play-button-down"), bg), APP.assets.get("music/epictheme.ogg", Music.class));
             APP.setScreen(APP.menuScreen);
         }
 

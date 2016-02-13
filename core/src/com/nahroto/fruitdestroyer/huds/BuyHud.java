@@ -17,6 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.Constants;
 import com.nahroto.fruitdestroyer.Debug;
 import com.nahroto.fruitdestroyer.Font;
@@ -83,7 +84,7 @@ public class BuyHud extends Hud
 
     private InputMultiplexer inputMultiplexer;
 
-    public BuyHud(Viewport viewport, SpriteBatch batch, final GameHud gameHud, final WaveGenerator waveGenerator, TextureAtlas gameScreenAtlas, Texture blackShaderTexture, final InputMultiplexer gameScreenInput, Player player)
+    public BuyHud(final Application APP, Viewport viewport, SpriteBatch batch, final GameHud gameHud, final WaveGenerator waveGenerator, TextureAtlas gameScreenAtlas, Texture blackShaderTexture, final InputMultiplexer gameScreenInput, Player player)
     {
         super(viewport, batch);
 
@@ -173,7 +174,7 @@ public class BuyHud extends Hud
         blackShader.setPosition(-80, -80);
         blackShader.addAction(alpha(0f));
 
-        pointsLabel = new Label(pointsValue.toString(), new Label.LabelStyle(new Font("fonts/trompus.otf", 70, new Color(0.25f, 0.85f, 0.15f, 1f), Color.BLACK, 3, true).getFont(), new Color(0.25f, 0.85f, 0.15f, 1f)));
+        pointsLabel = new Label(pointsValue.toString(), new Label.LabelStyle(new Font(APP, "trompus11.otf", "fonts/trompus.otf", 70, new Color(0.25f, 0.85f, 0.15f, 1f), Color.BLACK, 3, true).getFont(), new Color(0.25f, 0.85f, 0.15f, 1f)));
 
         overlay = new Image(gameScreenAtlas.findRegion("overlay"));
         pointsOverlay = new Image(gameScreenAtlas.findRegion("points-overlay"));
@@ -259,14 +260,14 @@ public class BuyHud extends Hud
             }
         });
 
-        extraAmmoOverlay = new ExtraAmmoOverlay(extraAmmoButton, gameScreenAtlas, this, player);
-        extraAccuracyOverlay = new ExtraAccuracyOverlay(accuracyButton, gameScreenAtlas, this, player);
-        extraReloadSpeedOverlay = new ExtraReloadSpeedOverlay(reloadSpeedButton, gameScreenAtlas, this, player);
-        extraKnockbackOverlay = new ExtraKnockbackOverlay(knockbackButton, gameScreenAtlas, this, player);
+        extraAmmoOverlay = new ExtraAmmoOverlay(APP, extraAmmoButton, gameScreenAtlas, this, player);
+        extraAccuracyOverlay = new ExtraAccuracyOverlay(APP, accuracyButton, gameScreenAtlas, this, player);
+        extraReloadSpeedOverlay = new ExtraReloadSpeedOverlay(APP, reloadSpeedButton, gameScreenAtlas, this, player);
+        extraKnockbackOverlay = new ExtraKnockbackOverlay(APP, knockbackButton, gameScreenAtlas, this, player);
 
-        marksmanOverlay = new PowerupOverlay("Marksman", "marksman", 1, new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("marksman-up")), new TextureRegionDrawable(gameScreenAtlas.findRegion("marksman-down"))), gameScreenAtlas, this);
-        instakillOverlay = new PowerupOverlay("InstaKiller", "instakill", 1, new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("instakill-up")), new TextureRegionDrawable(gameScreenAtlas.findRegion("instakill-down"))), gameScreenAtlas, this);
-        bombOverlay = new PowerupOverlay("Bacteria Bomb", "bomb", 2, new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("bomb-up")), new TextureRegionDrawable(gameScreenAtlas.findRegion("bomb-down"))), gameScreenAtlas, this);
+        marksmanOverlay = new PowerupOverlay(APP, "Marksman", "marksman", 1, new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("marksman-up")), new TextureRegionDrawable(gameScreenAtlas.findRegion("marksman-down"))), gameScreenAtlas, this);
+        instakillOverlay = new PowerupOverlay(APP, "InstaKiller", "instakill", 1, new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("instakill-up")), new TextureRegionDrawable(gameScreenAtlas.findRegion("instakill-down"))), gameScreenAtlas, this);
+        bombOverlay = new PowerupOverlay(APP, "Bacteria Bomb", "bomb", 2, new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("bomb-up")), new TextureRegionDrawable(gameScreenAtlas.findRegion("bomb-down"))), gameScreenAtlas, this);
 
         extraAmmoOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 + 25, Align.center);
         extraAccuracyOverlay.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 + 25, Align.center);

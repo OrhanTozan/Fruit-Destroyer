@@ -3,6 +3,7 @@ package com.nahroto.fruitdestroyer.huds.upgradeoverlays;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.utils.Align;
+import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.Logger;
 import com.nahroto.fruitdestroyer.entities.Player;
 import com.nahroto.fruitdestroyer.huds.BuyHud;
@@ -17,9 +18,9 @@ public class ExtraReloadSpeedOverlay extends UpgradeOverlay
     public static Integer currentPercentage;
     public static Integer nextPercentage;
 
-    public ExtraReloadSpeedOverlay(ImageButton button, TextureAtlas gameScreenAtlas, BuyHud buyHud, Player player)
+    public ExtraReloadSpeedOverlay(final Application APP, ImageButton button, TextureAtlas gameScreenAtlas, BuyHud buyHud, Player player)
     {
-        super("Reloading speed of your\nweapon. Increase this stat so\nyou can reload faster!", 1, button, gameScreenAtlas, buyHud, player);
+        super(APP, "Reloading speed of your\nweapon. Increase this stat so\nyou can reload faster!", 1, button, gameScreenAtlas, buyHud, player);
 
         currentPercentage = new Integer(100);
         nextPercentage = new Integer(currentPercentage + UPGRADE_STEP);

@@ -3,6 +3,7 @@ package com.nahroto.fruitdestroyer.huds.upgradeoverlays;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.utils.Align;
+import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.entities.Bullet;
 import com.nahroto.fruitdestroyer.entities.Player;
 import com.nahroto.fruitdestroyer.huds.BuyHud;
@@ -14,9 +15,9 @@ public class ExtraAmmoOverlay extends UpgradeOverlay
     public static Integer currentValue;
     public static Integer nextValue;
 
-    public ExtraAmmoOverlay(ImageButton button, TextureAtlas gameScreenAtlas, BuyHud buyHud, Player player)
+    public ExtraAmmoOverlay(final Application APP, ImageButton button, TextureAtlas gameScreenAtlas, BuyHud buyHud, Player player)
     {
-        super("The magsize of your weapon.\nUseful when raided by big\ngroups of enemies!", 3, button, gameScreenAtlas, buyHud, player);
+        super(APP, "The magsize of your weapon.\nUseful when raided by big\ngroups of enemies!", 3, button, gameScreenAtlas, buyHud, player);
 
         currentValue = new Integer(Bullet.START_MAGSIZE);
         nextValue = new Integer(currentValue + UPGRADE_STEP);

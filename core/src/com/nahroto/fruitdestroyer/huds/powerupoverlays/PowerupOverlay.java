@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
+import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.Font;
 import com.nahroto.fruitdestroyer.Input;
 import com.nahroto.fruitdestroyer.huds.BuyHud;
@@ -36,7 +37,7 @@ public final class PowerupOverlay
     private Font titleFont;
     private String titleText;
 
-    public PowerupOverlay(String titleText, String description, final Integer cost, ImageButton powerupButton, TextureAtlas gameScreenAtlas, final BuyHud buyHud)
+    public PowerupOverlay(final Application APP, String titleText, String description, final Integer cost, ImageButton powerupButton, TextureAtlas gameScreenAtlas, final BuyHud buyHud)
     {
         this.cost = cost;
         this.powerupButton = new ImageButton(powerupButton.getStyle());
@@ -69,13 +70,13 @@ public final class PowerupOverlay
             }
         });
 
-        titleFont = new Font("fonts/trompus.otf", 55, Color.WHITE, Color.BLACK, 4, true);
+        titleFont = new Font(APP, "trompus1.otf", "fonts/trompus.otf", 55, Color.WHITE, Color.BLACK, 4, true);
         title = new Label(titleText, new Label.LabelStyle(titleFont.getFont(), Color.WHITE));
-        descriptionLabel = new Label(description, new Label.LabelStyle(new Font("fonts/trompus.otf", 30, Color.WHITE, Color.BLACK, 2, true).getFont(), Color.WHITE));
+        descriptionLabel = new Label(description, new Label.LabelStyle(new Font(APP, "trompus2.otf", "fonts/trompus.otf", 30, Color.WHITE, Color.BLACK, 2, true).getFont(), Color.WHITE));
         if (cost == 1)
-            costLabel = new Label("Price: " + cost.toString() + " point", new Label.LabelStyle(new Font("fonts/trompus.otf", 40, Color.WHITE, Color.BLACK, 2, true).getFont(), Color.YELLOW));
+            costLabel = new Label("Price: " + cost.toString() + " point", new Label.LabelStyle(new Font(APP, "trompus3.otf", "fonts/trompus.otf", 40, Color.WHITE, Color.BLACK, 2, true).getFont(), Color.YELLOW));
         else
-            costLabel = new Label("Price: " + cost.toString() + " points", new Label.LabelStyle(new Font("fonts/trompus.otf", 40, Color.WHITE, Color.BLACK, 2, true).getFont(), Color.YELLOW));
+            costLabel = new Label("Price: " + cost.toString() + " points", new Label.LabelStyle(new Font(APP, "trompus4.otf", "fonts/trompus.otf", 40, Color.WHITE, Color.BLACK, 2, true).getFont(), Color.YELLOW));
         actors.add(background);
         actors.add(title);
         actors.add(uncheckedBox);

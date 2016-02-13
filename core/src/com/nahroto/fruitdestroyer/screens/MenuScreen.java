@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.MathUtils;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.Constants;
+import com.nahroto.fruitdestroyer.Debug;
 import com.nahroto.fruitdestroyer.Font;
 import com.nahroto.fruitdestroyer.Logger;
 import com.nahroto.fruitdestroyer.huds.MenuHud;
@@ -35,6 +36,8 @@ public class MenuScreen implements Screen
     @Override
     public void show()
     {
+        if (Debug.SCREEN_INFO)
+            Logger.log("MenuScreen");
         epicTheme.setLooping(true);
         epicTheme.play();
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
