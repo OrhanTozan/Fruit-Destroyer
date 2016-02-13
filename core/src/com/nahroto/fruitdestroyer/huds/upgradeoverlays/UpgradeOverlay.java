@@ -14,7 +14,6 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.Font;
-import com.nahroto.fruitdestroyer.Logger;
 import com.nahroto.fruitdestroyer.entities.Player;
 import com.nahroto.fruitdestroyer.huds.BuyHud;
 

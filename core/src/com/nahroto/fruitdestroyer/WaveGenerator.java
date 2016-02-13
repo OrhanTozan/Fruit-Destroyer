@@ -58,7 +58,7 @@ public class WaveGenerator
                     addAnanases(amountAnanases1);
                 }
 
-            delayTime(7f); // SECOND GROUP
+            delayTime(6f + (wave * 0.5f)); // SECOND GROUP
                 int amountOranges2 = MathUtils.round(wave * 0.5f);
                 int amountAnanases2 = MathUtils.round(wave * 0.2f);
 

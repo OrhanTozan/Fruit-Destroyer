@@ -100,13 +100,16 @@ public class GameResetter
         marksmanOverlay.reset();
         instaKillOverlay.reset();
         bombOverlay.reset();
-
-        APP.setScreen(gameScreen);
     }
 
     public void setGameScreen(GameScreen gameScreen)
     {
         this.gameScreen = gameScreen;
+    }
+
+    public GameScreen getGameScreen()
+    {
+        return gameScreen;
     }
 
     public void setGameHud(GameHud gameHud)

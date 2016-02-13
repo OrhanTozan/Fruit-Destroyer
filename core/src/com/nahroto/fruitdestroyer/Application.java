@@ -2,6 +2,7 @@ package com.nahroto.fruitdestroyer;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.FileHandleResolver;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
@@ -24,6 +25,7 @@ import com.nahroto.fruitdestroyer.screens.MenuScreen;
 
 public class Application extends Game
 {
+	public Preferences prefs;
 	public SpriteBatch batch;
 	public OrthographicCamera camera;
 	public Viewport viewport;
@@ -52,6 +54,7 @@ public class Application extends Game
 	@Override
 	public void create ()
 	{
+		prefs = Gdx.app.getPreferences("Fruit_Destroyer_stats");
 		batch = new SpriteBatch();
 		camera = new OrthographicCamera(Constants.V_WIDTH, Constants.V_HEIGHT);
 		viewport = new FitViewport(Constants.V_WIDTH, Constants.V_HEIGHT, camera);

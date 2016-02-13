@@ -25,7 +25,7 @@ public class MenuHud extends Hud
     private ImageButton playButton;
     private Image title;
 
-    public MenuHud(final Application APP, final Font font, Viewport viewport, SpriteBatch batch, TextureRegion title, TextureRegion playButtonDrawableUp, TextureRegion playButtonDrawableDown, final Texture bg)
+    public MenuHud(final Application APP, Viewport viewport, SpriteBatch batch, TextureRegion title, TextureRegion playButtonDrawableUp, TextureRegion playButtonDrawableDown, final Texture bg)
     {
         super(viewport, batch);
 

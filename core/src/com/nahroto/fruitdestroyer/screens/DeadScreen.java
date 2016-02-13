@@ -6,6 +6,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.nahroto.fruitdestroyer.Application;
@@ -24,12 +25,12 @@ public class DeadScreen implements Screen
 
     private boolean adShown;
 
-    public DeadScreen(final Application APP, TextureRegion retryButtonUp, TextureRegion retryButtonDown, GameResetter gameResetter, Texture bg, InputMultiplexer inputMultiplexer)
+    public DeadScreen(final Application APP, TextureAtlas gameScreenAtlas, GameResetter gameResetter, Texture bg, InputMultiplexer inputMultiplexer)
     {
         this.APP = APP;
         this.bg = bg;
         this.inputMultiplexer = inputMultiplexer;
-        deadHud = new DeadHud(APP, APP.viewport, APP.batch, retryButtonUp, retryButtonDown, gameResetter);
+        deadHud = new DeadHud(APP, APP.viewport, APP.batch, gameScreenAtlas, gameResetter);
     }
 
     @Override
@@ -38,6 +39,7 @@ public class DeadScreen implements Screen
         if (Debug.SCREEN_INFO)
             Logger.log("DeadScreen");
         adShown = false;
+        deadHud.onShow();
         deadHud.addAllActors();
         inputMultiplexer.clear();
         inputMultiplexer.addProcessor(deadHud.getStage());

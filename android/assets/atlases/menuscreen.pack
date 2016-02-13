@@ -3,45 +3,24 @@ menuscreen.png
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-menuscreen
-  rotate: false
-  xy: 1, 285
-  size: 1024, 512
-  orig: 1024, 512
-  offset: 0, 0
-  index: -1
 title
   rotate: false
-  xy: 1, 167
+  xy: 1, 52
   size: 656, 116
   orig: 656, 116
   offset: 0, 0
   index: -1
-play-button-up
-  rotate: false
-  xy: 1027, 630
-  size: 276, 167
-  orig: 276, 167
-  offset: 0, 0
-  index: -1
 play-button-down
   rotate: false
-  xy: 1, 1
+  xy: 659, 4
   size: 276, 164
   orig: 276, 164
   offset: 0, 0
   index: -1
-playbutton-down
+play-button-up
   rotate: false
-  xy: 1027, 468
-  size: 260, 160
-  orig: 260, 160
-  offset: 0, 0
-  index: -1
-playbutton-up
-  rotate: false
-  xy: 1305, 637
-  size: 260, 160
-  orig: 260, 160
+  xy: 937, 1
+  size: 276, 167
+  orig: 276, 167
   offset: 0, 0
   index: -1

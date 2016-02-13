@@ -156,7 +156,7 @@ public class LoadingScreen2 implements Screen
 
         gameResetter = new GameResetter(APP, player, currentEnemies, currentBullets, currentCorpses, totalEnemies, totalBullets, totalCorpses);
 
-        deadScreen = new DeadScreen(APP, gameScreenAtlas.findRegion("retry-button-up"), gameScreenAtlas.findRegion("retry-button-down"), gameResetter, bg, inputMultiplexer);
+        deadScreen = new DeadScreen(APP, gameScreenAtlas, gameResetter, bg, inputMultiplexer);
 
         collisionHandler = new CollisionHandler(deadScreen, currentEnemies, currentBullets);
         waveSFX = APP.assets.get("sounds/victory.ogg", Sound.class);
