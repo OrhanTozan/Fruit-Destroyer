@@ -93,7 +93,8 @@ public class DeadHud extends Hud
 
     public void onShow()
     {
-        APP.prefs.putInteger("highScore", WaveGenerator.wave);
+        if (WaveGenerator.wave >= APP.prefs.getInteger("highScore", WaveGenerator.wave))
+            APP.prefs.putInteger("highScore", WaveGenerator.wave);
         highScore = APP.prefs.getInteger("highScore", WaveGenerator.wave);
     }
 
@@ -103,11 +104,11 @@ public class DeadHud extends Hud
         super.update(delta);
 
         waveLabel.setText("Wave " + WaveGenerator.wave.toString() + "!");
-        highScoreLabel.setText("Your record:\nWave" + WaveGenerator.wave.toString());
+        highScoreLabel.setText("Your record:\n      Wave " + highScore.toString());
 
         text.setPosition(Constants.V_WIDTH / 2 - waveFont.getWidth("You made it to") / 2, 1000);
         waveLabel.setPosition(retryButton.getX(Align.center) - bigWaveFont.getWidth("Wave " + WaveGenerator.wave.toString() + "!") / 2, 1000 - bigWaveFont.getHeight("Wave " + WaveGenerator.wave.toString() + "!") - 30);
-        highScoreLabel.setPosition(retryButton.getX(Align.center) - waveFont.getWidth("Your record:\nWave" + highScore.toString()) / 2, 730);
+        highScoreLabel.setPosition(Constants.V_WIDTH / 2 - waveFont.getWidth("Your record:\nWave " + highScore.toString()) / 2, 730);
     }
 
     public void disableInput()
