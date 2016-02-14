@@ -1,12 +1,18 @@
 android {
-    buildToolsVersion "22.0.1"
+    signingConfigs {
+        config {
+            keyAlias 'KEYSTORE2016'
+            keyPassword 'W8woord01'
+            storeFile file('C:/Users/Musa Tozan/Documents/Fruit_Destroyer/KEYSTORE/KEYSTORE_2016.jks')
+            storePassword 'W8woord01'
+        }
+    }
+    buildToolsVersion '22.0.1'
     compileSdkVersion 23
-
     defaultConfig {
         // Enabling multidex support.
         multiDexEnabled = true
     }
-
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -19,6 +25,11 @@ android {
         }
 
         instrumentTest.setRoot('tests')
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.config
+        }
     }
 }
 // called every time gradle gets executed, takes the native dependencies of
