@@ -11,5 +11,5 @@ Save this file as res/values/games-ids.xml in your project.
     <string name="achievement_ach3">CgkIt9qEjqkbEAIQAw</string>
     <string name="achievement_ach4">CgkIt9qEjqkbEAIQBA</string>
     <string name="achievement_ach5">CgkIt9qEjqkbEAIQBQ</string>
-    <string name="leaderboard_high_scores_highest_wave">CgkIt9qEjqkbEAIQBg</string>
+    <string name="leaderboard_highest_wave_score">CgkIt9qEjqkbEAIQBg</string>
 </resources>

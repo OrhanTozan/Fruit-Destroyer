@@ -373,7 +373,7 @@
     <string name="gamehelper_unknown_error">Unknown error.</string>
     <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/res/values/ids.xml -->
     <eat-comment/>
-    <string name="leaderboard_high_scores_highest_wave">CgkIt9qEjqkbEAIQBg</string>
+    <string name="leaderboard_highest_wave_score">CgkIt9qEjqkbEAIQBg</string>
     <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/build/intermediates/exploded-aar/Fruit_Destroyer/BaseGameUtils/1.0/res/values/values.xml -->
     <eat-comment/>
     <string name="license_failed">License check failed.</string>

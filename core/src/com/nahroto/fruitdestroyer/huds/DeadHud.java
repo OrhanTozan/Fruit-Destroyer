@@ -26,13 +26,14 @@ public class DeadHud extends Hud
 
     private ImageButton retryButton;
     private ImageButton homeButton;
+    private ImageButton highScoreButton;
     private Font waveFont;
     private Font bigWaveFont;
     private Label text;
     private Label waveLabel;
     private Label highScoreLabel;
 
-    private Integer highScore = new Integer(1);
+    public static Integer highScore = new Integer(1);
 
     public DeadHud(final Application APP, Viewport viewport, SpriteBatch batch, TextureAtlas gameScreenAtlas, final GameResetter gameResetter)
     {
@@ -42,8 +43,11 @@ public class DeadHud extends Hud
         // CONFIG RETRY-BUTTON
         homeButton = new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("home-button-up")), new TextureRegionDrawable(gameScreenAtlas.findRegion("home-button-down")));
         retryButton = new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("retry-button-up")), new TextureRegionDrawable(gameScreenAtlas.findRegion("retry-button-down")));
-        retryButton.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 - 200, Align.center);
-        homeButton.setPosition(retryButton.getX(Align.center), retryButton.getY(Align.bottom) - 30, Align.top);
+        highScoreButton = new ImageButton(new TextureRegionDrawable(gameScreenAtlas.findRegion("highscore-button-up")), new TextureRegionDrawable(gameScreenAtlas.findRegion("highscore-button-down")));
+        retryButton.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 - 100, Align.center);
+        homeButton.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 - 485, Align.center);
+        highScoreButton.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 - 300, Align.center);
+
         retryButton.addListener(new ClickListener()
         {
             @Override
@@ -72,6 +76,20 @@ public class DeadHud extends Hud
                 APP.setScreen(APP.menuScreen);
             }
         });
+        highScoreButton.addListener(new ClickListener()
+        {
+            public void clicked(InputEvent event, float x, float y)
+            {
+
+                if (!APP.playServices.isSignedIn())
+                {
+                    APP.playServices.signIn();
+                    APP.playServices.showScore();
+                }
+                else
+                    APP.playServices.showScore();
+            }
+        });
 
         waveFont = new Font(APP, "trompus12.otf", "fonts/trompus.otf", 75, Color.WHITE, Color.BLACK, 3, true);
         bigWaveFont = new Font(APP, "trompus99.otf", "fonts/trompus.otf", 120, Color.WHITE, Color.BLACK, 3, true);
@@ -80,12 +98,13 @@ public class DeadHud extends Hud
         waveLabel = new Label(WaveGenerator.wave.toString() + "!", new Label.LabelStyle(bigWaveFont.getFont(), Color.WHITE));
         highScoreLabel = new Label("Your record: Wave" + APP.prefs.getInteger("highScore", WaveGenerator.wave), new Label.LabelStyle(waveFont.getFont(), Color.WHITE));
 
-        text.setPosition(Constants.V_WIDTH / 2 - waveFont.getWidth("You made it to") / 2, 1000);
-        waveLabel.setPosition(retryButton.getX(Align.center) - bigWaveFont.getWidth("Wave " + WaveGenerator.wave.toString() + "!") / 2, 1000 - bigWaveFont.getHeight("Wave " + WaveGenerator.wave.toString() + "!") - 40);
-        highScoreLabel.setPosition(retryButton.getX(Align.center) - waveFont.getWidth("Your record: Wave" + WaveGenerator.wave.toString()) / 2, 800);
+        text.setPosition(Constants.V_WIDTH / 2 - waveFont.getWidth("You made it to") / 2, 1100);
+        waveLabel.setPosition(retryButton.getX(Align.center) - bigWaveFont.getWidth("Wave " + WaveGenerator.wave.toString() + "!") / 2, 1100 - bigWaveFont.getHeight("Wave " + WaveGenerator.wave.toString() + "!") - 30);
+        highScoreLabel.setPosition(Constants.V_WIDTH / 2 - waveFont.getWidth("Your record:\nWave " + highScore.toString()) / 2, 830);
 
         actors.add(retryButton);
         actors.add(homeButton);
+        actors.add(highScoreButton);
         actors.add(text);
         actors.add(waveLabel);
         actors.add(highScoreLabel);
@@ -93,6 +112,7 @@ public class DeadHud extends Hud
 
     public void onShow()
     {
+        APP.playServices.submitScore(WaveGenerator.wave);
         if (WaveGenerator.wave >= APP.prefs.getInteger("highScore", WaveGenerator.wave))
         {
             APP.prefs.putInteger("highScore", WaveGenerator.wave);
@@ -109,9 +129,9 @@ public class DeadHud extends Hud
         waveLabel.setText("Wave " + WaveGenerator.wave.toString() + "!");
         highScoreLabel.setText("Your record:\n      Wave " + highScore.toString());
 
-        text.setPosition(Constants.V_WIDTH / 2 - waveFont.getWidth("You made it to") / 2, 1000);
-        waveLabel.setPosition(retryButton.getX(Align.center) - bigWaveFont.getWidth("Wave " + WaveGenerator.wave.toString() + "!") / 2, 1000 - bigWaveFont.getHeight("Wave " + WaveGenerator.wave.toString() + "!") - 30);
-        highScoreLabel.setPosition(Constants.V_WIDTH / 2 - waveFont.getWidth("Your record:\nWave " + highScore.toString()) / 2, 730);
+        text.setPosition(Constants.V_WIDTH / 2 - waveFont.getWidth("You made it to") / 2, 1100);
+        waveLabel.setPosition(retryButton.getX(Align.center) - bigWaveFont.getWidth("Wave " + WaveGenerator.wave.toString() + "!") / 2, 1100 - bigWaveFont.getHeight("Wave " + WaveGenerator.wave.toString() + "!") - 30);
+        highScoreLabel.setPosition(Constants.V_WIDTH / 2 - waveFont.getWidth("Your record:\nWave " + highScore.toString()) / 2, 830);
     }
 
     public void disableInput()

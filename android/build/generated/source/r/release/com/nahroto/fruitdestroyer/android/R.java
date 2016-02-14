@@ -2415,7 +2415,7 @@ containing a value of this type.
         public static final int gamehelper_license_failed=0x7f06004f;
         public static final int gamehelper_sign_in_failed=0x7f060050;
         public static final int gamehelper_unknown_error=0x7f060051;
-        public static final int leaderboard_high_scores_highest_wave=0x7f060052;
+        public static final int leaderboard_highest_wave_score=0x7f060052;
         public static final int license_failed=0x7f060053;
         public static final int mr_media_route_button_content_description=0x7f06002e;
         public static final int mr_media_route_chooser_searching=0x7f06002f;

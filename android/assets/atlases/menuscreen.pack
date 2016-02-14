@@ -24,3 +24,17 @@ play-button-up
   orig: 276, 167
   offset: 0, 0
   index: -1
+highscore-button-up
+  rotate: false
+  xy: 1215, 1
+  size: 237, 167
+  orig: 237, 167
+  offset: 0, 0
+  index: -1
+highscore-button-down
+  rotate: false
+  xy: 1454, 4
+  size: 237, 164
+  orig: 237, 164
+  offset: 0, 0
+  index: -1

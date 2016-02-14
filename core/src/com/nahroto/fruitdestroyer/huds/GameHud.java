@@ -23,6 +23,7 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.Constants;
+import com.nahroto.fruitdestroyer.Debug;
 import com.nahroto.fruitdestroyer.Font;
 import com.nahroto.fruitdestroyer.Input;
 import com.nahroto.fruitdestroyer.Logger;
@@ -274,7 +275,6 @@ public class GameHud extends Hud
 
     public void animateWaveLabel(boolean buyTime)
     {
-        Logger.log("activated");
         Input.touchDown = false;
         GameHud.reloadingIsAllowed = false;
         animatingWave = true;
@@ -351,7 +351,8 @@ public class GameHud extends Hud
                 GameHud.reloadingIsAllowed = false;
                 buyHud.update(Gdx.graphics.getDeltaTime());
                 buyHud.turnON();
-                Logger.log("BUYTIME");
+                if (Debug.INFO)
+                    Logger.log("BUYTIME");
             }
         };
     }

@@ -174,7 +174,7 @@ public class AndroidLauncher extends AndroidApplication implements AdsController
 		if (isSignedIn() == true)
 		{
 			Games.Leaderboards.submitScore(gameHelper.getApiClient(),
-					getString(R.string.leaderboard_high_scores_highest_wave), highScore);
+					getString(R.string.leaderboard_highest_wave_score), highScore);
 		}
 	}
 
@@ -197,7 +197,7 @@ public class AndroidLauncher extends AndroidApplication implements AdsController
 		if (isSignedIn() == true)
 		{
 			startActivityForResult(Games.Leaderboards.getLeaderboardIntent(gameHelper.getApiClient(),
-					getString(R.string.leaderboard_high_scores_highest_wave)), requestCode);
+					getString(R.string.leaderboard_highest_wave_score)), requestCode);
 		}
 		else
 		{

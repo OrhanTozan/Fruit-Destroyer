@@ -191,7 +191,7 @@ MERGED from com.google.android.gms:play-services-maps:8.4.0:20:5
 	android:name
 		ADDED from AndroidManifest.xml:12:22
 application
-ADDED from AndroidManifest.xml:15:5
+ADDED from AndroidManifest.xml:14:5
 MERGED from com.google.android.gms:play-services-games:8.4.0:19:5
 MERGED from com.google.android.gms:play-services-basement:8.4.0:20:5
 MERGED from com.android.support:support-v4:23.0.0:22:5
@@ -308,75 +308,75 @@ MERGED from com.android.support:support-v4:23.0.0:22:5
 	android:allowBackup
 		ADDED from Fruit_Destroyer:BaseGameUtils:1.0:30:18
 	android:name
-		ADDED from AndroidManifest.xml:15:18
+		ADDED from AndroidManifest.xml:14:18
 activity#com.nahroto.fruitdestroyer.android.AndroidLauncher
-ADDED from AndroidManifest.xml:20:9
+ADDED from AndroidManifest.xml:19:9
 	android:screenOrientation
-		ADDED from AndroidManifest.xml:24:13
-	android:label
 		ADDED from AndroidManifest.xml:23:13
-	android:configChanges
+	android:label
 		ADDED from AndroidManifest.xml:22:13
-	android:name
+	android:configChanges
 		ADDED from AndroidManifest.xml:21:13
+	android:name
+		ADDED from AndroidManifest.xml:20:13
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from AndroidManifest.xml:25:13
+ADDED from AndroidManifest.xml:24:13
 action#android.intent.action.MAIN
-ADDED from AndroidManifest.xml:26:17
+ADDED from AndroidManifest.xml:25:17
 	android:name
-		ADDED from AndroidManifest.xml:26:25
+		ADDED from AndroidManifest.xml:25:25
 category#android.intent.category.LAUNCHER
-ADDED from AndroidManifest.xml:28:17
+ADDED from AndroidManifest.xml:27:17
 	android:name
-		ADDED from AndroidManifest.xml:28:27
+		ADDED from AndroidManifest.xml:27:27
 meta-data#com.google.android.gms.games.APP_ID
-ADDED from AndroidManifest.xml:32:9
+ADDED from AndroidManifest.xml:31:9
 	android:value
-		ADDED from AndroidManifest.xml:32:71
+		ADDED from AndroidManifest.xml:31:71
+	android:name
+		ADDED from AndroidManifest.xml:31:20
+meta-data#com.google.android.gms.version
+ADDED from AndroidManifest.xml:32:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+	android:value
+		ADDED from AndroidManifest.xml:32:66
 	android:name
 		ADDED from AndroidManifest.xml:32:20
-meta-data#com.google.android.gms.version
-ADDED from AndroidManifest.xml:33:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
-	android:value
-		ADDED from AndroidManifest.xml:33:66
-	android:name
-		ADDED from AndroidManifest.xml:33:20
 meta-data#unityplayer.ForwardNativeEventsToDalvik
 ADDED from Fruit_Destroyer:BaseGameUtils:1.0:26:5
 	android:value
