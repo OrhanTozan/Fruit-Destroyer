@@ -94,7 +94,10 @@ public class DeadHud extends Hud
     public void onShow()
     {
         if (WaveGenerator.wave >= APP.prefs.getInteger("highScore", WaveGenerator.wave))
+        {
             APP.prefs.putInteger("highScore", WaveGenerator.wave);
+            APP.prefs.flush();
+        }
         highScore = APP.prefs.getInteger("highScore", WaveGenerator.wave);
     }
 

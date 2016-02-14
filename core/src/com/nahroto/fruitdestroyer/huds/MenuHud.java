@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -19,6 +20,8 @@ import com.nahroto.fruitdestroyer.Font;
 import com.nahroto.fruitdestroyer.Logger;
 import com.nahroto.fruitdestroyer.screens.LoadingScreen2;
 import com.nahroto.fruitdestroyer.screens.MenuScreen;
+
+import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
 
 public class MenuHud extends Hud
 {
@@ -42,16 +45,26 @@ public class MenuHud extends Hud
                     Logger.log("BUTTON PRESSED");
                 if (APP.getScreen().getClass() == MenuScreen.class)
                 {
-                    if(Debug.INFO)
+                    if (Debug.INFO)
                         Logger.log("BUTTON ACTIVATED");
                     APP.setScreen(APP.loadingScreen2);
                 }
             }
         });
 
+        Logger.log("MENUHUD INSTATSJL");
+        this.title.setOrigin(Align.center);
+        this.title.setScale(10f, 10f);
+
+
         actors.add(this.title);
         actors.add(playButton);
 
         addAllActors();
+    }
+
+    public void show()
+    {
+        this.title.addAction(scaleTo(1f, 1f, 1f));
     }
 }

@@ -43,6 +43,7 @@ public class MenuScreen implements Screen
         epicTheme.play();
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
         APP.camera.update();
+        menuHud.show();
     }
 
     @Override

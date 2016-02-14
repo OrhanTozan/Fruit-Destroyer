@@ -17,7 +17,7 @@ public class ExtraAmmoOverlay extends UpgradeOverlay
 
     public ExtraAmmoOverlay(final Application APP, ImageButton button, TextureAtlas gameScreenAtlas, BuyHud buyHud, Player player)
     {
-        super(APP, "The magsize of your weapon.\nUseful when raided by big\ngroups of enemies!", 3, button, gameScreenAtlas, buyHud, player);
+        super(APP, "The magsize of your weapon.\nUpgrade is useful when raided\nby big groups of enemies!", 3, button, gameScreenAtlas, buyHud, player);
 
         currentValue = new Integer(Bullet.START_MAGSIZE);
         nextValue = new Integer(currentValue + UPGRADE_STEP);

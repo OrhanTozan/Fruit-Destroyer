@@ -23,6 +23,9 @@ public class LoadingScreen extends BasicLoadingScreen implements Screen
     private Texture bg;
     private MenuHud menuHud;
 
+    private boolean assetsLoaded = false;
+    private long startTime;
+
     public LoadingScreen(final Application APP)
     {
         super(APP);
@@ -71,15 +74,19 @@ public class LoadingScreen extends BasicLoadingScreen implements Screen
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        if (APP.assets.update())
+        if (APP.assets.update() && !assetsLoaded)
         {
             bg = APP.assets.get("backgrounds/map.png", Texture.class);
             bg.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
             APP.loadingScreen2 = new LoadingScreen2(APP, font, bg);
             menuScreenAtlas = APP.assets.get("atlases/menuscreen.pack", TextureAtlas.class);
             APP.menuScreen = new MenuScreen(APP, font, bg, new MenuHud(APP, APP.viewport, APP.batch, menuScreenAtlas.findRegion("title"), menuScreenAtlas.findRegion("play-button-up"), menuScreenAtlas.findRegion("play-button-down"), bg), APP.assets.get("music/epictheme.ogg", Music.class));
-            APP.setScreen(APP.menuScreen);
+            assetsLoaded = true;
+            startTime = System.currentTimeMillis();
         }
+
+        if (assetsLoaded && System.currentTimeMillis() - startTime >= 5000)
+            APP.setScreen(APP.menuScreen);
 
         APP.batch.setProjectionMatrix(APP.camera.combined);
         APP.batch.begin();
