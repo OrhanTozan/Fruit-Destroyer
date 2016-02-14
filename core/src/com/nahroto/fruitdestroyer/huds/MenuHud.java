@@ -119,7 +119,7 @@ public class MenuHud extends Hud
 
         waveLabel.setText("Wave " + APP.prefs.getInteger("highScore", 1) + "!");
 
-        text.setPosition(Constants.V_WIDTH / 2 - waveFont.getWidth("Highest wave record") / 2, 275);
+        text.setPosition(Constants.V_WIDTH / 2 - waveFont.getWidth("Highest wave record") / 2, 260);
         waveLabel.setPosition(Constants.V_WIDTH / 2 - bigWaveFont.getWidth("Wave " + APP.prefs.getInteger("highScore", 1) + "!") / 2, 250 - bigWaveFont.getHeight("Wave " + APP.prefs.getInteger("highScore", 1) + "!") - 30);
     }
 }

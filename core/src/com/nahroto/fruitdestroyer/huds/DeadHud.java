@@ -96,11 +96,11 @@ public class DeadHud extends Hud
 
         text = new Label("You made it to", new Label.LabelStyle(waveFont.getFont(), Color.WHITE));
         waveLabel = new Label(WaveGenerator.wave.toString() + "!", new Label.LabelStyle(bigWaveFont.getFont(), Color.WHITE));
-        highScoreLabel = new Label("Your record: Wave" + APP.prefs.getInteger("highScore", WaveGenerator.wave), new Label.LabelStyle(waveFont.getFont(), Color.WHITE));
+        highScoreLabel = new Label("Your record\nWave" + APP.prefs.getInteger("highScore", WaveGenerator.wave), new Label.LabelStyle(waveFont.getFont(), Color.WHITE));
 
         text.setPosition(Constants.V_WIDTH / 2 - waveFont.getWidth("You made it to") / 2, 1100);
         waveLabel.setPosition(retryButton.getX(Align.center) - bigWaveFont.getWidth("Wave " + WaveGenerator.wave.toString() + "!") / 2, 1100 - bigWaveFont.getHeight("Wave " + WaveGenerator.wave.toString() + "!") - 30);
-        highScoreLabel.setPosition(Constants.V_WIDTH / 2 - waveFont.getWidth("Your record:\nWave " + highScore.toString()) / 2, 830);
+        highScoreLabel.setPosition(Constants.V_WIDTH / 2 - waveFont.getWidth("Your record\nWave " + highScore.toString()) / 2, 830);
 
         actors.add(retryButton);
         actors.add(homeButton);
@@ -127,11 +127,11 @@ public class DeadHud extends Hud
         super.update(delta);
 
         waveLabel.setText("Wave " + WaveGenerator.wave.toString() + "!");
-        highScoreLabel.setText("Your record:\n      Wave " + highScore.toString());
+        highScoreLabel.setText("Your record\n      Wave " + highScore.toString());
 
         text.setPosition(Constants.V_WIDTH / 2 - waveFont.getWidth("You made it to") / 2, 1100);
         waveLabel.setPosition(retryButton.getX(Align.center) - bigWaveFont.getWidth("Wave " + WaveGenerator.wave.toString() + "!") / 2, 1100 - bigWaveFont.getHeight("Wave " + WaveGenerator.wave.toString() + "!") - 30);
-        highScoreLabel.setPosition(Constants.V_WIDTH / 2 - waveFont.getWidth("Your record:\nWave " + highScore.toString()) / 2, 830);
+        highScoreLabel.setPosition(Constants.V_WIDTH / 2 - waveFont.getWidth("Your record\nWave " + highScore.toString()) / 2, 830);
     }
 
     public void disableInput()
