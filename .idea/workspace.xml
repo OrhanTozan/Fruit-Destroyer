@@ -38,51 +38,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MenuScreen.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/screens/MenuScreen.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="45" column="23" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MenuHud.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/MenuHud.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="37" column="16" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
-              <folding>
-                <element signature="e#1841#2309#0" expanded="true" />
-                <element signature="e#2308#2309#0" expanded="true" />
-                <element signature="e#2562#2563#0" expanded="true" />
-                <element signature="e#2619#2620#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="GameScreen.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/screens/GameScreen.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+              <caret line="265" column="16" selection-start-line="265" selection-start-column="16" selection-end-line="265" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoadingScreen.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/screens/LoadingScreen.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.13225058">
-              <caret line="79" column="85" selection-start-line="79" selection-start-column="85" selection-end-line="79" selection-end-column="85" />
-              <folding>
-                <element signature="e#3680#3681#0" expanded="true" />
-                <element signature="e#3730#3731#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -92,52 +54,102 @@
         <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/WaveGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="41" column="40" selection-start-line="41" selection-start-column="40" selection-end-line="41" selection-end-column="40" />
+              <caret line="149" column="24" selection-start-line="149" selection-start-column="24" selection-end-line="149" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DeadHud.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/DeadHud.java">
+      <file leaf-file-name="LoadingScreen2.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/screens/LoadingScreen2.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="122" column="29" selection-start-line="122" selection-start-column="29" selection-end-line="122" selection-end-column="29" />
+              <caret line="170" column="86" selection-start-line="170" selection-start-column="86" selection-end-line="170" selection-end-column="86" />
               <folding>
-                <element signature="e#2161#2532#0" expanded="true" />
-                <element signature="e#2531#2532#0" expanded="true" />
-                <element signature="e#2567#2925#0" expanded="true" />
-                <element signature="e#2924#2925#0" expanded="true" />
+                <element signature="e#8321#8322#0" expanded="true" />
+                <element signature="e#8371#8372#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ExtraAmmoOverlay.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/upgradeoverlays/ExtraAmmoOverlay.java">
+      <file leaf-file-name="BuyHud.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/BuyHud.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="37" column="32" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
+              <caret line="460" column="32" selection-start-line="460" selection-start-column="32" selection-end-line="460" selection-end-column="32" />
+              <folding>
+                <element signature="e#19267#19268#0" expanded="true" />
+                <element signature="e#19310#19311#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameResetter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/helpers/GameResetter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+              <folding>
+                <element signature="e#3546#3547#0" expanded="true" />
+                <element signature="e#3590#3591#0" expanded="true" />
+                <element signature="e#4493#4494#0" expanded="true" />
+                <element signature="e#4535#4536#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IntroHud.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/IntroHud.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="80" column="25" selection-start-line="80" selection-start-column="25" selection-end-line="80" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2873#3093#0" expanded="true" />
+                <element signature="e#3092#3093#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MenuHud.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/MenuHud.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.512761">
+              <caret line="51" column="17" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Application.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/Application.java">
+      <file leaf-file-name="ExtraKnockbackOverlay.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/upgradeoverlays/ExtraKnockbackOverlay.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="46" column="34" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
+              <caret line="17" column="56" selection-start-line="17" selection-start-column="56" selection-end-line="17" selection-end-column="56" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Hud.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/Hud.java">
+      <file leaf-file-name="UpgradeOverlay.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/upgradeoverlays/UpgradeOverlay.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+              <caret line="45" column="23" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Corpse.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/entities/Corpse.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="10" column="45" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -2577,9 +2589,7 @@
         <option value="$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/FontManager.java" />
         <option value="$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/upgradeoverlays/ExtraAccuracyOverlay.java" />
         <option value="$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/upgradeoverlays/ExtraKnockbackOverlay.java" />
-        <option value="$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/IntroHud.java" />
         <option value="$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/screens/IntroScreen.java" />
-        <option value="$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/screens/GameScreen.java" />
         <option value="$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/screens/BasicLoadingScreen.java" />
         <option value="$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/powerupoverlays/PowerupOverlay.java" />
         <option value="$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/BuyHud.java" />
@@ -2595,17 +2605,20 @@
         <option value="$PROJECT_DIR$/android/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/upgradeoverlays/UpgradeOverlay.java" />
         <option value="$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/Debug.java" />
-        <option value="$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/screens/LoadingScreen2.java" />
         <option value="$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/upgradeoverlays/ExtraReloadSpeedOverlay.java" />
-        <option value="$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/helpers/GameResetter.java" />
         <option value="$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/WaveGenerator.java" />
         <option value="$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/Application.java" />
         <option value="$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/screens/DeadScreen.java" />
         <option value="$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/DeadHud.java" />
         <option value="$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/upgradeoverlays/ExtraAmmoOverlay.java" />
         <option value="$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/screens/MenuScreen.java" />
-        <option value="$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/MenuHud.java" />
         <option value="$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/screens/LoadingScreen.java" />
+        <option value="$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/screens/GameScreen.java" />
+        <option value="$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/helpers/GameResetter.java" />
+        <option value="$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/screens/LoadingScreen2.java" />
+        <option value="$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/entities/Corpse.java" />
+        <option value="$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/IntroHud.java" />
+        <option value="$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/MenuHud.java" />
       </list>
     </option>
   </component>
@@ -2795,6 +2808,50 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fruit_Destroyer" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.NonAndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.NonAndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fruitdestroyer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="helpers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fruit_Destroyer" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.NonAndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.NonAndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fruitdestroyer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="entities" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -2813,7 +2870,7 @@
     <property name="android.project.structure.last.selected" value="android" />
     <property name="android.project.structure.proportion" value="0.15" />
   </component>
-  <component name="RunManager" selected="Android Application.Android">
+  <component name="RunManager" selected="Application.Desktop">
     <configuration default="false" name="C:/Users/Musa Tozan/Documents/Fruit_Destroyer/android [android:assembleRelease]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -3036,7 +3093,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1609" height="1047" extended-state="1" />
+    <frame x="-7" y="0" width="1609" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -3119,13 +3176,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.9.2/b6c7422c6740f86a9a84fdcbc4c62a1f46db317d/gdx-1.9.2-sources.jar!/com/badlogic/gdx/scenes/scene2d/ui/Button.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.68793505">
-          <caret line="149" column="19" selection-start-line="149" selection-start-column="19" selection-end-line="149" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.9.2/b6c7422c6740f86a9a84fdcbc4c62a1f46db317d/gdx-1.9.2-sources.jar!/com/badlogic/gdx/scenes/scene2d/Touchable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.118329465">
@@ -3149,14 +3199,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/entities/Bullet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="46" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.9.2/b6c7422c6740f86a9a84fdcbc4c62a1f46db317d/gdx-1.9.2-sources.jar!/com/badlogic/gdx/utils/Align.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3176,13 +3218,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/upgradeoverlays/ExtraKnockbackOverlay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="56" selection-start-line="17" selection-start-column="56" selection-end-line="17" selection-end-column="56" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3190,17 +3226,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="78" column="119" selection-start-line="78" selection-start-column="119" selection-end-line="78" selection-end-column="119" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/BuyHud.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="176" column="101" selection-start-line="176" selection-start-column="101" selection-end-line="176" selection-end-column="101" />
-          <folding>
-            <element signature="e#4842#5018#0" expanded="true" />
-            <element signature="e#5017#5018#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3348,17 +3374,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/upgradeoverlays/UpgradeOverlay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="45" column="23" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
-          <folding>
-            <element signature="e#1863#2215#0" expanded="true" />
-            <element signature="e#2214#2215#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3392,29 +3407,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="34" column="9" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/IntroHud.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2844#3064#0" expanded="true" />
-            <element signature="e#3063#3064#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/helpers/GameResetter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="95" column="33" selection-start-line="95" selection-start-column="33" selection-end-line="95" selection-end-column="33" />
-          <folding>
-            <element signature="e#3542#3543#0" expanded="true" />
-            <element signature="e#3575#3576#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3458,14 +3450,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/WaveGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="41" column="40" selection-start-line="41" selection-start-column="40" selection-end-line="41" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/upgradeoverlays/ExtraAmmoOverlay.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3482,12 +3466,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/screens/GameScreen.java">
+    <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/Hud.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/entities/Bullet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="105" column="23" selection-start-line="105" selection-start-column="23" selection-end-line="105" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="46" column="34" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/screens/LoadingScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="103" column="23" selection-start-line="103" selection-start-column="23" selection-end-line="103" selection-end-column="23" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#3680#3681#0" expanded="true" />
+            <element signature="e#3730#3731#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3505,31 +3514,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/Application.java">
+    <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/WaveGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="46" column="34" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
+          <caret line="149" column="24" selection-start-line="149" selection-start-column="24" selection-end-line="149" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/Hud.java">
+    <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/screens/GameScreen.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/MenuHud.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="16" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
+          <caret line="265" column="16" selection-start-line="265" selection-start-column="16" selection-end-line="265" selection-end-column="16" />
           <folding>
-            <element signature="e#1841#2309#0" expanded="true" />
-            <element signature="e#2308#2309#0" expanded="true" />
-            <element signature="e#2562#2563#0" expanded="true" />
-            <element signature="e#2619#2620#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/entities/Corpse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="45" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/helpers/GameResetter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+          <folding>
+            <element signature="e#3546#3547#0" expanded="true" />
+            <element signature="e#3590#3591#0" expanded="true" />
+            <element signature="e#4493#4494#0" expanded="true" />
+            <element signature="e#4535#4536#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/IntroHud.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="80" column="25" selection-start-line="80" selection-start-column="25" selection-end-line="80" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2873#3093#0" expanded="true" />
+            <element signature="e#3092#3093#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/upgradeoverlays/ExtraKnockbackOverlay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="56" selection-start-line="17" selection-start-column="56" selection-end-line="17" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/upgradeoverlays/UpgradeOverlay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="23" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/BuyHud.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="460" column="32" selection-start-line="460" selection-start-column="32" selection-end-line="460" selection-end-column="32" />
+          <folding>
+            <element signature="e#19267#19268#0" expanded="true" />
+            <element signature="e#19310#19311#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3537,19 +3595,19 @@
     <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/screens/LoadingScreen2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="162" column="87" selection-start-line="162" selection-start-column="87" selection-end-line="162" selection-end-column="87" />
-          <folding />
+          <caret line="170" column="86" selection-start-line="170" selection-start-column="86" selection-end-line="170" selection-end-column="86" />
+          <folding>
+            <element signature="e#8321#8322#0" expanded="true" />
+            <element signature="e#8371#8372#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/screens/LoadingScreen.java">
+    <entry file="file://$PROJECT_DIR$/core/src/com/nahroto/fruitdestroyer/huds/MenuHud.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13225058">
-          <caret line="79" column="85" selection-start-line="79" selection-start-column="85" selection-end-line="79" selection-end-column="85" />
-          <folding>
-            <element signature="e#3680#3681#0" expanded="true" />
-            <element signature="e#3730#3731#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.512761">
+          <caret line="51" column="17" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>

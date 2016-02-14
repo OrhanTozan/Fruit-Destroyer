@@ -127,7 +127,7 @@ public class LoadingScreen2 implements Screen
             totalOranges.add(new Orange(APP, gameScreenAtlas.findRegion("orange"), gameScreenAtlas.findRegion("orange-hit"), gameScreenAtlas.createSprite("red-bar"), gameScreenAtlas.createSprite("green-bar")));
 
         // INIT ANANASES
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 30; i++)
             totalAnanases.add(new Ananas(APP, gameScreenAtlas.findRegion("ananas"), gameScreenAtlas.findRegion("ananas-hit"), gameScreenAtlas.createSprite("red-bar"), gameScreenAtlas.createSprite("green-bar")));
 
         for (int i = 0; i < 30; i++)
@@ -169,6 +169,7 @@ public class LoadingScreen2 implements Screen
         gameResetter.setGameScreen(gameScreen);
         gameResetter.setGameHud(gameHud);
         gameResetter.setOverlays(buyHud.getExtraAmmoOverlay(), buyHud.getExtraAccuracyOverlay(), buyHud.getExtraReloadSpeedOverlay(), buyHud.getExtraKnockbackOverlay(), buyHud.getMarksmanOverlay(), buyHud.getInstakillOverlay(), buyHud.getBombOverlay());
+        gameResetter.setWaveQueue(waveGenerator.getQueue());
     }
 
     @Override

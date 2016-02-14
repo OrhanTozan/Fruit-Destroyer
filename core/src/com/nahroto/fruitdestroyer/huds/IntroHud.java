@@ -78,6 +78,7 @@ public class IntroHud extends Hud
                         underscript2.addAction(alpha(0f, 1f));
                     }
                 })),
+                delay(0.7f),
                 run(new Runnable()
                 {
                     @Override

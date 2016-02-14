@@ -278,6 +278,7 @@ public class GameScreen implements Screen
                 if (currentCorpses.get(i).isDone)
                 {
                     currentCorpses.get(i).isDone = false;
+                    currentCorpses.get(i).isBusy = false;
                     currentCorpses.removeIndex(i);
                 }
             }

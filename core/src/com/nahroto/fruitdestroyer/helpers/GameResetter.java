@@ -25,6 +25,8 @@ public class GameResetter
 
     private GameHud gameHud;
 
+    private Array<Enemy> waveQueue;
+
     private Array<Enemy> currentEnemies;
     private Array<Bullet> currentBullets;
     private Array<Corpse> currentCorpses;
@@ -84,6 +86,9 @@ public class GameResetter
         // RESET WAVE VALUE
         WaveGenerator.wave = 1;
 
+        // CLEAR WAVE QUEUE
+        waveQueue.clear();
+
         // UPDATE WAVE COUNTER
         gameHud.updateWaveText();
 
@@ -126,5 +131,10 @@ public class GameResetter
         this.marksmanOverlay = marksmanOverlay;
         this.instaKillOverlay = instaKillOverlay;
         this.bombOverlay = bombOverlay;
+    }
+
+    public void setWaveQueue(Array<Enemy> waveQueue)
+    {
+        this.waveQueue = waveQueue;
     }
 }
