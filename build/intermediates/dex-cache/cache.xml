@@ -2,144 +2,11 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\8.4.0\jars\classes.jar"
+        jar="C:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.0\support-annotations-23.0.0.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="1c9f35e952b212c843f7bd2c7eec8e82ad95602e">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-630a6e761c3d2917599a329167feec8e659f1a43.jar" />
-    </item>
-    <item
-        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-vision\8.4.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="dfecc4d835cdabcdecf7e95f0d20a3ef1e9d8ef4">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-aa96f7de84f17d59c2e0c27a518ef8e6c0868ef1.jar" />
-    </item>
-    <item
-        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\8.4.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="3a364cc6b698d1b3b2d284f64618daaa7fe77ddf">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-b450636cc26559d78d5e1832024d96af571473b9.jar" />
-    </item>
-    <item
-        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\23.0.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="d358b3dd49a7c67844622dcbc9cf4339e13952ce">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-f4293544c2eacf81aff316212aeb508120f8c06b.jar" />
-    </item>
-    <item
-        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\8.4.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="08d34b2d135c1cc96ab506fd8bf6916d1e2f391a">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-41f246f243014ee7899ce326cf4a29e42068eb3c.jar" />
-    </item>
-    <item
-        jar="C:\Users\Musa Tozan\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx\1.9.2\e641cb91bec06bc64d9ddf7a7d7062caceec73cd\gdx-1.9.2.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="e641cb91bec06bc64d9ddf7a7d7062caceec73cd">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\gdx-1.9.2-7a281b116f7c5cb927811a442c0bc88ee462bffc.jar" />
-    </item>
-    <item
-        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\8.4.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="b36f30ac5ee5d5214f4b1e2ac49f11889d58e71a">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-6f578c01033b6785fff344a268c11d64e61feed5.jar" />
-    </item>
-    <item
-        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\8.4.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="c54246475c1bb64ac6857d1320364bfbfeda2c46">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-47d06d19c5589565c742f6f1b668775f58317345.jar" />
-    </item>
-    <item
-        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="8413c27b45b7fe61dca4a98159f65e2cee215f5a">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-96a0064def601ccddd7bc2eea91ca5de874e5071.jar" />
-    </item>
-    <item
-        jar="C:\Users\Musa Tozan\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-freetype\1.9.2\3609253d14edb1b3ca5aacff4e06989edde75be4\gdx-freetype-1.9.2.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="3609253d14edb1b3ca5aacff4e06989edde75be4">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\gdx-freetype-1.9.2-1e4c37fb91f11323b8f10a0a668829bc5146635b.jar" />
-    </item>
-    <item
-        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\core\build\libs\core-1.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="b7af926179f9e9c583182074af20133f573e485f">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\core-1.0-29b3745a2124a267304d6e7e0a93437f3d61d048.jar" />
-    </item>
-    <item
-        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\8.4.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="a8412b654dab86d57bf90683367488211c8a81f1">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-6ee2c436fc0fac54a305ac858b8a37f52250dc59.jar" />
-    </item>
-    <item
-        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\8.4.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="1a78298e7724d5440d210bcb946b3493250d354d">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-79d7b5734422288f2900d137da6c8b2eb1f8531a.jar" />
-    </item>
-    <item
-        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\8.4.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="e167a34eaca0b31704212f43f9576ea84e05046f">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-8de664c9178a940e32aba940b0ca1546a29ef75b.jar" />
-    </item>
-    <item
-        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\8.4.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="2d7fe76982677315c4dc4edfb459c8ca718a9d4c">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-e7ddad91858630061b69384ea5594619ec1a0b3e.jar" />
-    </item>
-    <item
-        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\8.4.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="9fe026fb4c7fce21bc5142f6e1bdf844f28061ac">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-0fd88aa1bdbd6217becf2124b8953aaa201bb421.jar" />
-    </item>
-    <item
-        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.0\jars\libs\internal_impl-23.0.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="8bd336eeae661e8311330284897ee07f8ebaa297">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\internal_impl-23.0.0-b62941421967cab24d4b78e25f65895d238580f2.jar" />
-    </item>
-    <item
-        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-measurement\8.4.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="613298b7aa012f121ce542881c0a599ebd8078f2">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-79d73de9841d7a2663868142d688a72ffbd77fd1.jar" />
-    </item>
-    <item
-        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-appstate\8.4.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="62209cacb78ffe64f71ed8527fd08d8fbb9fd433">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-b768f2ab909c32fe28233d0ffc1a5c1936dba658.jar" />
-    </item>
-    <item
-        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.4.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="65d086ee9daaf87b5af62ad24471edafa433354c">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-af7f4b47da7f69802919b15599b412a071452751.jar" />
+        sha1="990e7f98a7bad86a40b1f0bcfeb039023afd0839">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\support-annotations-23.0.0-3f77e93e5ed0a0d7276beffe8309c2818d2dc483.jar" />
     </item>
     <item
         jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.0\jars\classes.jar"
@@ -149,6 +16,76 @@
         <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-c2f4fa186981ef55125e57d02662f8c607dee867.jar" />
     </item>
     <item
+        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="65d086ee9daaf87b5af62ad24471edafa433354c">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-af7f4b47da7f69802919b15599b412a071452751.jar" />
+    </item>
+    <item
+        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.0\jars\libs\internal_impl-23.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="8bd336eeae661e8311330284897ee07f8ebaa297">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\internal_impl-23.0.0-b62941421967cab24d4b78e25f65895d238580f2.jar" />
+    </item>
+    <item
+        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b82b8e847173c28efffcd291b2a0b1ae9ad17fa4">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-470d154e689a00174672642929e79223c755b81d.jar" />
+    </item>
+    <item
+        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a8412b654dab86d57bf90683367488211c8a81f1">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-6ee2c436fc0fac54a305ac858b8a37f52250dc59.jar" />
+    </item>
+    <item
+        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\Fruit_Destroyer\BaseGameUtils\1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b0d4eddf82a588350b52d7a106a2b33683e43f48">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\release\classes-c90a187acaced9dc6e6b07c4edb50bdab5de62b5.jar" />
+    </item>
+    <item
+        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9cad249cf62751a323d9af568caf12284b7d6062">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-169962e936dea6c56b0ab89f43e799887212a1aa.jar" />
+    </item>
+    <item
+        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-vision\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="dfecc4d835cdabcdecf7e95f0d20a3ef1e9d8ef4">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-aa96f7de84f17d59c2e0c27a518ef8e6c0868ef1.jar" />
+    </item>
+    <item
+        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="08d34b2d135c1cc96ab506fd8bf6916d1e2f391a">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-41f246f243014ee7899ce326cf4a29e42068eb3c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1c9f35e952b212c843f7bd2c7eec8e82ad95602e">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-630a6e761c3d2917599a329167feec8e659f1a43.jar" />
+    </item>
+    <item
+        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="551e78f21acf69ebfb489c0e79647824c838013e">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-1e704645fd93b7933cac06de5c43ece702118e09.jar" />
+    </item>
+    <item
         jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.4.0\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -156,18 +93,11 @@
         <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-ea50304c8d33b62a88ca7ace482b4318f736b836.jar" />
     </item>
     <item
-        jar="C:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.0\support-annotations-23.0.0.jar"
+        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\8.4.0\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="990e7f98a7bad86a40b1f0bcfeb039023afd0839">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\support-annotations-23.0.0-3f77e93e5ed0a0d7276beffe8309c2818d2dc483.jar" />
-    </item>
-    <item
-        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\8.4.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="b5e7892fb0708e792e0e933c4c0a0ca0ac7831fb">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-defade38a6ddf88ae1d5ef383d3a854f6abd5486.jar" />
+        sha1="0194a7409c40de94fb539d4ad9928ec5d47afeb7">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-b69b6166def1dc460340a4c90bfff3f88c4af37f.jar" />
     </item>
     <item
         jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth\8.4.0\jars\classes.jar"
@@ -184,25 +114,32 @@
         <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-6838cfdb262d54506fa4ff18f8c03cbc7aac226b.jar" />
     </item>
     <item
-        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\8.4.0\jars\classes.jar"
+        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.0\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="551e78f21acf69ebfb489c0e79647824c838013e">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-1e704645fd93b7933cac06de5c43ece702118e09.jar" />
+        sha1="8413c27b45b7fe61dca4a98159f65e2cee215f5a">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-96a0064def601ccddd7bc2eea91ca5de874e5071.jar" />
     </item>
     <item
-        jar="C:\Users\Musa Tozan\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-backend-android\1.9.2\342b830bc718dc1965c8f13fc58dc500e8bd262f\gdx-backend-android-1.9.2.jar"
+        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\8.4.0\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="342b830bc718dc1965c8f13fc58dc500e8bd262f">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\gdx-backend-android-1.9.2-d08b8b57ca96a8a48fd6ff3df2fb01312f79dd02.jar" />
+        sha1="9fe026fb4c7fce21bc5142f6e1bdf844f28061ac">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-0fd88aa1bdbd6217becf2124b8953aaa201bb421.jar" />
     </item>
     <item
-        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\8.4.0\jars\classes.jar"
+        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\8.4.0\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="9cad249cf62751a323d9af568caf12284b7d6062">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-169962e936dea6c56b0ab89f43e799887212a1aa.jar" />
+        sha1="1a78298e7724d5440d210bcb946b3493250d354d">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-79d7b5734422288f2900d137da6c8b2eb1f8531a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e167a34eaca0b31704212f43f9576ea84e05046f">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-8de664c9178a940e32aba940b0ca1546a29ef75b.jar" />
     </item>
     <item
         jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\23.0.0\jars\libs\internal_impl-23.0.0.jar"
@@ -212,11 +149,81 @@
         <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\internal_impl-23.0.0-bdf8f9e7f5915878b462e9a27e722daca723f55b.jar" />
     </item>
     <item
-        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\8.4.0\jars\classes.jar"
+        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\8.4.0\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="b82b8e847173c28efffcd291b2a0b1ae9ad17fa4">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-470d154e689a00174672642929e79223c755b81d.jar" />
+        sha1="2d7fe76982677315c4dc4edfb459c8ca718a9d4c">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-e7ddad91858630061b69384ea5594619ec1a0b3e.jar" />
+    </item>
+    <item
+        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="c54246475c1bb64ac6857d1320364bfbfeda2c46">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-47d06d19c5589565c742f6f1b668775f58317345.jar" />
+    </item>
+    <item
+        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\23.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="d358b3dd49a7c67844622dcbc9cf4339e13952ce">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-f4293544c2eacf81aff316212aeb508120f8c06b.jar" />
+    </item>
+    <item
+        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b5e7892fb0708e792e0e933c4c0a0ca0ac7831fb">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-defade38a6ddf88ae1d5ef383d3a854f6abd5486.jar" />
+    </item>
+    <item
+        jar="C:\Users\Musa Tozan\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx\1.9.2\e641cb91bec06bc64d9ddf7a7d7062caceec73cd\gdx-1.9.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e641cb91bec06bc64d9ddf7a7d7062caceec73cd">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\gdx-1.9.2-7a281b116f7c5cb927811a442c0bc88ee462bffc.jar" />
+    </item>
+    <item
+        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b36f30ac5ee5d5214f4b1e2ac49f11889d58e71a">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-6f578c01033b6785fff344a268c11d64e61feed5.jar" />
+    </item>
+    <item
+        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\core\build\libs\core-1.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="cf7d79c682411e27f9ea363127c11304ef002e43">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\release\core-1.0-29b3745a2124a267304d6e7e0a93437f3d61d048.jar" />
+    </item>
+    <item
+        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="3a364cc6b698d1b3b2d284f64618daaa7fe77ddf">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-b450636cc26559d78d5e1832024d96af571473b9.jar" />
+    </item>
+    <item
+        jar="C:\Users\Musa Tozan\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-freetype\1.9.2\3609253d14edb1b3ca5aacff4e06989edde75be4\gdx-freetype-1.9.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="3609253d14edb1b3ca5aacff4e06989edde75be4">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\gdx-freetype-1.9.2-1e4c37fb91f11323b8f10a0a668829bc5146635b.jar" />
+    </item>
+    <item
+        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f2df436a8f02ce7e4d7d209671fc45f97c470f0e">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-ae57aa69579a64538562089146285b7aef310399.jar" />
+    </item>
+    <item
+        jar="C:\Users\Musa Tozan\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-backend-android\1.9.2\342b830bc718dc1965c8f13fc58dc500e8bd262f\gdx-backend-android-1.9.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="342b830bc718dc1965c8f13fc58dc500e8bd262f">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\gdx-backend-android-1.9.2-d08b8b57ca96a8a48fd6ff3df2fb01312f79dd02.jar" />
     </item>
     <item
         jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\8.4.0\jars\classes.jar"
@@ -226,18 +233,18 @@
         <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-e36386251e1a21d3c354ac34be412ad013bee607.jar" />
     </item>
     <item
-        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\8.4.0\jars\classes.jar"
+        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-measurement\8.4.0\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="0194a7409c40de94fb539d4ad9928ec5d47afeb7">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-b69b6166def1dc460340a4c90bfff3f88c4af37f.jar" />
+        sha1="613298b7aa012f121ce542881c0a599ebd8078f2">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-79d73de9841d7a2663868142d688a72ffbd77fd1.jar" />
     </item>
     <item
-        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\8.4.0\jars\classes.jar"
+        jar="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\exploded-aar\com.google.android.gms\play-services-appstate\8.4.0\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="f2df436a8f02ce7e4d7d209671fc45f97c470f0e">
-        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-ae57aa69579a64538562089146285b7aef310399.jar" />
+        sha1="62209cacb78ffe64f71ed8527fd08d8fbb9fd433">
+        <dex dex="C:\Users\Musa Tozan\Documents\Fruit_Destroyer\android\build\intermediates\pre-dexed\debug\classes-b768f2ab909c32fe28233d0ffc1a5c1936dba658.jar" />
     </item>
 
 </items>

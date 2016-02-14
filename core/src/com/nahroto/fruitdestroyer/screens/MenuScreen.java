@@ -44,6 +44,8 @@ public class MenuScreen implements Screen
         APP.camera.setToOrtho(false, Constants.V_WIDTH, Constants.V_HEIGHT);
         APP.camera.update();
         menuHud.show();
+
+        APP.playServices.signIn();
     }
 
     @Override

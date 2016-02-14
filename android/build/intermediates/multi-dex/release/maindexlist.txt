@@ -66,6 +66,7 @@ android/support/v4/media/session/MediaSessionCompat$OnActiveChangeListener.class
 android/support/v7/app/ActionBar$OnMenuVisibilityListener.class
 com/google/android/gms/measurement/internal/zzd.class
 com/google/android/gms/ads/internal/client/zzaa$zza.class
+com/nahroto/fruitdestroyer/android/AndroidLauncher$3.class
 com/google/android/gms/ads/internal/formats/zzg.class
 android/support/v4/widget/MaterialProgressDrawable.class
 android/support/annotation/DrawableRes.class
@@ -135,6 +136,7 @@ com/google/android/gms/ads/internal/zzk$zzb.class
 com/google/android/gms/measurement/AppMeasurementService.class
 android/support/annotation/RequiresPermission.class
 com/badlogic/gdx/backends/android/AndroidEventListener.class
+com/nahroto/fruitdestroyer/android/R$string.class
 android/support/v4/media/session/MediaSessionCompat$ResultReceiverWrapper.class
 com/google/android/gms/internal/zzjf.class
 android/support/annotation/BoolRes.class
@@ -158,6 +160,7 @@ com/google/android/gms/cast/Cast$CastApi.class
 com/google/android/gms/internal/zziu.class
 com/google/android/gms/internal/zzk.class
 com/google/android/gms/nearby/messages/internal/zzn.class
+com/google/example/games/basegameutils/BaseGameActivity.class
 com/google/android/gms/internal/zzjl.class
 com/google/android/gms/common/api/internal/zzb.class
 com/google/android/gms/plus/internal/model/people/PersonEntity$UrlsEntity.class
@@ -336,6 +339,7 @@ com/google/android/gms/internal/zzrp.class
 com/google/android/gms/wearable/CapabilityApi$NodeFilterType.class
 android/support/v4/media/VolumeProviderCompat$ControlType.class
 com/google/android/gms/internal/zzee.class
+com/google/android/gms/games/achievement/Achievements.class
 android/support/annotation/FractionRes.class
 com/google/android/gms/internal/zzdd.class
 com/google/android/gms/internal/zzha.class
@@ -416,6 +420,7 @@ com/google/android/gms/internal/zzdm.class
 com/google/android/gms/nearby/messages/internal/SubscribeRequest.class
 com/google/android/gms/internal/zzdu.class
 android/support/v7/app/ActionBar$NavigationMode.class
+com/google/example/games/basegameutils/GameHelper.class
 com/google/android/gms/location/GeofencingApi.class
 android/support/v4/app/BaseFragmentActivityDonut.class
 android/support/v4/media/MediaDescriptionCompat.class
@@ -428,6 +433,7 @@ com/google/android/gms/ads/internal/overlay/zzn.class
 com/google/android/gms/ads/internal/purchase/zzg.class
 android/support/v7/app/ActionBar$Tab.class
 com/google/android/gms/common/api/Scope.class
+com/nahroto/fruitdestroyer/PlayServices.class
 com/google/android/gms/ads/internal/client/SearchAdRequestParcel.class
 com/google/android/gms/maps/GoogleMap$OnMyLocationChangeListener.class
 com/google/android/gms/internal/zzau.class
@@ -487,6 +493,7 @@ com/badlogic/gdx/backends/android/AndroidClipboard.class
 com/google/android/gms/internal/zzgm.class
 com/google/android/gms/ads/internal/client/zzc.class
 com/google/android/gms/internal/zzil.class
+com/google/android/gms/games/leaderboard/Leaderboards.class
 com/google/android/gms/ads/internal/client/zzf.class
 com/google/android/gms/internal/zzio.class
 android/support/v4/app/ActionBarDrawerToggle.class
@@ -583,12 +590,14 @@ com/google/android/gms/ads/internal/formats/zzk.class
 com/badlogic/gdx/LifecycleListener.class
 com/google/android/gms/appinvite/PreviewActivity$1.class
 com/google/android/gms/wallet/fragment/WalletFragmentStyle$BuyButtonAppearance.class
+com/nahroto/fruitdestroyer/android/AndroidLauncher$4.class
 com/google/android/gms/ads/internal/overlay/zzk.class
 com/google/android/gms/ads/AdRequest.class
 com/google/android/gms/ads/internal/formats/zzf.class
 android/support/multidex/MultiDexExtractor$1.class
 com/google/android/gms/internal/zzcz.class
 com/google/android/gms/wearable/DataApi$GetFdForAssetResult.class
+com/nahroto/fruitdestroyer/android/R.class
 com/badlogic/gdx/Preferences.class
 android/support/v4/view/ViewCompat.class
 com/google/android/gms/common/ConnectionResult.class
@@ -667,6 +676,7 @@ android/support/v4/app/FragmentManagerImpl$4.class
 com/google/android/gms/internal/zzgr.class
 android/support/v4/media/MediaMetadataCompat$BitmapKey.class
 com/google/android/gms/internal/zzcq.class
+com/google/android/gms/common/api/GoogleApiClient$ConnectionCallbacks.class
 com/google/android/gms/ads/internal/formats/NativeAdOptionsParcel.class
 com/google/android/gms/ads/internal/client/zzaa.class
 com/badlogic/gdx/Net.class
@@ -722,6 +732,8 @@ android/support/v4/media/session/PlaybackStateCompat$Actions.class
 com/google/android/gms/ads/internal/overlay/AdLauncherIntentInfoParcel.class
 com/google/android/gms/internal/zzgp.class
 android/support/v4/app/FragmentManagerImpl$2.class
+com/google/example/games/basegameutils/GameHelper$GameHelperListener.class
+com/nahroto/fruitdestroyer/android/AndroidLauncher$2.class
 com/google/android/gms/analytics/GoogleAnalytics.class
 com/google/android/gms/appinvite/AppInviteReferral.class
 com/google/android/gms/ads/internal/formats/zzd.class
@@ -729,6 +741,7 @@ android/support/annotation/IntRange.class
 android/support/annotation/AnimatorRes.class
 com/google/android/gms/common/internal/zzac.class
 com/google/android/gms/internal/zzeu.class
+com/google/android/gms/common/api/GoogleApiClient$OnConnectionFailedListener.class
 com/google/android/gms/games/Game.class
 com/badlogic/gdx/utils/StringBuilder.class
 com/google/android/gms/games/multiplayer/turnbased/LoadMatchesResponse.class

@@ -39,15 +39,21 @@ public class Application extends Game
 	public DeadScreen deadScreen;
 
 	public AdsController adsController;
+	public PlayServices playServices;
 
 	private boolean firstTime = true;
 
-	public Application(AdsController adsController)
+	public Application(AdsController adsController, PlayServices playServices)
 	{
 		if (adsController != null)
 			this.adsController = adsController;
 		else
 			this.adsController = new DummyAdsController();
+
+		if (playServices != null)
+			this.playServices = playServices;
+		else
+			this.playServices = new DummyPlayServices();
 	}
 
 
