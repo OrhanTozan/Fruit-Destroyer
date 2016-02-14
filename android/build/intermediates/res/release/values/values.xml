@@ -304,12 +304,12 @@
     <string name="accept">Accept</string>
     <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/res/values/ids.xml -->
     <eat-comment/>
-    <string name="achievement_ach1">CgkI0p3InKcDEAIQAg</string>
-    <string name="achievement_ach2">CgkI0p3InKcDEAIQAw</string>
-    <string name="achievement_ach3">CgkI0p3InKcDEAIQBA</string>
-    <string name="achievement_ach4">CgkI0p3InKcDEAIQBQ</string>
-    <string name="achievement_ach5">CgkI0p3InKcDEAIQBg</string>
-    <string name="app_id">113608101586</string>
+    <string name="achievement_ach1">CgkIt9qEjqkbEAIQAQ</string>
+    <string name="achievement_ach2">CgkIt9qEjqkbEAIQAg</string>
+    <string name="achievement_ach3">CgkIt9qEjqkbEAIQAw</string>
+    <string name="achievement_ach4">CgkIt9qEjqkbEAIQBA</string>
+    <string name="achievement_ach5">CgkIt9qEjqkbEAIQBQ</string>
+    <string name="app_id">938748226871</string>
     <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/build/intermediates/exploded-aar/Fruit_Destroyer/BaseGameUtils/1.0/res/values/values.xml -->
     <eat-comment/>
     <string name="app_misconfigured">The application is incorrectly configured. Check that the package name and signing certificate match the client ID created in Developer Console. Also, if the application is not yet published, check that the account you are trying to sign in with is listed as a tester account. See logs for more information.</string>
@@ -373,7 +373,7 @@
     <string name="gamehelper_unknown_error">Unknown error.</string>
     <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/res/values/ids.xml -->
     <eat-comment/>
-    <string name="leaderboard_high_scores_best_wave">CgkI0p3InKcDEAIQAQ</string>
+    <string name="leaderboard_high_scores_highest_wave">CgkIt9qEjqkbEAIQBg</string>
     <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/build/intermediates/exploded-aar/Fruit_Destroyer/BaseGameUtils/1.0/res/values/values.xml -->
     <eat-comment/>
     <string name="license_failed">License check failed.</string>

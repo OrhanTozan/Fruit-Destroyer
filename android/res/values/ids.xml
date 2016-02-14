@@ -4,12 +4,12 @@ Google Play game services IDs.
 Save this file as res/values/games-ids.xml in your project.
 -->
 <resources>
-    <string name="app_id">113608101586</string>
+    <string name="app_id">938748226871</string>
     <string name="package_name">com.nahroto.fruitdestroyer.android</string>
-    <string name="achievement_ach1">CgkI0p3InKcDEAIQAg</string>
-    <string name="achievement_ach2">CgkI0p3InKcDEAIQAw</string>
-    <string name="achievement_ach3">CgkI0p3InKcDEAIQBA</string>
-    <string name="achievement_ach4">CgkI0p3InKcDEAIQBQ</string>
-    <string name="achievement_ach5">CgkI0p3InKcDEAIQBg</string>
-    <string name="leaderboard_high_scores_best_wave">CgkI0p3InKcDEAIQAQ</string>
+    <string name="achievement_ach1">CgkIt9qEjqkbEAIQAQ</string>
+    <string name="achievement_ach2">CgkIt9qEjqkbEAIQAg</string>
+    <string name="achievement_ach3">CgkIt9qEjqkbEAIQAw</string>
+    <string name="achievement_ach4">CgkIt9qEjqkbEAIQBA</string>
+    <string name="achievement_ach5">CgkIt9qEjqkbEAIQBQ</string>
+    <string name="leaderboard_high_scores_highest_wave">CgkIt9qEjqkbEAIQBg</string>
 </resources>

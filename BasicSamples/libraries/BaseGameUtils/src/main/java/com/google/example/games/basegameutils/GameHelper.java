@@ -131,7 +131,7 @@ public class GameHelper implements GoogleApiClient.ConnectionCallbacks,
     // Whether to automatically try to sign in on onStart(). We only set this
     // to true when the sign-in process fails or the user explicitly signs out.
     // We set it back to false when the user initiates the sign in process.
-    boolean mConnectOnStart = true;
+    boolean mConnectOnStart = false;
 
     /*
      * Whether user has specifically requested that the sign-in process begin.

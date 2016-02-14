@@ -885,7 +885,7 @@ int string gamehelper_app_misconfigured 0x7f06004e
 int string gamehelper_license_failed 0x7f06004f
 int string gamehelper_sign_in_failed 0x7f060050
 int string gamehelper_unknown_error 0x7f060051
-int string leaderboard_high_scores_best_wave 0x7f060052
+int string leaderboard_high_scores_highest_wave 0x7f060052
 int string license_failed 0x7f060053
 int string mr_media_route_button_content_description 0x7f06002e
 int string mr_media_route_chooser_searching 0x7f06002f

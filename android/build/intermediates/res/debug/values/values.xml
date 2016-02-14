@@ -302,6 +302,17 @@
     <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.4.0/res/values/admob_strings.xml -->
     <eat-comment/>
     <string name="accept">Accept</string>
+    <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/res/values/ids.xml -->
+    <eat-comment/>
+    <string name="achievement_ach1">CgkI0p3InKcDEAIQAg</string>
+    <string name="achievement_ach2">CgkI0p3InKcDEAIQAw</string>
+    <string name="achievement_ach3">CgkI0p3InKcDEAIQBA</string>
+    <string name="achievement_ach4">CgkI0p3InKcDEAIQBQ</string>
+    <string name="achievement_ach5">CgkI0p3InKcDEAIQBg</string>
+    <string name="app_id">113608101586</string>
+    <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/build/intermediates/exploded-aar/Fruit_Destroyer/BaseGameUtils/1.0/res/values/values.xml -->
+    <eat-comment/>
+    <string name="app_misconfigured">The application is incorrectly configured. Check that the package name and signing certificate match the client ID created in Developer Console. Also, if the application is not yet published, check that the account you are trying to sign in with is listed as a tester account. See logs for more information.</string>
     <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/res/values/strings.xml -->
     <eat-comment/>
     <string name="app_name">Fruit Destroyer</string>
@@ -354,6 +365,18 @@
     <string name="create_calendar_message">Allow Ad to create a calendar event?</string>
     <string name="create_calendar_title">Create calendar event</string>
     <string name="decline">Decline</string>
+    <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/build/intermediates/exploded-aar/Fruit_Destroyer/BaseGameUtils/1.0/res/values/values.xml -->
+    <eat-comment/>
+    <string name="gamehelper_app_misconfigured">The application is incorrectly configured. Check that the package name and signing certificate match the client ID created in Developer Console. Also, if the application is not yet published, check that the account you are trying to sign in with is listed as a tester account. See logs for more information.</string>
+    <string name="gamehelper_license_failed">License check failed.</string>
+    <string name="gamehelper_sign_in_failed">Failed to sign in. Please check your network connection and try again.</string>
+    <string name="gamehelper_unknown_error">Unknown error.</string>
+    <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/res/values/ids.xml -->
+    <eat-comment/>
+    <string name="leaderboard_high_scores_best_wave">CgkI0p3InKcDEAIQAQ</string>
+    <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/build/intermediates/exploded-aar/Fruit_Destroyer/BaseGameUtils/1.0/res/values/values.xml -->
+    <eat-comment/>
+    <string name="license_failed">License check failed.</string>
     <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/values/values.xml -->
     <eat-comment/>
     <string name="mr_media_route_button_content_description">Cast</string>
@@ -367,10 +390,16 @@
     <string name="mr_media_route_controller_stop">Stop casting</string>
     <string name="mr_system_route_name">System</string>
     <string name="mr_user_route_category_name">Devices</string>
+    <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/res/values/ids.xml -->
+    <eat-comment/>
+    <string name="package_name">com.nahroto.fruitdestroyer.android</string>
     <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/8.4.0/res/values/location_strings.xml -->
     <eat-comment/>
     <string name="place_autocomplete_clear_button">Clear search</string>
     <string name="place_autocomplete_search_hint">Search</string>
+    <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/build/intermediates/exploded-aar/Fruit_Destroyer/BaseGameUtils/1.0/res/values/values.xml -->
+    <eat-comment/>
+    <string name="sign_in_failed">Failed to sign in. Please check your network connection and try again.</string>
     <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/values/values.xml -->
     <eat-comment/>
     <string name="status_bar_notification_info_overflow">999+</string>
@@ -378,6 +407,9 @@
     <eat-comment/>
     <string name="store_picture_message">"Allow Ad to store image in Picture gallery?"</string>
     <string name="store_picture_title">Save image</string>
+    <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/build/intermediates/exploded-aar/Fruit_Destroyer/BaseGameUtils/1.0/res/values/values.xml -->
+    <eat-comment/>
+    <string name="unknown_error">Unknown error.</string>
     <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/8.4.0/res/values/wallet_strings.xml -->
     <eat-comment/>
     <string name="wallet_buy_button_place_holder">Buy with Google</string>

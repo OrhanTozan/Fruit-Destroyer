@@ -14,6 +14,30 @@ ADDED from AndroidManifest.xml:2:1
 uses-sdk
 ADDED from AndroidManifest.xml:7:5
 MERGED from com.android.support:multidex:1.0.1:18:5
+MERGED from com.google.android.gms:play-services-games:8.4.0:18:5
+MERGED from com.google.android.gms:play-services-base:8.4.0:18:5
+MERGED from com.google.android.gms:play-services-basement:8.4.0:18:5
+MERGED from com.android.support:support-v4:23.0.0:20:5
+MERGED from com.google.android.gms:play-services-drive:8.4.0:18:5
+MERGED from com.google.android.gms:play-services-base:8.4.0:18:5
+MERGED from com.google.android.gms:play-services-basement:8.4.0:18:5
+MERGED from com.android.support:support-v4:23.0.0:20:5
+MERGED from Fruit_Destroyer:BaseGameUtils:1.0:22:5
+MERGED from com.android.support:appcompat-v7:23.0.0:20:5
+MERGED from com.android.support:support-v4:23.0.0:20:5
+MERGED from com.android.support:support-v4:23.0.0:20:5
+MERGED from com.google.android.gms:play-services-games:8.4.0:18:5
+MERGED from com.google.android.gms:play-services-base:8.4.0:18:5
+MERGED from com.google.android.gms:play-services-basement:8.4.0:18:5
+MERGED from com.android.support:support-v4:23.0.0:20:5
+MERGED from com.google.android.gms:play-services-drive:8.4.0:18:5
+MERGED from com.google.android.gms:play-services-base:8.4.0:18:5
+MERGED from com.google.android.gms:play-services-basement:8.4.0:18:5
+MERGED from com.android.support:support-v4:23.0.0:20:5
+MERGED from com.google.android.gms:play-services-plus:8.4.0:18:5
+MERGED from com.google.android.gms:play-services-base:8.4.0:18:5
+MERGED from com.google.android.gms:play-services-basement:8.4.0:18:5
+MERGED from com.android.support:support-v4:23.0.0:20:5
 MERGED from com.google.android.gms:play-services:8.4.0:18:5
 MERGED from com.google.android.gms:play-services-ads:8.4.0:23:5
 MERGED from com.google.android.gms:play-services-basement:8.4.0:18:5
@@ -168,6 +192,25 @@ MERGED from com.google.android.gms:play-services-maps:8.4.0:20:5
 		ADDED from AndroidManifest.xml:12:22
 application
 ADDED from AndroidManifest.xml:15:5
+MERGED from com.google.android.gms:play-services-games:8.4.0:19:5
+MERGED from com.google.android.gms:play-services-basement:8.4.0:20:5
+MERGED from com.android.support:support-v4:23.0.0:22:5
+MERGED from com.google.android.gms:play-services-drive:8.4.0:19:5
+MERGED from com.google.android.gms:play-services-basement:8.4.0:20:5
+MERGED from com.android.support:support-v4:23.0.0:22:5
+MERGED from Fruit_Destroyer:BaseGameUtils:1.0:30:5
+MERGED from com.android.support:appcompat-v7:23.0.0:22:5
+MERGED from com.android.support:support-v4:23.0.0:22:5
+MERGED from com.android.support:support-v4:23.0.0:22:5
+MERGED from com.google.android.gms:play-services-games:8.4.0:19:5
+MERGED from com.google.android.gms:play-services-basement:8.4.0:20:5
+MERGED from com.android.support:support-v4:23.0.0:22:5
+MERGED from com.google.android.gms:play-services-drive:8.4.0:19:5
+MERGED from com.google.android.gms:play-services-basement:8.4.0:20:5
+MERGED from com.android.support:support-v4:23.0.0:22:5
+MERGED from com.google.android.gms:play-services-plus:8.4.0:19:5
+MERGED from com.google.android.gms:play-services-basement:8.4.0:20:5
+MERGED from com.android.support:support-v4:23.0.0:22:5
 MERGED from com.google.android.gms:play-services:8.4.0:19:5
 MERGED from com.google.android.gms:play-services-ads:8.4.0:24:5
 MERGED from com.google.android.gms:play-services-basement:8.4.0:20:5
@@ -262,6 +305,8 @@ MERGED from com.android.support:support-v4:23.0.0:22:5
 MERGED from com.google.android.gms:play-services-wearable:8.4.0:19:5
 MERGED from com.google.android.gms:play-services-basement:8.4.0:20:5
 MERGED from com.android.support:support-v4:23.0.0:22:5
+	android:allowBackup
+		ADDED from Fruit_Destroyer:BaseGameUtils:1.0:30:18
 	android:name
 		ADDED from AndroidManifest.xml:15:18
 activity#com.nahroto.fruitdestroyer.android.AndroidLauncher
@@ -284,8 +329,19 @@ category#android.intent.category.LAUNCHER
 ADDED from AndroidManifest.xml:28:17
 	android:name
 		ADDED from AndroidManifest.xml:28:27
-meta-data#com.google.android.gms.version
+meta-data#com.google.android.gms.games.APP_ID
 ADDED from AndroidManifest.xml:32:9
+	android:value
+		ADDED from AndroidManifest.xml:32:71
+	android:name
+		ADDED from AndroidManifest.xml:32:20
+meta-data#com.google.android.gms.version
+ADDED from AndroidManifest.xml:33:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
+MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
 MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
 MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
 MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
@@ -318,9 +374,15 @@ MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
 MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
 MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
 	android:value
-		ADDED from AndroidManifest.xml:34:13
+		ADDED from AndroidManifest.xml:33:66
 	android:name
-		ADDED from AndroidManifest.xml:33:13
+		ADDED from AndroidManifest.xml:33:20
+meta-data#unityplayer.ForwardNativeEventsToDalvik
+ADDED from Fruit_Destroyer:BaseGameUtils:1.0:26:5
+	android:value
+		ADDED from Fruit_Destroyer:BaseGameUtils:1.0:28:9
+	android:name
+		ADDED from Fruit_Destroyer:BaseGameUtils:1.0:27:9
 activity#com.google.android.gms.ads.AdActivity
 ADDED from com.google.android.gms:play-services-ads:8.4.0:26:9
 	android:configChanges
