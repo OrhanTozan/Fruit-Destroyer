@@ -1,0 +1,376 @@
+
+gamescreen.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+overlay
+  rotate: false
+  xy: 1, 983
+  size: 664, 1064
+  orig: 664, 1064
+  offset: 0, 0
+  index: -1
+powerupDescBG
+  rotate: false
+  xy: 1, 285
+  size: 596, 696
+  orig: 596, 696
+  offset: 0, 0
+  index: -1
+upgradeDescBG
+  rotate: false
+  xy: 667, 1351
+  size: 596, 696
+  orig: 596, 696
+  offset: 0, 0
+  index: -1
+comingsoon
+  rotate: false
+  xy: 1265, 1777
+  size: 600, 270
+  orig: 600, 270
+  offset: 0, 0
+  index: -1
+comingsoon2
+  rotate: false
+  xy: 1, 13
+  size: 588, 270
+  orig: 588, 270
+  offset: 0, 0
+  index: -1
+retry-button-up
+  rotate: false
+  xy: 667, 1145
+  size: 378, 204
+  orig: 378, 204
+  offset: 0, 0
+  index: -1
+retry-button-down
+  rotate: false
+  xy: 1265, 1577
+  size: 378, 198
+  orig: 378, 198
+  offset: 0, 0
+  index: -1
+upgradeDone-down
+  rotate: false
+  xy: 1265, 1392
+  size: 337, 183
+  orig: 337, 183
+  offset: 0, 0
+  index: -1
+upgradeDone
+  rotate: false
+  xy: 667, 960
+  size: 337, 183
+  orig: 337, 183
+  offset: 0, 0
+  index: -1
+powerup-text
+  rotate: false
+  xy: 599, 868
+  size: 435, 90
+  orig: 435, 90
+  offset: 0, 0
+  index: -1
+upgrades-text
+  rotate: false
+  xy: 599, 776
+  size: 402, 90
+  orig: 402, 90
+  offset: 0, 0
+  index: -1
+highscore-button-up
+  rotate: false
+  xy: 599, 607
+  size: 237, 167
+  orig: 237, 167
+  offset: 0, 0
+  index: -1
+home-button-up
+  rotate: false
+  xy: 599, 438
+  size: 237, 167
+  orig: 237, 167
+  offset: 0, 0
+  index: -1
+highscore-button-down
+  rotate: false
+  xy: 599, 272
+  size: 237, 164
+  orig: 237, 164
+  offset: 0, 0
+  index: -1
+home-button-down
+  rotate: false
+  xy: 591, 106
+  size: 237, 164
+  orig: 237, 164
+  offset: 0, 0
+  index: -1
+accuracyUpgrade-down
+  rotate: false
+  xy: 1047, 1160
+  size: 189, 189
+  orig: 189, 189
+  offset: 0, 0
+  index: -1
+accuracyUpgrade
+  rotate: false
+  xy: 1645, 1586
+  size: 189, 189
+  orig: 189, 189
+  offset: 0, 0
+  index: -1
+knockbackUpgrade-down
+  rotate: false
+  xy: 838, 585
+  size: 189, 189
+  orig: 189, 189
+  offset: 0, 0
+  index: -1
+knockbackUpgrade
+  rotate: false
+  xy: 838, 394
+  size: 189, 189
+  orig: 189, 189
+  offset: 0, 0
+  index: -1
+ananas-hit
+  rotate: false
+  xy: 1867, 1865
+  size: 144, 182
+  orig: 144, 182
+  offset: 0, 0
+  index: -1
+moreAmmoUpgrade-down
+  rotate: false
+  xy: 838, 203
+  size: 189, 189
+  orig: 189, 189
+  offset: 0, 0
+  index: -1
+reload-down
+  rotate: false
+  xy: 830, 65
+  size: 226, 136
+  orig: 226, 136
+  offset: 0, 0
+  index: -1
+reload-up
+  rotate: false
+  xy: 1265, 1254
+  size: 226, 136
+  orig: 226, 136
+  offset: 0, 0
+  index: -1
+moreAmmoUpgrade
+  rotate: false
+  xy: 1238, 1063
+  size: 189, 189
+  orig: 189, 189
+  offset: 0, 0
+  index: -1
+reloadUpgrade-down
+  rotate: false
+  xy: 1047, 969
+  size: 189, 189
+  orig: 189, 189
+  offset: 0, 0
+  index: -1
+reloadUpgrade
+  rotate: false
+  xy: 1238, 872
+  size: 189, 189
+  orig: 189, 189
+  offset: 0, 0
+  index: -1
+points-overlay
+  rotate: false
+  xy: 1036, 817
+  size: 187, 150
+  orig: 187, 150
+  offset: 0, 0
+  index: -1
+ananas
+  rotate: false
+  xy: 1029, 633
+  size: 144, 182
+  orig: 144, 182
+  offset: 0, 0
+  index: -1
+bomb-down
+  rotate: false
+  xy: 1029, 485
+  size: 146, 146
+  orig: 146, 146
+  offset: 0, 0
+  index: -1
+bomb-up
+  rotate: false
+  xy: 1029, 337
+  size: 146, 146
+  orig: 146, 146
+  offset: 0, 0
+  index: -1
+ananas-dead
+  rotate: false
+  xy: 1029, 207
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+instakill-down
+  rotate: false
+  xy: 1493, 1244
+  size: 146, 146
+  orig: 146, 146
+  offset: 0, 0
+  index: -1
+instakill-up
+  rotate: false
+  xy: 1058, 59
+  size: 146, 146
+  orig: 146, 146
+  offset: 0, 0
+  index: -1
+marksman-down
+  rotate: false
+  xy: 1867, 1717
+  size: 146, 146
+  orig: 146, 146
+  offset: 0, 0
+  index: -1
+marksman-up
+  rotate: false
+  xy: 1836, 1569
+  size: 146, 146
+  orig: 146, 146
+  offset: 0, 0
+  index: -1
+player
+  rotate: false
+  xy: 591, 47
+  size: 121, 57
+  orig: 121, 57
+  offset: 0, 0
+  index: -1
+flash2
+  rotate: false
+  xy: 591, 1
+  size: 82, 44
+  orig: 82, 44
+  offset: 0, 0
+  index: -1
+orange-dead
+  rotate: false
+  xy: 714, 25
+  size: 90, 79
+  orig: 90, 79
+  offset: 0, 0
+  index: -1
+accuracy-icon
+  rotate: false
+  xy: 806, 1
+  size: 62, 62
+  orig: 62, 62
+  offset: 0, 0
+  index: -1
+bullet-icon
+  rotate: false
+  xy: 1175, 728
+  size: 76, 87
+  orig: 76, 87
+  offset: 0, 0
+  index: -1
+reload-icon
+  rotate: false
+  xy: 1175, 642
+  size: 82, 84
+  orig: 82, 84
+  offset: 0, 0
+  index: -1
+exitButton
+  rotate: false
+  xy: 1177, 560
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+orange-hit
+  rotate: false
+  xy: 1177, 479
+  size: 90, 79
+  orig: 90, 79
+  offset: 0, 0
+  index: -1
+orange
+  rotate: false
+  xy: 1177, 398
+  size: 90, 79
+  orig: 90, 79
+  offset: 0, 0
+  index: -1
+volumeButton
+  rotate: false
+  xy: 1177, 328
+  size: 86, 68
+  orig: 86, 68
+  offset: 0, 0
+  index: -1
+checked
+  rotate: false
+  xy: 870, 5
+  size: 67, 58
+  orig: 67, 58
+  offset: 0, 0
+  index: -1
+unchecked
+  rotate: false
+  xy: 1225, 817
+  size: 53, 53
+  orig: 53, 53
+  offset: 0, 0
+  index: -1
+flash
+  rotate: false
+  xy: 1429, 1217
+  size: 47, 35
+  orig: 47, 35
+  offset: 0, 0
+  index: -1
+red-bar
+  rotate: false
+  xy: 599, 966
+  size: 50, 15
+  orig: 50, 15
+  offset: 0, 0
+  index: -1
+green-bar
+  rotate: false
+  xy: 939, 50
+  size: 48, 13
+  orig: 48, 13
+  offset: 0, 0
+  index: -1
+bullet2
+  rotate: false
+  xy: 1006, 1127
+  size: 30, 16
+  orig: 30, 16
+  offset: 0, 0
+  index: -1
+bullet3
+  rotate: false
+  xy: 1003, 850
+  size: 30, 16
+  orig: 30, 16
+  offset: 0, 0
+  index: -1
+bullet
+  rotate: false
+  xy: 1238, 1329
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
