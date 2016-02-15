@@ -84,10 +84,13 @@ public class DeadHud extends Hud
                 if (!APP.playServices.isSignedIn())
                 {
                     APP.playServices.signIn();
+                    APP.playServices.submitScore(APP.prefs.getInteger("highScore", 1));
                     APP.playServices.showScore();
                 }
                 else
+                {   APP.playServices.submitScore(APP.prefs.getInteger("highScore", 1));
                     APP.playServices.showScore();
+                }
             }
         });
 
@@ -100,7 +103,7 @@ public class DeadHud extends Hud
 
         text.setPosition(Constants.V_WIDTH / 2 - waveFont.getWidth("You made it to") / 2, 1100);
         waveLabel.setPosition(retryButton.getX(Align.center) - bigWaveFont.getWidth("Wave " + WaveGenerator.wave.toString() + "!") / 2, 1100 - bigWaveFont.getHeight("Wave " + WaveGenerator.wave.toString() + "!") - 30);
-        highScoreLabel.setPosition(Constants.V_WIDTH / 2 - waveFont.getWidth("Your record\nWave " + highScore.toString()) / 2, 830);
+        highScoreLabel.setPosition(Constants.V_WIDTH / 2 - waveFont.getWidth("Your record\nWave " + highScore.toString()) / 2, 800);
 
         actors.add(retryButton);
         actors.add(homeButton);
@@ -112,7 +115,6 @@ public class DeadHud extends Hud
 
     public void onShow()
     {
-        APP.playServices.submitScore(WaveGenerator.wave);
         if (WaveGenerator.wave >= APP.prefs.getInteger("highScore", WaveGenerator.wave))
         {
             APP.prefs.putInteger("highScore", WaveGenerator.wave);
@@ -131,7 +133,7 @@ public class DeadHud extends Hud
 
         text.setPosition(Constants.V_WIDTH / 2 - waveFont.getWidth("You made it to") / 2, 1100);
         waveLabel.setPosition(retryButton.getX(Align.center) - bigWaveFont.getWidth("Wave " + WaveGenerator.wave.toString() + "!") / 2, 1100 - bigWaveFont.getHeight("Wave " + WaveGenerator.wave.toString() + "!") - 30);
-        highScoreLabel.setPosition(Constants.V_WIDTH / 2 - waveFont.getWidth("Your record\nWave " + highScore.toString()) / 2, 830);
+        highScoreLabel.setPosition(Constants.V_WIDTH / 2 - waveFont.getWidth("Your record\nWave " + highScore.toString()) / 2, 800);
     }
 
     public void disableInput()

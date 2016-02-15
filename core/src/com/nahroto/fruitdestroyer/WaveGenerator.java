@@ -6,6 +6,7 @@ import com.badlogic.gdx.utils.Array;
 import com.nahroto.fruitdestroyer.entities.enemies.Ananas;
 import com.nahroto.fruitdestroyer.entities.enemies.Enemy;
 import com.nahroto.fruitdestroyer.entities.enemies.Orange;
+import com.nahroto.fruitdestroyer.entities.enemies.Watermelon;
 
 public class WaveGenerator
 {
@@ -17,6 +18,7 @@ public class WaveGenerator
     private Array<Enemy> currentEnemies;
     private Array<Orange> totalOranges;
     private Array<Ananas> totalAnanases;
+    private Array<Watermelon> totalWatermelons;
 
     public static Integer wave = new Integer(1);
 
@@ -25,12 +27,13 @@ public class WaveGenerator
     private float delay;
     private long startTime;
 
-    public WaveGenerator(Array<Enemy> totalEnemies, Array<Enemy> currentEnemies, Array<Orange> totalOranges, Array<Ananas> totalAnanases)
+    public WaveGenerator(Array<Enemy> totalEnemies, Array<Enemy> currentEnemies, Array<Orange> totalOranges, Array<Ananas> totalAnanases, Array<Watermelon> totalWatermelons)
     {
         this.totalEnemies = totalEnemies;
         this.currentEnemies = currentEnemies;
         this.totalOranges = totalOranges;
         this.totalAnanases = totalAnanases;
+        this.totalWatermelons = totalWatermelons;
         queue = new Array<Enemy>();
     }
 
@@ -49,18 +52,24 @@ public class WaveGenerator
         if (wave >= 0)
         {
             delayTime(0f); // FIRST GROUP
-                int amountOranges1 = MathUtils.round(wave * 1f);
+                int amountOranges1 = MathUtils.round(2 + wave * 0.3f);
+                if (amountOranges1 > 10)
+                    amountOranges1 = 10;
+                int amountAnanases1 = MathUtils.round(2 + wave * 0.14f);
 
                 addOranges(amountOranges1);
-                if (wave >= ANANAS_MINIMUM_WAVE || true)
+                addAnanases(amountAnanases1);
+
+            delayTime(3f);
+                if (wave >= 8)
                 {
-                    int amountAnanases1 = MathUtils.round(wave * 0.5f);
-                    addAnanases(amountAnanases1);
+                    int amountWatermelons1 = MathUtils.ceil(wave * 0.05f);
+                    addWatermelons(amountWatermelons1);
                 }
 
-            delayTime(6f + (wave * 0.5f)); // SECOND GROUP
-                int amountOranges2 = MathUtils.round(wave * 0.5f);
-                int amountAnanases2 = MathUtils.round(wave * 0.2f);
+            delayTime(5f + (wave * 0.5f)); // SECOND GROUP
+                int amountOranges2 = MathUtils.round(wave * 0.4f);
+                int amountAnanases2 = MathUtils.round(wave * 0.14f);
 
                 addOranges(amountOranges2);
                 addAnanases(amountAnanases2);
@@ -68,13 +77,34 @@ public class WaveGenerator
 
         if (wave >= 5)
         {
-            delayTime(16f); // THIRD GROUP
-                int amountOranges3 = MathUtils.round(wave * 0.5f);
-                int amountAnanases3 = MathUtils.round(wave * 0.2f);
+            delayTime(12f); // THIRD GROUP
+                int amountOranges3 = MathUtils.round(wave * 0.4f);
+                int amountAnanases3 = MathUtils.round(wave * 0.14f);
 
                 addOranges(amountOranges3);
                 addAnanases(amountAnanases3);
+
+            delayTime(15f);
+                if (wave >= 8)
+                {
+                    int amountWatermelons3 = MathUtils.ceil(wave * 0.1f);
+                    addWatermelons(amountWatermelons3);
+                }
         }
+        if (wave >= 7)
+        {
+            delayTime(17f);
+                int amountOranges4 = MathUtils.round(wave * 0.5f);
+                int amountAnanases4 = MathUtils.round(wave * 0.14f);
+                int amountWatermelons4 = MathUtils.ceil(wave * 0.1f);
+
+                addOranges(amountOranges4);
+                addAnanases(amountAnanases4);
+
+            delayTime(20f);
+                addWatermelons(amountWatermelons4);
+        }
+
     }
 
     public void update()
@@ -142,6 +172,26 @@ public class WaveGenerator
                 {
                     queue.add(ananas);
                     ananas.isUsed = true;
+                    break checkIfUsedLoop;
+                }
+            }
+        }
+
+        if (delay == 0f)
+            sendQueueImmediatly();
+    }
+
+    private void addWatermelons(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            checkIfUsedLoop:
+            for (Watermelon watermelon : totalWatermelons)
+            {
+                if (!watermelon.isUsed)
+                {
+                    queue.add(watermelon);
+                    watermelon.isUsed = true;
                     break checkIfUsedLoop;
                 }
             }

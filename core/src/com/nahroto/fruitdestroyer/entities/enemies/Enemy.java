@@ -100,7 +100,7 @@ public class Enemy
 
         int extraVelocity = MathUtils.random(0, 2);
 
-        forwardVelocity.set((BASEVELOCITY + (extraVelocity * 10)) * directionX, (BASEVELOCITY + (extraVelocity * 10)) * directionY);
+        forwardVelocity.set((BASEVELOCITY + (extraVelocity * 5)) * directionX, (BASEVELOCITY + (extraVelocity * 10)) * directionY);
         velocity.set(forwardVelocity);
         velocity.scl(velocityMultiplier);
     }

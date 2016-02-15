@@ -19,6 +19,7 @@ import com.nahroto.fruitdestroyer.WaveGenerator;
 import com.nahroto.fruitdestroyer.entities.Corpse;
 import com.nahroto.fruitdestroyer.entities.enemies.Ananas;
 import com.nahroto.fruitdestroyer.entities.enemies.Orange;
+import com.nahroto.fruitdestroyer.entities.enemies.Watermelon;
 import com.nahroto.fruitdestroyer.helpers.CollisionHandler;
 import com.nahroto.fruitdestroyer.Constants;
 import com.nahroto.fruitdestroyer.Explosion;
@@ -47,6 +48,7 @@ public class GameScreen implements Screen
     private Array<Corpse> currentCorpses;
     private Array<Corpse> totalOrangeCorpses;
     private Array<Corpse> totalAnanasCorpses;
+    private Array<Corpse> totalWatermelonCorpses;
 
     private Array<Bullet> totalBullets;
     private Array<Bullet> currentBullets;
@@ -77,7 +79,7 @@ public class GameScreen implements Screen
 
     private ShapeRenderer shapeRenderer;
 
-    public GameScreen(final Application APP, WaveGenerator waveGenerator, Array<Enemy> totalEnemies, Array<Enemy> currentEnemies, Array<Orange> totalOranges, Array<Ananas> totalAnanases, Array<Corpse> currentCorpses, Array<Corpse> totalOrangeCorpses, Array<Corpse> totalAnanasCorpses, Array<Bullet> totalBullets, Array<Bullet> currentBullets,Array<Explosion> totalExplosions, Array<Explosion> currentExplosions, GameHud gameHud, BuyHud buyHud, Texture bg, Player player, InputMultiplexer inputMultiplexer, Font accuracyStatus, Font ammoStatus, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Music actionMusic, Sprite reloadIcon, Sound waveSFX, Sprite accuracyIcon)
+    public GameScreen(final Application APP, WaveGenerator waveGenerator, Array<Enemy> totalEnemies, Array<Enemy> currentEnemies, Array<Orange> totalOranges, Array<Ananas> totalAnanases, Array<Corpse> currentCorpses, Array<Corpse> totalOrangeCorpses, Array<Corpse> totalAnanasCorpses, Array<Corpse> totalWatermelonCorpses, Array<Bullet> totalBullets, Array<Bullet> currentBullets,Array<Explosion> totalExplosions, Array<Explosion> currentExplosions, GameHud gameHud, BuyHud buyHud, Texture bg, Player player, InputMultiplexer inputMultiplexer, Font accuracyStatus, Font ammoStatus, InputHandler inputHandler, Input input, CollisionHandler collisionHandler, Music actionMusic, Sprite reloadIcon, Sound waveSFX, Sprite accuracyIcon)
     {
         this.APP = APP;
         this.waveGenerator = waveGenerator;
@@ -101,6 +103,7 @@ public class GameScreen implements Screen
         this.currentCorpses = currentCorpses;
         this.totalOrangeCorpses = totalOrangeCorpses;
         this.totalAnanasCorpses = totalAnanasCorpses;
+        this.totalWatermelonCorpses = totalWatermelonCorpses;
         this.totalBullets = totalBullets;
         this.currentBullets = currentBullets;
         this.totalExplosions = totalExplosions;
@@ -205,6 +208,22 @@ public class GameScreen implements Screen
                             {
                                 corpse.setStartTime();
                                 corpse.setPosition(currentEnemies.get(i).getX(), currentEnemies.get(i).getY());
+                                corpse.isBusy = true;
+                                currentCorpses.add(corpse);
+                                break;
+                            }
+                        }
+                    }
+
+                    if (currentEnemies.get(i) instanceof Watermelon)
+                    {
+                        for (Corpse corpse : totalWatermelonCorpses)
+                        {
+                            if (!corpse.isBusy)
+                            {
+                                corpse.setStartTime();
+                                corpse.setPosition(currentEnemies.get(i).getX() + (currentEnemies.get(i).getSprite().getWidth() / 2) - (corpse.getSprite().getWidth() / 2), currentEnemies.get(i).getY() + (currentEnemies.get(i).getSprite().getHeight() / 2) - (corpse.getSprite().getHeight() / 2));
+                                corpse.setAngle(currentEnemies.get(i).getAngle());
                                 corpse.isBusy = true;
                                 currentCorpses.add(corpse);
                                 break;

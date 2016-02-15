@@ -74,7 +74,7 @@ public class ExtraReloadSpeedOverlay extends UpgradeOverlay
                 return "pretty fast";
 
             case 25:
-                return "max speed";
+                return "MAX speed";
 
             default:
                 return "";

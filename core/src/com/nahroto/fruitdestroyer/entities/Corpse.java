@@ -51,4 +51,9 @@ public class Corpse
     {
         sprite.draw(batch);
     }
+
+    public Sprite getSprite()
+    {
+        return sprite;
+    }
 }

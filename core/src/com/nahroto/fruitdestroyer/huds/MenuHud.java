@@ -93,7 +93,6 @@ public class MenuHud extends Hud
         this.title.setOrigin(Align.center);
         this.title.setScale(10f, 10f);
 
-
         actors.add(this.title);
         actors.add(playButton);
         actors.add(highScoresButton);

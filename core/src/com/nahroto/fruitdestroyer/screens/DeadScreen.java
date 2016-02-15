@@ -73,8 +73,6 @@ public class DeadScreen implements Screen
 
         deadHud.render();
 
-
-
     }
 
     @Override

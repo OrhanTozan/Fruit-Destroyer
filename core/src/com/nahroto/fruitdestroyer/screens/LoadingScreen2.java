@@ -17,6 +17,7 @@ import com.nahroto.fruitdestroyer.Debug;
 import com.nahroto.fruitdestroyer.Logger;
 import com.nahroto.fruitdestroyer.WaveGenerator;
 import com.nahroto.fruitdestroyer.entities.Corpse;
+import com.nahroto.fruitdestroyer.entities.enemies.Watermelon;
 import com.nahroto.fruitdestroyer.helpers.CollisionHandler;
 import com.nahroto.fruitdestroyer.Constants;
 import com.nahroto.fruitdestroyer.Explosion;
@@ -42,11 +43,13 @@ public class LoadingScreen2 implements Screen
     private Array<Enemy> currentEnemies;
     private Array<Orange> totalOranges;
     private Array<Ananas> totalAnanases;
+    private Array<Watermelon> totalWatermelons;
 
     private Array<Corpse> totalCorpses;
     private Array<Corpse> currentCorpses;
     private Array<Corpse> totalOrangeCorpses;
     private Array<Corpse> totalAnanasCorpses;
+    private Array<Corpse> totalWatermelonCorpses;
 
     private Array<Bullet> totalBullets;
     private Array<Bullet> currentBullets;
@@ -102,11 +105,13 @@ public class LoadingScreen2 implements Screen
         currentEnemies = new Array<Enemy>();
         totalOranges = new Array<Orange>();
         totalAnanases = new Array<Ananas>();
+        totalWatermelons = new Array<Watermelon>();
 
         totalCorpses = new Array<Corpse>();
         currentCorpses = new Array<Corpse>();
         totalOrangeCorpses = new Array<Corpse>();
         totalAnanasCorpses = new Array<Corpse>();
+        totalWatermelonCorpses = new Array<Corpse>();
 
         totalBullets = new Array<Bullet>();
         currentBullets = new Array<Bullet>();
@@ -130,17 +135,26 @@ public class LoadingScreen2 implements Screen
         for (int i = 0; i < 30; i++)
             totalAnanases.add(new Ananas(APP, gameScreenAtlas.findRegion("ananas"), gameScreenAtlas.findRegion("ananas-hit"), gameScreenAtlas.createSprite("red-bar"), gameScreenAtlas.createSprite("green-bar")));
 
+        // INIT WATERMELONS
+        for (int i = 0; i < 30; i++)
+            totalWatermelons.add(new Watermelon(APP, gameScreenAtlas.findRegion("watermelon"), gameScreenAtlas.findRegion("watermelon-hit"), gameScreenAtlas.createSprite("red-bar"), gameScreenAtlas.createSprite("green-bar")));
+
         for (int i = 0; i < 30; i++)
             totalOrangeCorpses.add(new Corpse(gameScreenAtlas.findRegion("orange-dead")));
 
         for (int i = 0; i < 30; i ++)
             totalAnanasCorpses.add(new Corpse(gameScreenAtlas.findRegion("ananas-dead")));
 
+        for (int i = 0; i < 30; i ++)
+            totalWatermelonCorpses.add(new Corpse(gameScreenAtlas.findRegion("watermelon-dead")));
+
         totalEnemies.addAll(totalOranges);
         totalEnemies.addAll(totalAnanases);
+        totalEnemies.addAll(totalWatermelons);
 
         totalCorpses.addAll(totalOrangeCorpses);
         totalCorpses.addAll(totalAnanasCorpses);
+        totalCorpses.addAll(totalWatermelonCorpses);
 
         // INIT PLAYER
         player = new Player(gameScreenAtlas.createSprite("player"), gameScreenAtlas.createSprite("flash2"), totalBullets, currentBullets, APP);
@@ -160,11 +174,11 @@ public class LoadingScreen2 implements Screen
 
         collisionHandler = new CollisionHandler(deadScreen, currentEnemies, currentBullets);
         waveSFX = APP.assets.get("sounds/victory.ogg", Sound.class);
-        waveGenerator = new WaveGenerator(totalEnemies, currentEnemies, totalOranges, totalAnanases);
+        waveGenerator = new WaveGenerator(totalEnemies, currentEnemies, totalOranges, totalAnanases, totalWatermelons);
         gameHud = new GameHud(player, APP.viewport, waveGenerator, inputMultiplexer, APP, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon"), gameScreenAtlas.findRegion("volumeButton"), actionMusic);
         buyHud = new BuyHud(APP, APP.viewport, APP.batch, gameHud, waveGenerator, gameScreenAtlas, blackShaderTexture, inputMultiplexer, player);
         gameHud.init(buyHud);
-        gameScreen = new GameScreen(APP, waveGenerator, totalEnemies, currentEnemies, totalOranges, totalAnanases, currentCorpses, totalOrangeCorpses, totalAnanasCorpses, totalBullets, currentBullets, totalExplosions, currentExplosions, gameHud, buyHud, bg, player, inputMultiplexer, new Font(APP, "trompus14.otf", "fonts/trompus.otf", 50, Color.WHITE, Color.BLACK, 3, true), ammoStatus, inputHandler, new Input(), collisionHandler, actionMusic, gameScreenAtlas.createSprite("reload-icon"), waveSFX, gameScreenAtlas.createSprite("accuracy-icon"));
+        gameScreen = new GameScreen(APP, waveGenerator, totalEnemies, currentEnemies, totalOranges, totalAnanases, currentCorpses, totalOrangeCorpses, totalAnanasCorpses, totalWatermelonCorpses, totalBullets, currentBullets, totalExplosions, currentExplosions, gameHud, buyHud, bg, player, inputMultiplexer, new Font(APP, "trompus14.otf", "fonts/trompus.otf", 50, Color.WHITE, Color.BLACK, 3, true), ammoStatus, inputHandler, new Input(), collisionHandler, actionMusic, gameScreenAtlas.createSprite("reload-icon"), waveSFX, gameScreenAtlas.createSprite("accuracy-icon"));
 
         gameResetter.setGameScreen(gameScreen);
         gameResetter.setGameHud(gameHud);
