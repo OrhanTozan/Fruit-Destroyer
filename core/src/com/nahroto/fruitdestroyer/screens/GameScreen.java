@@ -142,7 +142,7 @@ public class GameScreen implements Screen
         if (Debug.DRAW_HITBOXES)
             shapeRenderer = new ShapeRenderer();
 
-        waveGenerator.wave = 1;
+        waveGenerator.wave = 7;
         waveGenerator.startNewWave();
     }
 
@@ -305,7 +305,7 @@ public class GameScreen implements Screen
             CameraShaker.update(APP.camera);
 
             // WHEN WAVE IS CLEARED, START NEW WAVE
-            if (currentEnemies.size == 0 && waveGenerator.getQueue().size == 0 && !gameHud.animatingWave)
+            if (currentEnemies.size == 0 && waveGenerator.allQueuesEmpty() && !gameHud.animatingWave)
             {
                 gameHud.animateWaveLabel(waveGenerator.isBuyRound());
                 buyHud.update(delta);

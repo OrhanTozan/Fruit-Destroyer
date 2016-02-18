@@ -25,7 +25,7 @@ public class GameResetter
 
     private GameHud gameHud;
 
-    private Array<Enemy> waveQueue;
+    private Array<Array<Enemy>> waveQueues;
 
     private Array<Enemy> currentEnemies;
     private Array<Bullet> currentBullets;
@@ -86,8 +86,9 @@ public class GameResetter
         // RESET WAVE VALUE
         WaveGenerator.wave = 1;
 
-        // CLEAR WAVE QUEUE
-        waveQueue.clear();
+        // CLEAR WAVE QUEUES
+        for (Array<Enemy> queue : waveQueues)
+            queue.clear();
 
         // UPDATE WAVE COUNTER
         gameHud.updateWaveText();
@@ -133,8 +134,8 @@ public class GameResetter
         this.bombOverlay = bombOverlay;
     }
 
-    public void setWaveQueue(Array<Enemy> waveQueue)
+    public void setWaveQueues(Array<Array<Enemy>> waveQueues)
     {
-        this.waveQueue = waveQueue;
+        this.waveQueues = waveQueues;
     }
 }

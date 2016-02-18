@@ -12,7 +12,7 @@ public class WaveGenerator
 {
     public static final int BUY_WAVE = 1;
 
-    private static final int ANANAS_MINIMUM_WAVE = 6;
+    private int currentGroup;
 
     private Array<Enemy> totalEnemies;
     private Array<Enemy> currentEnemies;
@@ -22,10 +22,7 @@ public class WaveGenerator
 
     public static Integer wave = new Integer(1);
 
-    private Array<Enemy> queue;
-
-    private float delay;
-    private long startTime;
+    private QueueManager queueManager = new QueueManager();
 
     public WaveGenerator(Array<Enemy> totalEnemies, Array<Enemy> currentEnemies, Array<Orange> totalOranges, Array<Ananas> totalAnanases, Array<Watermelon> totalWatermelons)
     {
@@ -34,7 +31,6 @@ public class WaveGenerator
         this.totalOranges = totalOranges;
         this.totalAnanases = totalAnanases;
         this.totalWatermelons = totalWatermelons;
-        queue = new Array<Enemy>();
     }
 
     public void startNewWave()
@@ -44,83 +40,81 @@ public class WaveGenerator
             Logger.log("NEW WAVE STARTED");
             Logger.log("WAVE: " + wave);
         }
-
-        startTime = System.currentTimeMillis();
+        currentGroup = 1;
+        int amountOranges = 0;
+        int amountAnanases = 0;
+        int amountWatermelons = 0;
 
         restoreAllEnemies();
 
         if (wave >= 0)
         {
-            delayTime(0f); // FIRST GROUP
-                int amountOranges1 = MathUtils.round(2 + wave * 0.3f);
-                if (amountOranges1 > 10)
-                    amountOranges1 = 10;
-                int amountAnanases1 = MathUtils.round(2 + wave * 0.14f);
+            // FIRST GROUP
+            amountOranges = MathUtils.round(2 + wave * 0.5f);
+            if (amountOranges > 10)
+                amountOranges = 10;
+            amountAnanases = MathUtils.round(2 + wave * 0.14f);
 
-                addOranges(amountOranges1);
-                addAnanases(amountAnanases1);
+            addOranges(amountOranges, 1);
+            addAnanases(amountAnanases, 1);
 
-            delayTime(3f);
-                if (wave >= 8)
-                {
-                    int amountWatermelons1 = MathUtils.ceil(wave * 0.05f);
-                    addWatermelons(amountWatermelons1);
-                }
+            if (wave >= 8)
+            {
+                amountWatermelons = MathUtils.ceil(wave * 0.05f);
+                addWatermelons(amountWatermelons, 1);
+            }
 
-            delayTime(5f + (wave * 0.5f)); // SECOND GROUP
-                int amountOranges2 = MathUtils.round(wave * 0.4f);
-                int amountAnanases2 = MathUtils.round(wave * 0.14f);
+            // SECOND GROUP
+            amountOranges = MathUtils.round(wave * 0.3f);
+            if (amountOranges > 15)
+                amountOranges = 15;
+            amountAnanases = MathUtils.round(wave * 0.14f);
 
-                addOranges(amountOranges2);
-                addAnanases(amountAnanases2);
+            addOranges(amountOranges, 2);
+            addAnanases(amountAnanases, 2);
         }
 
         if (wave >= 5)
         {
-            delayTime(12f); // THIRD GROUP
-                int amountOranges3 = MathUtils.round(wave * 0.4f);
-                int amountAnanases3 = MathUtils.round(wave * 0.14f);
+            // THIRD GROUP
+            amountOranges = MathUtils.round(wave * 0.5f);
+            amountAnanases = MathUtils.round(wave * 0.14f);
 
-                addOranges(amountOranges3);
-                addAnanases(amountAnanases3);
+            addOranges(amountOranges, 3);
+            addAnanases(amountAnanases, 3);
 
-            delayTime(15f);
-                if (wave >= 8)
-                {
-                    int amountWatermelons3 = MathUtils.ceil(wave * 0.1f);
-                    addWatermelons(amountWatermelons3);
-                }
+            if (wave >= 8)
+            {
+                amountWatermelons = MathUtils.ceil(wave * 0.1f);
+                addWatermelons(amountWatermelons, 3);
+            }
         }
         if (wave >= 7)
         {
-            delayTime(17f);
-                int amountOranges4 = MathUtils.round(wave * 0.5f);
-                int amountAnanases4 = MathUtils.round(wave * 0.14f);
-                int amountWatermelons4 = MathUtils.ceil(wave * 0.1f);
+            // FOURTH GROUP
+            amountOranges = MathUtils.round(wave * 0.3f);
+            amountAnanases = MathUtils.round(wave * 0.14f);
+            amountWatermelons = MathUtils.ceil(wave * 0.1f);
 
-                addOranges(amountOranges4);
-                addAnanases(amountAnanases4);
-
-            delayTime(20f);
-                addWatermelons(amountWatermelons4);
+            addOranges(amountOranges, 4);
+            addAnanases(amountAnanases, 4);
+            addWatermelons(amountWatermelons, 4);
         }
 
     }
 
     public void update()
     {
-        if ( (queue.size > 0) && (System.currentTimeMillis() - startTime >= delay * 1000) )
-            sendQueueImmediatly();
+        if (currentEnemies.size == 0)
+            currentGroup++;
+        if (currentGroup > 4)
+            currentGroup = 1;
+        queueManager.update(currentGroup, this);
     }
 
     public boolean isBuyRound()
     {
         return (wave % BUY_WAVE == 0);
-    }
-
-    private void delayTime(float delayTime)
-    {
-        delay = delayTime;
     }
 
     private void restoreAllEnemies()
@@ -129,7 +123,7 @@ public class WaveGenerator
             enemy.restoreHealth();
     }
 
-    private void makeEnemiesReady()
+    private void makeEnemiesReady(Array<Enemy> queue)
     {
         for (Enemy enemy : queue)
         {
@@ -141,8 +135,9 @@ public class WaveGenerator
         }
     }
 
-    private void addOranges(int amount)
+    private void addOranges(int amount, int groupIndex)
     {
+        Array<Enemy> queue = queueManager.getQueue(groupIndex);
         for (int i = 0; i < amount; i++)
         {
             checkIfUsedLoop:
@@ -156,13 +151,15 @@ public class WaveGenerator
                 }
             }
         }
-
-        if (delay == 0f)
-            sendQueueImmediatly();
+        if (currentGroup == groupIndex)
+        {
+            sendQueueImmediatly(queue);
+        }
     }
 
-    private void addAnanases(int amount)
+    private void addAnanases(int amount, int groupIndex)
     {
+        Array<Enemy> queue = queueManager.getQueue(groupIndex);
         for (int i = 0; i < amount; i++)
         {
             checkIfUsedLoop:
@@ -176,13 +173,15 @@ public class WaveGenerator
                 }
             }
         }
-
-        if (delay == 0f)
-            sendQueueImmediatly();
+        if (currentGroup == groupIndex)
+        {
+            sendQueueImmediatly(queue);
+        }
     }
 
-    private void addWatermelons(int amount)
+    private void addWatermelons(int amount, int groupIndex)
     {
+        Array<Enemy> queue = queueManager.getQueue(groupIndex);
         for (int i = 0; i < amount; i++)
         {
             checkIfUsedLoop:
@@ -196,25 +195,38 @@ public class WaveGenerator
                 }
             }
         }
-
-        if (delay == 0f)
-            sendQueueImmediatly();
+        if (currentGroup == groupIndex)
+        {
+            sendQueueImmediatly(queue);
+        }
     }
 
-    private void sendQueueImmediatly()
+    public void sendQueueImmediatly(Array<Enemy> queue)
     {
-        makeEnemiesReady();
+        makeEnemiesReady(queue);
         currentEnemies.addAll(queue);
         if (Debug.LOG_WAVES)
         {
-            Logger.log("queue released!, size: " + queue.size);
+            Logger.log("CURRENTGROUPINDEX: " + currentGroup);
+            Logger.log("QUEUE RELEASED!, size: " + queue.size);
             Logger.log("current enemies size: " + currentEnemies.size);
         }
         queue.clear();
     }
 
-    public Array<Enemy> getQueue()
+    public boolean allQueuesEmpty()
     {
-        return queue;
+        int counterEmpty = 0;
+        for (Array<Enemy> queue : queueManager.getAllQueues())
+        {
+            if (queue.size == 0)
+                counterEmpty++;
+        }
+        return counterEmpty == queueManager.getAllQueues().size;
+    }
+
+    public Array<Array<Enemy>> getQueues()
+    {
+        return queueManager.getAllQueues();
     }
 }

@@ -61,6 +61,7 @@ public class Application extends Game
 	@Override
 	public void create ()
 	{
+		Logger.log(MathUtils.round(7 * 0.3f));
 		prefs = Gdx.app.getPreferences("Fruit_Destroyer_stats");
 		batch = new SpriteBatch();
 		camera = new OrthographicCamera(Constants.V_WIDTH, Constants.V_HEIGHT);

@@ -183,7 +183,7 @@ public class LoadingScreen2 implements Screen
         gameResetter.setGameScreen(gameScreen);
         gameResetter.setGameHud(gameHud);
         gameResetter.setOverlays(buyHud.getExtraAmmoOverlay(), buyHud.getExtraAccuracyOverlay(), buyHud.getExtraReloadSpeedOverlay(), buyHud.getExtraKnockbackOverlay(), buyHud.getMarksmanOverlay(), buyHud.getInstakillOverlay(), buyHud.getBombOverlay());
-        gameResetter.setWaveQueue(waveGenerator.getQueue());
+        gameResetter.setWaveQueues(waveGenerator.getQueues());
     }
 
     @Override
