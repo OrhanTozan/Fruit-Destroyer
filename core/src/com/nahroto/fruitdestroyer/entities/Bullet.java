@@ -15,8 +15,8 @@ public class Bullet
 
     public static final int START_DAMAGE = 10;
     public static final int START_ROF = 200;
-    public static final int START_MAGSIZE = 20;
-    public static final float START_RECOIL = 1f;
+    public static final int START_MAGSIZE = 15;
+    public static final float START_RECOIL = 2f;
     public static final int START_KNOCKBACKPOWER = 75;
 
     private Vector2 velocity;

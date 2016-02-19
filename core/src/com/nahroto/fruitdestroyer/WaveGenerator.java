@@ -50,7 +50,7 @@ public class WaveGenerator
         if (wave >= 0)
         {
             // FIRST GROUP
-            amountOranges = MathUtils.round(1 + wave * 0.8f);
+            amountOranges = MathUtils.round(1 + wave * 1f);
             amountAnanases = MathUtils.round(1 + wave * 0.4f);
 
             addOranges(amountOranges, 1);
@@ -63,7 +63,7 @@ public class WaveGenerator
             }
 
             // SECOND GROUP
-            amountOranges = MathUtils.round(wave * 0.9f);
+            amountOranges = MathUtils.round(wave * 1.1f);
             if (amountOranges > 15)
                 amountOranges = 15;
             amountAnanases = MathUtils.round(wave * 0.4f);
@@ -75,7 +75,7 @@ public class WaveGenerator
         if (wave >= 5)
         {
             // THIRD GROUP
-            amountOranges = MathUtils.round(wave * 1f);
+            amountOranges = MathUtils.round(wave * 1.2f);
             amountAnanases = MathUtils.round(wave * 0.5f);
 
             addOranges(amountOranges, 3);
@@ -90,7 +90,7 @@ public class WaveGenerator
         if (wave >= 7)
         {
             // FOURTH GROUP
-            amountOranges = MathUtils.round(wave * 1.1f);
+            amountOranges = MathUtils.round(wave * 1.3f);
             amountAnanases = MathUtils.round(wave * 0.5f);
             amountWatermelons = MathUtils.ceil(wave * 0.1f);
 
