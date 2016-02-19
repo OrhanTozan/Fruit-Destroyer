@@ -15,6 +15,7 @@ public class Enemy
 {
     protected static final int BASEVELOCITY = 50;
     protected float velocityMultiplier;
+    protected float knockbackMultiplier;
     protected boolean explodable;
 
     public boolean renderHit = false;
@@ -98,11 +99,9 @@ public class Enemy
         directionX = deltaX / length;
         directionY = deltaY / length;
 
-        int extraVelocity = MathUtils.random(0, 2);
-
-        forwardVelocity.set((BASEVELOCITY + (extraVelocity * 5)) * directionX, (BASEVELOCITY + (extraVelocity * 10)) * directionY);
+        forwardVelocity.set(BASEVELOCITY  * directionX, BASEVELOCITY * directionY);
+        forwardVelocity.scl(velocityMultiplier);
         velocity.set(forwardVelocity);
-        velocity.scl(velocityMultiplier);
     }
 
     public void calculateRotation()
@@ -116,10 +115,12 @@ public class Enemy
         bounds.setRotation(angle);
     }
 
-    public void knockback(float knockbackPower)
+    public void knockback(float rawKnockbackPower)
     {
         lastTimeHit = System.currentTimeMillis();
-        velocity.set(-knockbackPower * directionX, -knockbackPower * directionY);
+
+        float actualKnockbackPower = rawKnockbackPower * knockbackMultiplier;
+        velocity.set(-actualKnockbackPower * directionX, -actualKnockbackPower * directionY);
     }
 
     public void update(float delta)

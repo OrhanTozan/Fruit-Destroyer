@@ -13,9 +13,9 @@ public class Bullet
 {
     public static final int VELOCITY = 1100;
 
-    public static final int START_DAMAGE = 1099;
+    public static final int START_DAMAGE = 10;
     public static final int START_ROF = 200;
-    public static final int START_MAGSIZE = 209999;
+    public static final int START_MAGSIZE = 20;
     public static final float START_RECOIL = 1f;
     public static final int START_KNOCKBACKPOWER = 75;
 

@@ -15,5 +15,6 @@ public class Ananas extends Enemy
         health = maxHealth;
         explodable = true;
         velocityMultiplier = 1f;
+        knockbackMultiplier = 1f;
     }
 }

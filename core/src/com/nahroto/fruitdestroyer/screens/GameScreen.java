@@ -142,7 +142,7 @@ public class GameScreen implements Screen
         if (Debug.DRAW_HITBOXES)
             shapeRenderer = new ShapeRenderer();
 
-        waveGenerator.wave = 7;
+        waveGenerator.wave = 1;
         waveGenerator.startNewWave();
     }
 
@@ -455,12 +455,11 @@ public class GameScreen implements Screen
     @Override
     public void hide()
     {
-        actionMusic.stop();
     }
 
     @Override
     public void dispose()
     {
-        Logger.log("seuefea");
+        ;
     }
 }

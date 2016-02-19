@@ -12,6 +12,7 @@ public class Watermelon extends Enemy
         maxHealth = 200;
         health = maxHealth;
         explodable = false;
-        velocityMultiplier = 0.4f;
+        velocityMultiplier = 0.7f;
+        knockbackMultiplier = 0f;
     }
 }
