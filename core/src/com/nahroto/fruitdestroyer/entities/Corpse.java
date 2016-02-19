@@ -42,8 +42,8 @@ public class Corpse
 
     public void update()
     {
-        if (System.currentTimeMillis() - startTime > DEAD_TIME * 1000f)
-            isDone = true;
+        /*if (System.currentTimeMillis() - startTime > DEAD_TIME * 1000f)
+            isDone = true;*/
     }
 
 

@@ -20,6 +20,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nahroto.fruitdestroyer.Application;
 import com.nahroto.fruitdestroyer.Constants;
@@ -28,6 +29,7 @@ import com.nahroto.fruitdestroyer.Font;
 import com.nahroto.fruitdestroyer.Input;
 import com.nahroto.fruitdestroyer.Logger;
 import com.nahroto.fruitdestroyer.WaveGenerator;
+import com.nahroto.fruitdestroyer.entities.Corpse;
 import com.nahroto.fruitdestroyer.entities.Player;
 import com.nahroto.fruitdestroyer.screens.GameScreen;
 
@@ -67,8 +69,9 @@ public class GameHud extends Hud
     private Runnable setGameScreenInput;
     private Runnable prepareWaveStatus;
     private Runnable animateWave;
+    private Runnable updateCorpses;
 
-    public GameHud(final Player player, Viewport viewport, final WaveGenerator waveGenerator, final InputMultiplexer gameScreenInput, Application APP, SpriteBatch batch, TextureRegion reloadButtonUp, TextureRegion reloadButtonDown, TextureRegion bulletIconTexture, TextureRegion soundButtonTexture, final Music actionMusic)
+    public GameHud(final Array<Corpse> totalCorpses, final Player player, Viewport viewport, final WaveGenerator waveGenerator, final InputMultiplexer gameScreenInput, Application APP, SpriteBatch batch, TextureRegion reloadButtonUp, TextureRegion reloadButtonDown, TextureRegion bulletIconTexture, TextureRegion soundButtonTexture, final Music actionMusic)
     {
         super(viewport, batch);
 
@@ -88,6 +91,18 @@ public class GameHud extends Hud
         blackShader.setPosition(-80, -80);
         blackShader.addAction(alpha(0f));
 
+
+        updateCorpses = new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                for (Corpse corpse : totalCorpses)
+                {
+                    corpse.isDone = true;
+                }
+            }
+        };
 
         setWhiteShaderVisible = new Runnable()
         {
@@ -328,6 +343,7 @@ public class GameHud extends Hud
                 run(playDumdum),
                 delay(1f),
                 parallel(moveTo(Constants.V_WIDTH / 2 - (waveFont.getWidth("Wave " + WaveGenerator.wave.toString()) / 2), Constants.V_HEIGHT - 100, 0.5f, Interpolation.pow2Out), run(hideBlackShader)),
+                run(updateCorpses),
                 run(startNewWave),
                 run(setGameScreenInput),
                 run(animatingWaveFalse)
