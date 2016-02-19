@@ -114,7 +114,7 @@ public class Player
 
     public void update()
     {
-        if (firstShotFired && System.currentTimeMillis() - timeSinceLastShot > 500)
+        if (firstShotFired && System.currentTimeMillis() - timeSinceLastShot > 200)
             firstShotFired = false;
 
         if (offsetNeeded && System.currentTimeMillis() - timeSinceShot > 50)
