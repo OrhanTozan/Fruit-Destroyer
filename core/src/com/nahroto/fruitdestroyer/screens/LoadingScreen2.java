@@ -175,7 +175,7 @@ public class LoadingScreen2 implements Screen
         collisionHandler = new CollisionHandler(deadScreen, currentEnemies, currentBullets);
         waveSFX = APP.assets.get("sounds/victory.ogg", Sound.class);
         waveGenerator = new WaveGenerator(totalEnemies, currentEnemies, totalOranges, totalAnanases, totalWatermelons);
-        gameHud = new GameHud(totalCorpses, player, APP.viewport, waveGenerator, inputMultiplexer, APP, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon"), gameScreenAtlas.findRegion("volumeButton"), actionMusic);
+        gameHud = new GameHud(currentCorpses, player, APP.viewport, waveGenerator, inputMultiplexer, APP, APP.batch, gameScreenAtlas.findRegion("reload-up"), gameScreenAtlas.findRegion("reload-down"), gameScreenAtlas.findRegion("bullet-icon"), gameScreenAtlas.findRegion("volumeButton"), actionMusic);
         buyHud = new BuyHud(APP, APP.viewport, APP.batch, gameHud, waveGenerator, gameScreenAtlas, blackShaderTexture, inputMultiplexer, player);
         gameHud.init(buyHud);
         gameScreen = new GameScreen(APP, waveGenerator, totalEnemies, currentEnemies, totalOranges, totalAnanases, currentCorpses, totalOrangeCorpses, totalAnanasCorpses, totalWatermelonCorpses, totalBullets, currentBullets, totalExplosions, currentExplosions, gameHud, buyHud, bg, player, inputMultiplexer, new Font(APP, "trompus14.otf", "fonts/trompus.otf", 50, Color.WHITE, Color.BLACK, 3, true), ammoStatus, inputHandler, new Input(), collisionHandler, actionMusic, gameScreenAtlas.createSprite("reload-icon"), waveSFX, gameScreenAtlas.createSprite("accuracy-icon"));

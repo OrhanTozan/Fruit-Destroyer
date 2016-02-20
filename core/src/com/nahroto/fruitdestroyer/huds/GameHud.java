@@ -71,7 +71,7 @@ public class GameHud extends Hud
     private Runnable animateWave;
     private Runnable updateCorpses;
 
-    public GameHud(final Array<Corpse> totalCorpses, final Player player, Viewport viewport, final WaveGenerator waveGenerator, final InputMultiplexer gameScreenInput, Application APP, SpriteBatch batch, TextureRegion reloadButtonUp, TextureRegion reloadButtonDown, TextureRegion bulletIconTexture, TextureRegion soundButtonTexture, final Music actionMusic)
+    public GameHud(final Array<Corpse> currentCorpses, final Player player, Viewport viewport, final WaveGenerator waveGenerator, final InputMultiplexer gameScreenInput, Application APP, SpriteBatch batch, TextureRegion reloadButtonUp, TextureRegion reloadButtonDown, TextureRegion bulletIconTexture, TextureRegion soundButtonTexture, final Music actionMusic)
     {
         super(viewport, batch);
 
@@ -97,10 +97,9 @@ public class GameHud extends Hud
             @Override
             public void run()
             {
-                for (Corpse corpse : totalCorpses)
-                {
-                    corpse.isDone = true;
-                }
+                for (int i = 0; i < currentCorpses.size; i++)
+                    currentCorpses.get(i).isBusy = false;
+                currentCorpses.clear();
             }
         };
 

@@ -50,8 +50,8 @@ public class WaveGenerator
         if (wave >= 0)
         {
             // FIRST GROUP
-            amountOranges = MathUtils.round(1 + wave * 1f);
-            amountAnanases = MathUtils.round(1 + wave * 0.4f);
+            amountOranges = MathUtils.round(1 + wave * 0.9f);
+            amountAnanases = MathUtils.round(1 + wave * 0.3f);
 
             addOranges(amountOranges, 1);
             addAnanases(amountAnanases, 1);
@@ -63,10 +63,10 @@ public class WaveGenerator
             }
 
             // SECOND GROUP
-            amountOranges = MathUtils.round(wave * 1.1f);
+            amountOranges = MathUtils.round(wave * 1.0f);
             if (amountOranges > 15)
                 amountOranges = 15;
-            amountAnanases = MathUtils.round(wave * 0.4f);
+            amountAnanases = MathUtils.round(wave * 0.3f);
 
             addOranges(amountOranges, 2);
             addAnanases(amountAnanases, 2);
@@ -75,24 +75,24 @@ public class WaveGenerator
         if (wave >= 5)
         {
             // THIRD GROUP
-            amountOranges = MathUtils.round(wave * 1.2f);
-            amountAnanases = MathUtils.round(wave * 0.5f);
+            amountOranges = MathUtils.round(wave * 1.1f);
+            amountAnanases = MathUtils.round(wave * 0.4f);
 
             addOranges(amountOranges, 3);
             addAnanases(amountAnanases, 3);
 
             if (wave >= 8)
             {
-                amountWatermelons = MathUtils.ceil(wave * 0.1f);
+                amountWatermelons = MathUtils.ceil(wave * 0.05f);
                 addWatermelons(amountWatermelons, 3);
             }
         }
         if (wave >= 7)
         {
             // FOURTH GROUP
-            amountOranges = MathUtils.round(wave * 1.3f);
-            amountAnanases = MathUtils.round(wave * 0.5f);
-            amountWatermelons = MathUtils.ceil(wave * 0.1f);
+            amountOranges = MathUtils.round(wave * 1.2f);
+            amountAnanases = MathUtils.round(wave * 0.4f);
+            amountWatermelons = MathUtils.ceil(wave * 0.05f);
 
             addOranges(amountOranges, 4);
             addAnanases(amountAnanases, 4);

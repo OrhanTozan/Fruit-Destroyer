@@ -191,7 +191,6 @@ public class GameScreen implements Screen
                         {
                             if (!corpse.isBusy)
                             {
-                                corpse.setStartTime();
                                 corpse.setPosition(currentEnemies.get(i).getX(), currentEnemies.get(i).getY());
                                 corpse.setAngle(currentEnemies.get(i).getAngle());
                                 corpse.isBusy = true;
@@ -206,7 +205,6 @@ public class GameScreen implements Screen
                         {
                             if (!corpse.isBusy)
                             {
-                                corpse.setStartTime();
                                 corpse.setPosition(currentEnemies.get(i).getX(), currentEnemies.get(i).getY());
                                 corpse.isBusy = true;
                                 currentCorpses.add(corpse);
@@ -221,7 +219,6 @@ public class GameScreen implements Screen
                         {
                             if (!corpse.isBusy)
                             {
-                                corpse.setStartTime();
                                 corpse.setPosition(currentEnemies.get(i).getX() + (currentEnemies.get(i).getSprite().getWidth() / 2) - (corpse.getSprite().getWidth() / 2), currentEnemies.get(i).getY() + (currentEnemies.get(i).getSprite().getHeight() / 2) - (corpse.getSprite().getHeight() / 2));
                                 corpse.setAngle(currentEnemies.get(i).getAngle());
                                 corpse.isBusy = true;
@@ -258,18 +255,6 @@ public class GameScreen implements Screen
 
             waveGenerator.update();
 
-            // UPDATE EXPLOSIONS
-            for (int i = 0; i < currentExplosions.size; i++)
-            {
-                currentExplosions.get(i).update(delta);
-                if (currentExplosions.get(i).isAnimationFinished())
-                {
-                    currentExplosions.get(i).isBusy = false;
-                    currentExplosions.get(i).reset();
-                    currentExplosions.removeIndex(i);
-                }
-            }
-
             // DO NOT SHOW RELOAD BUTTON WHEN AMMO IS FULL OR ALREADY RELOADING
             if (Player.ammo == Bullet.getWeapon().getMagSize() || player.isReloading())
                 gameHud.getActors().get(0).remove();
@@ -289,17 +274,6 @@ public class GameScreen implements Screen
             {
                 currentEnemies.get(i).getHealthBar().getRed().setPosition((currentEnemies.get(i).getSprite().getX() + (currentEnemies.get(i).getSprite().getWidth() / 2)) - (currentEnemies.get(i).getHealthBar().getRed().getWidth() / 2), currentEnemies.get(i).getSprite().getY() - HealthBar.Y_OFFSET);
                 currentEnemies.get(i).getHealthBar().update(currentEnemies.get(i).getHealth(), currentEnemies.get(i).getMaxHealth());
-            }
-
-            for (int i = 0; i < currentCorpses.size; i++)
-            {
-                currentCorpses.get(i).update();
-                if (currentCorpses.get(i).isDone)
-                {
-                    currentCorpses.get(i).isDone = false;
-                    currentCorpses.get(i).isBusy = false;
-                    currentCorpses.removeIndex(i);
-                }
             }
 
             CameraShaker.update(APP.camera);
@@ -340,6 +314,18 @@ public class GameScreen implements Screen
             }
         }
 
+        // UPDATE EXPLOSIONS
+        for (int i = 0; i < currentExplosions.size; i++)
+        {
+            currentExplosions.get(i).update(delta);
+            if (currentExplosions.get(i).isAnimationFinished())
+            {
+                currentExplosions.get(i).isBusy = false;
+                currentExplosions.get(i).reset();
+                currentExplosions.removeIndex(i);
+            }
+        }
+
         // Logger.log(Gdx.graphics.getFramesPerSecond());
 
         // UPDATE CAMERA
@@ -365,6 +351,7 @@ public class GameScreen implements Screen
         // RENDER BACKGROUND
         APP.batch.draw(bg, -80, -80);
 
+        // RENDER CORPSES
         for (Corpse corpse : currentCorpses)
             corpse.render(APP.batch);
 

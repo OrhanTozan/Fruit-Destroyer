@@ -66,10 +66,7 @@ public class GameResetter
             bullet.isUsed = false;
 
         for (Corpse corpse : totalCorpses)
-        {
             corpse.isBusy = false;
-            corpse.isDone = false;
-        }
 
         // CLEAR ALL ENEMIES
         currentEnemies.clear();
