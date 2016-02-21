@@ -120,7 +120,7 @@ public class LoadingScreen2 implements Screen
         currentExplosions = new Array<Explosion>();
 
         // INIT EXPLOSION STUFF
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 10; i++)
             totalExplosions.add(new Explosion(explosionsAtlas, APP.assets.get("sounds/explosion.ogg", Sound.class)));
 
         // INIT BULLETS
@@ -128,21 +128,21 @@ public class LoadingScreen2 implements Screen
             totalBullets.add(new Bullet(gameScreenAtlas.createSprite("bullet3")));
 
         // INIT ORANGES
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i < 100; i++)
             totalOranges.add(new Orange(APP, gameScreenAtlas.findRegion("orange"), gameScreenAtlas.findRegion("orange-hit"), gameScreenAtlas.createSprite("red-bar"), gameScreenAtlas.createSprite("green-bar")));
 
         // INIT ANANASES
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i < 100; i++)
             totalAnanases.add(new Ananas(APP, gameScreenAtlas.findRegion("ananas"), gameScreenAtlas.findRegion("ananas-hit"), gameScreenAtlas.createSprite("red-bar"), gameScreenAtlas.createSprite("green-bar")));
 
         // INIT WATERMELONS
         for (int i = 0; i < 30; i++)
             totalWatermelons.add(new Watermelon(APP, gameScreenAtlas.findRegion("watermelon"), gameScreenAtlas.findRegion("watermelon-hit"), gameScreenAtlas.createSprite("red-bar"), gameScreenAtlas.createSprite("green-bar")));
 
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i < 100; i++)
             totalOrangeCorpses.add(new Corpse(gameScreenAtlas.findRegion("orange-dead")));
 
-        for (int i = 0; i < 30; i ++)
+        for (int i = 0; i < 100; i ++)
             totalAnanasCorpses.add(new Corpse(gameScreenAtlas.findRegion("ananas-dead")));
 
         for (int i = 0; i < 30; i ++)
