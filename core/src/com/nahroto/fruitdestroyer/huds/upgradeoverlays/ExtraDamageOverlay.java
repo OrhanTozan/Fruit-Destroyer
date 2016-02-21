@@ -17,7 +17,7 @@ public class ExtraDamageOverlay extends UpgradeOverlay
 
     public ExtraDamageOverlay(final Application APP, ImageButton button, TextureAtlas gameScreenAtlas, BuyHud buyHud, Player player)
     {
-        super(APP, "Damage of your bullets!\nUpgrade this so your bullets will\nhurt the fruit more!", 30, button, gameScreenAtlas, buyHud, player);
+        super(APP, "Damage of your bullets!\nUpgrade this so your bullets will\nhurt the fruit more!", 20, button, gameScreenAtlas, buyHud, player);
 
         currentValue = new Integer(Bullet.START_DAMAGE);
         nextValue = new Integer(Bullet.START_DAMAGE + UPGRADE_STEP);
