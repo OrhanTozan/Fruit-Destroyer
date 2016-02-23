@@ -75,10 +75,13 @@ public class MenuHud extends Hud
                 if (!APP.playServices.isSignedIn())
                 {
                     APP.playServices.signIn();
+                    APP.playServices.submitScore(APP.prefs.getInteger("highScore", 1));
                     APP.playServices.showScore();
                 }
                 else
+                {   APP.playServices.submitScore(APP.prefs.getInteger("highScore", 1));
                     APP.playServices.showScore();
+                }
             }
         });
         waveFont = new Font(APP, "trompus87.otf", "fonts/trompus.otf", 60, Color.WHITE, Color.BLACK, 3, true);
