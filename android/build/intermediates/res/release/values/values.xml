@@ -265,6 +265,9 @@
     <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/8.4.0/res/values/cast_ids.xml -->
     <eat-comment/>
     <item name="cast_notification_id" type="id"/>
+    <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/res/values/gdk_ids.xml -->
+    <eat-comment/>
+    <item name="gdk_giftiz_button" type="id"/>
     <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/values/values.xml -->
     <eat-comment/>
     <item name="home" type="id"/>
@@ -371,6 +374,20 @@
     <string name="gamehelper_license_failed">License check failed.</string>
     <string name="gamehelper_sign_in_failed">Failed to sign in. Please check your network connection and try again.</string>
     <string name="gamehelper_unknown_error">Unknown error.</string>
+    <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/res/values/gdk_strings.xml -->
+    <eat-comment/>
+    <string name="gdk_discover">Discover\nAndroid Games</string>
+    <string name="gdk_error">Error</string>
+    <string name="gdk_free">FREE</string>
+    <string name="gdk_gifts">Win real Gifts</string>
+    <string name="gdk_in_app_purchase">Purchase registered !</string>
+    <string name="gdk_loading"> Loading . . . </string>
+    <string name="gdk_mission_complete">Mission completed !</string>
+    <string name="gdk_missions">Do Missions</string>
+    <string name="gdk_no_network">Network not available.</string>
+    <string name="gdk_ok">OK</string>
+    <string name="gdk_try">Try now !</string>
+    <string name="gdk_welcome">Welcome</string>
     <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/res/values/ids.xml -->
     <eat-comment/>
     <string name="leaderboard_highest_wave_score">CgkIt9qEjqkbEAIQBg</string>

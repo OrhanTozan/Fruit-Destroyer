@@ -121,6 +121,8 @@ public class DeadHud extends Hud
             APP.prefs.flush();
         }
         highScore = APP.prefs.getInteger("highScore", WaveGenerator.wave);
+        if (WaveGenerator.wave >= 2)
+            APP.activityController.missionCompleted();
     }
 
     @Override

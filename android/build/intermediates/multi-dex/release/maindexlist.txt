@@ -20,11 +20,13 @@ com/google/android/gms/internal/zzhb.class
 com/google/android/gms/ads/internal/purchase/zzc.class
 com/google/android/gms/internal/zzgy.class
 com/google/ads/mediation/MediationAdapter.class
+com/purplebrain/giftiz/sdk/util/GDKURLUtil.class
 com/google/android/gms/internal/zzic.class
 com/google/android/gms/wearable/ChannelApi$ChannelListener.class
 android/support/v4/app/AppOpsManagerCompat.class
 android/support/v7/view/ActionMode$Callback.class
 android/support/v4/graphics/drawable/DrawableCompat.class
+com/purplebrain/giftiz/sdk/util/GDKDeviceUuidHelper.class
 android/support/v4/app/FragmentManagerImpl$3.class
 com/google/android/gms/internal/zzcx.class
 com/google/ads/mediation/customevent/CustomEvent.class
@@ -63,9 +65,11 @@ com/google/android/gms/ads/internal/overlay/zzd$zzc.class
 com/google/android/gms/auth/api/signin/internal/zzm.class
 android/support/v7/graphics/drawable/DrawerArrowDrawable$ArrowDirection.class
 android/support/v4/media/session/MediaSessionCompat$OnActiveChangeListener.class
+com/purplebrain/giftiz/sdk/GiftizWebViewActivity$1.class
 android/support/v7/app/ActionBar$OnMenuVisibilityListener.class
 com/google/android/gms/measurement/internal/zzd.class
 com/google/android/gms/ads/internal/client/zzaa$zza.class
+com/purplebrain/giftiz/sdk/GiftizSDK$Inner.class
 com/nahroto/fruitdestroyer/android/AndroidLauncher$3.class
 com/google/android/gms/ads/internal/formats/zzg.class
 android/support/v4/widget/MaterialProgressDrawable.class
@@ -141,6 +145,7 @@ android/support/v4/media/session/MediaSessionCompat$ResultReceiverWrapper.class
 com/google/android/gms/internal/zzjf.class
 android/support/annotation/BoolRes.class
 com/google/android/gms/location/internal/LocationRequestInternal.class
+com/purplebrain/giftiz/sdk/request/GDKGenericRequest.class
 com/google/android/gms/ads/AdActivity.class
 com/google/ads/mediation/customevent/CustomEventServerParameters.class
 com/google/android/gms/internal/zzne.class
@@ -159,6 +164,7 @@ com/google/android/gms/location/places/NearbyAlertRequest.class
 com/google/android/gms/cast/Cast$CastApi.class
 com/google/android/gms/internal/zziu.class
 com/google/android/gms/internal/zzk.class
+com/purplebrain/giftiz/sdk/GiftizWebViewActivity$3.class
 com/google/android/gms/nearby/messages/internal/zzn.class
 com/google/example/games/basegameutils/BaseGameActivity.class
 com/google/android/gms/internal/zzjl.class
@@ -195,6 +201,7 @@ android/support/annotation/ColorInt.class
 com/google/android/gms/internal/zzds.class
 com/google/android/gms/ads/mediation/customevent/CustomEventExtras.class
 com/badlogic/gdx/backends/android/AndroidApplication$1.class
+com/purplebrain/giftiz/sdk/GiftizSDK.class
 com/google/android/gms/analytics/HitBuilders$TransactionBuilder.class
 com/google/android/gms/location/places/AutocompletePrediction.class
 android/support/annotation/ArrayRes.class
@@ -289,9 +296,11 @@ android/support/annotation/AttrRes.class
 com/google/android/gms/auth/api/signin/zzd.class
 com/google/android/gms/ads/internal/zzq.class
 com/google/android/gms/common/api/Status.class
+com/nahroto/fruitdestroyer/GiftizButton.class
 android/support/v4/view/GravityCompat.class
 com/google/android/gms/internal/zzgb.class
 com/google/android/gms/internal/zzca.class
+com/purplebrain/giftiz/sdk/GiftizWebViewActivity$4.class
 com/badlogic/gdx/utils/StreamUtils.class
 com/google/android/gms/internal/zzhc.class
 android/support/v4/media/session/PlaybackStateCompatApi22.class
@@ -301,6 +310,7 @@ com/google/android/gms/ads/internal/request/AdResponseParcel.class
 android/support/v4/app/FragmentTabHost.class
 com/google/ads/mediation/MediationBannerAdapter.class
 android/support/v4/app/FragmentState.class
+com/purplebrain/giftiz/sdk/GiftizWebViewActivity.class
 android/support/v4/widget/CursorAdapter.class
 android/support/v4/util/DebugUtils.class
 com/google/android/gms/ads/internal/purchase/zzl.class
@@ -502,6 +512,7 @@ android/support/v4/app/ActivityCompatHoneycomb.class
 com/google/android/gms/appindexing/AppIndexApi.class
 com/google/android/gms/internal/zzgu.class
 com/google/android/gms/appindexing/AppIndexApi$AppIndexingLink.class
+com/nahroto/fruitdestroyer/ActivityController.class
 com/google/android/gms/internal/zzge.class
 com/google/android/gms/wearable/internal/GetConfigResponse.class
 com/google/android/gms/R.class
@@ -536,9 +547,11 @@ com/google/android/gms/plus/People.class
 com/google/android/gms/fitness/data/DataType.class
 com/google/android/gms/ads/internal/purchase/GInAppPurchaseManagerInfoParcel.class
 com/badlogic/gdx/graphics/g3d/shaders/DefaultShader.class
+com/nahroto/fruitdestroyer/Application$Platform.class
 com/google/android/gms/ads/internal/client/ThinAdSizeParcel.class
 com/google/ads/mediation/MediationBannerListener.class
 com/google/android/gms/appinvite/PreviewActivity.class
+com/purplebrain/giftiz/sdk/GiftizSDK$Inner$GiftizButtonStatus.class
 com/google/android/gms/nearby/messages/devices/NearbyDevice.class
 android/support/v7/appcompat/R$attr.class
 com/google/android/gms/auth/api/signin/internal/zzf$zza.class
@@ -560,6 +573,7 @@ com/google/android/gms/nearby/messages/internal/GetPermissionStatusRequest.class
 com/google/ads/mediation/MediationAdRequest.class
 com/google/android/gms/analytics/ecommerce/ProductAction.class
 com/google/android/gms/internal/zzgx.class
+com/purplebrain/giftiz/sdk/GiftizWebViewActivity$2.class
 com/google/android/gms/ads/internal/purchase/zzd.class
 android/support/multidex/MultiDex$V14.class
 com/google/android/gms/ads/internal/overlay/zzd$zzd.class
@@ -623,6 +637,7 @@ com/google/android/gms/internal/zzgw.class
 android/support/v4/view/MenuCompat.class
 com/google/android/gms/internal/zzia.class
 android/support/v7/app/ActionBar$DisplayOptions.class
+com/purplebrain/giftiz/sdk/request/GDKDownloadGiftizClicRequest.class
 com/google/android/gms/ads/internal/overlay/zzt.class
 android/support/v4/util/LogWriter.class
 com/google/android/gms/internal/zzhx.class
@@ -636,6 +651,8 @@ com/google/android/gms/internal/zzgk.class
 android/support/v7/app/ActionBar$TabListener.class
 com/google/android/gms/internal/zzim.class
 com/google/android/gms/plus/PlusShare.class
+com/purplebrain/giftiz/sdk/util/GDKPreferencesUtil.class
+com/nahroto/fruitdestroyer/android/AndroidLauncher$5.class
 com/google/android/gms/ads/internal/formats/zzi.class
 com/google/android/gms/wearable/internal/zza.class
 android/support/v4/media/session/PlaybackStateCompat$State.class
@@ -770,6 +787,7 @@ com/google/android/gms/internal/zzfj.class
 com/google/android/gms/ads/internal/zzh.class
 com/google/android/gms/internal/zzqu.class
 android/support/annotation/Size.class
+com/purplebrain/giftiz/sdk/GiftizWebViewActivity$5.class
 com/google/android/gms/wallet/fragment/WalletLogoImageType.class
 com/google/android/gms/internal/zzga.class
 android/support/v7/graphics/drawable/DrawerArrowDrawable.class
@@ -803,5 +821,6 @@ com/badlogic/gdx/backends/android/AndroidFiles.class
 com/google/android/gms/wallet/MaskedWalletRequest.class
 android/support/v4/content/PermissionChecker$PermissionResult.class
 com/google/android/gms/ads/internal/purchase/zzf.class
+com/purplebrain/giftiz/sdk/util/GDKId.class
 com/google/android/gms/games/leaderboard/Leaderboard.class
 com/google/android/gms/wallet/fragment/zzc.class

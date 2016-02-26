@@ -54,6 +54,20 @@
     <string msgid="311697239335516384" name="common_open_on_phone">"Открыть на телефоне"</string>
     <string msgid="3156914698180786012" name="common_signin_button_text">"Войти"</string>
     <string msgid="1483290677806110088" name="common_signin_button_text_long">"Войти через аккаунт Google"</string>
+    <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/res/values-ru/gdk_strings.xml -->
+    <eat-comment/>
+    <string name="gdk_discover">Познакомьтесь с играми Android</string>
+    <string name="gdk_error">Ошибка</string>
+    <string name="gdk_free">Бесплатно</string>
+    <string name="gdk_gifts">Выигрывайте призы</string>
+    <string name="gdk_in_app_purchase">Покупка произведена!</string>
+    <string name="gdk_loading"> Загрузка . . . </string>
+    <string name="gdk_mission_complete">Миссия завершена!</string>
+    <string name="gdk_missions">Выполняйте миссии</string>
+    <string name="gdk_no_network">Сеть недоступна</string>
+    <string name="gdk_ok">OK</string>
+    <string name="gdk_try">Попробуйте сейчас!</string>
+    <string name="gdk_welcome">Добро пожаловать</string>
     <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/values-ru/values-ru.xml -->
     <eat-comment/>
     <string msgid="8327680881775995150" name="mr_media_route_button_content_description">"Транслировать."</string>

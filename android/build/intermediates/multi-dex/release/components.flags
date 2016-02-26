@@ -20,6 +20,10 @@
     <init>();
 }
 
+-keep class com.purplebrain.giftiz.sdk.GiftizWebViewActivity {
+    <init>();
+}
+
 -keep class com.google.android.gms.ads.AdActivity {
     <init>();
 }

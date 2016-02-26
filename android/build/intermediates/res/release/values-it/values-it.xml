@@ -54,6 +54,20 @@
     <string msgid="311697239335516384" name="common_open_on_phone">"Apri sul telefono"</string>
     <string msgid="3156914698180786012" name="common_signin_button_text">"Accedi"</string>
     <string msgid="1483290677806110088" name="common_signin_button_text_long">"Accedi con Google"</string>
+    <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/res/values-it/gdk_strings.xml -->
+    <eat-comment/>
+    <string name="gdk_discover">Scopri\nGiochi Android</string>
+    <string name="gdk_error">Errore</string>
+    <string name="gdk_free">GRATUITUO</string>
+    <string name="gdk_gifts">Guadagna\ndei Regali</string>
+    <string name="gdk_in_app_purchase">Acquisto registrato !</string>
+    <string name="gdk_loading"> Loading . . . </string>
+    <string name="gdk_mission_complete">Missione realizzata !</string>
+    <string name="gdk_missions">Realizza\ndelle Missioni</string>
+    <string name="gdk_no_network">Nessuna rete disponibile.</string>
+    <string name="gdk_ok">OK</string>
+    <string name="gdk_try">Prova adesso !</string>
+    <string name="gdk_welcome">Benvenuto</string>
     <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/values-it/values-it.xml -->
     <eat-comment/>
     <string msgid="8327680881775995150" name="mr_media_route_button_content_description">"Trasmetti"</string>

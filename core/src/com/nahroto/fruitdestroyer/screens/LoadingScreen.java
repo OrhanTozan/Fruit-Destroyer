@@ -80,7 +80,7 @@ public class LoadingScreen extends BasicLoadingScreen implements Screen
             bg.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
             APP.loadingScreen2 = new LoadingScreen2(APP, font, bg);
             menuScreenAtlas = APP.assets.get("atlases/menuscreen.pack", TextureAtlas.class);
-            APP.menuScreen = new MenuScreen(APP, font, bg, new MenuHud(APP, APP.viewport, APP.batch, menuScreenAtlas.findRegion("title"), menuScreenAtlas.findRegion("play-button-up"), menuScreenAtlas.findRegion("play-button-down"), menuScreenAtlas.findRegion("highscore-button-up"), menuScreenAtlas.findRegion("highscore-button-down")), APP.assets.get("music/epictheme.ogg", Music.class));
+            APP.menuScreen = new MenuScreen(APP, font, bg, new MenuHud(APP, APP.viewport, APP.batch, menuScreenAtlas.findRegion("giftiz_logo"), menuScreenAtlas.findRegion("giftiz_logo_badge"), menuScreenAtlas.findRegion("giftiz_logo_warning"), menuScreenAtlas.findRegion("title"), menuScreenAtlas.findRegion("play-button-up"), menuScreenAtlas.findRegion("play-button-down"), menuScreenAtlas.findRegion("highscore-button-up"), menuScreenAtlas.findRegion("highscore-button-down")), APP.assets.get("music/epictheme.ogg", Music.class));
             assetsLoaded = true;
             startTime = System.currentTimeMillis();
         }

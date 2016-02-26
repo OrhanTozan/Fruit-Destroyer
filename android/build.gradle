@@ -7,6 +7,11 @@ android {
             storePassword 'W8woord01'
         }
     }
+
+    lintOptions {
+        disable 'MissingTranslation'
+    }
+
     buildToolsVersion '22.0.1'
     compileSdkVersion 23
     defaultConfig {
@@ -129,4 +134,5 @@ idea {
 }
 dependencies {
     compile 'com.google.android.gms:play-services:8.4.0'
+    compile files('libs/GiftizSDK_1.5.0.jar')
 }

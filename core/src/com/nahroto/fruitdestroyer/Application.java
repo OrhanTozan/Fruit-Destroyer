@@ -24,8 +24,16 @@ import com.nahroto.fruitdestroyer.screens.LoadingScreen;
 import com.nahroto.fruitdestroyer.screens.LoadingScreen2;
 import com.nahroto.fruitdestroyer.screens.MenuScreen;
 
+import java.util.Random;
+
 public class Application extends Game
 {
+	public enum Platform
+	{
+		ANDROID,
+		PC
+	}
+	public Platform currentPlatform;
 	public Preferences prefs;
 	public SpriteBatch batch;
 	public OrthographicCamera camera;
@@ -41,11 +49,13 @@ public class Application extends Game
 
 	public AdsController adsController;
 	public PlayServices playServices;
+	public ActivityController activityController;
 
 	private boolean firstTime = true;
 
-	public Application(AdsController adsController, PlayServices playServices)
+	public Application(AdsController adsController, PlayServices playServices, ActivityController activityController, Platform currentPlatform)
 	{
+		this.currentPlatform = currentPlatform;
 		if (adsController != null)
 			this.adsController = adsController;
 		else
@@ -55,6 +65,11 @@ public class Application extends Game
 			this.playServices = playServices;
 		else
 			this.playServices = new DummyPlayServices();
+
+		if (activityController != null)
+			this.activityController = activityController;
+		else
+			this.activityController = new DummyActivityController();
 	}
 
 
@@ -70,7 +85,6 @@ public class Application extends Game
 		loadingScreen = new LoadingScreen(this);
 
 		assets.load("music/transition.mp3", Music.class);
-
 	}
 
 	@Override

@@ -190,8 +190,12 @@ MERGED from com.google.android.gms:play-services-nearby:8.4.0:19:5
 MERGED from com.google.android.gms:play-services-maps:8.4.0:20:5
 	android:name
 		ADDED from AndroidManifest.xml:10:22
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from AndroidManifest.xml:11:5
+	android:name
+		ADDED from AndroidManifest.xml:11:22
 application
-ADDED from AndroidManifest.xml:12:5
+ADDED from AndroidManifest.xml:13:5
 MERGED from com.google.android.gms:play-services-games:8.4.0:19:5
 MERGED from com.google.android.gms:play-services-basement:8.4.0:20:5
 MERGED from com.android.support:support-v4:23.0.0:22:5
@@ -306,43 +310,57 @@ MERGED from com.google.android.gms:play-services-wearable:8.4.0:19:5
 MERGED from com.google.android.gms:play-services-basement:8.4.0:20:5
 MERGED from com.android.support:support-v4:23.0.0:22:5
 	android:label
-		ADDED from AndroidManifest.xml:16:9
-	android:allowBackup
-		ADDED from AndroidManifest.xml:14:9
-	android:icon
-		ADDED from AndroidManifest.xml:15:9
-	android:theme
 		ADDED from AndroidManifest.xml:17:9
+	android:allowBackup
+		ADDED from AndroidManifest.xml:15:9
+	android:icon
+		ADDED from AndroidManifest.xml:16:9
+	android:theme
+		ADDED from AndroidManifest.xml:18:9
 	android:name
-		ADDED from AndroidManifest.xml:13:9
+		ADDED from AndroidManifest.xml:14:9
 activity#com.nahroto.fruitdestroyer.android.AndroidLauncher
-ADDED from AndroidManifest.xml:18:9
+ADDED from AndroidManifest.xml:19:9
 	android:screenOrientation
-		ADDED from AndroidManifest.xml:22:13
+		ADDED from AndroidManifest.xml:23:13
 	android:label
-		ADDED from AndroidManifest.xml:21:13
+		ADDED from AndroidManifest.xml:22:13
 	android:configChanges
+		ADDED from AndroidManifest.xml:21:13
+	android:name
 		ADDED from AndroidManifest.xml:20:13
-	android:name
-		ADDED from AndroidManifest.xml:19:13
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from AndroidManifest.xml:23:13
+ADDED from AndroidManifest.xml:24:13
 action#android.intent.action.MAIN
-ADDED from AndroidManifest.xml:24:17
+ADDED from AndroidManifest.xml:25:17
 	android:name
-		ADDED from AndroidManifest.xml:24:25
+		ADDED from AndroidManifest.xml:25:25
 category#android.intent.category.LAUNCHER
-ADDED from AndroidManifest.xml:26:17
+ADDED from AndroidManifest.xml:27:17
 	android:name
-		ADDED from AndroidManifest.xml:26:27
-meta-data#com.google.android.gms.games.APP_ID
+		ADDED from AndroidManifest.xml:27:27
+activity#com.purplebrain.giftiz.sdk.GiftizWebViewActivity
 ADDED from AndroidManifest.xml:30:9
-	android:value
-		ADDED from AndroidManifest.xml:30:71
+	android:layout_width
+		ADDED from AndroidManifest.xml:31:19
+	android:layout_height
+		ADDED from AndroidManifest.xml:32:19
 	android:name
-		ADDED from AndroidManifest.xml:30:20
+		ADDED from AndroidManifest.xml:30:19
+meta-data#GIFTIZ_PARTNER_KEY
+ADDED from AndroidManifest.xml:34:9
+	android:value
+		ADDED from AndroidManifest.xml:34:54
+	android:name
+		ADDED from AndroidManifest.xml:34:20
+meta-data#com.google.android.gms.games.APP_ID
+ADDED from AndroidManifest.xml:35:9
+	android:value
+		ADDED from AndroidManifest.xml:35:71
+	android:name
+		ADDED from AndroidManifest.xml:35:20
 meta-data#com.google.android.gms.version
-ADDED from AndroidManifest.xml:31:9
+ADDED from AndroidManifest.xml:36:9
 MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
 MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
 MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
@@ -380,9 +398,9 @@ MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
 MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
 MERGED from com.google.android.gms:play-services-basement:8.4.0:21:9
 	android:value
-		ADDED from AndroidManifest.xml:31:66
+		ADDED from AndroidManifest.xml:36:66
 	android:name
-		ADDED from AndroidManifest.xml:31:20
+		ADDED from AndroidManifest.xml:36:20
 meta-data#unityplayer.ForwardNativeEventsToDalvik
 ADDED from Fruit_Destroyer:BaseGameUtils:1.0:26:5
 	android:value

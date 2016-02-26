@@ -54,6 +54,20 @@
     <string msgid="311697239335516384" name="common_open_on_phone">"스마트폰에서 열기"</string>
     <string msgid="3156914698180786012" name="common_signin_button_text">"로그인"</string>
     <string msgid="1483290677806110088" name="common_signin_button_text_long">"Google 계정으로 로그인"</string>
+    <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/res/values-ko/gdk_strings.xml -->
+    <eat-comment/>
+    <string name="gdk_discover">안드로이드 게임을 경험해보세요</string>
+    <string name="gdk_error">오류</string>
+    <string name="gdk_free">무료</string>
+    <string name="gdk_gifts">현물을 받아가세요</string>
+    <string name="gdk_in_app_purchase">구입등록</string>
+    <string name="gdk_loading"> 로딩중 . . . </string>
+    <string name="gdk_mission_complete">미션 성공!</string>
+    <string name="gdk_missions">미션을 수행하세요</string>
+    <string name="gdk_no_network">네트워크 오류</string>
+    <string name="gdk_ok">확인</string>
+    <string name="gdk_try">지금 경험해보세요</string>
+    <string name="gdk_welcome">환영합니다!</string>
     <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/values-ko/values-ko.xml -->
     <eat-comment/>
     <string msgid="8327680881775995150" name="mr_media_route_button_content_description">"전송"</string>

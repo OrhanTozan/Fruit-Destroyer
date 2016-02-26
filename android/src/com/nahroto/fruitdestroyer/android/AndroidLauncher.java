@@ -15,11 +15,14 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.games.Games;
 import com.google.example.games.basegameutils.GameHelper;
+import com.nahroto.fruitdestroyer.ActivityController;
 import com.nahroto.fruitdestroyer.AdsController;
 import com.nahroto.fruitdestroyer.Application;
+import com.nahroto.fruitdestroyer.GiftizButton;
 import com.nahroto.fruitdestroyer.PlayServices;
+import com.purplebrain.giftiz.sdk.GiftizSDK;
 
-public class AndroidLauncher extends AndroidApplication implements AdsController, PlayServices
+public class AndroidLauncher extends AndroidApplication implements AdsController, PlayServices, ActivityController
 {
 	private static final String INTERSTITIAL_AD_UNIT_ID = "ca-app-pub-7980895899775610/2698922485";
 
@@ -47,7 +50,7 @@ public class AndroidLauncher extends AndroidApplication implements AdsController
 		};
 
 		gameHelper.setup(gameHelperListener);
-		initialize(new Application(this, this), config);
+		initialize(new Application(this, this, this, Application.Platform.ANDROID), config);
 		setupAds();
 	}
 
@@ -65,13 +68,18 @@ public class AndroidLauncher extends AndroidApplication implements AdsController
 
 	@Override
 	public void showInterstitialAd(final Runnable then) {
-		runOnUiThread(new Runnable() {
+		runOnUiThread(new Runnable()
+		{
 			@Override
-			public void run() {
-				if (then != null) {
-					interstitialAd.setAdListener(new AdListener() {
+			public void run()
+			{
+				if (then != null)
+				{
+					interstitialAd.setAdListener(new AdListener()
+					{
 						@Override
-						public void onAdClosed() {
+						public void onAdClosed()
+						{
 							Gdx.app.postRunnable(then);
 							AdRequest.Builder builder = new AdRequest.Builder();
 							AdRequest ad = builder.build();
@@ -105,6 +113,20 @@ public class AndroidLauncher extends AndroidApplication implements AdsController
 	{
 		super.onStop();
 		gameHelper.onStop();
+	}
+
+	@Override
+	protected void onResume()
+	{
+		super.onResume();
+		GiftizSDK.onResumeMainActivity(this);
+	}
+
+	@Override
+	protected void onPause()
+	{
+		super.onPause();
+		GiftizSDK.onPauseMainActivity(this);
 	}
 
 	@Override
@@ -164,8 +186,7 @@ public class AndroidLauncher extends AndroidApplication implements AdsController
 	@Override
 	public void unlockAchievement()
 	{
-		Games.Achievements.unlock(gameHelper.getApiClient(),
-				getString(R.string.achievement_ach1));
+		Games.Achievements.unlock(gameHelper.getApiClient(), getString(R.string.achievement_ach1));
 	}
 
 	@Override
@@ -173,8 +194,7 @@ public class AndroidLauncher extends AndroidApplication implements AdsController
 	{
 		if (isSignedIn() == true)
 		{
-			Games.Leaderboards.submitScore(gameHelper.getApiClient(),
-					getString(R.string.leaderboard_highest_wave_score), highScore);
+			Games.Leaderboards.submitScore(gameHelper.getApiClient(), getString(R.string.leaderboard_highest_wave_score), highScore);
 		}
 	}
 
@@ -196,8 +216,7 @@ public class AndroidLauncher extends AndroidApplication implements AdsController
 	{
 		if (isSignedIn() == true)
 		{
-			startActivityForResult(Games.Leaderboards.getLeaderboardIntent(gameHelper.getApiClient(),
-					getString(R.string.leaderboard_highest_wave_score)), requestCode);
+			startActivityForResult(Games.Leaderboards.getLeaderboardIntent(gameHelper.getApiClient(), getString(R.string.leaderboard_highest_wave_score)), requestCode);
 		}
 		else
 		{
@@ -209,5 +228,37 @@ public class AndroidLauncher extends AndroidApplication implements AdsController
 	public boolean isSignedIn()
 	{
 		return gameHelper.isSignedIn();
+	}
+
+	@Override
+	public GiftizButton getButtonStatus()
+	{
+		if (GiftizSDK.Inner.getButtonStatus(this) == null)
+			return null;
+		switch (GiftizSDK.Inner.getButtonStatus(this))
+		{
+			case ButtonInvisible:
+				return GiftizButton.INVISIBLE;
+			case ButtonNaked:
+				return GiftizButton.NAKED;
+			case ButtonBadge:
+				return GiftizButton.BADGE;
+			case ButtonWarning:
+				return GiftizButton.WARNING;
+			default:
+				return null;
+		}
+	}
+
+	@Override
+	public void buttonClicked()
+	{
+		GiftizSDK.Inner.buttonClicked(this);
+	}
+
+	@Override
+	public void missionCompleted()
+	{
+		GiftizSDK.missionComplete(this);
 	}
 }

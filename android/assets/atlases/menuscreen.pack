@@ -5,36 +5,57 @@ filter: Linear,Linear
 repeat: none
 title
   rotate: false
-  xy: 1, 52
+  xy: 1, 103
   size: 656, 116
   orig: 656, 116
   offset: 0, 0
   index: -1
 play-button-down
   rotate: false
-  xy: 659, 4
+  xy: 659, 55
   size: 276, 164
   orig: 276, 164
   offset: 0, 0
   index: -1
 play-button-up
   rotate: false
-  xy: 937, 1
+  xy: 937, 52
   size: 276, 167
   orig: 276, 167
   offset: 0, 0
   index: -1
 highscore-button-up
   rotate: false
-  xy: 1215, 1
+  xy: 1215, 52
   size: 237, 167
   orig: 237, 167
   offset: 0, 0
   index: -1
 highscore-button-down
   rotate: false
-  xy: 1454, 4
+  xy: 1454, 55
   size: 237, 164
   orig: 237, 164
+  offset: 0, 0
+  index: -1
+giftiz_logo
+  rotate: false
+  xy: 1, 1
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+giftiz_logo_badge
+  rotate: false
+  xy: 1693, 119
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+giftiz_logo_warning
+  rotate: false
+  xy: 103, 1
+  size: 100, 100
+  orig: 100, 100
   offset: 0, 0
   index: -1

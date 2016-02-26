@@ -33,6 +33,11 @@ public class MenuHud extends Hud
 
     private ImageButton playButton;
     private ImageButton highScoresButton;
+    private ImageButton currentGiftizButton;
+    private ImageButton giftizButtonNaked;
+    private ImageButton giftizButtonBadge;
+    private ImageButton giftizButtonWarning;
+
     private Image title;
 
     private Font waveFont;
@@ -41,7 +46,7 @@ public class MenuHud extends Hud
     private Label waveLabel;
     private Label text;
 
-    public MenuHud(final Application APP, Viewport viewport, SpriteBatch batch, TextureRegion title, TextureRegion playButtonDrawableUp, TextureRegion playButtonDrawableDown, TextureRegion scoreButtonDrawableUp, TextureRegion scoreButtonDrawableDown)
+    public MenuHud(final Application APP, Viewport viewport, SpriteBatch batch, TextureRegion giftizNaked, TextureRegion giftizBadge, TextureRegion giftizWarning, TextureRegion title, TextureRegion playButtonDrawableUp, TextureRegion playButtonDrawableDown, TextureRegion scoreButtonDrawableUp, TextureRegion scoreButtonDrawableDown)
     {
         super(viewport, batch);
 
@@ -51,8 +56,13 @@ public class MenuHud extends Hud
 
         playButton = new ImageButton(new TextureRegionDrawable(playButtonDrawableUp), new TextureRegionDrawable(playButtonDrawableDown));
         highScoresButton = new ImageButton(new TextureRegionDrawable(scoreButtonDrawableUp), new TextureRegionDrawable(scoreButtonDrawableDown));
+        giftizButtonNaked = new ImageButton(new TextureRegionDrawable(giftizNaked));
+        giftizButtonBadge = new ImageButton(new TextureRegionDrawable(giftizBadge));
+        giftizButtonWarning = new ImageButton(new TextureRegionDrawable(giftizWarning));
+        currentGiftizButton = new ImageButton(giftizButtonNaked.getStyle());
         playButton.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 + 100, Align.center);
         highScoresButton.setPosition(Constants.V_WIDTH / 2, Constants.V_HEIGHT / 2 - 100, Align.center);
+        currentGiftizButton.setPosition(Constants.V_WIDTH, 0, Align.bottomRight);
         playButton.addListener(new ClickListener()
         {
             public void clicked(InputEvent event, float x, float y)
@@ -79,9 +89,31 @@ public class MenuHud extends Hud
                     APP.playServices.showScore();
                 }
                 else
-                {   APP.playServices.submitScore(APP.prefs.getInteger("highScore", 1));
+                {
+                    APP.playServices.submitScore(APP.prefs.getInteger("highScore", 1));
                     APP.playServices.showScore();
                 }
+            }
+        });
+        giftizButtonNaked.addListener(new ClickListener()
+        {
+            public void clicked(InputEvent event, float x, float y)
+            {
+                APP.activityController.buttonClicked();
+            }
+        });
+        giftizButtonBadge.addListener(new ClickListener()
+        {
+            public void clicked(InputEvent event, float x, float y)
+            {
+                APP.activityController.buttonClicked();
+            }
+        });
+        giftizButtonWarning.addListener(new ClickListener()
+        {
+            public void clicked(InputEvent event, float x, float y)
+            {
+                APP.activityController.buttonClicked();
             }
         });
         waveFont = new Font(APP, "trompus87.otf", "fonts/trompus.otf", 60, Color.WHITE, Color.BLACK, 3, true);
@@ -101,6 +133,8 @@ public class MenuHud extends Hud
         actors.add(highScoresButton);
 
         addAllActors();
+
+        stage.addActor(currentGiftizButton);
     }
 
     public void show()
@@ -112,6 +146,28 @@ public class MenuHud extends Hud
             actors.add(waveLabel);
             addAllActors();
         }
+        if (APP.activityController.getButtonStatus() != null)
+        {
+            switch (APP.activityController.getButtonStatus())
+            {
+                case INVISIBLE:
+                    currentGiftizButton.remove();
+                    break;
+                case NAKED:
+                    stage.addActor(currentGiftizButton);
+                    currentGiftizButton.setStyle(giftizButtonNaked.getStyle());
+                case BADGE:
+                    stage.addActor(currentGiftizButton);
+                    currentGiftizButton.setStyle(giftizButtonBadge.getStyle());
+                    break;
+                case WARNING:
+                    stage.addActor(currentGiftizButton);
+                    currentGiftizButton.setStyle(giftizButtonWarning.getStyle());
+                    break;
+            }
+        }
+        else
+            currentGiftizButton.remove();
     }
 
     @Override

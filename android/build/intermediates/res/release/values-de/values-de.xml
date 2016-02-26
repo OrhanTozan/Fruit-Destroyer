@@ -54,6 +54,20 @@
     <string msgid="311697239335516384" name="common_open_on_phone">"Auf Smartphone öffnen"</string>
     <string msgid="3156914698180786012" name="common_signin_button_text">"Anmelden"</string>
     <string msgid="1483290677806110088" name="common_signin_button_text_long">"Über Google anmelden"</string>
+    <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/res/values-de/gdk_strings.xml -->
+    <eat-comment/>
+    <string name="gdk_discover">Entdecke\nAndroid Spiele</string>
+    <string name="gdk_error">Fehler</string>
+    <string name="gdk_free">Kostenlos</string>
+    <string name="gdk_gifts">Gewinne Geschenke</string>
+    <string name="gdk_in_app_purchase">Einkauf gespeichert!</string>
+    <string name="gdk_loading"> Laden . . . </string>
+    <string name="gdk_mission_complete">Mission erfüllt!</string>
+    <string name="gdk_missions">Erfülle Missionen</string>
+    <string name="gdk_no_network">Kein Netz vorhanden.</string>
+    <string name="gdk_ok">OK</string>
+    <string name="gdk_try">Versuch es jetzt!</string>
+    <string name="gdk_welcome">Willkommen</string>
     <!-- From: file:/C:/Users/Musa%20Tozan/Documents/Fruit_Destroyer/android/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/values-de/values-de.xml -->
     <eat-comment/>
     <string msgid="8327680881775995150" name="mr_media_route_button_content_description">"Übertragen"</string>
