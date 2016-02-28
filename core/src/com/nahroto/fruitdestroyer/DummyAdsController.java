@@ -9,7 +9,13 @@ public class DummyAdsController implements AdsController
     }
 
     @Override
-    public void showInterstitialAd(Runnable then)
+    public void showGoogleAd()
+    {
+
+    }
+
+    @Override
+    public void showAd()
     {
 
     }

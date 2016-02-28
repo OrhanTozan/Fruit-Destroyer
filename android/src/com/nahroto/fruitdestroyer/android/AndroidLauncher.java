@@ -18,8 +18,11 @@ import com.google.example.games.basegameutils.GameHelper;
 import com.nahroto.fruitdestroyer.ActivityController;
 import com.nahroto.fruitdestroyer.AdsController;
 import com.nahroto.fruitdestroyer.Application;
+import com.nahroto.fruitdestroyer.Debug;
 import com.nahroto.fruitdestroyer.GiftizButton;
+import com.nahroto.fruitdestroyer.Logger;
 import com.nahroto.fruitdestroyer.PlayServices;
+import com.purplebrain.adbuddiz.sdk.AdBuddiz;
 import com.purplebrain.giftiz.sdk.GiftizSDK;
 
 public class AndroidLauncher extends AndroidApplication implements AdsController, PlayServices, ActivityController
@@ -50,6 +53,8 @@ public class AndroidLauncher extends AndroidApplication implements AdsController
 		};
 
 		gameHelper.setup(gameHelperListener);
+		AdBuddiz.setPublisherKey("9bfbf1bb-a9e2-4ce5-8dfd-f25455ceb714");
+		AdBuddiz.cacheAds(this);
 		initialize(new Application(this, this, this, Application.Platform.ANDROID), config);
 		setupAds();
 	}
@@ -65,28 +70,43 @@ public class AndroidLauncher extends AndroidApplication implements AdsController
 		interstitialAd.loadAd(ad);
 	}
 
+	@Override
+	public void showAd()
+	{
+		if (AdBuddiz.isReadyToShowAd(this))
+		{
+			AdBuddiz.showAd(this);
+			if (Debug.AD_INFO)
+				Logger.log("adbuddiz showed");
+		}
+		else if (isWifiConnected())
+		{
+			showGoogleAd();
+			if (Debug.AD_INFO)
+				Logger.log("admob showed");
+		}
+		else if (Debug.AD_INFO)
+			Logger.log("no ad showed");
+	}
 
 	@Override
-	public void showInterstitialAd(final Runnable then) {
+	public void showGoogleAd() {
 		runOnUiThread(new Runnable()
 		{
 			@Override
 			public void run()
 			{
-				if (then != null)
+
+				interstitialAd.setAdListener(new AdListener()
 				{
-					interstitialAd.setAdListener(new AdListener()
+					@Override
+					public void onAdClosed()
 					{
-						@Override
-						public void onAdClosed()
-						{
-							Gdx.app.postRunnable(then);
-							AdRequest.Builder builder = new AdRequest.Builder();
-							AdRequest ad = builder.build();
-							interstitialAd.loadAd(ad);
-						}
-					});
-				}
+						AdRequest.Builder builder = new AdRequest.Builder();
+						AdRequest ad = builder.build();
+						interstitialAd.loadAd(ad);
+					}
+				});
 				interstitialAd.show();
 			}
 		});

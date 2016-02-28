@@ -24,6 +24,10 @@
     <init>();
 }
 
+-keep class com.purplebrain.adbuddiz.sdk.AdBuddizActivity {
+    <init>();
+}
+
 -keep class com.google.android.gms.ads.AdActivity {
     <init>();
 }

@@ -95,6 +95,14 @@ public class MenuHud extends Hud
                 }
             }
         });
+
+        currentGiftizButton.addListener(new ClickListener()
+        {
+            public void clicked(InputEvent event, float x, float y)
+            {
+                APP.activityController.buttonClicked();
+            }
+        });
         giftizButtonNaked.addListener(new ClickListener()
         {
             public void clicked(InputEvent event, float x, float y)

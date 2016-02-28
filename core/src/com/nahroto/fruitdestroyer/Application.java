@@ -113,19 +113,6 @@ public class Application extends Game
 
 	public void showAd()
 	{
-		if (adsController.isWifiConnected())
-		{
-			adsController.showInterstitialAd(new Runnable()
-			{
-				@Override
-				public void run()
-				{
-					if (Debug.AD_INFO)
-						System.out.println("Interstitial app closed");
-				}
-			});
-		}
-		else if (Debug.AD_INFO)
-			System.out.println("Interstitial ad not (yet) loaded");
+		adsController.showAd();
 	}
 }

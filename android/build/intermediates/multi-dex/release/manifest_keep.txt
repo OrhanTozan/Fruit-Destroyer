@@ -4,6 +4,7 @@
 }
 -keep class com.nahroto.fruitdestroyer.android.AndroidLauncher { <init>(); }
 -keep class com.purplebrain.giftiz.sdk.GiftizWebViewActivity { <init>(); }
+-keep class com.purplebrain.adbuddiz.sdk.AdBuddizActivity { <init>(); }
 -keep class com.google.android.gms.ads.AdActivity { <init>(); }
 -keep class com.google.android.gms.ads.purchase.InAppPurchaseActivity { <init>(); }
 -keep class com.google.android.gms.appinvite.PreviewActivity { <init>(); }

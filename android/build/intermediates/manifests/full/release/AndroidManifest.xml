@@ -45,10 +45,13 @@
             android:name="com.purplebrain.giftiz.sdk.GiftizWebViewActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+        <activity
+            android:name="com.purplebrain.adbuddiz.sdk.AdBuddizActivity"
+            android:theme="@android:style/Theme.Translucent" />
 
         <meta-data
             android:name="GIFTIZ_PARTNER_KEY"
-            android:value="TEST_PARTNER_KEY" />
+            android:value="1080524f-1d88-45ba-acee-1a49fc5919cf" />
         <meta-data
             android:name="com.google.android.gms.games.APP_ID"
             android:value="@string/app_id" />
