@@ -1,5 +1,6 @@
 package com.nahroto.fruitdestroyer.huds;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -45,6 +46,7 @@ public class MenuHud extends Hud
 
     private Label waveLabel;
     private Label text;
+    private Label versionLabel;
 
     public MenuHud(final Application APP, Viewport viewport, SpriteBatch batch, TextureRegion giftizNaked, TextureRegion giftizBadge, TextureRegion giftizWarning, TextureRegion title, TextureRegion playButtonDrawableUp, TextureRegion playButtonDrawableDown, TextureRegion scoreButtonDrawableUp, TextureRegion scoreButtonDrawableDown)
     {
@@ -129,9 +131,11 @@ public class MenuHud extends Hud
 
         text = new Label("Highest wave record", new Label.LabelStyle(waveFont.getFont(), Color.WHITE));
         waveLabel = new Label(WaveGenerator.wave.toString() + "!", new Label.LabelStyle(bigWaveFont.getFont(), Color.WHITE));
+        versionLabel = new Label("v" + Constants.VERSION, new Label.LabelStyle(new Font(APP, "versionFont.otf", "fonts/berlin.TTF", 50, Color.WHITE, Color.BLACK, 1, true).getFont(), Color.WHITE));
 
         text.setPosition(Constants.V_WIDTH / 2 - waveFont.getWidth("Highest wave record") / 2, 1000);
         waveLabel.setPosition(Constants.V_WIDTH / 2 - bigWaveFont.getWidth("Wave " + APP.prefs.getInteger("highestScore", 1) + "!") / 2, 1000 - bigWaveFont.getHeight("Wave " + WaveGenerator.wave.toString() + "!") - 40);
+        versionLabel.setPosition(0, 0);
 
         this.title.setOrigin(Align.center);
         this.title.setScale(10f, 10f);
@@ -139,6 +143,7 @@ public class MenuHud extends Hud
         actors.add(this.title);
         actors.add(playButton);
         actors.add(highScoresButton);
+        actors.add(versionLabel);
 
         addAllActors();
 
