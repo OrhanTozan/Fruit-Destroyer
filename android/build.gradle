@@ -135,7 +135,7 @@ idea {
 dependencies {
     compile 'com.google.android.gms:play-services:8.4.0'
     compile 'com.purplebrain.adbuddiz.sdk:AdBuddiz-Java:3.+'
-    compile files('libs/GiftizSDK_1.5.0.jar')
+    compile files('libs/GiftizSDK_1.5.4.jar')
 }
 
 repositories {
